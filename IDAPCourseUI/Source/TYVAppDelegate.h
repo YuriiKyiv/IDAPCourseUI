@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  TYVAppDelegate.h
 //  IDAPCourseUI
 //
 //  Created by YURII on 15.06.15.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface TYVAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

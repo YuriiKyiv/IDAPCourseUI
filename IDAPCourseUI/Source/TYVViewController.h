@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  TYVViewController.h
 //  IDAPCourseUI
 //
 //  Created by YURII on 15.06.15.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface TYVViewController : UIViewController
 
 
 @end

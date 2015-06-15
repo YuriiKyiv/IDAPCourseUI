@@ -1,18 +1,18 @@
 //
-//  AppDelegate.m
+//  TYVAppDelegate.m
 //  IDAPCourseUI
 //
 //  Created by YURII on 15.06.15.
 //  Copyright (c) 2015 YURII. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "TYVAppDelegate.h"
 
-@interface AppDelegate ()
+@interface TYVAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation TYVAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

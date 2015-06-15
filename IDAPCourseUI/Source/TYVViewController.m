@@ -1,18 +1,18 @@
 //
-//  ViewController.m
+//  TYVViewController.m
 //  IDAPCourseUI
 //
 //  Created by YURII on 15.06.15.
 //  Copyright (c) 2015 YURII. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "TYVViewController.h"
 
-@interface ViewController ()
+@interface TYVViewController ()
 
 @end
 
-@implementation ViewController
+@implementation TYVViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

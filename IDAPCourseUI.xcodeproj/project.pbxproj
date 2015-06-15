@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5A22FD811B2E92250005AFDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A22FD801B2E92250005AFDC /* main.m */; };
-		5A22FD841B2E92250005AFDC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A22FD831B2E92250005AFDC /* AppDelegate.m */; };
-		5A22FD871B2E92250005AFDC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A22FD861B2E92250005AFDC /* ViewController.m */; };
-		5A22FD8A1B2E92250005AFDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A22FD881B2E92250005AFDC /* Main.storyboard */; };
-		5A22FD8C1B2E92250005AFDC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A22FD8B1B2E92250005AFDC /* Images.xcassets */; };
-		5A22FD8F1B2E92250005AFDC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A22FD8D1B2E92250005AFDC /* LaunchScreen.xib */; };
 		5A22FD9B1B2E92250005AFDC /* IDAPCourseUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A22FD9A1B2E92250005AFDC /* IDAPCourseUITests.m */; };
+		5A22FDB01B2E935B0005AFDC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A22FDA51B2E935B0005AFDC /* Info.plist */; };
+		5A22FDB11B2E935B0005AFDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A22FDA61B2E935B0005AFDC /* main.m */; };
+		5A22FDB21B2E935B0005AFDC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A22FDA81B2E935B0005AFDC /* LaunchScreen.xib */; };
+		5A22FDB31B2E935B0005AFDC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A22FDAA1B2E935B0005AFDC /* Images.xcassets */; };
+		5A22FDB41B2E935B0005AFDC /* TYVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A22FDAD1B2E935B0005AFDC /* TYVAppDelegate.m */; };
+		5A22FDB51B2E935B0005AFDC /* TYVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A22FDAF1B2E935B0005AFDC /* TYVViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,18 +28,17 @@
 
 /* Begin PBXFileReference section */
 		5A22FD7B1B2E92250005AFDC /* IDAPCourseUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IDAPCourseUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A22FD7F1B2E92250005AFDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5A22FD801B2E92250005AFDC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		5A22FD821B2E92250005AFDC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		5A22FD831B2E92250005AFDC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5A22FD851B2E92250005AFDC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5A22FD861B2E92250005AFDC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		5A22FD891B2E92250005AFDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		5A22FD8B1B2E92250005AFDC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		5A22FD8E1B2E92250005AFDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		5A22FD941B2E92250005AFDC /* IDAPCourseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IDAPCourseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A22FD991B2E92250005AFDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A22FD9A1B2E92250005AFDC /* IDAPCourseUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IDAPCourseUITests.m; sourceTree = "<group>"; };
+		5A22FDA51B2E935B0005AFDC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A22FDA61B2E935B0005AFDC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5A22FDA91B2E935B0005AFDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		5A22FDAA1B2E935B0005AFDC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5A22FDAC1B2E935B0005AFDC /* TYVAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVAppDelegate.h; sourceTree = "<group>"; };
+		5A22FDAD1B2E935B0005AFDC /* TYVAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVAppDelegate.m; sourceTree = "<group>"; };
+		5A22FDAE1B2E935B0005AFDC /* TYVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVViewController.h; sourceTree = "<group>"; };
+		5A22FDAF1B2E935B0005AFDC /* TYVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +62,7 @@
 		5A22FD721B2E92250005AFDC = {
 			isa = PBXGroup;
 			children = (
-				5A22FD7D1B2E92250005AFDC /* IDAPCourseUI */,
+				5A22FDA41B2E935B0005AFDC /* IDAPCourseUI */,
 				5A22FD971B2E92250005AFDC /* IDAPCourseUITests */,
 				5A22FD7C1B2E92250005AFDC /* Products */,
 			);
@@ -76,30 +75,6 @@
 				5A22FD941B2E92250005AFDC /* IDAPCourseUITests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		5A22FD7D1B2E92250005AFDC /* IDAPCourseUI */ = {
-			isa = PBXGroup;
-			children = (
-				5A22FD821B2E92250005AFDC /* AppDelegate.h */,
-				5A22FD831B2E92250005AFDC /* AppDelegate.m */,
-				5A22FD851B2E92250005AFDC /* ViewController.h */,
-				5A22FD861B2E92250005AFDC /* ViewController.m */,
-				5A22FD881B2E92250005AFDC /* Main.storyboard */,
-				5A22FD8B1B2E92250005AFDC /* Images.xcassets */,
-				5A22FD8D1B2E92250005AFDC /* LaunchScreen.xib */,
-				5A22FD7E1B2E92250005AFDC /* Supporting Files */,
-			);
-			path = IDAPCourseUI;
-			sourceTree = "<group>";
-		};
-		5A22FD7E1B2E92250005AFDC /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				5A22FD7F1B2E92250005AFDC /* Info.plist */,
-				5A22FD801B2E92250005AFDC /* main.m */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		5A22FD971B2E92250005AFDC /* IDAPCourseUITests */ = {
@@ -117,6 +92,37 @@
 				5A22FD991B2E92250005AFDC /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5A22FDA41B2E935B0005AFDC /* IDAPCourseUI */ = {
+			isa = PBXGroup;
+			children = (
+				5A22FDA51B2E935B0005AFDC /* Info.plist */,
+				5A22FDA61B2E935B0005AFDC /* main.m */,
+				5A22FDA71B2E935B0005AFDC /* Resources */,
+				5A22FDAB1B2E935B0005AFDC /* Source */,
+			);
+			path = IDAPCourseUI;
+			sourceTree = "<group>";
+		};
+		5A22FDA71B2E935B0005AFDC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5A22FDA81B2E935B0005AFDC /* LaunchScreen.xib */,
+				5A22FDAA1B2E935B0005AFDC /* Images.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5A22FDAB1B2E935B0005AFDC /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				5A22FDAC1B2E935B0005AFDC /* TYVAppDelegate.h */,
+				5A22FDAD1B2E935B0005AFDC /* TYVAppDelegate.m */,
+				5A22FDAE1B2E935B0005AFDC /* TYVViewController.h */,
+				5A22FDAF1B2E935B0005AFDC /* TYVViewController.m */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +169,7 @@
 		5A22FD731B2E92250005AFDC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = TYV;
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = YURII;
 				TargetAttributes = {
@@ -199,9 +206,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A22FD8A1B2E92250005AFDC /* Main.storyboard in Resources */,
-				5A22FD8F1B2E92250005AFDC /* LaunchScreen.xib in Resources */,
-				5A22FD8C1B2E92250005AFDC /* Images.xcassets in Resources */,
+				5A22FDB31B2E935B0005AFDC /* Images.xcassets in Resources */,
+				5A22FDB21B2E935B0005AFDC /* LaunchScreen.xib in Resources */,
+				5A22FDB01B2E935B0005AFDC /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,9 +226,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A22FD871B2E92250005AFDC /* ViewController.m in Sources */,
-				5A22FD841B2E92250005AFDC /* AppDelegate.m in Sources */,
-				5A22FD811B2E92250005AFDC /* main.m in Sources */,
+				5A22FDB41B2E935B0005AFDC /* TYVAppDelegate.m in Sources */,
+				5A22FDB11B2E935B0005AFDC /* main.m in Sources */,
+				5A22FDB51B2E935B0005AFDC /* TYVViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,18 +251,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5A22FD881B2E92250005AFDC /* Main.storyboard */ = {
+		5A22FDA81B2E935B0005AFDC /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				5A22FD891B2E92250005AFDC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		5A22FD8D1B2E92250005AFDC /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5A22FD8E1B2E92250005AFDC /* Base */,
+				5A22FDA91B2E935B0005AFDC /* Base */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
