@@ -8,10 +8,13 @@
 
 #import "TYVSquareView.h"
 
+static const NSTimeInterval TYVDuration =   1.0;
+static const NSTimeInterval TYVDelay    =   0.0;
+
 @interface TYVSquareView ()
 
 - (CGPoint)pointFromSquarePosition:(TYVSquarePositionType)squarePosition;
-- (void)moveSquare:(CGPoint)rect;
+- (void)moveSquareToPoint:(CGPoint)rect;
 
 @end
 
@@ -35,8 +38,24 @@
         completionHandler:(SEL)handler
 {
     if (_squarePosition != squarePosition) {
-        [self moveSquare:[self pointFromSquarePosition:squarePosition]];
-        _squarePosition = squarePosition;
+        NSTimeInterval delay = (animated) ? TYVDelay : 0;
+        UILabel *label = self.squareLable;
+        CGRect rect = {[self pointFromSquarePosition:squarePosition], label.frame.size};
+        [UIView animateWithDuration:TYVDuration
+                              delay:delay
+                            options:UIViewAnimationOptionBeginFromCurrentState
+                         animations:^{
+                             label.frame = rect;
+                         }
+                         completion:^(BOOL finished){
+                             if (finished) {
+                                 _squarePosition = squarePosition;
+                             };
+                         }];
+//        _squarePosition = squarePosition;
+        if (handler) {
+            [self performSelector:handler];
+        }
     }
 }
 
@@ -44,9 +63,16 @@
 #pragma mark -
 #pragma mark Private Methods
 
-- (void)moveSquare:(CGPoint)point {
+- (void)moveSquareToPoint:(CGPoint)point {
+    UILabel *label = self.squareLable;
     CGRect rect = {point, self.squareLable.frame.size};
-    self.squareLable.frame = rect;
+    [UIView animateWithDuration:TYVDuration
+                          delay:TYVDelay
+                        options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{
+                                    label.frame = rect;
+                                }
+                     completion:nil];
 }
 
 - (CGPoint)pointFromSquarePosition:(TYVSquarePositionType)squarePosition {
@@ -59,22 +85,31 @@
             break;
             
         case TYVUpperRightCorner:
-            point.x = [[UIScreen mainScreen] bounds].size.width - 50;
+            point.x = [[UIScreen mainScreen] bounds].size.width;
             point.y = 0;
             break;
             
         case TYVBottomRightCorner:
-            point.x = [[UIScreen mainScreen] bounds].size.width - 50;
-            point.y = [[UIScreen mainScreen] bounds].size.height - 50;
+            point.x = [[UIScreen mainScreen] bounds].size.width;
+            point.y = [[UIScreen mainScreen] bounds].size.height;
             break;
             
         case TYVBottomLeftCorner:
             point.x = 0;
-            point.y = [[UIScreen mainScreen] bounds].size.height - 50;
+            point.y = [[UIScreen mainScreen] bounds].size.height;
             break;
             
         default:
             break;
+    }
+    
+    UILabel *label = self.squareLable;
+    if (point.x != 0) {
+        point.x -= label.frame.size.width;
+    }
+    
+    if (point.y != 0) {
+        point.y -= label.frame.size.height;
     }
     
     return point;
