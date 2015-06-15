@@ -52,7 +52,6 @@ static const NSTimeInterval TYVDelay    =   0.0;
                                  _squarePosition = squarePosition;
                              };
                          }];
-//        _squarePosition = squarePosition;
         if (handler) {
             [self performSelector:handler];
         }
