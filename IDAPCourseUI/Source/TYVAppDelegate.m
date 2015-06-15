@@ -7,6 +7,8 @@
 //
 
 #import "TYVAppDelegate.h"
+#import "TYVSquareViewController.h"
+#import "UIWindow+TYVExtentions.h"
 
 @interface TYVAppDelegate ()
 
@@ -16,6 +18,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    UIWindow *window = [UIWindow window];
+    window.backgroundColor = [UIColor yellowColor];
+    self.window = window;
+    window.rootViewController = [TYVSquareViewController new];
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
