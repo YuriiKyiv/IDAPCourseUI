@@ -34,8 +34,10 @@
                  animated:(BOOL)animated
         completionHandler:(SEL)handler
 {
-    [self moveSquare:[self pointFromSquarePosition:squarePosition]];
-    _squarePosition = squarePosition;
+    if (_squarePosition != squarePosition) {
+        [self moveSquare:[self pointFromSquarePosition:squarePosition]];
+        _squarePosition = squarePosition;
+    }
 }
 
 
@@ -49,23 +51,30 @@
 
 - (CGPoint)pointFromSquarePosition:(TYVSquarePositionType)squarePosition {
     CGPoint point;
-    point.x = 0;
-    point.y = 0;
     
-    if (squarePosition == TYVUpperLeftCorner) {
-        return point;
-    } else if (squarePosition == TYVUpperRightCorner) {
-        point.x = [[UIScreen mainScreen] bounds].size.width - 50;
-        point.y = 0;
-        return point;
-    } else if (squarePosition == TYVBottomRightCorner) {
-        point.x = [[UIScreen mainScreen] bounds].size.width - 50;
-        point.y = [[UIScreen mainScreen] bounds].size.height - 50;
-        return point;
-    }   else if (squarePosition == TYVBottomLeftCorner) {
-        point.x = 0;
-        point.y = [[UIScreen mainScreen] bounds].size.height - 50;
-        return point;
+    switch (squarePosition) {
+        case TYVUpperLeftCorner:
+            point.x = 0;
+            point.y = 0;
+            break;
+            
+        case TYVUpperRightCorner:
+            point.x = [[UIScreen mainScreen] bounds].size.width - 50;
+            point.y = 0;
+            break;
+            
+        case TYVBottomRightCorner:
+            point.x = [[UIScreen mainScreen] bounds].size.width - 50;
+            point.y = [[UIScreen mainScreen] bounds].size.height - 50;
+            break;
+            
+        case TYVBottomLeftCorner:
+            point.x = 0;
+            point.y = [[UIScreen mainScreen] bounds].size.height - 50;
+            break;
+            
+        default:
+            break;
     }
     
     return point;

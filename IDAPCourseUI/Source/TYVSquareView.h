@@ -15,13 +15,6 @@ typedef NS_ENUM(NSUInteger, TYVSquarePositionType){
     TYVBottomLeftCorner
 };
 
-//typedef enum : NSUInteger {
-//    TYVUpperLeftCorner,
-//    TYVUpperRightCorner,
-//    TYVBottomRightCorner,
-//    TYVBottomLeftCorner
-//} TYVSquarePositionType;
-
 @interface TYVSquareView : UIView
 @property (nonatomic, strong)   IBOutlet    UILabel     *squareLable;
 @property (nonatomic, strong)   IBOutlet    UIButton    *nextButton;
