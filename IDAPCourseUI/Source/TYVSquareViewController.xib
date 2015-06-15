@@ -20,6 +20,9 @@
                     <state key="normal" title="Next">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="onClickNextButton:" destination="-1" eventType="touchUpInside" id="EKU-Ab-5QV"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="O95-6s-kHU">
                     <rect key="frame" x="225" y="190" width="58" height="30"/>
@@ -27,6 +30,9 @@
                     <state key="normal" title="Random">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="onClickRandomButton:" destination="-1" eventType="touchUpInside" id="HQf-he-sBC"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ddm-Xx-1AZ">
                     <rect key="frame" x="0.0" y="0.0" width="137" height="80"/>

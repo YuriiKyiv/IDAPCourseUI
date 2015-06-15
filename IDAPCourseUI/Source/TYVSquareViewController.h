@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TYVSquareViewController : UIViewController
+- (IBAction)onClickNextButton:(id)sender;
+- (IBAction)onClickRandomButton:(id)sender;
 
 @end
