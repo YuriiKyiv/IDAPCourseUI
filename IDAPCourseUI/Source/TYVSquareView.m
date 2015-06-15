@@ -8,14 +8,47 @@
 
 #import "TYVSquareView.h"
 
+@interface TYVSquareView ()
+
+@end
+
 @implementation TYVSquareView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+@dynamic squarePosition;
+
+#pragma mark -
+#pragma mark Accessors
+
+- (void)setSquarePosition:(TYVSquarePositionType *)squarePosition {
+    [self setSquarePosition:squarePosition animated:NO completionHandler:nil];
 }
-*/
+
+- (void)setSquarePosition:(TYVSquarePositionType *)squarePosition
+                 animated:(BOOL)animated
+{
+    [self setSquarePosition:squarePosition animated:animated completionHandler:nil];
+}
+
+- (void)setSquarePosition:(TYVSquarePositionType *)squarePosition
+                 animated:(BOOL)animated
+        completionHandler:(SEL)handler
+{
+    CGRect rect = self.squareLable.frame;
+    rect.origin.x += 10;
+    rect.origin.x += 10;
+    [self moveSquare:rect];
+}
+
+- (TYVSquarePositionType *)squarePosition {
+    return 0;
+}
+
+
+#pragma mark -
+#pragma mark Private Methods
+
+- (void)moveSquare:(CGRect)rect {
+    self.squareLable.frame = rect;
+}
 
 @end

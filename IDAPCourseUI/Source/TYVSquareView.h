@@ -8,9 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, TYVSquarePositionType){
+    TYVUpperLeftCorner,
+    TYVUpperRightCorner,
+    TYVBottomRightCorner,
+    TYVBottomLeftCorner
+};
+
 @interface TYVSquareView : UIView
 @property (nonatomic, strong)   IBOutlet    UILabel     *squareLable;
 @property (nonatomic, strong)   IBOutlet    UIButton    *nextButton;
 @property (nonatomic, strong)   IBOutlet    UIButton    *randomButton;
+
+@property (nonatomic, unsafe_unretained)    TYVSquarePositionType  *squarePosition;
+
+- (void)moveSquare:(CGRect)rect;
 
 @end

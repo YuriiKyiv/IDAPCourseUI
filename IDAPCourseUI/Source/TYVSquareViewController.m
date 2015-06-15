@@ -10,7 +10,7 @@
 #import "TYVSquareView.h"
 
 @interface TYVSquareViewController ()
-
+@property (nonatomic, strong)   TYVSquareView   *squareView;
 @end
 
 @implementation TYVSquareViewController
@@ -38,11 +38,14 @@
 #pragma mark Interface Handling
 
 - (IBAction)onClickNextButton:(id)sender {
-
+    TYVSquareView *view = self.squareView;
+    CGRect rect = view.squareLable.frame;
+    rect.origin.x += 10;
+    rect.origin.y += 10;
+    [view moveSquare:rect];
 }
 
 - (IBAction)onClickRandomButton:(id)sender {
-    NSLog(@"Random");
 }
 
 @end
