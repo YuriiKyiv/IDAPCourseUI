@@ -49,4 +49,8 @@
     [view setSquarePosition:squarePosition animated:YES];
 }
 
+- (IBAction)onClickStopButton:(id)sender {
+
+}
+
 @end

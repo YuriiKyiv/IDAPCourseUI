@@ -20,6 +20,7 @@ typedef NS_ENUM(NSUInteger, TYVSquarePositionType){
 @property (nonatomic, strong)   IBOutlet    UILabel     *squareLabel;
 @property (nonatomic, strong)   IBOutlet    UIButton    *nextButton;
 @property (nonatomic, strong)   IBOutlet    UIButton    *randomButton;
+@property (nonatomic, strong)   IBOutlet    UIButton    *stopButton;
 
 @property (nonatomic, assign)    TYVSquarePositionType  squarePosition;
 

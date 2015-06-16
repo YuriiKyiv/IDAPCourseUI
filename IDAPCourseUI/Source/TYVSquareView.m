@@ -14,7 +14,6 @@ static const NSTimeInterval TYVDelay    =   0.0;
 @interface TYVSquareView ()
 
 - (CGRect)frameForSquarePosition:(TYVSquarePositionType)squarePosition;
-- (void)moveSquareToPoint:(CGPoint)rect;
 
 @end
 
@@ -62,18 +61,6 @@ static const NSTimeInterval TYVDelay    =   0.0;
 
 #pragma mark -
 #pragma mark Private Methods
-
-- (void)moveSquareToPoint:(CGPoint)point {
-    UILabel *label = self.squareLabel;
-    CGRect rect = {point, self.squareLabel.frame.size};
-    [UIView animateWithDuration:TYVDuration
-                          delay:TYVDelay
-                        options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^{
-                                    label.frame = rect;
-                                }
-                     completion:nil];
-}
 
 - (CGRect)frameForSquarePosition:(TYVSquarePositionType)squarePosition {
     CGRect frame = self.squareLabel.frame;
