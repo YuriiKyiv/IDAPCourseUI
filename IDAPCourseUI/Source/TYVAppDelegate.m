@@ -19,10 +19,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UIWindow *window = [UIWindow window];
-    window.backgroundColor = [UIColor yellowColor];
     self.window = window;
+    window.backgroundColor = [UIColor yellowColor];
     window.rootViewController = [TYVSquareViewController new];
-    [self.window makeKeyAndVisible];
+    [window makeKeyAndVisible];
     return YES;
 }
 
