@@ -11,6 +11,11 @@
 
 @interface TYVSquareViewController ()
 @property (nonatomic, strong)   TYVSquareView   *squareView;
+
+@property (nonatomic, assign)   BOOL animeted;
+
+- (void)performSquarePositionWithPosition:(TYVSquarePositionType)position;
+
 @end
 
 @implementation TYVSquareViewController
@@ -38,19 +43,36 @@
 #pragma mark Interface Handling
 
 - (IBAction)onClickNextButton:(id)sender {
-    TYVSquareView *view = self.squareView;
-    TYVSquarePositionType squarePosition = (view.squarePosition + 1) % TYVSquarePositionTypeCount;
-    [view setSquarePosition:squarePosition animated:YES];
+    self.animeted = YES;
+    [self performSquarePositionWithPosition:(self.squareView.squarePosition + 1) % TYVSquarePositionTypeCount];
 }
 
 - (IBAction)onClickRandomButton:(id)sender {
-    TYVSquareView *view = self.squareView;
-    TYVSquarePositionType squarePosition = (arc4random_uniform(TYVSquarePositionTypeCount));
-    [view setSquarePosition:squarePosition animated:YES];
+    self.animeted = YES;
+    [self performSquarePositionWithPosition:arc4random_uniform(TYVSquarePositionTypeCount)];
 }
 
 - (IBAction)onClickStopButton:(id)sender {
+    self.animeted = NO;
+}
 
+#pragma mark -
+#pragma mark Private Methods
+
+- (void)performSquarePositionWithPosition:(TYVSquarePositionType)position {
+    void (^block)(BOOL finished) = (self.animeted) ? ^(BOOL finished){
+        [self performSquarePositionWithPosition:(self.squareView.squarePosition + 1) % TYVSquarePositionTypeCount];
+    } : ^(BOOL finished){};
+    
+    [self.squareView setSquarePosition:position animated:YES completion:block];
+}
+
+- (void)makeBlock:(void(^)(void))block {
+    __block BOOL animeted = YES;
+    if (animeted) {
+        block();
+    }
+    
 }
 
 @end
