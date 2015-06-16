@@ -17,7 +17,7 @@ typedef NS_ENUM(NSUInteger, TYVSquarePositionType){
 };
 
 @interface TYVSquareView : UIView
-@property (nonatomic, strong)   IBOutlet    UILabel     *squareLable;
+@property (nonatomic, strong)   IBOutlet    UILabel     *squareLabel;
 @property (nonatomic, strong)   IBOutlet    UIButton    *nextButton;
 @property (nonatomic, strong)   IBOutlet    UIButton    *randomButton;
 

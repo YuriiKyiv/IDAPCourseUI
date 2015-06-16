@@ -13,7 +13,7 @@ static const NSTimeInterval TYVDelay    =   0.0;
 
 @interface TYVSquareView ()
 
-- (CGPoint)pointFromSquarePosition:(TYVSquarePositionType)squarePosition;
+- (CGRect)frameForSquarePosition:(TYVSquarePositionType)squarePosition;
 - (void)moveSquareToPoint:(CGPoint)rect;
 
 @end
@@ -39,8 +39,8 @@ static const NSTimeInterval TYVDelay    =   0.0;
 {
     if (_squarePosition != squarePosition) {
         NSTimeInterval delay = (animated) ? TYVDelay : 0;
-        UILabel *label = self.squareLable;
-        CGRect rect = {[self pointFromSquarePosition:squarePosition], label.frame.size};
+        UILabel *label = self.squareLabel;
+        CGRect rect = [self frameForSquarePosition:squarePosition];
         [UIView animateWithDuration:TYVDuration
                               delay:delay
                             options:UIViewAnimationOptionBeginFromCurrentState
@@ -63,8 +63,8 @@ static const NSTimeInterval TYVDelay    =   0.0;
 #pragma mark Private Methods
 
 - (void)moveSquareToPoint:(CGPoint)point {
-    UILabel *label = self.squareLable;
-    CGRect rect = {point, self.squareLable.frame.size};
+    UILabel *label = self.squareLabel;
+    CGRect rect = {point, self.squareLabel.frame.size};
     [UIView animateWithDuration:TYVDuration
                           delay:TYVDelay
                         options:UIViewAnimationOptionBeginFromCurrentState
@@ -74,44 +74,38 @@ static const NSTimeInterval TYVDelay    =   0.0;
                      completion:nil];
 }
 
-- (CGPoint)pointFromSquarePosition:(TYVSquarePositionType)squarePosition {
-    CGPoint point;
+- (CGRect)frameForSquarePosition:(TYVSquarePositionType)squarePosition {
+    CGRect frame = self.squareLabel.frame;
+    CGPoint point = CGPointZero;
+    CGRect bounds = self.superview.bounds;
+
+    
+#define TYVCalculateCoordinate(coordinate, dimension) \
+    point.coordinate = CGRectGet##dimension(bounds) - CGRectGet##dimension(frame);
     
     switch (squarePosition) {
-        case TYVUpperLeftCorner:
-            point.x = 0;
-            point.y = 0;
-            break;
-            
         case TYVUpperRightCorner:
-            point.x = [[UIScreen mainScreen] bounds].size.width;
-            point.y = 0;
+            TYVCalculateCoordinate(x, Width);
             break;
             
         case TYVBottomRightCorner:
-            point.x = [[UIScreen mainScreen] bounds].size.width;
-            point.y = [[UIScreen mainScreen] bounds].size.height;
+            TYVCalculateCoordinate(x, Width);
+            TYVCalculateCoordinate(y, Height);
             break;
             
         case TYVBottomLeftCorner:
-            point.x = 0;
-            point.y = [[UIScreen mainScreen] bounds].size.height;
+            TYVCalculateCoordinate(y, Height);
             break;
             
         default:
             break;
     }
     
-    UILabel *label = self.squareLable;
-    if (point.x != 0) {
-        point.x -= label.frame.size.width;
-    }
+#undef TYVCalculateCoordinate
     
-    if (point.y != 0) {
-        point.y -= label.frame.size.height;
-    }
+    frame.origin = point;
     
-    return point;
+    return frame;
 }
 
 @end
