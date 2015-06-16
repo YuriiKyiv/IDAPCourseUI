@@ -39,12 +39,12 @@
 
 - (IBAction)onClickNextButton:(id)sender {
     TYVSquareView *view = self.squareView;
-    view.squarePosition = (view.squarePosition + 1) % 4;
+    view.squarePosition = (view.squarePosition + 1) % TYVSquarePositionTypeCount;
 }
 
 - (IBAction)onClickRandomButton:(id)sender {
     TYVSquareView *view = self.squareView;
-    view.squarePosition = (arc4random_uniform(4));
+    view.squarePosition = (arc4random_uniform(TYVSquarePositionTypeCount));
 }
 
 @end

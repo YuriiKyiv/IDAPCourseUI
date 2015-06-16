@@ -12,7 +12,8 @@ typedef NS_ENUM(NSUInteger, TYVSquarePositionType){
     TYVUpperLeftCorner,
     TYVUpperRightCorner,
     TYVBottomRightCorner,
-    TYVBottomLeftCorner
+    TYVBottomLeftCorner,
+    TYVSquarePositionTypeCount
 };
 
 @interface TYVSquareView : UIView
