@@ -47,7 +47,7 @@
             <connections>
                 <outlet property="nextButton" destination="h90-JJ-oQh" id="bfP-Ph-en3"/>
                 <outlet property="randomButton" destination="O95-6s-kHU" id="eaK-94-kTb"/>
-                <outlet property="squareLable" destination="ddm-Xx-1AZ" id="vd0-3X-9f2"/>
+                <outlet property="squareLabel" destination="ddm-Xx-1AZ" id="uBf-ZD-zSj"/>
             </connections>
             <point key="canvasLocation" x="140" y="155"/>
         </view>

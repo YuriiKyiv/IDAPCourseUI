@@ -52,7 +52,9 @@ static const NSTimeInterval TYVDelay    =   0.0;
                                  _squarePosition = squarePosition;
                              };
                              
-                             block(finished);
+                             if (block) {
+                                 block(finished);
+                             }
                          }];
     }
 }

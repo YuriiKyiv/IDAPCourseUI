@@ -39,12 +39,14 @@
 
 - (IBAction)onClickNextButton:(id)sender {
     TYVSquareView *view = self.squareView;
-    view.squarePosition = (view.squarePosition + 1) % TYVSquarePositionTypeCount;
+    TYVSquarePositionType squarePosition = (view.squarePosition + 1) % TYVSquarePositionTypeCount;
+    [view setSquarePosition:squarePosition animated:YES];
 }
 
 - (IBAction)onClickRandomButton:(id)sender {
     TYVSquareView *view = self.squareView;
-    view.squarePosition = (arc4random_uniform(TYVSquarePositionTypeCount));
+    TYVSquarePositionType squarePosition = (arc4random_uniform(TYVSquarePositionTypeCount));
+    [view setSquarePosition:squarePosition animated:YES];
 }
 
 @end
