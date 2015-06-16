@@ -21,6 +21,15 @@ typedef NS_ENUM(NSUInteger, TYVSquarePositionType){
 @property (nonatomic, strong)   IBOutlet    UIButton    *nextButton;
 @property (nonatomic, strong)   IBOutlet    UIButton    *randomButton;
 
-@property (nonatomic, unsafe_unretained)    TYVSquarePositionType  squarePosition;
+@property (nonatomic, assign)    TYVSquarePositionType  squarePosition;
+
+- (void)setSquarePosition:(TYVSquarePositionType)squarePosition;
+
+- (void)setSquarePosition:(TYVSquarePositionType)squarePosition
+                 animated:(BOOL)animated;
+
+- (void)setSquarePosition:(TYVSquarePositionType)squarePosition
+                 animated:(BOOL)animated
+               completion:(void(^)(BOOL finished))block;
 
 @end

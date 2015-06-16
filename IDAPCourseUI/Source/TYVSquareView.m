@@ -24,25 +24,25 @@ static const NSTimeInterval TYVDelay    =   0.0;
 #pragma mark Accessors
 
 - (void)setSquarePosition:(TYVSquarePositionType)squarePosition {
-    [self setSquarePosition:squarePosition animated:NO completionHandler:nil];
+    [self setSquarePosition:squarePosition animated:NO];
 }
 
 - (void)setSquarePosition:(TYVSquarePositionType)squarePosition
                  animated:(BOOL)animated
 {
-    [self setSquarePosition:squarePosition animated:animated completionHandler:nil];
+    [self setSquarePosition:squarePosition animated:animated completion:nil];
 }
 
 - (void)setSquarePosition:(TYVSquarePositionType)squarePosition
                  animated:(BOOL)animated
-        completionHandler:(SEL)handler
+        completion:(void(^)(BOOL finished))block
 {
     if (_squarePosition != squarePosition) {
-        NSTimeInterval delay = (animated) ? TYVDelay : 0;
+        NSTimeInterval duration = (animated) ? TYVDuration : 0;
         UILabel *label = self.squareLabel;
         CGRect rect = [self frameForSquarePosition:squarePosition];
-        [UIView animateWithDuration:TYVDuration
-                              delay:delay
+        [UIView animateWithDuration:duration
+                              delay:TYVDelay
                             options:UIViewAnimationOptionBeginFromCurrentState
                          animations:^{
                              label.frame = rect;
@@ -51,10 +51,9 @@ static const NSTimeInterval TYVDelay    =   0.0;
                              if (finished) {
                                  _squarePosition = squarePosition;
                              };
+                             
+                             block(finished);
                          }];
-        if (handler) {
-            [self performSelector:handler];
-        }
     }
 }
 
