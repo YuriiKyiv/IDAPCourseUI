@@ -8,9 +8,10 @@
 
 #import "TYVSquareViewController.h"
 #import "TYVSquareView.h"
+#import "TYVSquare.h"
 
 @interface TYVSquareViewController ()
-@property (nonatomic, strong)   TYVSquareView   *squareView;
+@property (nonatomic, readonly)   TYVSquareView   *squareView;
 
 @property (nonatomic, assign, getter=isRunning)   BOOL running;
 
@@ -19,6 +20,8 @@
 @end
 
 @implementation TYVSquareViewController
+
+@dynamic squareView;
 
 #pragma mark -
 #pragma mark Accessors
@@ -31,12 +34,12 @@
     return nil;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+- (void)setSquare:(TYVSquare *)square {
+    if (_square != square) {
+        _square = square;
+    }
+    
+    self.squareView.squarePosition = square.position;
 }
 
 #pragma mark -
@@ -65,6 +68,19 @@
     } : ^(BOOL finished){};
     
     [self.squareView setSquarePosition:position animated:YES completion:block];
+}
+
+#pragma mark -
+#pragma mark Views Lifecycle
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.squareView.squarePosition = self.square.position;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
 }
 
 @end

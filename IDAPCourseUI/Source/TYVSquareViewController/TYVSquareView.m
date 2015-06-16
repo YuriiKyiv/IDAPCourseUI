@@ -65,7 +65,8 @@ static const NSTimeInterval TYVDelay    =   0.0;
 - (CGRect)frameForSquarePosition:(TYVSquarePositionType)squarePosition {
     CGRect frame = self.squareLabel.frame;
     CGPoint point = CGPointZero;
-    CGRect bounds = self.superview.bounds;
+//    CGRect bounds = self.superview.bounds;
+    CGRect bounds = [[UIScreen mainScreen] bounds];
 
     
 #define TYVCalculateCoordinate(coordinate, dimension) \

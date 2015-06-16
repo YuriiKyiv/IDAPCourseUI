@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class TYVSquare;
+
 @interface TYVSquareViewController : UIViewController
+@property (nonatomic, strong)   TYVSquare   *square;
+
 - (IBAction)onClickNextButton:(id)sender;
 - (IBAction)onClickRandomButton:(id)sender;
 
