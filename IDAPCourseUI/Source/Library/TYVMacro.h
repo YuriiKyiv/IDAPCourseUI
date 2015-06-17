@@ -20,12 +20,12 @@
 @property (nonatomic, strong)   viewClass   *propertyName;
 
 #define TYVViewControllerProperty(viewControllerClass, propertyName, viewClass) \
-@interface viewControllerClass (TYVPrivateView) \
+@interface viewControllerClass (__TYVPrivateView) \
 TYVViewProperty(viewClass, propertyName) \
 \
 @end \
 \
-@implementation viewControllerClass (TYVPrivateView) \
+@implementation viewControllerClass (__TYVPrivateView) \
  \
 @dynamic propertyName; \
 \
