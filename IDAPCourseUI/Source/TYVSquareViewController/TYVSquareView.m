@@ -22,6 +22,14 @@ static const NSTimeInterval TYVDelay    =   0.0;
 #pragma mark -
 #pragma mark Accessors
 
+- (void)setSquare:(TYVSquare *)square {
+    if (_square != square) {
+        _square = square;
+    }
+    
+    self.squareLabel.frame = [self frameForSquarePosition:square.position];
+}
+
 - (void)setSquarePosition:(TYVSquarePositionType)squarePosition {
     [self setSquarePosition:squarePosition animated:NO];
 }
@@ -36,7 +44,7 @@ static const NSTimeInterval TYVDelay    =   0.0;
                  animated:(BOOL)animated
         completion:(void(^)(BOOL finished))block
 {
-    if (_squarePosition != squarePosition) {
+    if (self.square.position != squarePosition) {
         NSTimeInterval duration = (animated) ? TYVDuration : 0;
         UILabel *label = self.squareLabel;
         CGRect rect = [self frameForSquarePosition:squarePosition];
@@ -47,10 +55,6 @@ static const NSTimeInterval TYVDelay    =   0.0;
                              label.frame = rect;
                          }
                          completion:^(BOOL finished){
-                             if (finished) {
-                                 _squarePosition = squarePosition;
-                             };
-                             
                              if (block) {
                                  block(finished);
                              }
@@ -65,10 +69,8 @@ static const NSTimeInterval TYVDelay    =   0.0;
 - (CGRect)frameForSquarePosition:(TYVSquarePositionType)squarePosition {
     CGRect frame = self.squareLabel.frame;
     CGPoint point = CGPointZero;
-//    CGRect bounds = self.superview.bounds;
-    CGRect bounds = [[UIScreen mainScreen] bounds];
-
-    
+    CGRect bounds = self.bounds;
+   
 #define TYVCalculateCoordinate(coordinate, dimension) \
     point.coordinate = CGRectGet##dimension(bounds) - CGRectGet##dimension(frame);
     

@@ -15,7 +15,7 @@
 
 @property (nonatomic, assign, getter=isRunning)   BOOL running;
 
-- (void)performSquarePositionWithPosition:(TYVSquarePositionType)position;
+- (void)moveSquareToPosition:(TYVSquarePositionType)position;
 
 @end
 
@@ -39,7 +39,7 @@
         _square = square;
     }
     
-    self.squareView.squarePosition = square.position;
+    self.squareView.square = square;
 }
 
 #pragma mark -
@@ -47,12 +47,12 @@
 
 - (IBAction)onClickNextButton:(id)sender {
     self.running = YES;
-    [self performSquarePositionWithPosition:(self.squareView.squarePosition + 1) % TYVSquarePositionTypeCount];
+    [self moveSquareToPosition:(self.square.position + 1) % TYVSquarePositionTypeCount];
 }
 
 - (IBAction)onClickRandomButton:(id)sender {
     self.running = YES;
-    [self performSquarePositionWithPosition:arc4random_uniform(TYVSquarePositionTypeCount)];
+    [self moveSquareToPosition:arc4random_uniform(TYVSquarePositionTypeCount)];
 }
 
 - (IBAction)onClickStopButton:(id)sender {
@@ -62,11 +62,12 @@
 #pragma mark -
 #pragma mark Private Methods
 
-- (void)performSquarePositionWithPosition:(TYVSquarePositionType)position {
+- (void)moveSquareToPosition:(TYVSquarePositionType)position {
     if (self.running) {
         [self.squareView setSquarePosition:position animated:YES completion:^(BOOL finished){
             if (finished) {
-                [self performSquarePositionWithPosition:(self.squareView.squarePosition + 1) % TYVSquarePositionTypeCount];
+                self.square.position = position;
+                [self moveSquareToPosition:(self.square.position + 1) % TYVSquarePositionTypeCount];
             }
         }];
     }
@@ -78,7 +79,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.squareView.squarePosition = self.square.position;
+    self.squareView.square = self.square;
 }
 
 - (void)didReceiveMemoryWarning {

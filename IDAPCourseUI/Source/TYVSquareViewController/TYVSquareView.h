@@ -15,7 +15,7 @@
 @property (nonatomic, strong)   IBOutlet    UIButton    *randomButton;
 @property (nonatomic, strong)   IBOutlet    UIButton    *stopButton;
 
-@property (nonatomic, assign)    TYVSquarePositionType  squarePosition;
+@property (nonatomic, strong)   TYVSquare   *square;
 
 - (void)setSquarePosition:(TYVSquarePositionType)squarePosition;
 
