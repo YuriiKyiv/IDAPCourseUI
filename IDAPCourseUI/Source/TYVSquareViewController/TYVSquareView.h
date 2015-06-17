@@ -7,14 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-typedef NS_ENUM(NSUInteger, TYVSquarePositionType){
-    TYVUpperLeftCorner,
-    TYVUpperRightCorner,
-    TYVBottomRightCorner,
-    TYVBottomLeftCorner,
-    TYVSquarePositionTypeCount
-};
+#import "TYVSquare.h"
 
 @interface TYVSquareView : UIView
 @property (nonatomic, strong)   IBOutlet    UILabel     *squareLabel;

@@ -7,8 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-#import "TYVSquareView.h"
+
+typedef NS_ENUM(NSUInteger, TYVSquarePositionType){
+    TYVUpperLeftCorner,
+    TYVUpperRightCorner,
+    TYVBottomRightCorner,
+    TYVBottomLeftCorner,
+    TYVSquarePositionTypeCount
+};
 
 @interface TYVSquare : NSObject
 @property  (nonatomic, assign)  TYVSquarePositionType  position;
