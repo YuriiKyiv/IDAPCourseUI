@@ -21,11 +21,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UIWindow *window = [UIWindow window];
     self.window = window;
-    window.backgroundColor = [UIColor yellowColor];
+    
     TYVSquareViewController *controller = [TYVSquareViewController new];
     controller.square = [[TYVSquare alloc] initWithSquarePosition:TYVBottomRightCorner];
     window.rootViewController = controller;
+    
     [window makeKeyAndVisible];
+    
     return YES;
 }
 
