@@ -46,13 +46,12 @@ static const NSTimeInterval TYVDelay    =   0.0;
 {
     if (self.square.position != squarePosition) {
         NSTimeInterval duration = (animated) ? TYVDuration : 0;
-        UILabel *label = self.squareLabel;
         CGRect rect = [self frameForSquarePosition:squarePosition];
         [UIView animateWithDuration:duration
                               delay:TYVDelay
                             options:UIViewAnimationOptionBeginFromCurrentState
                          animations:^{
-                             label.frame = rect;
+                             self.squareLabel.frame = rect;
                          }
                          completion:^(BOOL finished){
                              if (block) {
