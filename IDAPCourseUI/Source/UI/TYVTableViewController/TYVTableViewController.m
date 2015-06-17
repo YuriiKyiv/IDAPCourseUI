@@ -18,6 +18,9 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 
 @implementation TYVTableViewController
 
+#pragma mark -
+#pragma mark View Lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
