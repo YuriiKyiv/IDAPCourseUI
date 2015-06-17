@@ -9,12 +9,13 @@
 #import "TYVSquareViewController.h"
 #import "TYVSquareView.h"
 #import "TYVSquare.h"
+#import "TYVMacro.h"
 
 typedef TYVSquarePositionType(^TYVSquarePositionBlock)(void);
 
-@interface TYVSquareViewController ()
-@property (nonatomic, readonly)   TYVSquareView   *squareView;
+TYVViewControllerProperty(TYVSquareViewController, squareView, TYVSquareView)
 
+@interface TYVSquareViewController ()
 @property (nonatomic, assign, getter=isRunning)   BOOL running;
 
 - (void)moveSquareToPosition:(TYVSquarePositionType)position;
@@ -29,18 +30,8 @@ typedef TYVSquarePositionType(^TYVSquarePositionBlock)(void);
 
 @implementation TYVSquareViewController
 
-@dynamic squareView;
-
 #pragma mark -
 #pragma mark Accessors
-
-- (TYVSquareView *)squareView {
-    if ([self isViewLoaded] && [self.view isKindOfClass:[TYVSquareView class]]) {
-        return (TYVSquareView *)self.view;
-    }
-    
-    return nil;
-}
 
 - (void)setSquare:(TYVSquare *)square {
     if (_square != square) {
