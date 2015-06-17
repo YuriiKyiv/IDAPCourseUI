@@ -63,11 +63,13 @@
 #pragma mark Private Methods
 
 - (void)performSquarePositionWithPosition:(TYVSquarePositionType)position {
-    void (^block)(BOOL finished) = (self.running) ? ^(BOOL finished){
-        [self performSquarePositionWithPosition:(self.squareView.squarePosition + 1) % TYVSquarePositionTypeCount];
-    } : ^(BOOL finished){};
-    
-    [self.squareView setSquarePosition:position animated:YES completion:block];
+    if (self.running) {
+        [self.squareView setSquarePosition:position animated:YES completion:^(BOOL finished){
+            if (finished) {
+                [self performSquarePositionWithPosition:(self.squareView.squarePosition + 1) % TYVSquarePositionTypeCount];
+            }
+        }];
+    }
 }
 
 #pragma mark -
