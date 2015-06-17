@@ -10,12 +10,20 @@
 #import "TYVSquareView.h"
 #import "TYVSquare.h"
 
+typedef TYVSquarePositionType(^TYVSquarePositionBlock)(void);
+
 @interface TYVSquareViewController ()
 @property (nonatomic, readonly)   TYVSquareView   *squareView;
 
 @property (nonatomic, assign, getter=isRunning)   BOOL running;
 
 - (void)moveSquareToPosition:(TYVSquarePositionType)position;
+
+- (void)moveSquareWithBlock:(TYVSquarePositionType(^)(void))block;
+
+- (TYVSquarePositionBlock)randomPositionBlock;
+
+- (TYVSquarePositionBlock)nextPositionBlock;
 
 @end
 
@@ -47,12 +55,12 @@
 
 - (IBAction)onClickNextButton:(id)sender {
     self.running = YES;
-    [self moveSquareToPosition:(self.square.position + 1) % TYVSquarePositionTypeCount];
+    [self moveSquareWithBlock:[self nextPositionBlock]];
 }
 
 - (IBAction)onClickRandomButton:(id)sender {
     self.running = YES;
-    [self moveSquareToPosition:arc4random_uniform(TYVSquarePositionTypeCount)];
+    [self moveSquareWithBlock:[self randomPositionBlock]];
 }
 
 - (IBAction)onClickStopButton:(id)sender {
@@ -71,6 +79,34 @@
             }
         }];
     }
+}
+
+- (void)moveSquareWithBlock:(TYVSquarePositionType(^)(void))block {
+    if (self.running) {
+        TYVSquarePositionType position = block();
+        [self.squareView setSquarePosition:position animated:YES completion:^(BOOL finished){
+            if (finished) {
+                self.square.position = position;
+                [self moveSquareWithBlock:block];
+            }
+        }];
+    }
+}
+
+- (TYVSquarePositionBlock)randomPositionBlock {
+    TYVSquarePositionBlock result = ^{
+        return (TYVSquarePositionType)arc4random_uniform(TYVSquarePositionTypeCount);
+    };
+    
+    return result;
+}
+
+- (TYVSquarePositionBlock)nextPositionBlock {
+    TYVSquarePositionBlock result = ^{
+       return (self.square.position + 1) % TYVSquarePositionTypeCount;
+    };
+    
+    return result;
 }
 
 #pragma mark -
