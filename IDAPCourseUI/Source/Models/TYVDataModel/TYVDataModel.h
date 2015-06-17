@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TYVDataModel : NSObject
-@property (nonatomic, readonly) UIImageView *image;
+@property (nonatomic, readonly) UIImage     *image;
 @property (nonatomic, readonly) NSString    *string;
 
 + (instancetype)dataWithUrl:(NSURL *)url;
