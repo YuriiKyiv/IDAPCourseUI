@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A0E7FB51B303BFF0014E166 /* TYVSquareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E7FB11B303BFF0014E166 /* TYVSquareView.m */; };
+		5A0E7FB61B303BFF0014E166 /* TYVSquareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E7FB31B303BFF0014E166 /* TYVSquareViewController.m */; };
+		5A0E7FB71B303BFF0014E166 /* TYVSquareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A0E7FB41B303BFF0014E166 /* TYVSquareViewController.xib */; };
+		5A0E7FBA1B303C4D0014E166 /* TYVSquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E7FB91B303C4D0014E166 /* TYVSquare.m */; };
 		5A22FD9B1B2E92250005AFDC /* IDAPCourseUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A22FD9A1B2E92250005AFDC /* IDAPCourseUITests.m */; };
 		5A22FDB01B2E935B0005AFDC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A22FDA51B2E935B0005AFDC /* Info.plist */; };
 		5A22FDB11B2E935B0005AFDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A22FDA61B2E935B0005AFDC /* main.m */; };
 		5A22FDB21B2E935B0005AFDC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A22FDA81B2E935B0005AFDC /* LaunchScreen.xib */; };
 		5A22FDB31B2E935B0005AFDC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A22FDAA1B2E935B0005AFDC /* Images.xcassets */; };
 		5A22FDB41B2E935B0005AFDC /* TYVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A22FDAD1B2E935B0005AFDC /* TYVAppDelegate.m */; };
-		5A22FDB51B2E935B0005AFDC /* TYVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A22FDAF1B2E935B0005AFDC /* TYVViewController.m */; };
 		5A22FDBD1B2E94E50005AFDC /* UIWindow+TYVExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A22FDBC1B2E94E50005AFDC /* UIWindow+TYVExtentions.m */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +31,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A0E7FB01B303BFF0014E166 /* TYVSquareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVSquareView.h; sourceTree = "<group>"; };
+		5A0E7FB11B303BFF0014E166 /* TYVSquareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVSquareView.m; sourceTree = "<group>"; };
+		5A0E7FB21B303BFF0014E166 /* TYVSquareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVSquareViewController.h; sourceTree = "<group>"; };
+		5A0E7FB31B303BFF0014E166 /* TYVSquareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVSquareViewController.m; sourceTree = "<group>"; };
+		5A0E7FB41B303BFF0014E166 /* TYVSquareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYVSquareViewController.xib; sourceTree = "<group>"; };
+		5A0E7FB81B303C4D0014E166 /* TYVSquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVSquare.h; sourceTree = "<group>"; };
+		5A0E7FB91B303C4D0014E166 /* TYVSquare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVSquare.m; sourceTree = "<group>"; };
 		5A22FD7B1B2E92250005AFDC /* IDAPCourseUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IDAPCourseUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A22FD941B2E92250005AFDC /* IDAPCourseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IDAPCourseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A22FD991B2E92250005AFDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -38,8 +48,6 @@
 		5A22FDAA1B2E935B0005AFDC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5A22FDAC1B2E935B0005AFDC /* TYVAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVAppDelegate.h; sourceTree = "<group>"; };
 		5A22FDAD1B2E935B0005AFDC /* TYVAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVAppDelegate.m; sourceTree = "<group>"; };
-		5A22FDAE1B2E935B0005AFDC /* TYVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVViewController.h; sourceTree = "<group>"; };
-		5A22FDAF1B2E935B0005AFDC /* TYVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVViewController.m; sourceTree = "<group>"; };
 		5A22FDBB1B2E94E50005AFDC /* UIWindow+TYVExtentions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+TYVExtentions.h"; sourceTree = "<group>"; };
 		5A22FDBC1B2E94E50005AFDC /* UIWindow+TYVExtentions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+TYVExtentions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,6 +70,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A0E7FAF1B303BFF0014E166 /* TYVSquareViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5A0E7FB01B303BFF0014E166 /* TYVSquareView.h */,
+				5A0E7FB11B303BFF0014E166 /* TYVSquareView.m */,
+				5A0E7FB21B303BFF0014E166 /* TYVSquareViewController.h */,
+				5A0E7FB31B303BFF0014E166 /* TYVSquareViewController.m */,
+				5A0E7FB41B303BFF0014E166 /* TYVSquareViewController.xib */,
+				5A0E7FB81B303C4D0014E166 /* TYVSquare.h */,
+				5A0E7FB91B303C4D0014E166 /* TYVSquare.m */,
+			);
+			path = TYVSquareViewController;
+			sourceTree = "<group>";
+		};
 		5A22FD721B2E92250005AFDC = {
 			isa = PBXGroup;
 			children = (
@@ -120,10 +142,9 @@
 		5A22FDAB1B2E935B0005AFDC /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				5A0E7FAF1B303BFF0014E166 /* TYVSquareViewController */,
 				5A22FDAC1B2E935B0005AFDC /* TYVAppDelegate.h */,
 				5A22FDAD1B2E935B0005AFDC /* TYVAppDelegate.m */,
-				5A22FDAE1B2E935B0005AFDC /* TYVViewController.h */,
-				5A22FDAF1B2E935B0005AFDC /* TYVViewController.m */,
 				5A22FDBA1B2E94E50005AFDC /* UIWindow+TYVExtentions */,
 			);
 			path = Source;
@@ -222,6 +243,7 @@
 				5A22FDB31B2E935B0005AFDC /* Images.xcassets in Resources */,
 				5A22FDB21B2E935B0005AFDC /* LaunchScreen.xib in Resources */,
 				5A22FDB01B2E935B0005AFDC /* Info.plist in Resources */,
+				5A0E7FB71B303BFF0014E166 /* TYVSquareViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,9 +262,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A22FDBD1B2E94E50005AFDC /* UIWindow+TYVExtentions.m in Sources */,
+				5A0E7FB51B303BFF0014E166 /* TYVSquareView.m in Sources */,
+				5A0E7FBA1B303C4D0014E166 /* TYVSquare.m in Sources */,
+				5A0E7FB61B303BFF0014E166 /* TYVSquareViewController.m in Sources */,
 				5A22FDB41B2E935B0005AFDC /* TYVAppDelegate.m in Sources */,
 				5A22FDB11B2E935B0005AFDC /* main.m in Sources */,
-				5A22FDB51B2E935B0005AFDC /* TYVViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +449,7 @@
 				5A22FDA01B2E92250005AFDC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5A22FDA11B2E92250005AFDC /* Build configuration list for PBXNativeTarget "IDAPCourseUITests" */ = {
 			isa = XCConfigurationList;
@@ -433,6 +458,7 @@
 				5A22FDA31B2E92250005AFDC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
