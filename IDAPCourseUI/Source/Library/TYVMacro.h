@@ -14,3 +14,21 @@
 \
         return nil; \
     }
+
+
+#define TYVViewProperty(viewClass, propertyName) \
+@property (nonatomic, strong)   viewClass   *propertyName;
+
+#define TYVViewControllerProperty(viewControllerClass, propertyName, viewClass) \
+@interface viewControllerClass (TYVPrivateView) \
+TYVViewProperty(viewClass, propertyName) \
+\
+@end \
+\
+@implementation viewControllerClass (TYVPrivateView) \
+ \
+@dynamic propertyName; \
+\
+TYVViewGetterSynthesize(viewClass, propertyName) \
+\
+@end
