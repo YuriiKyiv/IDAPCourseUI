@@ -46,3 +46,6 @@
     if  (!strong##objectName) {  \
         return; \
     }
+
+#define TYVCasting(class, object) \
+    (class *)object;

@@ -45,9 +45,9 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     Class class = [TYVDataCell class];
     
-    TYVDataCell *cell = (TYVDataCell *)[tableView dequeueReusableCellWithClass:class];
+    TYVDataCell *cell = TYVCasting(TYVDataCell, [tableView dequeueReusableCellWithClass:class])
     if (!cell) {
-        cell = (TYVDataCell *)[UINib viewWithClass:class];
+        cell = TYVCasting(TYVDataCell, [UINib viewWithClass:class])
     }
     
     cell.data = self.data;
