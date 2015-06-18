@@ -10,4 +10,11 @@
 
 @interface UINib (TYVExtentions)
 
++ (UINib *)nibWithClass:(Class)class;
++ (UINib *)nibWithClass:(Class)class boundle:(NSBundle *)boundle;
+
++ (UIView *)viewWithClass:(Class)class;
+
+- (NSArray *)instantiate;
+
 @end
