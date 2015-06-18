@@ -12,6 +12,8 @@
 		5A22FDB11B2E935B0005AFDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A22FDA61B2E935B0005AFDC /* main.m */; };
 		5A22FDB21B2E935B0005AFDC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A22FDA81B2E935B0005AFDC /* LaunchScreen.xib */; };
 		5A22FDB31B2E935B0005AFDC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A22FDAA1B2E935B0005AFDC /* Images.xcassets */; };
+		5A2EA6B51B32904B0091CCEC /* TYVProtocolObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2EA6B41B32904B0091CCEC /* TYVProtocolObservableObject.m */; };
+		5A2EA6B91B3292540091CCEC /* TYVDispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2EA6B81B3292540091CCEC /* TYVDispatch.m */; };
 		5AF13C3A1B318914001D37FA /* UIWindow+TYVExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF13C281B318914001D37FA /* UIWindow+TYVExtentions.m */; };
 		5AF13C3B1B318914001D37FA /* TYVSquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF13C2C1B318914001D37FA /* TYVSquare.m */; };
 		5AF13C3C1B318914001D37FA /* TYVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF13C2E1B318914001D37FA /* TYVAppDelegate.m */; };
@@ -22,7 +24,6 @@
 		5AF13C411B318914001D37FA /* TYVTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AF13C391B318914001D37FA /* TYVTableViewController.xib */; };
 		5AF13C441B318934001D37FA /* TYVMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF13C431B318934001D37FA /* TYVMacro.m */; };
 		5AF13C471B318B4E001D37FA /* TYVTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF13C461B318B4E001D37FA /* TYVTableView.m */; };
-		5AF13C4B1B31A585001D37FA /* TYVProtocolObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF13C4A1B31A585001D37FA /* TYVProtocolObservableObject.m */; };
 		5AF13C4E1B31A5F4001D37FA /* TYVDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF13C4D1B31A5F4001D37FA /* TYVDataModel.m */; };
 		5AF13C521B31A645001D37FA /* TYVDataArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF13C511B31A645001D37FA /* TYVDataArrayModel.m */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,10 @@
 		5A22FDA61B2E935B0005AFDC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5A22FDA91B2E935B0005AFDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		5A22FDAA1B2E935B0005AFDC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5A2EA6B31B32904B0091CCEC /* TYVProtocolObservableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVProtocolObservableObject.h; sourceTree = "<group>"; };
+		5A2EA6B41B32904B0091CCEC /* TYVProtocolObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVProtocolObservableObject.m; sourceTree = "<group>"; };
+		5A2EA6B71B3292540091CCEC /* TYVDispatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVDispatch.h; sourceTree = "<group>"; };
+		5A2EA6B81B3292540091CCEC /* TYVDispatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVDispatch.m; sourceTree = "<group>"; };
 		5AF13C271B318914001D37FA /* UIWindow+TYVExtentions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+TYVExtentions.h"; sourceTree = "<group>"; };
 		5AF13C281B318914001D37FA /* UIWindow+TYVExtentions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+TYVExtentions.m"; sourceTree = "<group>"; };
 		5AF13C2B1B318914001D37FA /* TYVSquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVSquare.h; sourceTree = "<group>"; };
@@ -64,8 +69,6 @@
 		5AF13C431B318934001D37FA /* TYVMacro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVMacro.m; sourceTree = "<group>"; };
 		5AF13C451B318B4E001D37FA /* TYVTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVTableView.h; sourceTree = "<group>"; };
 		5AF13C461B318B4E001D37FA /* TYVTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVTableView.m; sourceTree = "<group>"; };
-		5AF13C491B31A585001D37FA /* TYVProtocolObservableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVProtocolObservableObject.h; sourceTree = "<group>"; };
-		5AF13C4A1B31A585001D37FA /* TYVProtocolObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVProtocolObservableObject.m; sourceTree = "<group>"; };
 		5AF13C4C1B31A5F4001D37FA /* TYVDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVDataModel.h; path = TYVDataModel/TYVDataModel.h; sourceTree = "<group>"; };
 		5AF13C4D1B31A5F4001D37FA /* TYVDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYVDataModel.m; path = TYVDataModel/TYVDataModel.m; sourceTree = "<group>"; };
 		5AF13C501B31A645001D37FA /* TYVDataArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVDataArrayModel.h; path = TYVDataArrayModel/TYVDataArrayModel.h; sourceTree = "<group>"; };
@@ -145,10 +148,29 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		5A2EA6B21B32904B0091CCEC /* TYVProtocolObservableObject */ = {
+			isa = PBXGroup;
+			children = (
+				5A2EA6B31B32904B0091CCEC /* TYVProtocolObservableObject.h */,
+				5A2EA6B41B32904B0091CCEC /* TYVProtocolObservableObject.m */,
+			);
+			path = TYVProtocolObservableObject;
+			sourceTree = "<group>";
+		};
+		5A2EA6B61B3292540091CCEC /* TYVDispatch */ = {
+			isa = PBXGroup;
+			children = (
+				5A2EA6B71B3292540091CCEC /* TYVDispatch.h */,
+				5A2EA6B81B3292540091CCEC /* TYVDispatch.m */,
+			);
+			path = TYVDispatch;
+			sourceTree = "<group>";
+		};
 		5AF13C231B318914001D37FA /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				5AF13C481B31A584001D37FA /* TYVProtocolObservableObject */,
+				5A2EA6B61B3292540091CCEC /* TYVDispatch */,
+				5A2EA6B21B32904B0091CCEC /* TYVProtocolObservableObject */,
 				5AF13C241B318914001D37FA /* Library */,
 				5AF13C291B318914001D37FA /* Models */,
 				5AF13C2D1B318914001D37FA /* TYVAppDelegate.h */,
@@ -235,16 +257,6 @@
 				5AF13C461B318B4E001D37FA /* TYVTableView.m */,
 			);
 			path = TYVTableViewController;
-			sourceTree = "<group>";
-		};
-		5AF13C481B31A584001D37FA /* TYVProtocolObservableObject */ = {
-			isa = PBXGroup;
-			children = (
-				5AF13C491B31A585001D37FA /* TYVProtocolObservableObject.h */,
-				5AF13C4A1B31A585001D37FA /* TYVProtocolObservableObject.m */,
-			);
-			name = TYVProtocolObservableObject;
-			path = ../../../IDAPCoursesHomework/TYVObjCHomework/Source/TYVProtocolObservableObject;
 			sourceTree = "<group>";
 		};
 		5AF13C4F1B31A5F7001D37FA /* TYVDataModel */ = {
@@ -373,11 +385,12 @@
 				5AF13C4E1B31A5F4001D37FA /* TYVDataModel.m in Sources */,
 				5AF13C441B318934001D37FA /* TYVMacro.m in Sources */,
 				5AF13C3C1B318914001D37FA /* TYVAppDelegate.m in Sources */,
+				5A2EA6B51B32904B0091CCEC /* TYVProtocolObservableObject.m in Sources */,
 				5AF13C471B318B4E001D37FA /* TYVTableView.m in Sources */,
 				5AF13C3E1B318914001D37FA /* TYVSquareViewController.m in Sources */,
 				5AF13C521B31A645001D37FA /* TYVDataArrayModel.m in Sources */,
 				5AF13C401B318914001D37FA /* TYVTableViewController.m in Sources */,
-				5AF13C4B1B31A585001D37FA /* TYVProtocolObservableObject.m in Sources */,
+				5A2EA6B91B3292540091CCEC /* TYVDispatch.m in Sources */,
 				5AF13C3B1B318914001D37FA /* TYVSquare.m in Sources */,
 				5AF13C3D1B318914001D37FA /* TYVSquareView.m in Sources */,
 			);

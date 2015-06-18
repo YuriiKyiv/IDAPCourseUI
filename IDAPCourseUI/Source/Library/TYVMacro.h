@@ -17,18 +17,18 @@
 
 
 #define TYVViewProperty(viewClass, propertyName) \
-@property (nonatomic, strong)   viewClass   *propertyName;
+    @property (nonatomic, strong)   viewClass   *propertyName;
 
 #define TYVViewControllerProperty(viewControllerClass, propertyName, viewClass) \
-@interface viewControllerClass (__TYVPrivateView) \
-TYVViewProperty(viewClass, propertyName) \
-\
-@end \
-\
-@implementation viewControllerClass (__TYVPrivateView) \
- \
-@dynamic propertyName; \
-\
-TYVViewGetterSynthesize(viewClass, propertyName) \
-\
-@end
+    @interface viewControllerClass (__TYVPrivateView) \
+    TYVViewProperty(viewClass, propertyName) \
+    \
+    @end \
+    \
+    @implementation viewControllerClass (__TYVPrivateView) \
+     \
+    @dynamic propertyName; \
+    \
+    TYVViewGetterSynthesize(viewClass, propertyName) \
+    \
+    @end
