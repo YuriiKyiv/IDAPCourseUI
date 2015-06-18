@@ -13,8 +13,10 @@
 @property (nonatomic, readonly) UIImage     *image;
 @property (nonatomic, readonly) NSString    *string;
 
-+ (instancetype)dataWithUrl:(NSURL *)url;
++ (instancetype)randomStringWithUrl:(NSURL *)url;
 
-- (instancetype)initWithUrl:(NSURL *)url;
+- (instancetype)initWithRandomStringAndUrl:(NSURL *)url;
+
+- (instancetype)initWithString:(NSString *)string url:(NSURL *)url;
 
 @end
