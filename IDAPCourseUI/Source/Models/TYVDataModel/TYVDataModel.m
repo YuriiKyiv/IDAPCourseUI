@@ -9,6 +9,9 @@
 #import "TYVDataModel.h"
 
 @interface TYVDataModel ()
+@property (nonatomic, strong) UIImage     *image;
+@property (nonatomic, strong) NSString    *string;
+
 @property (nonatomic, strong)   NSURL   *url;
 
 @end
@@ -33,6 +36,7 @@
     self = [super init];
     if (self) {
         self.url = url;
+        self.string = string;
     }
     
     return self;

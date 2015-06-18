@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class TYVDataModel;
+
 @interface TYVTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (nonatomic, strong)   TYVDataModel *data;
 
 @end

@@ -11,6 +11,7 @@
 #import "UIWindow+TYVExtentions.h"
 #import "TYVSquare.h"
 #import "TYVTableViewController.h"
+#import "TYVDataModel.h"
 
 @interface TYVAppDelegate ()
 
@@ -27,6 +28,7 @@
 //    controller.square = [[TYVSquare alloc] initWithSquarePosition:TYVBottomRightCorner];
     
     TYVTableViewController *controller = [TYVTableViewController new];
+    controller.data = [[TYVDataModel alloc] initWithRandomStringAndUrl:nil];
     window.rootViewController = controller;
     
     [window makeKeyAndVisible];

@@ -9,6 +9,7 @@
 #import "TYVTableViewController.h"
 #import "TYVMacro.h"
 #import "TYVTableView.h"
+#import "TYVDataCell.h"
 
 TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 
@@ -40,14 +41,16 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *kTYVCellName = @"kTYVCellName";
+    NSString *class = NSStringFromClass([TYVDataCell class]);
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTYVCellName];
+    TYVDataCell *cell = [tableView dequeueReusableCellWithIdentifier:class];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                      reuseIdentifier:kTYVCellName];
-            cell.textLabel.text = kTYVCellName;
+        UINib *nib = [UINib nibWithNibName:class bundle:nil];
+        NSArray *array = [nib instantiateWithOwner:nil options:nil];
+        cell = [array firstObject];
     }
+    
+    cell.data = self.data;
     
     return cell;
 }
