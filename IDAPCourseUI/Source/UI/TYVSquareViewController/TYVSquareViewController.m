@@ -18,8 +18,6 @@ TYVViewControllerProperty(TYVSquareViewController, squareView, TYVSquareView)
 @interface TYVSquareViewController ()
 @property (nonatomic, assign, getter=isRunning)   BOOL running;
 
-- (void)moveSquareToPosition:(TYVSquarePositionType)position;
-
 - (void)moveSquareWithBlock:(TYVSquarePositionType(^)(void))block;
 
 - (TYVSquarePositionBlock)randomPositionBlock;
@@ -61,24 +59,15 @@ TYVViewControllerProperty(TYVSquareViewController, squareView, TYVSquareView)
 #pragma mark -
 #pragma mark Private Methods
 
-- (void)moveSquareToPosition:(TYVSquarePositionType)position {
-    if (self.running) {
-        [self.squareView setSquarePosition:position animated:YES completion:^(BOOL finished){
-            if (finished) {
-                self.square.position = position;
-                [self moveSquareToPosition:(self.square.position + 1) % TYVSquarePositionTypeCount];
-            }
-        }];
-    }
-}
-
 - (void)moveSquareWithBlock:(TYVSquarePositionType(^)(void))block {
     if (self.running) {
         TYVSquarePositionType position = block();
+        __weak __typeof(self) weekSelf = self;
         [self.squareView setSquarePosition:position animated:YES completion:^(BOOL finished){
-            if (finished) {
-                self.square.position = position;
-                [self moveSquareWithBlock:block];
+            __strong __typeof(self) strongSelf = weekSelf;
+            if (strongSelf && finished) {
+                strongSelf.square.position = position;
+                [strongSelf moveSquareWithBlock:block];
             }
         }];
     }
