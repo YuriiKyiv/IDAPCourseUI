@@ -10,6 +10,7 @@
 #import "TYVSquareViewController.h"
 #import "UIWindow+TYVExtentions.h"
 #import "TYVSquare.h"
+#import "TYVTableViewController.h"
 
 @interface TYVAppDelegate ()
 
@@ -22,8 +23,10 @@
     UIWindow *window = [UIWindow window];
     self.window = window;
     
-    TYVSquareViewController *controller = [TYVSquareViewController new];
-    controller.square = [[TYVSquare alloc] initWithSquarePosition:TYVBottomRightCorner];
+//    TYVSquareViewController *controller = [TYVSquareViewController new];
+//    controller.square = [[TYVSquare alloc] initWithSquarePosition:TYVBottomRightCorner];
+    
+    TYVTableViewController *controller = [TYVTableViewController new];
     window.rootViewController = controller;
     
     [window makeKeyAndVisible];

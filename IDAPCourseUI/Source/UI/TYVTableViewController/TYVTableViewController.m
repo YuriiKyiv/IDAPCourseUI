@@ -23,6 +23,8 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.tableView.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,12 +35,21 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return 100;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    static NSString *kTYVCellName = @"kTYVCellName";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTYVCellName];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:kTYVCellName];
+            cell.textLabel.text = kTYVCellName;
+    }
+    
+    return cell;
 }
 
 @end
