@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A148AA51B33163E003B6542 /* NSString+TYVExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A148AA41B33163E003B6542 /* NSString+TYVExtensions.m */; };
 		5A22FD9B1B2E92250005AFDC /* IDAPCourseUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A22FD9A1B2E92250005AFDC /* IDAPCourseUITests.m */; };
 		5A22FDB01B2E935B0005AFDC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A22FDA51B2E935B0005AFDC /* Info.plist */; };
 		5A22FDB11B2E935B0005AFDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A22FDA61B2E935B0005AFDC /* main.m */; };
@@ -48,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A148AA31B33163E003B6542 /* NSString+TYVExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TYVExtensions.h"; sourceTree = "<group>"; };
+		5A148AA41B33163E003B6542 /* NSString+TYVExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TYVExtensions.m"; sourceTree = "<group>"; };
 		5A22FD7B1B2E92250005AFDC /* IDAPCourseUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IDAPCourseUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A22FD941B2E92250005AFDC /* IDAPCourseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IDAPCourseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A22FD991B2E92250005AFDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -117,6 +120,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A148AA21B33163E003B6542 /* NSString+TYVExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				5A148AA31B33163E003B6542 /* NSString+TYVExtensions.h */,
+				5A148AA41B33163E003B6542 /* NSString+TYVExtensions.m */,
+			);
+			path = "NSString+TYVExtensions";
+			sourceTree = "<group>";
+		};
 		5A22FD721B2E92250005AFDC = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +303,7 @@
 		5AF13C251B318914001D37FA /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				5A148AA21B33163E003B6542 /* NSString+TYVExtensions */,
 				5AF13C261B318914001D37FA /* UIWindow+TYVExtentions */,
 				5A883B021B32CBB9000A084C /* UINib+TYVExtentions */,
 				5A883B061B32D0CC000A084C /* NSArray+TYVExtentions */,
@@ -487,6 +500,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AF13C3A1B318914001D37FA /* UIWindow+TYVExtentions.m in Sources */,
+				5A148AA51B33163E003B6542 /* NSString+TYVExtensions.m in Sources */,
 				5A22FDB11B2E935B0005AFDC /* main.m in Sources */,
 				5AF13C4E1B31A5F4001D37FA /* TYVDataModel.m in Sources */,
 				5A883AFC1B32B4DA000A084C /* TYVDataCell.m in Sources */,
@@ -619,6 +633,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = IDAPCourseUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -629,6 +644,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = IDAPCourseUI/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

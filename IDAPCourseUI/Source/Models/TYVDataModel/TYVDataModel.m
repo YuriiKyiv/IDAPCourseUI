@@ -8,6 +8,8 @@
 
 #import "TYVDataModel.h"
 
+#import "NSString+TYVExtensions.h"
+
 @interface TYVDataModel ()
 @property (nonatomic, strong) UIImage     *image;
 @property (nonatomic, strong) NSString    *string;
@@ -29,7 +31,7 @@
 #pragma mark Initializations and Deallocations
 
 - (instancetype)initWithRandomStringAndUrl:(NSURL *)url {
-    return [self initWithString:@"test" url:url];
+    return [self initWithString:[NSString randomString] url:url];
 }
 
 - (instancetype)initWithString:(NSString *)string url:(NSURL *)url {
