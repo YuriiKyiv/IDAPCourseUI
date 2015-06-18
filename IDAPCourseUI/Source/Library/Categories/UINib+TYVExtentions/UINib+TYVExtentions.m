@@ -9,7 +9,7 @@
 #import "UINib+TYVExtentions.h"
 #import "NSArray+TYVExtentions.h"
 
-@interface  UINib (_TYVPrivateNib)
+@interface  UINib (__TYVPrivateNib)
 
 + (TYVFindObjectBlock)viewWithClassBlock:(Class)class;
 

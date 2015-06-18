@@ -10,6 +10,8 @@
 #import "TYVMacro.h"
 #import "TYVTableView.h"
 #import "TYVDataCell.h"
+#import "UINib+TYVExtentions.h"
+#import "UITableView+TYVExtentions.h"
 
 TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 
@@ -41,13 +43,11 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *class = NSStringFromClass([TYVDataCell class]);
+    Class class = [TYVDataCell class];
     
-    TYVDataCell *cell = [tableView dequeueReusableCellWithIdentifier:class];
+    TYVDataCell *cell = (TYVDataCell *)[tableView dequeueReusableCellWithClass:class];
     if (!cell) {
-        UINib *nib = [UINib nibWithNibName:class bundle:nil];
-        NSArray *array = [nib instantiateWithOwner:nil options:nil];
-        cell = [array firstObject];
+        cell = (TYVDataCell *)[UINib viewWithClass:class];
     }
     
     cell.data = self.data;

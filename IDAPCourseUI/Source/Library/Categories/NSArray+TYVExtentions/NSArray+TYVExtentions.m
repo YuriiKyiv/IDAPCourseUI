@@ -16,7 +16,7 @@
 - (id)objectWithBlock:(TYVFindObjectBlock)block {
     @synchronized(self) {
         __block id object = nil;
-        [self enumerateObjectsUsingBlock:^(id obj, NSUInteger index,BOOL *stop) {
+        [self enumerateObjectsUsingBlock:^(id obj, NSUInteger index, BOOL *stop) {
             object = obj;
             if (block(object)) {
                 *stop = YES;
