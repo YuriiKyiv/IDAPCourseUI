@@ -8,7 +8,20 @@
 
 #import "TYVProtocolObservableObject.h"
 
+@class TYVDataModel;
+
 @interface TYVDataArrayModel : TYVProtocolObservableObject
 @property (nonatomic, readonly) NSArray *dataArray;
+
+- (void)addModel:(TYVDataModel *)model;
+- (void)removeModel:(TYVDataModel *)model;
+
+- (void)addModelAtIndex:(TYVDataModel *)model index:(NSUInteger)index;
+- (void)removeModelAtIndex:(NSUInteger *)index;
+
+- (TYVDataModel *)modelAtIndex:(NSUInteger)index;
+- (TYVDataModel *)objectAtIndexedSubscript:(NSUInteger)idex;
+
+- (NSUInteger)count;
 
 @end

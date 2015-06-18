@@ -8,6 +8,11 @@
 
 #import "TYVDataArrayModel.h"
 
+@interface TYVDataArrayModel ()
+@property (nonatomic, strong)   NSMutableArray *mutableDataArray;
+
+@end
+
 @implementation TYVDataArrayModel
 
 @end
