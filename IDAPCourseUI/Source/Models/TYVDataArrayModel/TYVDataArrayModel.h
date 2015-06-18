@@ -20,7 +20,7 @@
 - (void)removeModelAtIndex:(NSUInteger *)index;
 
 - (TYVDataModel *)modelAtIndex:(NSUInteger)index;
-- (TYVDataModel *)objectAtIndexedSubscript:(NSUInteger)idex;
+- (TYVDataModel *)objectAtIndexedSubscript:(NSUInteger)index;
 
 - (NSUInteger)count;
 

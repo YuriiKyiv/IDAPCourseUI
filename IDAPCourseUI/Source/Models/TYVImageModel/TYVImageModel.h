@@ -7,8 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TYVProtocolObservableObject.h"
 
-@interface TYVImageModel : NSObject
+NS_ENUM(NSUInteger, TYVImageStates) {
+    TYVImageLoading,
+    TYVImageLoad
+};
+
+@interface TYVImageModel : TYVProtocolObservableObject
 
 + (instancetype)imageWithUrl:(NSURL *)url;
 - (instancetype)initWithUrl:(NSURL *)url;
