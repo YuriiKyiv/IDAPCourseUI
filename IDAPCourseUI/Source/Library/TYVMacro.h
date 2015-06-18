@@ -32,3 +32,15 @@
     TYVViewGetterSynthesize(viewClass, propertyName) \
     \
     @end
+
+#define TYVWeakify(objectName) \
+    __weak __typeof(objectName) week##objectName = objectName;
+
+#define TYVStrongify(objectName) \
+    __strong __typeof(objectName) strong##objectName = week##objectName;
+
+#define TYVStrongifyAndReturnIfNil(objectName) \
+    TYVStrongify(objectName)    \
+    if  (!strong##objectName) {  \
+        return; \
+    }

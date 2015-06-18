@@ -62,12 +62,12 @@ TYVViewControllerProperty(TYVSquareViewController, squareView, TYVSquareView)
 - (void)moveSquareWithBlock:(TYVSquarePositionType(^)(void))block {
     if (self.running) {
         TYVSquarePositionType position = block();
-        __weak __typeof(self) weekSelf = self;
+        TYVWeakify(self);
         [self.squareView setSquarePosition:position animated:YES completion:^(BOOL finished){
-            __strong __typeof(self) strongSelf = weekSelf;
-            if (strongSelf && finished) {
-                strongSelf.square.position = position;
-                [strongSelf moveSquareWithBlock:block];
+            TYVStrongify(self);
+            if (strongself && finished) {
+                strongself.square.position = position;
+                [strongself moveSquareWithBlock:block];
             }
         }];
     }
