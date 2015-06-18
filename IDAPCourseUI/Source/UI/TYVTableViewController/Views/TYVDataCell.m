@@ -27,6 +27,7 @@
 
 - (void)fillWithModel:(TYVDataModel *)model {
     self.stringLabel.text = model.string;
+    self.image.image = model.image;
 }
 
 @end

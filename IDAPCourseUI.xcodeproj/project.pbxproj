@@ -20,6 +20,8 @@
 		5A883B011B32CBAB000A084C /* UINib+TYVExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A883B001B32CBAB000A084C /* UINib+TYVExtentions.m */; };
 		5A883B051B32D0C3000A084C /* NSArray+TYVExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A883B041B32D0C3000A084C /* NSArray+TYVExtentions.m */; };
 		5A883B091B32DE90000A084C /* UITableView+TYVExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A883B081B32DE90000A084C /* UITableView+TYVExtentions.m */; };
+		5A9820B51B32E9F3009B9CF3 /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5A9820B31B32E9F3009B9CF3 /* images.jpeg */; };
+		5A9820B61B32E9F3009B9CF3 /* Orion_Nebula.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5A9820B41B32E9F3009B9CF3 /* Orion_Nebula.jpg */; };
 		5AF13C3A1B318914001D37FA /* UIWindow+TYVExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF13C281B318914001D37FA /* UIWindow+TYVExtentions.m */; };
 		5AF13C3B1B318914001D37FA /* TYVSquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF13C2C1B318914001D37FA /* TYVSquare.m */; };
 		5AF13C3C1B318914001D37FA /* TYVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF13C2E1B318914001D37FA /* TYVAppDelegate.m */; };
@@ -68,6 +70,8 @@
 		5A883B041B32D0C3000A084C /* NSArray+TYVExtentions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+TYVExtentions.m"; path = "NSArray+TYVExtentions/NSArray+TYVExtentions.m"; sourceTree = "<group>"; };
 		5A883B071B32DE90000A084C /* UITableView+TYVExtentions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITableView+TYVExtentions.h"; path = "UITableView+TYVExtentions/UITableView+TYVExtentions.h"; sourceTree = "<group>"; };
 		5A883B081B32DE90000A084C /* UITableView+TYVExtentions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITableView+TYVExtentions.m"; path = "UITableView+TYVExtentions/UITableView+TYVExtentions.m"; sourceTree = "<group>"; };
+		5A9820B31B32E9F3009B9CF3 /* images.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpeg; sourceTree = "<group>"; };
+		5A9820B41B32E9F3009B9CF3 /* Orion_Nebula.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Orion_Nebula.jpg; sourceTree = "<group>"; };
 		5AF13C271B318914001D37FA /* UIWindow+TYVExtentions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+TYVExtentions.h"; sourceTree = "<group>"; };
 		5AF13C281B318914001D37FA /* UIWindow+TYVExtentions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+TYVExtentions.m"; sourceTree = "<group>"; };
 		5AF13C2B1B318914001D37FA /* TYVSquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVSquare.h; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 		5A22FDA71B2E935B0005AFDC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5A9820B21B32E9F3009B9CF3 /* Images */,
 				5A22FDA81B2E935B0005AFDC /* LaunchScreen.xib */,
 				5A22FDAA1B2E935B0005AFDC /* Images.xcassets */,
 			);
@@ -235,6 +240,15 @@
 				5A883B081B32DE90000A084C /* UITableView+TYVExtentions.m */,
 			);
 			name = "UITableView+TYVExtentions";
+			sourceTree = "<group>";
+		};
+		5A9820B21B32E9F3009B9CF3 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5A9820B31B32E9F3009B9CF3 /* images.jpeg */,
+				5A9820B41B32E9F3009B9CF3 /* Orion_Nebula.jpg */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		5AF13C231B318914001D37FA /* Source */ = {
@@ -437,6 +451,8 @@
 				5A22FDB31B2E935B0005AFDC /* Images.xcassets in Resources */,
 				5A22FDB21B2E935B0005AFDC /* LaunchScreen.xib in Resources */,
 				5AF13C411B318914001D37FA /* TYVTableViewController.xib in Resources */,
+				5A9820B51B32E9F3009B9CF3 /* images.jpeg in Resources */,
+				5A9820B61B32E9F3009B9CF3 /* Orion_Nebula.jpg in Resources */,
 				5A22FDB01B2E935B0005AFDC /* Info.plist in Resources */,
 				5AF13C3F1B318914001D37FA /* TYVSquareViewController.xib in Resources */,
 				5A883AFE1B32B540000A084C /* TYVDataCell.xib in Resources */,

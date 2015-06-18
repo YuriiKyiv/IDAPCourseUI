@@ -37,9 +37,18 @@
     if (self) {
         self.url = url;
         self.string = string;
+        [self load];
     }
     
     return self;
+}
+
+#pragma mark -
+#pragma mark Private Methods
+
+- (void)load {
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"images" ofType:@"jpeg"];
+    self.image = [UIImage imageWithContentsOfFile:path];
 }
 
 @end
