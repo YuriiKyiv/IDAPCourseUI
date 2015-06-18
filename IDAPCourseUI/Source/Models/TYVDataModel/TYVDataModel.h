@@ -17,6 +17,6 @@
 
 - (instancetype)initWithRandomStringAndUrl:(NSURL *)url;
 
-- (instancetype)initWithString:(NSString *)string url:(NSURL *)url;
+- (instancetype)initWithString:(NSString *)string url:(NSURL *)url NS_DESIGNATED_INITIALIZER;
 
 @end
