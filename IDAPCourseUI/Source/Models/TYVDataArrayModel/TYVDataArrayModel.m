@@ -60,7 +60,7 @@
 }
 
 - (TYVDataModel *)objectAtIndexedSubscript:(NSUInteger)index {
-    return [self objectAtIndexedSubscript:index];
+    return [self.mutableDataArray objectAtIndexedSubscript:index];
 }
 
 - (NSUInteger)count {

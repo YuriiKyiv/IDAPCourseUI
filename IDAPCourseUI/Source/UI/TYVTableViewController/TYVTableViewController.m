@@ -12,6 +12,7 @@
 #import "TYVDataCell.h"
 #import "UITableView+TYVExtentions.h"
 #import "TYVDataArrayModel.h"
+#import "TYVDataModel.h"
 
 #import "UINib+TYVExtentions.h"
 
@@ -37,6 +38,19 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 }
 
 #pragma mark -
+#pragma mark Interface Handling
+
+- (IBAction)onClickAddButton:(id)sender {
+    [self.dataArray addModel:[TYVDataModel new]];
+    [self.tableView.tableView reloadData];
+}
+
+- (IBAction)onClickEditButton:(id)sender {
+    self.tableView.tableView.editing = YES;
+    [self.tableView.tableView setEditing:YES animated:YES];
+}
+
+#pragma mark -
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -47,7 +61,7 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TYVDataCell *cell = [tableView dequeueReusableCellWithClass:[TYVDataCell class]];
     
-    cell.data = [self.dataArray modelAtIndex:indexPath.length];
+    cell.data = self.dataArray[indexPath.row];
     
     return cell;
 }
