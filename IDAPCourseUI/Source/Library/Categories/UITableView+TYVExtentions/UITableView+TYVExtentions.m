@@ -14,8 +14,8 @@
 #pragma mark -
 #pragma mark Public Methods
 
-- (TYVTableViewCell *)dequeueReusableCellWithClass:(Class)class {
-    TYVTableViewCell *cell = [self dequeueReusableCellWithIdentifier:NSStringFromClass(class)];
+- (id)dequeueReusableCellWithClass:(Class)class {
+    id cell = [self dequeueReusableCellWithIdentifier:NSStringFromClass(class)];
     if (!cell) {
         cell = [UINib objectWithClass:class];
     }
