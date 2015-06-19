@@ -7,6 +7,7 @@
 //
 
 #import "UITableView+TYVExtentions.h"
+#import "UINib+TYVExtentions.h"
 
 @implementation UITableView (TYVExtentions)
 
@@ -14,7 +15,12 @@
 #pragma mark Public Methods
 
 - (TYVTableViewCell *)dequeueReusableCellWithClass:(Class)class {
-    return [self dequeueReusableCellWithIdentifier:NSStringFromClass(class)];
+    TYVTableViewCell *cell = [self dequeueReusableCellWithIdentifier:NSStringFromClass(class)];
+    if (!cell) {
+        cell = [UINib objectWithClass:class];
+    }
+    
+    return cell;
 }
 
 @end
