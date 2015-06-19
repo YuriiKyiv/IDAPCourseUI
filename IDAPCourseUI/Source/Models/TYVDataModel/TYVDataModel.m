@@ -11,46 +11,24 @@
 #import "NSString+TYVExtensions.h"
 
 @interface TYVDataModel ()
-@property (nonatomic, strong) UIImage     *image;
-@property (nonatomic, strong) NSString    *string;
-
-@property (nonatomic, strong)   NSURL   *url;
 
 @end
 
 @implementation TYVDataModel
 
-#pragma mark -
-#pragma mark Class Methods
-
-+ (instancetype)randomStringWithUrl:(NSURL *)url {
-    return [[self alloc] initWithRandomStringAndUrl:url];
-}
+@dynamic image;
+@dynamic text;
 
 #pragma mark -
-#pragma mark Initializations and Deallocations
+#pragma mark Accessors
 
-- (instancetype)initWithRandomStringAndUrl:(NSURL *)url {
-    return [self initWithString:[NSString randomString] url:url];
+- (NSString *)text {
+    return [NSString randomString];
 }
 
-- (instancetype)initWithString:(NSString *)string url:(NSURL *)url {
-    self = [super init];
-    if (self) {
-        self.url = url;
-        self.string = string;
-        [self load];
-    }
-    
-    return self;
-}
-
-#pragma mark -
-#pragma mark Private Methods
-
-- (void)load {
+- (UIImage *)image {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"images" ofType:@"jpeg"];
-    self.image = [UIImage imageWithContentsOfFile:path];
+    return [UIImage imageWithContentsOfFile:path];
 }
 
 @end

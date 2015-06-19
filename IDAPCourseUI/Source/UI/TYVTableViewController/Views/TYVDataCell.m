@@ -26,7 +26,7 @@
 #pragma mark Public
 
 - (void)fillWithModel:(TYVDataModel *)model {
-    self.stringLabel.text = model.string;
+    self.stringLabel.text = model.text;
     self.image.image = model.image;
 }
 

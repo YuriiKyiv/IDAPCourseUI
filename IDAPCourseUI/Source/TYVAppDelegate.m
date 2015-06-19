@@ -28,7 +28,7 @@
 //    controller.square = [[TYVSquare alloc] initWithSquarePosition:TYVBottomRightCorner];
     
     TYVTableViewController *controller = [TYVTableViewController new];
-    controller.data = [[TYVDataModel alloc] initWithRandomStringAndUrl:nil];
+    controller.data = [TYVDataModel new];
     window.rootViewController = controller;
     
     [window makeKeyAndVisible];
