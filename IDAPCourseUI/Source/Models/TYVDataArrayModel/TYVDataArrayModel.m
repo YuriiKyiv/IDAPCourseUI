@@ -15,4 +15,35 @@
 
 @implementation TYVDataArrayModel
 
+#pragma mark -
+#pragma mark Public Methods
+
+- (void)addModel:(TYVDataModel *)model {
+    [self.mutableDataArray addObject:model];
+}
+
+- (void)removeModel:(TYVDataModel *)model {
+    [self.mutableDataArray removeObject:model];
+}
+
+- (void)addModelAtIndex:(TYVDataModel *)model index:(NSUInteger)index {
+
+}
+
+- (void)removeModelAtIndex:(NSUInteger)index{
+    [self.mutableDataArray removeObjectAtIndex:index];
+}
+
+- (TYVDataModel *)modelAtIndex:(NSUInteger)index {
+    return [self.mutableDataArray objectAtIndex:index];
+}
+
+- (TYVDataModel *)objectAtIndexedSubscript:(NSUInteger)index {
+    return [self objectAtIndexedSubscript:index];
+}
+
+- (NSUInteger)count {
+    return [self.mutableDataArray count];
+}
+
 @end
