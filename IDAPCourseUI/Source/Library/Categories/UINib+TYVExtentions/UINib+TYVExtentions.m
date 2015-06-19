@@ -15,29 +15,7 @@
 
 @end
 
-@implementation UINib (TYVExtentions)
-
-#pragma mark -
-#pragma mark Class Methods
-
-+ (UINib *)nibWithClass:(Class)class {
-    return [self nibWithClass:class boundle:nil];
-}
-
-+ (UINib *)nibWithClass:(Class)class boundle:(NSBundle *)boundle {
-    return [UINib nibWithNibName:NSStringFromClass(class) bundle:boundle];
-}
-
-+ (UIView *)viewWithClass:(Class)class {
-    return [[[self nibWithClass:class] instantiate] objectWithBlock:[UINib viewWithClassBlock:class]];
-}
-
-#pragma mark -
-#pragma mark Public Methods
-
-- (NSArray *)instantiate {
-    return [self instantiateWithOwner:nil options:nil];
-}
+@implementation UINib (__TYVPrivateNib)
 
 #pragma mark -
 #pragma mark Private Class Methods
@@ -48,6 +26,40 @@
     };
     
     return result;
+}
+
+@end
+
+@implementation UINib (TYVExtentions)
+
+#pragma mark -
+#pragma mark Class Methods
+
++ (UINib *)nibWithClass:(Class)class {
+    return [self nibWithClass:class bundle:nil];
+}
+
++ (UINib *)nibWithClass:(Class)class bundle:(NSBundle *)bundle {
+    return [UINib nibWithNibName:NSStringFromClass(class) bundle:bundle];
+}
+
++ (id)objectWithClass:(Class)class {
+    return [[self nibWithClass:class] objectWithClass:class];
+}
+
+#pragma mark -
+#pragma mark Public Methods
+
+- (id)objectWithClass:(Class)class {
+    return [[self instantiate] objectWithBlock:[UINib viewWithClassBlock:class]];
+}
+
+- (NSArray *)instantiate {
+    return [self instantiateWithOwner:nil];
+}
+
+- (NSArray *)instantiateWithOwner:(id)ownerOrNil {
+    return [self instantiateWithOwner:nil options:nil];
 }
 
 @end
