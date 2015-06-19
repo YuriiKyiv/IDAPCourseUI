@@ -10,8 +10,10 @@
 #import "TYVMacro.h"
 #import "TYVTableView.h"
 #import "TYVDataCell.h"
-#import "UINib+TYVExtentions.h"
 #import "UITableView+TYVExtentions.h"
+#import "TYVDataArrayModel.h"
+
+#import "UINib+TYVExtentions.h"
 
 TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 
@@ -53,7 +55,7 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 100;
+    return [self.dataArray count];
 }
 
 

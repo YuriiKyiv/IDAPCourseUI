@@ -15,6 +15,27 @@
 
 @implementation TYVDataArrayModel
 
+@dynamic dataArray;
+
+#pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.mutableDataArray = [NSMutableArray array];
+    }
+    
+    return self;
+}
+
+#pragma mark -
+#pragma mark Accessors
+
+- (NSArray *)dataArray {
+    return [self.mutableDataArray copy];
+}
+
 #pragma mark -
 #pragma mark Public Methods
 

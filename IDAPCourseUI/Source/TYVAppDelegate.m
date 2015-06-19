@@ -12,6 +12,7 @@
 #import "TYVSquare.h"
 #import "TYVTableViewController.h"
 #import "TYVDataModel.h"
+#import "TYVDataArrayModel.h"
 
 @interface TYVAppDelegate ()
 
@@ -27,8 +28,14 @@
 //    TYVSquareViewController *controller = [TYVSquareViewController new];
 //    controller.square = [[TYVSquare alloc] initWithSquarePosition:TYVBottomRightCorner];
     
+    TYVDataArrayModel *dataArray = [TYVDataArrayModel new];
+    for (int i = 0; i < 100; i++) {
+        [dataArray addModel:[TYVDataModel new]];
+    }
+    
     TYVTableViewController *controller = [TYVTableViewController new];
     controller.data = [TYVDataModel new];
+    controller.dataArray = dataArray;
     window.rootViewController = controller;
     
     [window makeKeyAndVisible];

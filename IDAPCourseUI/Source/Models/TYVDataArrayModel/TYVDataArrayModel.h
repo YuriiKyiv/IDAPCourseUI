@@ -17,7 +17,7 @@
 - (void)removeModel:(TYVDataModel *)model;
 
 - (void)addModelAtIndex:(TYVDataModel *)model index:(NSUInteger)index;
-- (void)removeModelAtIndex:(NSUInteger *)index;
+- (void)removeModelAtIndex:(NSUInteger)index;
 
 - (TYVDataModel *)modelAtIndex:(NSUInteger)index;
 - (TYVDataModel *)objectAtIndexedSubscript:(NSUInteger)index;
