@@ -11,6 +11,7 @@
 @class TYVDataModel;
 
 typedef NS_ENUM(NSUInteger, TYVDataModelArrayModelState) {
+    TYVDataArrayDidNotChange,
     TYVDataArrayDidChange
 };
 

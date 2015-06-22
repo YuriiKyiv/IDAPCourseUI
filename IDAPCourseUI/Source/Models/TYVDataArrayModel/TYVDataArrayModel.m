@@ -41,10 +41,12 @@
 
 - (void)addModel:(TYVDataModel *)model {
     [self.mutableDataArray addObject:model];
+    self.state = TYVDataArrayDidChange;
 }
 
 - (void)removeModel:(TYVDataModel *)model {
     [self.mutableDataArray removeObject:model];
+    self.state = TYVDataArrayDidChange;
 }
 
 - (void)addModelAtIndex:(TYVDataModel *)model index:(NSUInteger)index {
@@ -69,6 +71,17 @@
 
 - (void)exchangeModelAtIndex:(NSUInteger)sourceIndex withModelAtIndex:(NSUInteger)destinationIndex {
     [self.mutableDataArray exchangeObjectAtIndex:sourceIndex withObjectAtIndex:destinationIndex];
+}
+
+- (SEL)selectorForState:(NSUInteger)state {
+    switch (state) {
+        case TYVDataArrayDidChange:
+            return @selector(dataArrayDidChange:);
+        case TYVDataArrayDidNotChange:
+            return @selector(dataArrayDidNotChange:);
+        default:
+            return [super selectorForState:state];
+    }
 }
 
 @end
