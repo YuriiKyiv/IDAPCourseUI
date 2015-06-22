@@ -46,11 +46,9 @@
 
 - (void)setState:(NSUInteger)state {
     @synchronized(self) {
-        if (_state != state) {
-            _state = state;
-            
-            TYVDispatchSyncOnMainQueueWithBlock(^{[self notify];});
-        }
+        _state = state;
+        
+        TYVDispatchSyncOnMainQueueWithBlock(^{[self notify];});
     }
 }
 

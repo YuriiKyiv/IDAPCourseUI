@@ -46,7 +46,6 @@
 
 - (void)removeModel:(TYVDataModel *)model {
     [self.mutableDataArray removeObject:model];
-    self.state = TYVDataArrayDidChange;
 }
 
 - (void)addModelAtIndex:(TYVDataModel *)model index:(NSUInteger)index {
@@ -55,6 +54,7 @@
 
 - (void)removeModelAtIndex:(NSUInteger)index{
     [self.mutableDataArray removeObjectAtIndex:index];
+    self.state = TYVDataArrayDidChange;
 }
 
 - (TYVDataModel *)modelAtIndex:(NSUInteger)index {
