@@ -14,19 +14,13 @@
 #pragma mark Public Methods
 
 - (id)objectWithBlock:(TYVFindObjectBlock)block {
-    @synchronized(self) {
-        __block id object = nil;
-        [self enumerateObjectsUsingBlock:^(id obj, NSUInteger index, BOOL *stop) {
-            object = obj;
-            if (block(object)) {
-                *stop = YES;
-            } else {
-                object = nil;
-            }
-        }];
-        
-        return object;
+    for (id object in self) {
+        if (block(object)) {
+            return object;
+        }
     }
+    
+    return nil;
 }
 
 @end

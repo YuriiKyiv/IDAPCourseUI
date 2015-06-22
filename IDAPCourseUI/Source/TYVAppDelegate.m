@@ -34,7 +34,6 @@
     }
     
     TYVTableViewController *controller = [TYVTableViewController new];
-    controller.data = [TYVDataModel new];
     controller.dataArray = dataArray;
     window.rootViewController = controller;
     
