@@ -57,13 +57,16 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
     return [self.dataArray count];
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TYVDataCell *cell = [tableView dequeueReusableCellWithClass:[TYVDataCell class]];
     
     cell.data = self.dataArray[indexPath.row];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    [self.dataArray exchangeModelAtIndex:sourceIndexPath.row withModelAtIndex:destinationIndexPath.row];
 }
 
 @end

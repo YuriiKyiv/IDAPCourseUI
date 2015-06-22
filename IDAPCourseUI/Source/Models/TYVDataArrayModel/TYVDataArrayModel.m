@@ -67,4 +67,8 @@
     return [self.mutableDataArray count];
 }
 
+- (void)exchangeModelAtIndex:(NSUInteger)sourceIndex withModelAtIndex:(NSUInteger)destinationIndex {
+    [self.mutableDataArray exchangeObjectAtIndex:sourceIndex withObjectAtIndex:destinationIndex];
+}
+
 @end
