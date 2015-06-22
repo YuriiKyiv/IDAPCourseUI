@@ -49,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A13A41D1B381C3000B4ED8D /* TYVDataArrayModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVDataArrayModelProtocol.h; path = TYVDataArrayModel/TYVDataArrayModelProtocol.h; sourceTree = "<group>"; };
 		5A148AA31B33163E003B6542 /* NSString+TYVExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TYVExtensions.h"; sourceTree = "<group>"; };
 		5A148AA41B33163E003B6542 /* NSString+TYVExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TYVExtensions.m"; sourceTree = "<group>"; };
 		5A22FD7B1B2E92250005AFDC /* IDAPCourseUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IDAPCourseUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -389,6 +390,7 @@
 			children = (
 				5AF13C501B31A645001D37FA /* TYVDataArrayModel.h */,
 				5AF13C511B31A645001D37FA /* TYVDataArrayModel.m */,
+				5A13A41D1B381C3000B4ED8D /* TYVDataArrayModelProtocol.h */,
 			);
 			name = TYVDataArrayModel;
 			sourceTree = "<group>";

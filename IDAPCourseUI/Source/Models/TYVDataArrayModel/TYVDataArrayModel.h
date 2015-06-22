@@ -10,6 +10,10 @@
 
 @class TYVDataModel;
 
+typedef NS_ENUM(NSUInteger, TYVDataModelArrayModelState) {
+    TYVDataArrayDidChange
+};
+
 @interface TYVDataArrayModel : TYVProtocolObservableObject
 @property (nonatomic, readonly) NSArray *dataArray;
 
