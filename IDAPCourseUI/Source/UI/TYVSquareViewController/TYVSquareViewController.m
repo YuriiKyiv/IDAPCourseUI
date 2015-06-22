@@ -65,9 +65,9 @@ TYVViewControllerProperty(TYVSquareViewController, squareView, TYVSquareView)
         TYVWeakify(self);
         [self.squareView setSquarePosition:position animated:YES completion:^(BOOL finished){
             TYVStrongify(self);
-            if (strongself && finished) {
-                strongself.square.position = position;
-                [strongself moveSquareWithBlock:block];
+            if (self && finished) {
+                self.square.position = position;
+                [self moveSquareWithBlock:block];
             }
         }];
     }

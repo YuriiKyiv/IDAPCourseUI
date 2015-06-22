@@ -34,11 +34,11 @@
     @end
 
 #define TYVWeakify(objectName) \
-    __weak __typeof(objectName) week##objectName = objectName;
+    __weak __typeof(objectName) __TYVWeakified_##objectName = objectName;
 
 // Use only after TYVWeakify
 #define TYVStrongify(objectName) \
-    __strong __typeof(objectName) strong##objectName = week##objectName;
+    __strong __typeof(objectName) objectName = __TYVWeakified_##objectName \
 
 // Use only after TYVWeakify
 #define TYVStrongifyAndReturnIfNil(objectName) \
@@ -46,6 +46,3 @@
     if  (!strong##objectName) {  \
         return; \
     }
-
-#define TYVCasting(class, object) \
-    (class *)object;
