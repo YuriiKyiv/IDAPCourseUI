@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TYVDataArrayModelProtocol.h"
 
-@interface TYVTableView : UIView
+@interface TYVTableView : UIView <TYVDataArrayModelProtocol>
 @property (nonatomic, strong)  IBOutlet UITableView *tableView;
 @property (nonatomic, strong)  IBOutlet UIButton    *addButton;
 @property (nonatomic, strong)  IBOutlet UIButton    *editButton;

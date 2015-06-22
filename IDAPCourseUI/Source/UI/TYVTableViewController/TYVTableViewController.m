@@ -25,10 +25,19 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 @implementation TYVTableViewController
 
 #pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (void)dealloc {
+    [self.dataArray removeObserver:self.tableView];
+}
+
+#pragma mark -
 #pragma mark View Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.dataArray addObserver:self.tableView];
     
     [self.tableView.tableView reloadData];
 }
@@ -42,7 +51,6 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 
 - (IBAction)onClickAddButton:(id)sender {
     [self.dataArray addModel:[TYVDataModel new]];
-    [self.tableView.tableView reloadData];
 }
 
 - (IBAction)onClickEditButton:(id)sender {
@@ -67,14 +75,14 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
-      toIndexPath:(NSIndexPath *)destinationIndexPath {
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
     [self.dataArray exchangeModelAtIndex:sourceIndexPath.row withModelAtIndex:destinationIndexPath.row];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.dataArray removeModelAtIndex:indexPath.row];
-    [self.tableView.tableView reloadData];
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.dataArray removeModelAtIndex:indexPath.row];
+    }
 }
 
 @end
