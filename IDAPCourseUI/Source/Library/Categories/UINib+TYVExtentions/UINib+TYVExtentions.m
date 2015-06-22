@@ -11,7 +11,7 @@
 
 @interface  UINib (__TYVPrivateNib)
 
-+ (TYVFindObjectBlock)viewWithClassBlock:(Class)class;
++ (TYVFindObjectBlock)objectWithClassBlock:(Class)class;
 
 @end
 
@@ -20,7 +20,7 @@
 #pragma mark -
 #pragma mark Private Class Methods
 
-+ (TYVFindObjectBlock)viewWithClassBlock:(Class)class {
++ (TYVFindObjectBlock)objectWithClassBlock:(Class)class {
     TYVFindObjectBlock result = ^(UIView *view) {
         return ([view isMemberOfClass:class]);
     };
@@ -51,7 +51,7 @@
 #pragma mark Public Methods
 
 - (id)objectWithClass:(Class)class {
-    return [[self instantiate] objectWithBlock:[UINib viewWithClassBlock:class]];
+    return [[self instantiate] objectWithBlock:[UINib objectWithClassBlock:class]];
 }
 
 - (NSArray *)instantiate {
