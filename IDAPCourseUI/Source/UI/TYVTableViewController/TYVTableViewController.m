@@ -28,7 +28,20 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    [self.dataArray removeObserver:self.tableView];
+    self.dataArray = nil;
+}
+
+
+#pragma mark -
+#pragma mark Accessors
+
+- (void)setDataArray:(TYVDataArrayModel *)dataArray {
+    if (_dataArray != dataArray) {
+        [_dataArray removeObserver:self.tableView];
+        
+        _dataArray = dataArray;
+        [_dataArray addObserver:self.tableView];
+    }
 }
 
 #pragma mark -
