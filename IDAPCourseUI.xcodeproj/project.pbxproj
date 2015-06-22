@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A13A4201B383B5800B4ED8D /* NSBundle+TYVExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A13A41F1B383B5800B4ED8D /* NSBundle+TYVExtensions.m */; };
 		5A148AA51B33163E003B6542 /* NSString+TYVExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A148AA41B33163E003B6542 /* NSString+TYVExtensions.m */; };
 		5A22FD9B1B2E92250005AFDC /* IDAPCourseUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A22FD9A1B2E92250005AFDC /* IDAPCourseUITests.m */; };
 		5A22FDB01B2E935B0005AFDC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A22FDA51B2E935B0005AFDC /* Info.plist */; };
@@ -50,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		5A13A41D1B381C3000B4ED8D /* TYVDataArrayModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVDataArrayModelProtocol.h; path = TYVDataArrayModel/TYVDataArrayModelProtocol.h; sourceTree = "<group>"; };
+		5A13A41E1B383B5800B4ED8D /* NSBundle+TYVExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBundle+TYVExtensions.h"; path = "NSBundle+TYVExtensions/NSBundle+TYVExtensions.h"; sourceTree = "<group>"; };
+		5A13A41F1B383B5800B4ED8D /* NSBundle+TYVExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+TYVExtensions.m"; path = "NSBundle+TYVExtensions/NSBundle+TYVExtensions.m"; sourceTree = "<group>"; };
 		5A148AA31B33163E003B6542 /* NSString+TYVExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TYVExtensions.h"; sourceTree = "<group>"; };
 		5A148AA41B33163E003B6542 /* NSString+TYVExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TYVExtensions.m"; sourceTree = "<group>"; };
 		5A22FD7B1B2E92250005AFDC /* IDAPCourseUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IDAPCourseUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +124,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A13A4211B383B5F00B4ED8D /* NSBundle+TYVExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				5A13A41E1B383B5800B4ED8D /* NSBundle+TYVExtensions.h */,
+				5A13A41F1B383B5800B4ED8D /* NSBundle+TYVExtensions.m */,
+			);
+			name = "NSBundle+TYVExtensions";
+			sourceTree = "<group>";
+		};
 		5A148AA21B33163E003B6542 /* NSString+TYVExtensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +321,7 @@
 				5A883B021B32CBB9000A084C /* UINib+TYVExtentions */,
 				5A883B061B32D0CC000A084C /* NSArray+TYVExtentions */,
 				5A883B0A1B32DE95000A084C /* UITableView+TYVExtentions */,
+				5A13A4211B383B5F00B4ED8D /* NSBundle+TYVExtensions */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -506,6 +519,7 @@
 				5A22FDB11B2E935B0005AFDC /* main.m in Sources */,
 				5AF13C4E1B31A5F4001D37FA /* TYVDataModel.m in Sources */,
 				5A883AFC1B32B4DA000A084C /* TYVDataCell.m in Sources */,
+				5A13A4201B383B5800B4ED8D /* NSBundle+TYVExtensions.m in Sources */,
 				5AF13C441B318934001D37FA /* TYVMacro.m in Sources */,
 				5AF13C3C1B318914001D37FA /* TYVAppDelegate.m in Sources */,
 				5A883B051B32D0C3000A084C /* NSArray+TYVExtentions.m in Sources */,

@@ -10,4 +10,7 @@
 
 @interface NSBundle (TYVExtensions)
 
++ (id)objectWithClass:(Class)cls;
+- (id)objectWithClass:(Class)cls;
+
 @end
