@@ -46,8 +46,10 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 }
 
 - (IBAction)onClickEditButton:(id)sender {
-    self.tableView.tableView.editing = YES;
-    [self.tableView.tableView setEditing:YES animated:YES];
+    BOOL isEditing = self.tableView.tableView.editing;
+    [self.tableView.tableView setEditing:!isEditing animated:YES];
+    
+//    self.tableView.addButton.titleLabel = isEditing ? @"Done" : @"Edit";
 }
 
 #pragma mark -
