@@ -13,6 +13,8 @@
 + (UINib *)nibWithClass:(Class)class;
 + (UINib *)nibWithClass:(Class)class bundle:(NSBundle *)bundle;
 
++ (id)objectWithClass:(Class)class bundle:(NSBundle *)bundle;
+
 + (id)objectWithClass:(Class)class;
 - (id)objectWithClass:(Class)class;
 
