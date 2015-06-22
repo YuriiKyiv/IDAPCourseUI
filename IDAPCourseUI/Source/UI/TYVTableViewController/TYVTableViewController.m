@@ -67,8 +67,14 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
+      toIndexPath:(NSIndexPath *)destinationIndexPath {
     [self.dataArray exchangeModelAtIndex:sourceIndexPath.row withModelAtIndex:destinationIndexPath.row];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.dataArray removeModelAtIndex:indexPath.row];
+    [self.tableView.tableView reloadData];
 }
 
 @end
