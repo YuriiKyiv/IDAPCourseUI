@@ -43,6 +43,6 @@
 // Use only after TYVWeakify
 #define TYVStrongifyAndReturnIfNil(objectName) \
     TYVStrongify(objectName)    \
-    if  (!strong##objectName) {  \
+    if  (!objectName) {  \
         return; \
     }
