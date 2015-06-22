@@ -49,7 +49,7 @@
 }
 
 - (void)addModelAtIndex:(TYVDataModel *)model index:(NSUInteger)index {
-
+    [self.mutableDataArray insertObject:model atIndex:index];
 }
 
 - (void)removeModelAtIndex:(NSUInteger)index{
