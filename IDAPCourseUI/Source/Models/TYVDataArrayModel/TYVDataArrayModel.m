@@ -77,12 +77,17 @@
 - (void)removeModelAtIndex:(NSUInteger)index{
     NSMutableArray *array = self.mutableDataArray;
     [array removeObjectAtIndex:index];
-    NSIndexSet *set = [NSIndexSet indexSetWithIndex:[array count]];
+    NSIndexSet *set = [NSIndexSet indexSetWithIndex:index];
     [self setState:TYVDataArrayDidChangeCount withObject:set];
 }
 
 - (void)moveModelAtIndex:(NSUInteger)sourceIndex toIndex:(NSUInteger)destinationIndex {
-    [self.mutableDataArray moveObjectAtIndex:sourceIndex toIndex:destinationIndex];
+    NSMutableArray *array = self.mutableDataArray;
+    [array moveObjectAtIndex:sourceIndex toIndex:destinationIndex];
+    NSMutableIndexSet *set = [NSMutableIndexSet indexSet];
+    [set addIndex:sourceIndex];
+    [set addIndex:destinationIndex];
+    [self setState:TYVDataArrayDidChangeOrder withObject:set];
 }
 
 - (TYVDataModel *)modelAtIndex:(NSUInteger)index {
@@ -105,6 +110,10 @@
     switch (state) {
         case TYVDataArrayDidChangeCount:
             return @selector(dataArrayDidChangeCount:withObject:);
+            
+        case TYVDataArrayDidChangeOrder:
+            return @selector(dataArrayDidChangeOrder:withObject:);
+            
         default:
             return [super selectorForState:state];
     }

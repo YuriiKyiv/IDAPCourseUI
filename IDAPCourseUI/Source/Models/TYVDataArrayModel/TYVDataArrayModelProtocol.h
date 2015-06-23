@@ -15,4 +15,6 @@
 @optional
 - (void)dataArrayDidChangeCount:(TYVDataArrayModel *)dataArray withObject:(id)object;
 
+- (void)dataArrayDidChangeOrder:(TYVDataArrayModel *)dataArray withObject:(id)object;
+
 @end
