@@ -13,6 +13,7 @@
 @property (nonatomic, retain) NSHashTable   *observersHashTable;
 
 - (void)notifyWithSelector:(SEL)selector;
+- (void)notifyWithSelector:(SEL)selector withObject:(id)object;
 - (void)notify;
 
 @end
@@ -52,6 +53,14 @@
     }
 }
 
+- (void)setState:(NSUInteger)state withObject:(id)object {
+    @synchronized(self) {
+        _state = state;
+        
+        TYVDispatchSyncOnMainQueueWithBlock(^{[self notifyWithObject:object];});
+    }
+}
+
 - (NSUInteger)state {
     @synchronized (self) {
         return _state;
@@ -84,6 +93,10 @@
     return NULL;
 }
 
+- (SEL)selectorForState:(NSUInteger)state withObject:(id)object {
+    return NULL;
+}
+
 #pragma mark -
 #pragma mark Private Methods
 
@@ -91,11 +104,24 @@
     [self notifyWithSelector:[self selectorForState:_state]];
 }
 
+- (void)notifyWithObject:(id)object {
+    [self notifyWithSelector:[self selectorForState:_state] withObject:object];
+}
+
 - (void)notifyWithSelector:(SEL)selector {
     NSHashTable *observers = self.observersHashTable;
     for (id observer in observers) {
         if ([observer respondsToSelector:selector]) {
             [observer performSelector:selector withObject:self];
+        }
+    }
+}
+
+- (void)notifyWithSelector:(SEL)selector withObject:(id)object {
+    NSHashTable *observers = self.observersHashTable;
+    for (id observer in observers) {
+        if ([observer respondsToSelector:selector]) {
+            [observer performSelector:selector withObject:self withObject:object];
         }
     }
 }

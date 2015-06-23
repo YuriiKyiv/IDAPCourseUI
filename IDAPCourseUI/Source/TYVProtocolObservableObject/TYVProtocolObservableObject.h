@@ -14,6 +14,8 @@
 @property (atomic, assign)      NSUInteger  state;
 @property (nonatomic, readonly) NSSet       *observersSet;
 
+- (void)setState:(NSUInteger)state withObject:(id)object;
+
 - (void)addObserver:(id)observer;
 
 - (void)removeObserver:(id)observer;
@@ -21,5 +23,7 @@
 - (BOOL)containsObserver:(id)observer;
 
 - (SEL)selectorForState:(NSUInteger)state;
+
+- (SEL)selectorForState:(NSUInteger)state withObject:(id)object;
 
 @end
