@@ -9,11 +9,14 @@
 #import "TYVProtocolObservableObject.h"
 #import "TYVDispatch.h"
 
+typedef void(^TYVnotifyBlock)(id);
+
 @interface TYVProtocolObservableObject ()
 @property (nonatomic, retain) NSHashTable   *observersHashTable;
 
 - (void)notifyWithSelector:(SEL)selector;
 - (void)notifyWithSelector:(SEL)selector withObject:(id)object;
+- (void)notifyWithSelector:(SEL)selector withObject:(id)object block:(TYVnotifyBlock)block;
 - (void)notify;
 
 @end
@@ -108,14 +111,18 @@
     [self notifyWithSelector:[self selectorForState:_state] withObject:object];
 }
 
-- (void)notifyWithSelector:(SEL)selector {
-    NSHashTable *observers = self.observersHashTable;
-    for (id observer in observers) {
-        if ([observer respondsToSelector:selector]) {
-            [observer performSelector:selector withObject:self];
-        }
-    }
-}
+//- (void)notifyWithSelector:(SEL)selector {
+////    NSHashTable *observers = self.observersHashTable;
+////    for (id observer in observers) {
+////        if ([observer respondsToSelector:selector]) {
+////            [observer performSelector:selector withObject:self];
+////        }
+////    }
+//    
+//    self notifyWithSelector:self withObject:nil block:^(id object) {
+//        [observer performSelector:selector withObject:self];
+//    }
+//}
 
 - (void)notifyWithSelector:(SEL)selector withObject:(id)object {
     NSHashTable *observers = self.observersHashTable;
@@ -125,5 +132,15 @@
         }
     }
 }
+
+
+//- (void)notifyWithSelector:(SEL)selector withObject:(id)object block:(TYVnotifyBlock)block {
+//    NSHashTable *observers = self.observersHashTable;
+//    for (id observer in observers) {
+//        if ([observer respondsToSelector:selector]) {
+//            block(object);
+//        }
+//    }
+//}
 
 @end

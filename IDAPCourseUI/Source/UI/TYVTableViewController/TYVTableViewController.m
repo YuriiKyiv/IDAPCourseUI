@@ -110,12 +110,22 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 
 - (void)dataArrayDidChangeCount:(TYVDataArrayModel *)dataArray withObject:(NSIndexSet *)set {
     UITableView *tableView = self.tableView.tableView;
+    NSArray *array = [tableView indexPathsForVisibleRows];
+    
+    __block NSMutableIndexSet *visibleSet = [NSMutableIndexSet indexSet];
+    [set enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop) {
+        for (NSIndexPath *path in array) {
+            if (path.row == index) {
+                [visibleSet addIndex:index];
+            }
+        }
+    }];
     
     [tableView beginUpdates];
-    NSIndexPath *path = [NSIndexPath indexPathForRow:[set firstIndex] - 1 inSection:0];
     if ([tableView numberOfRowsInSection:0] < [self.dataArray count]) {
+        NSIndexPath *path = [NSIndexPath indexPathForRow:[set firstIndex] - 1 inSection:0];
         [tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
-    } else {
+    } else if ([visibleSet count]) {
         NSIndexPath *path = [NSIndexPath indexPathForRow:[set firstIndex] inSection:0];
         [tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationRight];
     }
@@ -129,13 +139,15 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
     UITableView *tableView = self.tableView.tableView;
     __block NSMutableArray *array = [NSMutableArray array];
     
-    [set enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-        NSIndexPath *path = [NSIndexPath indexPathForRow:idx inSection:0];
+    [set enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop) {
+        NSLog(@"%lu",(unsigned long)index);
+        NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
         [array addObject:path];
     }];
     
     [tableView beginUpdates];
-    [tableView reloadRowsAtIndexPaths:array withRowAnimation:UITableViewRowAnimationFade];
+    [tableView moveRowAtIndexPath:array[0] toIndexPath:array[1]];
+//    [tableView reloadRowsAtIndexPaths:array withRowAnimation:UITableViewRowAnimationLeft];
     [tableView endUpdates];
     
     NSLog(@"observer reload %lu", (unsigned long)[set firstIndex]);
