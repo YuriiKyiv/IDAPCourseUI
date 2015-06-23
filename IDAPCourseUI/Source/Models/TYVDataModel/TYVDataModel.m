@@ -17,14 +17,28 @@
 @implementation TYVDataModel
 
 @dynamic image;
-@dynamic text;
+
+#pragma mark -
+#pragma mark Class Methods
+
++ (instancetype)modelWithRandomString {
+    return [[self alloc] initWithString:[NSString randomString]];
+}
+
+#pragma mark -
+#pragma mark Initialization and Deallocation
+
+- (instancetype)initWithString:(NSString *)string {
+    self = [super init];
+    if (self) {
+        self.text = string;
+    }
+    
+    return self;
+}
 
 #pragma mark -
 #pragma mark Accessors
-
-- (NSString *)text {
-    return [NSString randomString];
-}
 
 - (UIImage *)image {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"images" ofType:@"jpeg"];
