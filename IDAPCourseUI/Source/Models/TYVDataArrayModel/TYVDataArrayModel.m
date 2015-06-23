@@ -8,6 +8,8 @@
 
 #import "TYVDataArrayModel.h"
 
+#import "NSMutableArray+TYVExtensions.h"
+
 @interface TYVDataArrayModel ()
 @property (nonatomic, strong)   NSMutableArray *mutableDataArray;
 
@@ -40,8 +42,10 @@
 #pragma mark Public Methods
 
 - (void)addModel:(TYVDataModel *)model {
-    [self.mutableDataArray addObject:model];
-    self.state = TYVDataArrayDidChange;
+    NSMutableArray *array = self.mutableDataArray;
+    [array addObject:model];
+    NSIndexSet *set = [NSIndexSet indexSetWithIndex:[array count]];
+    [self setState:TYVDataArrayDidChange withObject:set];
 }
 
 - (void)removeModel:(TYVDataModel *)model {
@@ -54,11 +58,11 @@
 
 - (void)removeModelAtIndex:(NSUInteger)index{
     [self.mutableDataArray removeObjectAtIndex:index];
-    self.state = TYVDataArrayDidChange;
+//    [self setState:TYVDataArrayDidChange withObject:@"remove"];
 }
 
 - (void)moveModelAtIndex:(NSUInteger)sourceIndex toIndex:(NSUInteger)destinationIndex {
-    
+    [self.mutableDataArray moveObjectAtIndex:sourceIndex toIndex:destinationIndex];
 }
 
 - (TYVDataModel *)modelAtIndex:(NSUInteger)index {
@@ -80,7 +84,7 @@
 - (SEL)selectorForState:(NSUInteger)state {
     switch (state) {
         case TYVDataArrayDidChange:
-            return @selector(dataArrayDidChange:);
+            return @selector(dataArrayDidChange:withObject:);
         default:
             return [super selectorForState:state];
     }

@@ -11,7 +11,7 @@
 
 @interface TYVDataModel : NSObject
 @property (nonatomic, readonly) UIImage     *image;
-@property (nonatomic, copy) NSString    *text;
+@property (nonatomic, copy)     NSString    *text;
 
 + (instancetype)modelWithRandomString;
 
