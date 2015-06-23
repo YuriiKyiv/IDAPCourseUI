@@ -16,6 +16,7 @@
 		5A22FDB31B2E935B0005AFDC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A22FDAA1B2E935B0005AFDC /* Images.xcassets */; };
 		5A2EA6B51B32904B0091CCEC /* TYVProtocolObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2EA6B41B32904B0091CCEC /* TYVProtocolObservableObject.m */; };
 		5A2EA6B91B3292540091CCEC /* TYVDispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2EA6B81B3292540091CCEC /* TYVDispatch.m */; };
+		5A7E4FB81B39705C00698367 /* NSMutableArray+TYVExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E4FB71B39705C00698367 /* NSMutableArray+TYVExtensions.m */; };
 		5A883AF81B32B1B6000A084C /* TYVTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A883AF71B32B1B6000A084C /* TYVTableViewCell.m */; };
 		5A883AFC1B32B4DA000A084C /* TYVDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A883AFB1B32B4DA000A084C /* TYVDataCell.m */; };
 		5A883AFE1B32B540000A084C /* TYVDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A883AFD1B32B540000A084C /* TYVDataCell.xib */; };
@@ -66,6 +67,8 @@
 		5A2EA6B41B32904B0091CCEC /* TYVProtocolObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVProtocolObservableObject.m; sourceTree = "<group>"; };
 		5A2EA6B71B3292540091CCEC /* TYVDispatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVDispatch.h; sourceTree = "<group>"; };
 		5A2EA6B81B3292540091CCEC /* TYVDispatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVDispatch.m; sourceTree = "<group>"; };
+		5A7E4FB61B39705C00698367 /* NSMutableArray+TYVExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+TYVExtensions.h"; path = "NSMutableArray+TYVExtensions/NSMutableArray+TYVExtensions.h"; sourceTree = "<group>"; };
+		5A7E4FB71B39705C00698367 /* NSMutableArray+TYVExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+TYVExtensions.m"; path = "NSMutableArray+TYVExtensions/NSMutableArray+TYVExtensions.m"; sourceTree = "<group>"; };
 		5A883AF61B32B1B6000A084C /* TYVTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVTableViewCell.h; sourceTree = "<group>"; };
 		5A883AF71B32B1B6000A084C /* TYVTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVTableViewCell.m; sourceTree = "<group>"; };
 		5A883AFA1B32B4DA000A084C /* TYVDataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVDataCell.h; sourceTree = "<group>"; };
@@ -213,6 +216,15 @@
 			path = TYVDispatch;
 			sourceTree = "<group>";
 		};
+		5A7E4FB91B39706100698367 /* NSMutableArray+TYVExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				5A7E4FB61B39705C00698367 /* NSMutableArray+TYVExtensions.h */,
+				5A7E4FB71B39705C00698367 /* NSMutableArray+TYVExtensions.m */,
+			);
+			name = "NSMutableArray+TYVExtensions";
+			sourceTree = "<group>";
+		};
 		5A883AF41B32B1B6000A084C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,6 +322,7 @@
 				5A883B061B32D0CC000A084C /* NSArray+TYVExtentions */,
 				5A883B0A1B32DE95000A084C /* UITableView+TYVExtentions */,
 				5A13A4211B383B5F00B4ED8D /* NSBundle+TYVExtensions */,
+				5A7E4FB91B39706100698367 /* NSMutableArray+TYVExtensions */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -509,6 +522,7 @@
 				5A13A4201B383B5800B4ED8D /* NSBundle+TYVExtensions.m in Sources */,
 				5AF13C441B318934001D37FA /* TYVMacro.m in Sources */,
 				5AF13C3C1B318914001D37FA /* TYVAppDelegate.m in Sources */,
+				5A7E4FB81B39705C00698367 /* NSMutableArray+TYVExtensions.m in Sources */,
 				5A883B051B32D0C3000A084C /* NSArray+TYVExtentions.m in Sources */,
 				5A883B011B32CBAB000A084C /* UINib+TYVExtentions.m in Sources */,
 				5A883B091B32DE90000A084C /* UITableView+TYVExtentions.m in Sources */,
