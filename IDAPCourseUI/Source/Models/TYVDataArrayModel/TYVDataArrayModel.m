@@ -7,7 +7,7 @@
 //
 
 #import "TYVDataArrayModel.h"
-
+#import "TYVDataModel.h"
 #import "NSMutableArray+TYVExtensions.h"
 
 @interface TYVDataArrayModel ()
@@ -19,8 +19,26 @@
 
 @dynamic dataArray;
 
++ (instancetype)dataWithModelsCount:(NSUInteger)count {
+    return [[self alloc] initWithModelsCount:count];
+}
+
 #pragma mark -
 #pragma mark Initializations and Deallocations
+
+- (instancetype)initWithModelsCount:(NSUInteger)count {
+    self = [super init];
+    if (self) {
+        NSMutableArray *array = [NSMutableArray arrayWithCapacity:count];
+        for (int i = 0; i < count; i++) {
+            [array addObject:[TYVDataModel modelWithRandomString]];
+        }
+        
+        self.mutableDataArray = array;
+    }
+    
+    return self;
+}
 
 - (instancetype)init {
     self = [super init];

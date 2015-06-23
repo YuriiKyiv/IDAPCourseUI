@@ -11,12 +11,15 @@
 @class TYVDataModel;
 
 typedef NS_ENUM(NSUInteger, TYVDataModelArrayModelState) {
-    TYVDataArrayDidNotChange,
     TYVDataArrayDidChange
 };
 
 @interface TYVDataArrayModel : TYVProtocolObservableObject
 @property (nonatomic, readonly) NSArray *dataArray;
+
++ (instancetype)dataWithModelsCount:(NSUInteger)count;
+
+- (instancetype)initWithModelsCount:(NSUInteger)count;
 
 - (void)addModel:(TYVDataModel *)model;
 - (void)removeModel:(TYVDataModel *)model;
