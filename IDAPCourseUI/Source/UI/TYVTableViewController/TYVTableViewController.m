@@ -50,7 +50,7 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.dataArray addObserver:self.tableView];
+    [self.dataArray addObserver:self];
     
     [self.tableView.tableView reloadData];
 }
@@ -63,21 +63,15 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 #pragma mark Interface Handling
 
 - (IBAction)onClickAddButton:(id)sender {
-    [self.dataArray addModel:[TYVDataModel new]];
-    
-    UITableView *tableView = self.tableView.tableView;
-    
-    [tableView beginUpdates];
-    [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:[self.dataArray count] - 1 inSection:0]]
-                     withRowAnimation:UITableViewRowAnimationLeft];
-    [tableView endUpdates];
+    [self.dataArray addModel:[TYVDataModel modelWithRandomString]];
 }
 
 - (IBAction)onClickEditButton:(id)sender {
-    BOOL isEditing = self.tableView.tableView.editing;
-    [self.tableView.tableView setEditing:!isEditing animated:YES];
-    
+    UITableView *tableView = self.tableView.tableView;
+    BOOL isEditing = tableView.editing;
+    [tableView setEditing:!isEditing animated:YES];
 //    self.tableView.addButton.titleLabel = isEditing ? @"Done" : @"Edit";
+    
 }
 
 #pragma mark -
@@ -99,7 +93,7 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
    moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
           toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    [self.dataArray exchangeModelAtIndex:sourceIndexPath.row withModelAtIndex:destinationIndexPath.row];
+    [self.dataArray moveModelAtIndex:sourceIndexPath.row toIndex:destinationIndexPath.row];
 }
 
 - (void)    tableView:(UITableView *)tableView
@@ -108,11 +102,24 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.dataArray removeModelAtIndex:indexPath.row];
-        
-        [tableView beginUpdates];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
-        [tableView endUpdates];
     }
+}
+
+#pragma mark -
+#pragma mark DataArrayModelProtocol
+
+- (void)dataArrayDidChangeCount:(TYVDataArrayModel *)dataArray withObject:(NSIndexSet *)set {
+    UITableView *tableView = self.tableView.tableView;
+    [tableView beginUpdates];
+    NSIndexPath *path = [NSIndexPath indexPathForRow:[set firstIndex] - 1 inSection:0];
+    if ([tableView numberOfRowsInSection:0] < [self.dataArray count]) {
+        [tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
+    } else {
+        NSIndexPath *path = [NSIndexPath indexPathForRow:[set firstIndex] inSection:0];
+        [tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationRight];
+    }
+    [tableView endUpdates];
+    NSLog(@"observer %lu", (unsigned long)[set firstIndex]);
 }
 
 @end

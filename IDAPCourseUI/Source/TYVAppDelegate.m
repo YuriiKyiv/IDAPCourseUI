@@ -28,11 +28,7 @@
 //    TYVSquareViewController *controller = [TYVSquareViewController new];
 //    controller.square = [[TYVSquare alloc] initWithSquarePosition:TYVBottomRightCorner];
     
-    TYVDataArrayModel *dataArray = [TYVDataArrayModel new];
-    for (int i = 0; i < 10; i++) {
-        [dataArray addModel:[TYVDataModel new]];
-    }
-    
+    TYVDataArrayModel *dataArray = [TYVDataArrayModel dataWithModelsCount:10];
     TYVTableViewController *controller = [TYVTableViewController new];
     controller.dataArray = dataArray;
     window.rootViewController = controller;

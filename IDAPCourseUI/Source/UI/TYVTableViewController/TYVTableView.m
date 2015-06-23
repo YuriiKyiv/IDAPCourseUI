@@ -10,11 +10,4 @@
 
 @implementation TYVTableView
 
-#pragma mark -
-#pragma mark DataArrayModelProtocol
-
-- (void)dataArrayDidChange:(TYVDataArrayModel *)dataArray {
-//    [self.tableView reloadData];
-}
-
 @end
