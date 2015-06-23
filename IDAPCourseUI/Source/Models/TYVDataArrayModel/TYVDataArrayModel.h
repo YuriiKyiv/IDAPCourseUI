@@ -21,12 +21,15 @@ typedef NS_ENUM(NSUInteger, TYVDataModelArrayModelState) {
 - (void)addModel:(TYVDataModel *)model;
 - (void)removeModel:(TYVDataModel *)model;
 
-- (void)addModelAtIndex:(TYVDataModel *)model
+- (void)insertModelAtIndex:(TYVDataModel *)model
                   index:(NSUInteger)index;
 - (void)removeModelAtIndex:(NSUInteger)index;
 
 - (void)exchangeModelAtIndex:(NSUInteger)sourceIndex
             withModelAtIndex:(NSUInteger)destinationIndex;
+
+- (void)moveModelAtIndex:(NSUInteger)sourceIndex
+                 toIndex:(NSUInteger)destinationIndex;
 
 - (TYVDataModel *)modelAtIndex:(NSUInteger)index;
 - (TYVDataModel *)objectAtIndexedSubscript:(NSUInteger)index;

@@ -15,6 +15,4 @@
 @optional
 - (void)dataArrayDidChange:(TYVDataArrayModel *)dataArray;
 
-- (void)dataArrayDidNotChange:(TYVDataArrayModel *)dataArray;
-
 @end

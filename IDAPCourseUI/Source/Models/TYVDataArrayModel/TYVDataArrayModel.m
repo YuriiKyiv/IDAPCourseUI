@@ -48,13 +48,17 @@
     [self.mutableDataArray removeObject:model];
 }
 
-- (void)addModelAtIndex:(TYVDataModel *)model index:(NSUInteger)index {
+- (void)insertModelAtIndex:(TYVDataModel *)model index:(NSUInteger)index {
     [self.mutableDataArray insertObject:model atIndex:index];
 }
 
 - (void)removeModelAtIndex:(NSUInteger)index{
     [self.mutableDataArray removeObjectAtIndex:index];
     self.state = TYVDataArrayDidChange;
+}
+
+- (void)moveModelAtIndex:(NSUInteger)sourceIndex toIndex:(NSUInteger)destinationIndex {
+    
 }
 
 - (TYVDataModel *)modelAtIndex:(NSUInteger)index {
@@ -77,8 +81,6 @@
     switch (state) {
         case TYVDataArrayDidChange:
             return @selector(dataArrayDidChange:);
-        case TYVDataArrayDidNotChange:
-            return @selector(dataArrayDidNotChange:);
         default:
             return [super selectorForState:state];
     }
