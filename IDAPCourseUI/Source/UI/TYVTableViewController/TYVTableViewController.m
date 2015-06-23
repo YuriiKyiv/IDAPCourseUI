@@ -64,6 +64,13 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 
 - (IBAction)onClickAddButton:(id)sender {
     [self.dataArray addModel:[TYVDataModel new]];
+    
+    UITableView *tableView = self.tableView.tableView;
+    
+    [tableView beginUpdates];
+    [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:[self.dataArray count] - 1 inSection:0]]
+                     withRowAnimation:UITableViewRowAnimationLeft];
+    [tableView endUpdates];
 }
 
 - (IBAction)onClickEditButton:(id)sender {
@@ -88,11 +95,17 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+- (void)    tableView:(UITableView *)tableView
+   moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
+          toIndexPath:(NSIndexPath *)destinationIndexPath
+{
     [self.dataArray exchangeModelAtIndex:sourceIndexPath.row withModelAtIndex:destinationIndexPath.row];
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)    tableView:(UITableView *)tableView
+   commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+    forRowAtIndexPath:(NSIndexPath *)indexPath
+{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.dataArray removeModelAtIndex:indexPath.row];
     }

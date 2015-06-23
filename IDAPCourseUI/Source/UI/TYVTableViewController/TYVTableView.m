@@ -14,7 +14,7 @@
 #pragma mark DataArrayModelProtocol
 
 - (void)dataArrayDidChange:(TYVDataArrayModel *)dataArray {
-    [self.tableView reloadData];
+//    [self.tableView reloadData];
 }
 
 @end
