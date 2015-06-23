@@ -108,6 +108,10 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.dataArray removeModelAtIndex:indexPath.row];
+        
+        [tableView beginUpdates];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
+        [tableView endUpdates];
     }
 }
 
