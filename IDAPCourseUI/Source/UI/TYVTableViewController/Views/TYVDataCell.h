@@ -11,8 +11,8 @@
 @class TYVDataModel;
 
 @interface TYVDataCell : TYVTableViewCell
-@property (nonatomic, strong)   IBOutlet UILabel        *stringLabel;
-@property (nonatomic, strong)   IBOutlet UIImageView    *image;
+@property (nonatomic, strong)   IBOutlet UILabel        *dataLabel;
+@property (nonatomic, strong)   IBOutlet UIImageView    *imageView;
 
 @property (nonatomic, strong)   TYVDataModel    *data;
 
