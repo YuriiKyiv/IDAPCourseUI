@@ -13,6 +13,7 @@
 #import "UITableView+TYVExtentions.h"
 #import "TYVDataArrayModel.h"
 #import "TYVDataModel.h"
+#import "TYVDataArrayModelInfo.h"
 
 #import "UINib+TYVExtentions.h"
 
@@ -63,7 +64,7 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 #pragma mark Interface Handling
 
 - (IBAction)onClickAddButton:(id)sender {
-    [self.dataArray addModel:[TYVDataModel modelWithRandomString]];
+    [self.dataArray addModel:[TYVDataModel model]];
 }
 
 - (IBAction)onClickEditButton:(id)sender {
@@ -108,42 +109,28 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 #pragma mark -
 #pragma mark DataArrayModelProtocol
 
-- (void)dataArrayDidChangeCount:(TYVDataArrayModel *)dataArray withObject:(NSIndexSet *)set {
+- (void)dataArrayDidChangeCount:(TYVDataArrayModel *)dataArray withObject:(TYVDataArrayModelInfo *)info {
     UITableView *tableView = self.tableView.tableView;
     
     [tableView beginUpdates];
     if ([tableView numberOfRowsInSection:0] < [self.dataArray count]) {
-        NSIndexPath *path = [NSIndexPath indexPathForRow:[set firstIndex] - 1
-                                               inSection:0];
-        [tableView insertRowsAtIndexPaths:@[path]
+        [tableView insertRowsAtIndexPaths:info.insertIndexes
                          withRowAnimation:UITableViewRowAnimationLeft];
     } else {
-        NSIndexPath *path = [NSIndexPath indexPathForRow:[set firstIndex]
-                                               inSection:0];
-        [tableView deleteRowsAtIndexPaths:@[path]
+        [tableView deleteRowsAtIndexPaths:info.deleteIndexes
                          withRowAnimation:UITableViewRowAnimationRight];
     }
     
     [tableView endUpdates];
     
-    NSLog(@"observer insert/delete %lu", (unsigned long)[set firstIndex]);
 }
 
-- (void)dataArrayDidChangeOrder:(TYVDataArrayModel *)dataArray withObject:(NSIndexSet *)set {
-    UITableView *tableView = self.tableView.tableView;
-    __block NSMutableArray *array = [NSMutableArray array];
-    
-    [set enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop) {
-        NSLog(@"%lu",(unsigned long)index);
-        NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
-        [array addObject:path];
-    }];
-    
-    [tableView beginUpdates];
-    [tableView moveRowAtIndexPath:array[0] toIndexPath:array[1]];
-    [tableView endUpdates];
-    
-    NSLog(@"observer reload %lu", (unsigned long)[set firstIndex]);
+- (void)dataArrayDidChangeOrder:(TYVDataArrayModel *)dataArray withObject:(TYVDataArrayModelInfo *)info {
+//    UITableView *tableView = self.tableView.tableView;
+//    
+//    [tableView beginUpdates];
+//    [tableView moveRowAtIndexPath:info.moveIndexes[0] toIndexPath:info.moveIndexes[0]];
+//    [tableView endUpdates];
 }
 
 @end
