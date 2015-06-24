@@ -10,4 +10,27 @@
 
 @implementation TYVTableView
 
+@dynamic editing;
+
+#pragma mark -
+#pragma mark Accessors
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animate {
+    UITableView *tableView = self.tableView;
+    
+    [tableView setEditing:editing animated:animate];
+    [self.editButton setTitle:editing ? @"Done" : @"Edit" forState:UIControlStateNormal];
+}
+
+- (BOOL)isEditing {
+    return self.tableView.editing;
+}
+
+#pragma mark -
+#pragma mark View Lifecycle
+
+- (void)awakeFromNib {
+    [self setEditing:NO animated:NO];
+}
+
 @end

@@ -38,10 +38,10 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 
 - (void)setDataArray:(TYVDataArrayModel *)dataArray {
     if (_dataArray != dataArray) {
-        [_dataArray removeObserver:self.tableView];
+        [_dataArray removeObserver:self];
         
         _dataArray = dataArray;
-        [_dataArray addObserver:self.tableView];
+        [_dataArray addObserver:self];
     }
 }
 
@@ -50,8 +50,6 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.dataArray addObserver:self];
     
     [self.tableView.tableView reloadData];
 }
@@ -68,11 +66,9 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 }
 
 - (IBAction)onClickEditButton:(id)sender {
-    UITableView *tableView = self.tableView.tableView;
-    BOOL isEditing = tableView.editing;
-    [tableView setEditing:!isEditing animated:YES];
-//    self.tableView.addButton.titleLabel = isEditing ? @"Done" : @"Edit";
-    
+    TYVTableView *tableView = self.tableView;
+    BOOL editing = tableView.editing;
+    [tableView setEditing:!editing animated:YES];
 }
 
 #pragma mark -
