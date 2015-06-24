@@ -110,24 +110,18 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 
 - (void)dataArrayDidChangeCount:(TYVDataArrayModel *)dataArray withObject:(NSIndexSet *)set {
     UITableView *tableView = self.tableView.tableView;
-    NSArray *array = [tableView indexPathsForVisibleRows];
-    
-    __block NSMutableIndexSet *visibleSet = [NSMutableIndexSet indexSet];
-    [set enumerateIndexesUsingBlock:^(NSUInteger index, BOOL *stop) {
-        for (NSIndexPath *path in array) {
-            if (path.row == index) {
-                [visibleSet addIndex:index];
-            }
-        }
-    }];
     
     [tableView beginUpdates];
     if ([tableView numberOfRowsInSection:0] < [self.dataArray count]) {
-        NSIndexPath *path = [NSIndexPath indexPathForRow:[set firstIndex] - 1 inSection:0];
-        [tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
-    } else if ([visibleSet count]) {
-        NSIndexPath *path = [NSIndexPath indexPathForRow:[set firstIndex] inSection:0];
-        [tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationRight];
+        NSIndexPath *path = [NSIndexPath indexPathForRow:[set firstIndex] - 1
+                                               inSection:0];
+        [tableView insertRowsAtIndexPaths:@[path]
+                         withRowAnimation:UITableViewRowAnimationLeft];
+    } else {
+        NSIndexPath *path = [NSIndexPath indexPathForRow:[set firstIndex]
+                                               inSection:0];
+        [tableView deleteRowsAtIndexPaths:@[path]
+                         withRowAnimation:UITableViewRowAnimationRight];
     }
     
     [tableView endUpdates];
@@ -147,7 +141,6 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
     
     [tableView beginUpdates];
     [tableView moveRowAtIndexPath:array[0] toIndexPath:array[1]];
-//    [tableView reloadRowsAtIndexPaths:array withRowAnimation:UITableViewRowAnimationLeft];
     [tableView endUpdates];
     
     NSLog(@"observer reload %lu", (unsigned long)[set firstIndex]);
