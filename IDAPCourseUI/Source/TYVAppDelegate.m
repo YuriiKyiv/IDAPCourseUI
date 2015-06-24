@@ -14,6 +14,8 @@
 #import "TYVDataModel.h"
 #import "TYVDataArrayModel.h"
 
+static const NSUInteger kTYVDataArrayModelCount = 10;
+
 @interface TYVAppDelegate ()
 
 @end
@@ -28,7 +30,7 @@
 //    TYVSquareViewController *controller = [TYVSquareViewController new];
 //    controller.square = [[TYVSquare alloc] initWithSquarePosition:TYVBottomRightCorner];
     
-    TYVDataArrayModel *dataArray = [TYVDataArrayModel dataWithModelsCount:10];
+    TYVDataArrayModel *dataArray = [TYVDataArrayModel dataWithModelsCount:kTYVDataArrayModelCount];
     TYVTableViewController *controller = [TYVTableViewController new];
     controller.dataArray = dataArray;
     window.rootViewController = controller;
