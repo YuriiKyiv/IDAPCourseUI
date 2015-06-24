@@ -122,11 +122,11 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 }
 
 - (void)dataArrayDidChangeOrder:(TYVDataArrayModel *)dataArray withObject:(TYVDataArrayModelInfo *)info {
-//    UITableView *tableView = self.tableView.tableView;
-//    
-//    [tableView beginUpdates];
-//    [tableView moveRowAtIndexPath:info.moveIndexes[0] toIndexPath:info.moveIndexes[0]];
-//    [tableView endUpdates];
+    UITableView *tableView = self.tableView.tableView;
+    
+    [tableView beginUpdates];
+    [tableView moveRowAtIndexPath:info.moveIndexes[0] toIndexPath:info.moveIndexes[1]];
+    [tableView endUpdates];
 }
 
 @end

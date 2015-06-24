@@ -92,7 +92,7 @@
     
     TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo new];
     info.moveIndexes[0] = [NSIndexPath indexPathForItem:sourceIndex inSection:0];
-    info.moveIndexes[1] = [NSIndexPath indexPathForItem:sourceIndex inSection:0];
+    info.moveIndexes[1] = [NSIndexPath indexPathForItem:destinationIndex inSection:0];
     [self setState:TYVDataArrayDidChangeOrder withObject:info];
 }
 
