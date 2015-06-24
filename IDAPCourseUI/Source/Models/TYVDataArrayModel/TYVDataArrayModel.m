@@ -8,6 +8,7 @@
 
 #import "TYVDataArrayModel.h"
 #import "TYVDataModel.h"
+#import "TYVDataArrayModelInfo.h"
 #import "NSMutableArray+TYVExtensions.h"
 
 @interface TYVDataArrayModel ()
@@ -31,7 +32,7 @@
     if (self) {
         NSMutableArray *array = [NSMutableArray arrayWithCapacity:count];
         for (int i = 0; i < count; i++) {
-            [array addObject:[TYVDataModel modelWithRandomString]];
+            [array addObject:[TYVDataModel model]];
         }
         
         self.mutableDataArray = array;
@@ -62,8 +63,10 @@
 - (void)addModel:(TYVDataModel *)model {
     NSMutableArray *array = self.mutableDataArray;
     [array addObject:model];
-    NSIndexSet *set = [NSIndexSet indexSetWithIndex:[array count]];
-    [self setState:TYVDataArrayDidChangeCount withObject:set];
+    
+    TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo new];
+    info.insertIndexes[0] = [NSIndexPath indexPathForItem:[array count] - 1 inSection:0];
+    [self setState:TYVDataArrayDidChangeCount withObject:info];
 }
 
 - (void)removeModel:(TYVDataModel *)model {
@@ -77,17 +80,20 @@
 - (void)removeModelAtIndex:(NSUInteger)index{
     NSMutableArray *array = self.mutableDataArray;
     [array removeObjectAtIndex:index];
-    NSIndexSet *set = [NSIndexSet indexSetWithIndex:index];
-    [self setState:TYVDataArrayDidChangeCount withObject:set];
+
+    TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo new];
+    info.deleteIndexes[0] = [NSIndexPath indexPathForItem:index inSection:0];
+    [self setState:TYVDataArrayDidChangeCount withObject:info];
 }
 
 - (void)moveModelAtIndex:(NSUInteger)sourceIndex toIndex:(NSUInteger)destinationIndex {
     NSMutableArray *array = self.mutableDataArray;
     [array moveObjectAtIndex:sourceIndex toIndex:destinationIndex];
-    NSMutableIndexSet *set = [NSMutableIndexSet indexSet];
-    [set addIndex:sourceIndex];
-    [set addIndex:destinationIndex];
-    [self setState:TYVDataArrayDidChangeOrder withObject:set];
+    
+    TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo new];
+    info.moveIndexes[0] = [NSIndexPath indexPathForItem:sourceIndex inSection:0];
+    info.moveIndexes[1] = [NSIndexPath indexPathForItem:sourceIndex inSection:0];
+    [self setState:TYVDataArrayDidChangeOrder withObject:info];
 }
 
 - (TYVDataModel *)modelAtIndex:(NSUInteger)index {

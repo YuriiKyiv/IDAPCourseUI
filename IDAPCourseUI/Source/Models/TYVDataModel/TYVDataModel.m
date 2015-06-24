@@ -21,7 +21,7 @@
 #pragma mark -
 #pragma mark Class Methods
 
-+ (instancetype)modelWithRandomString {
++ (instancetype)model {
     return [[self alloc] initWithString:[NSString randomString]];
 }
 

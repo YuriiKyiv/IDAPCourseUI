@@ -13,7 +13,7 @@
 @property (nonatomic, readonly) UIImage     *image;
 @property (nonatomic, copy)     NSString    *text;
 
-+ (instancetype)modelWithRandomString;
++ (instancetype)model;
 
 - (instancetype)initWithString:(NSString *)string;
 
