@@ -10,4 +10,18 @@
 
 @implementation TYVDataArrayModelInfo
 
+#pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.insertIndexes = [NSMutableArray array];
+        self.deleteIndexes = [NSMutableArray array];
+        self.moveIndexes = [NSMutableArray array];
+    }
+    
+    return self;
+}
+
 @end

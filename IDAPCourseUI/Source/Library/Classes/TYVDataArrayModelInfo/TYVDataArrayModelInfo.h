@@ -9,5 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface TYVDataArrayModelInfo : NSObject
+@property (nonatomic, strong)   NSMutableArray  *insertIndexes;
+@property (nonatomic, strong)   NSMutableArray  *deleteIndexes;
+@property (nonatomic, strong)   NSMutableArray  *moveIndexes;
 
 @end
