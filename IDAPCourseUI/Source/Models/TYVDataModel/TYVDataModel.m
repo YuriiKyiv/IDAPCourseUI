@@ -10,6 +10,9 @@
 
 #import "NSString+TYVExtensions.h"
 
+static NSString *const  kTYVImageName = @"image";
+static NSString *const  kTYVImageType = @"jpeg";
+
 @interface TYVDataModel ()
 
 @end
@@ -41,7 +44,8 @@
 #pragma mark Accessors
 
 - (UIImage *)image {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"images" ofType:@"jpeg"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:kTYVImageName ofType:kTYVImageType];
+    
     return [UIImage imageWithContentsOfFile:path];
 }
 

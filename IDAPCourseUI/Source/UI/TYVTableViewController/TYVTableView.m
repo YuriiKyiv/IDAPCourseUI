@@ -8,6 +8,9 @@
 
 #import "TYVTableView.h"
 
+static NSString *const  kTYVButtonTitleDone = @"Done";
+static NSString *const  kTYVButtonTitleEdit = @"Edit";
+
 @implementation TYVTableView
 
 @dynamic editing;
@@ -19,7 +22,7 @@
     UITableView *tableView = self.tableView;
     
     [tableView setEditing:editing animated:animate];
-    [self.editButton setTitle:editing ? @"Done" : @"Edit" forState:UIControlStateNormal];
+    [self.editButton setTitle:editing ? kTYVButtonTitleDone : kTYVButtonTitleEdit forState:UIControlStateNormal];
 }
 
 - (BOOL)isEditing {
