@@ -27,6 +27,7 @@
 		5A9820B51B32E9F3009B9CF3 /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5A9820B31B32E9F3009B9CF3 /* images.jpeg */; };
 		5A9820B61B32E9F3009B9CF3 /* Orion_Nebula.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5A9820B41B32E9F3009B9CF3 /* Orion_Nebula.jpg */; };
 		5AE0CC181B3C0357002F0B6D /* TYVModelMovingPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE0CC171B3C0357002F0B6D /* TYVModelMovingPosition.m */; };
+		5AE0CC1D1B3C079D002F0B6D /* NSIndexPath+TYVExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE0CC1C1B3C079D002F0B6D /* NSIndexPath+TYVExtensions.m */; };
 		5AF13C3A1B318914001D37FA /* UIWindow+TYVExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF13C281B318914001D37FA /* UIWindow+TYVExtentions.m */; };
 		5AF13C3B1B318914001D37FA /* TYVSquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF13C2C1B318914001D37FA /* TYVSquare.m */; };
 		5AF13C3C1B318914001D37FA /* TYVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF13C2E1B318914001D37FA /* TYVAppDelegate.m */; };
@@ -88,6 +89,8 @@
 		5A9820B41B32E9F3009B9CF3 /* Orion_Nebula.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Orion_Nebula.jpg; sourceTree = "<group>"; };
 		5AE0CC161B3C0357002F0B6D /* TYVModelMovingPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVModelMovingPosition.h; path = TYVModelMovingPosition/TYVModelMovingPosition.h; sourceTree = "<group>"; };
 		5AE0CC171B3C0357002F0B6D /* TYVModelMovingPosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYVModelMovingPosition.m; path = TYVModelMovingPosition/TYVModelMovingPosition.m; sourceTree = "<group>"; };
+		5AE0CC1B1B3C079D002F0B6D /* NSIndexPath+TYVExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+TYVExtensions.h"; sourceTree = "<group>"; };
+		5AE0CC1C1B3C079D002F0B6D /* NSIndexPath+TYVExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+TYVExtensions.m"; sourceTree = "<group>"; };
 		5AF13C271B318914001D37FA /* UIWindow+TYVExtentions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+TYVExtentions.h"; sourceTree = "<group>"; };
 		5AF13C281B318914001D37FA /* UIWindow+TYVExtentions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+TYVExtentions.m"; sourceTree = "<group>"; };
 		5AF13C2B1B318914001D37FA /* TYVSquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVSquare.h; sourceTree = "<group>"; };
@@ -314,6 +317,15 @@
 			name = TYVModelMovingPosition;
 			sourceTree = "<group>";
 		};
+		5AE0CC1A1B3C079D002F0B6D /* NSIndexPath+TYVExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				5AE0CC1B1B3C079D002F0B6D /* NSIndexPath+TYVExtensions.h */,
+				5AE0CC1C1B3C079D002F0B6D /* NSIndexPath+TYVExtensions.m */,
+			);
+			path = "NSIndexPath+TYVExtensions";
+			sourceTree = "<group>";
+		};
 		5AF13C231B318914001D37FA /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +354,7 @@
 		5AF13C251B318914001D37FA /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				5AE0CC1A1B3C079D002F0B6D /* NSIndexPath+TYVExtensions */,
 				5A148AA21B33163E003B6542 /* NSString+TYVExtensions */,
 				5AF13C261B318914001D37FA /* UIWindow+TYVExtentions */,
 				5A883B021B32CBB9000A084C /* UINib+TYVExtentions */,
@@ -558,6 +571,7 @@
 				5A2EA6B51B32904B0091CCEC /* TYVProtocolObservableObject.m in Sources */,
 				5AF13C471B318B4E001D37FA /* TYVTableView.m in Sources */,
 				5AF13C3E1B318914001D37FA /* TYVSquareViewController.m in Sources */,
+				5AE0CC1D1B3C079D002F0B6D /* NSIndexPath+TYVExtensions.m in Sources */,
 				5AF13C521B31A645001D37FA /* TYVDataArrayModel.m in Sources */,
 				5AF13C401B318914001D37FA /* TYVTableViewController.m in Sources */,
 				5A2EA6B91B3292540091CCEC /* TYVDispatch.m in Sources */,

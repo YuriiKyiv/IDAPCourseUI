@@ -14,8 +14,8 @@
 #pragma mark -
 #pragma mark Class Methods
 
-+ (instancetype)pathWithArray:(NSArray *)array {
-    return [self indexPathForRow:array[0] inSection:array[1]];
++ (instancetype)pathWithIndex:(NSUInteger)index {
+    return [self indexPathForRow:index inSection:0];
 }
 
 @end

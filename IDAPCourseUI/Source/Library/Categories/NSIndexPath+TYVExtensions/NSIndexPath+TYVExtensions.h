@@ -10,6 +10,6 @@
 
 @interface NSIndexPath (TYVExtensions)
 
-+ (instancetype)pathWithArray:(NSArray *)array;
++ (instancetype)pathWithIndex:(NSUInteger)index;
 
 @end

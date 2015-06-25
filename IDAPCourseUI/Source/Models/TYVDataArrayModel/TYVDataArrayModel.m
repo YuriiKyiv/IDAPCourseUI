@@ -12,6 +12,7 @@
 #import "TYVModelMovingPosition.h"
 
 #import "NSMutableArray+TYVExtensions.h"
+#import "NSIndexPath+TYVExtensions.h"
 
 @interface TYVDataArrayModel ()
 @property (nonatomic, strong)   NSMutableArray *mutableDataArray;
@@ -93,8 +94,9 @@
     [array moveObjectAtIndex:sourceIndex toIndex:destinationIndex];
     
     TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo new];
-    TYVModelMovingPosition *position = [TYVModelMovingPosition movingAtSourcePath:[NSIndexPath indexPathForItem:sourceIndex inSection:0] toDestinationPath:[NSIndexPath indexPathForItem:destinationIndex inSection:0]];
-    info.movePosition = position;
+    info.movePosition = [TYVModelMovingPosition movingAtSourcePath:[NSIndexPath indexPathWithIndex:sourceIndex]
+                                                 toDestinationPath:[NSIndexPath indexPathWithIndex:destinationIndex]];
+    
     [self setState:TYVDataArrayDidChangeOrder withObject:info];
 }
 
