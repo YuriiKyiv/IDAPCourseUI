@@ -105,7 +105,7 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 #pragma mark -
 #pragma mark DataArrayModelProtocol
 
-- (void)dataArrayDidChangeCount:(TYVDataArrayModel *)dataArray withObject:(TYVDataArrayModelInfo *)info {
+- (void)dataArray:(TYVDataArrayModel *)dataArray didChangeCountWithObject:(TYVDataArrayModelInfo *)info {
     UITableView *tableView = self.tableView.tableView;
     
     [tableView beginUpdates];
@@ -121,7 +121,7 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
     
 }
 
-- (void)dataArrayDidChangeOrder:(TYVDataArrayModel *)dataArray withObject:(TYVDataArrayModelInfo *)info {
+- (void)dataArray:(TYVDataArrayModel *)dataArray didChangeOrderWithObject:(TYVDataArrayModelInfo *)info {
     UITableView *tableView = self.tableView.tableView;
     
     [tableView beginUpdates];

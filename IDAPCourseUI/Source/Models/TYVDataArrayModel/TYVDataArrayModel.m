@@ -115,10 +115,10 @@
 - (SEL)selectorForState:(NSUInteger)state {
     switch (state) {
         case TYVDataArrayDidChangeCount:
-            return @selector(dataArrayDidChangeCount:withObject:);
+            return @selector(dataArray:didChangeCountWithObject:);
             
         case TYVDataArrayDidChangeOrder:
-            return @selector(dataArrayDidChangeOrder:withObject:);
+            return @selector(dataArray:didChangeOrderWithObject:);
             
         default:
             return [super selectorForState:state];
