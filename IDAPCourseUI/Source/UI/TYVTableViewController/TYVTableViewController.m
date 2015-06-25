@@ -111,14 +111,10 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
     UITableView *tableView = self.tableView.tableView;
     
     [tableView beginUpdates];
-    if ([tableView numberOfRowsInSection:0] < [self.dataArray count]) {
-        [tableView insertRowsAtIndexPaths:info.insertIndexes
-                         withRowAnimation:UITableViewRowAnimationLeft];
-    } else {
-        [tableView deleteRowsAtIndexPaths:info.deleteIndexes
-                         withRowAnimation:UITableViewRowAnimationRight];
-    }
-    
+    [tableView insertRowsAtIndexPaths:info.insertIndexes
+                     withRowAnimation:UITableViewRowAnimationLeft];
+    [tableView deleteRowsAtIndexPaths:info.deleteIndexes
+                     withRowAnimation:UITableViewRowAnimationRight];
     [tableView endUpdates];
     
 }
