@@ -68,7 +68,7 @@
     [array addObject:model];
     
     TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo new];
-    info.insertIndexes[0] = [NSIndexPath indexPathForItem:[array count] - 1 inSection:0];
+    [info.insertIndexes addObject:[NSIndexPath pathWithIndex:[array count] - 1]];
     [self setState:TYVDataArrayDidChangeCount withObject:info];
 }
 
@@ -85,7 +85,7 @@
     [array removeObjectAtIndex:index];
 
     TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo new];
-    info.deleteIndexes[0] = [NSIndexPath indexPathForItem:index inSection:0];
+    [info.deleteIndexes addObject:[NSIndexPath pathWithIndex:index]];
     [self setState:TYVDataArrayDidChangeCount withObject:info];
 }
 
@@ -94,8 +94,8 @@
     [array moveObjectAtIndex:sourceIndex toIndex:destinationIndex];
     
     TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo new];
-    info.movePosition = [TYVModelMovingPosition movingAtSourcePath:[NSIndexPath indexPathWithIndex:sourceIndex]
-                                                 toDestinationPath:[NSIndexPath indexPathWithIndex:destinationIndex]];
+    info.movePosition = [TYVModelMovingPosition movingAtSourcePath:[NSIndexPath pathWithIndex:sourceIndex]
+                                                 toDestinationPath:[NSIndexPath pathWithIndex:destinationIndex]];
     
     [self setState:TYVDataArrayDidChangeOrder withObject:info];
 }
