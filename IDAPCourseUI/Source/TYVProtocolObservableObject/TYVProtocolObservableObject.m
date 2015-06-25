@@ -9,14 +9,14 @@
 #import "TYVProtocolObservableObject.h"
 #import "TYVDispatch.h"
 
-typedef void(^TYVnotifyBlock)(id);
+typedef void(^TYVNotifyBlock)(id, id);
 
 @interface TYVProtocolObservableObject ()
 @property (nonatomic, retain) NSHashTable   *observersHashTable;
 
 - (void)notifyWithSelector:(SEL)selector;
 - (void)notifyWithSelector:(SEL)selector withObject:(id)object;
-- (void)notifyWithSelector:(SEL)selector withObject:(id)object block:(TYVnotifyBlock)block;
+- (void)notifyWithSelector:(SEL)selector withObject:(id)object block:(TYVNotifyBlock)block;
 - (void)notify;
 
 @end
@@ -111,18 +111,20 @@ typedef void(^TYVnotifyBlock)(id);
     [self notifyWithSelector:[self selectorForState:_state] withObject:object];
 }
 
-//- (void)notifyWithSelector:(SEL)selector {
-////    NSHashTable *observers = self.observersHashTable;
-////    for (id observer in observers) {
-////        if ([observer respondsToSelector:selector]) {
-////            [observer performSelector:selector withObject:self];
-////        }
-////    }
-//    
-//    self notifyWithSelector:self withObject:nil block:^(id object) {
-//        [observer performSelector:selector withObject:self];
+- (void)notifyWithSelector:(SEL)selector {
+//    NSHashTable *observers = self.observersHashTable;
+//    for (id observer in observers) {
+//        if ([observer respondsToSelector:selector]) {
+//            [observer performSelector:selector withObject:self];
+//        }
 //    }
-//}
+
+    id block = ^(id observer, id object){
+        [observer performSelector:selector withObject:self];
+    };
+    
+    [self notifyWithSelector:selector withObject:nil block:block];
+}
 
 - (void)notifyWithSelector:(SEL)selector withObject:(id)object {
     NSHashTable *observers = self.observersHashTable;
@@ -134,13 +136,13 @@ typedef void(^TYVnotifyBlock)(id);
 }
 
 
-//- (void)notifyWithSelector:(SEL)selector withObject:(id)object block:(TYVnotifyBlock)block {
-//    NSHashTable *observers = self.observersHashTable;
-//    for (id observer in observers) {
-//        if ([observer respondsToSelector:selector]) {
-//            block(object);
-//        }
-//    }
-//}
+- (void)notifyWithSelector:(SEL)selector withObject:(id)object block:(TYVNotifyBlock)block {
+    NSHashTable *observers = self.observersHashTable;
+    for (id observer in observers) {
+        if ([observer respondsToSelector:selector]) {
+            block(observer, object);
+        }
+    }
+}
 
 @end
