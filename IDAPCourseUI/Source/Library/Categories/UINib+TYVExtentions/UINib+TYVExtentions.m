@@ -9,27 +9,6 @@
 #import "UINib+TYVExtentions.h"
 #import "NSArray+TYVExtentions.h"
 
-@interface  UINib (__TYVPrivateNib)
-
-+ (TYVFindObjectBlock)objectWithClassBlock:(Class)class;
-
-@end
-
-@implementation UINib (__TYVPrivateNib)
-
-#pragma mark -
-#pragma mark Private Class Methods
-
-+ (TYVFindObjectBlock)objectWithClassBlock:(Class)class {
-    TYVFindObjectBlock result = ^(UIView *view) {
-        return ([view isMemberOfClass:class]);
-    };
-    
-    return result;
-}
-
-@end
-
 @implementation UINib (TYVExtentions)
 
 #pragma mark -
@@ -57,6 +36,14 @@
 
 + (id)objectWithClass:(Class)cls bundle:(NSBundle *)bundle {
     return [[UINib nibWithClass:cls bundle:bundle] objectWithClass:cls];
+}
+
++ (TYVFindObjectBlock)objectWithClassBlock:(Class)class {
+    TYVFindObjectBlock result = ^(UIView *view) {
+        return ([view isMemberOfClass:class]);
+    };
+    
+    return result;
 }
 
 #pragma mark -
