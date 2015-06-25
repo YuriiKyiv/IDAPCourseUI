@@ -18,7 +18,7 @@
     return [self dequeueReusableCellWithIdentifier:NSStringFromClass(cls)];
 }
 
-- (id)resusableCellWithClass:(Class)cls {
+- (id)reusableCellWithClass:(Class)cls {
     id cell = [self dequeueReusableCellWithClass:cls];
     if (!cell) {
         cell = [UINib objectWithClass:cls];

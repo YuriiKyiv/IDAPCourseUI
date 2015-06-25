@@ -14,6 +14,6 @@
 
 - (id)dequeueReusableCellWithClass:(Class)cls;
 
-- (id)resusableCellWithClass:(Class)cls;
+- (id)reusableCellWithClass:(Class)cls;
 
 @end

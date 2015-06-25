@@ -81,7 +81,7 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TYVDataCell *cell = [tableView dequeueReusableCellWithClass:[TYVDataCell class]];
+    TYVDataCell *cell = [tableView reusableCellWithClass:[TYVDataCell class]];
     
     cell.data = self.dataArray[indexPath.row];
     
