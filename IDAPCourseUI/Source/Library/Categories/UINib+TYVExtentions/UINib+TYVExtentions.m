@@ -47,6 +47,14 @@
     return [[self nibWithClass:cls] objectWithClass:cls];
 }
 
++ (id)objectWithClass:(Class)cls owner:(id)owner {
+    return [[self nibWithClass:cls] objectWithClass:cls owner:owner];
+}
+
++ (id)objectWithClass:(Class)cls owner:(id)owner options:(id)options {
+    return [[self nibWithClass:cls] objectWithClass:cls owner:owner options:options];
+}
+
 + (id)objectWithClass:(Class)cls bundle:(NSBundle *)bundle {
     return [[UINib nibWithClass:cls bundle:bundle] objectWithClass:cls];
 }
@@ -56,6 +64,15 @@
 
 - (id)objectWithClass:(Class)cls {
     return [[self instantiate] objectWithBlock:[UINib objectWithClassBlock:cls]];
+}
+
+- (id)objectWithClass:(Class)cls owner:(id)owner {
+    return [[self instantiateWithOwner:owner]
+            objectWithBlock:[UINib objectWithClassBlock:cls]];
+}
+
+- (id)objectWithClass:(Class)cls owner:(id)owner options:(NSDictionary *)options {
+    return [[self instantiateWithOwner:owner options:options] objectWithBlock:[UINib objectWithClassBlock:cls]];
 }
 
 - (NSArray *)instantiate {
