@@ -14,6 +14,8 @@
 #import "TYVDataArrayModel.h"
 #import "TYVDataModel.h"
 #import "TYVDataArrayModelInfo.h"
+#import "TYVModelMovingPosition.h"
+
 
 #import "UINib+TYVExtentions.h"
 
@@ -125,7 +127,8 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
     UITableView *tableView = self.tableView.tableView;
     
     [tableView beginUpdates];
-    [tableView moveRowAtIndexPath:info.moveIndexes[0] toIndexPath:info.moveIndexes[1]];
+    [tableView moveRowAtIndexPath:info.movePosition.sourcePath
+                      toIndexPath:info.movePosition.destinationPath];
     [tableView endUpdates];
 }
 

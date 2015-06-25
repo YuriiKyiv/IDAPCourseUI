@@ -26,6 +26,7 @@
 		5A883B091B32DE90000A084C /* UITableView+TYVExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A883B081B32DE90000A084C /* UITableView+TYVExtentions.m */; };
 		5A9820B51B32E9F3009B9CF3 /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5A9820B31B32E9F3009B9CF3 /* images.jpeg */; };
 		5A9820B61B32E9F3009B9CF3 /* Orion_Nebula.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5A9820B41B32E9F3009B9CF3 /* Orion_Nebula.jpg */; };
+		5AE0CC181B3C0357002F0B6D /* TYVModelMovingPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE0CC171B3C0357002F0B6D /* TYVModelMovingPosition.m */; };
 		5AF13C3A1B318914001D37FA /* UIWindow+TYVExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF13C281B318914001D37FA /* UIWindow+TYVExtentions.m */; };
 		5AF13C3B1B318914001D37FA /* TYVSquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF13C2C1B318914001D37FA /* TYVSquare.m */; };
 		5AF13C3C1B318914001D37FA /* TYVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF13C2E1B318914001D37FA /* TYVAppDelegate.m */; };
@@ -85,6 +86,8 @@
 		5A883B081B32DE90000A084C /* UITableView+TYVExtentions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITableView+TYVExtentions.m"; path = "UITableView+TYVExtentions/UITableView+TYVExtentions.m"; sourceTree = "<group>"; };
 		5A9820B31B32E9F3009B9CF3 /* images.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpeg; sourceTree = "<group>"; };
 		5A9820B41B32E9F3009B9CF3 /* Orion_Nebula.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Orion_Nebula.jpg; sourceTree = "<group>"; };
+		5AE0CC161B3C0357002F0B6D /* TYVModelMovingPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVModelMovingPosition.h; path = TYVModelMovingPosition/TYVModelMovingPosition.h; sourceTree = "<group>"; };
+		5AE0CC171B3C0357002F0B6D /* TYVModelMovingPosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYVModelMovingPosition.m; path = TYVModelMovingPosition/TYVModelMovingPosition.m; sourceTree = "<group>"; };
 		5AF13C271B318914001D37FA /* UIWindow+TYVExtentions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+TYVExtentions.h"; sourceTree = "<group>"; };
 		5AF13C281B318914001D37FA /* UIWindow+TYVExtentions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+TYVExtentions.m"; sourceTree = "<group>"; };
 		5AF13C2B1B318914001D37FA /* TYVSquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVSquare.h; sourceTree = "<group>"; };
@@ -242,6 +245,7 @@
 			children = (
 				5A4BF2FD1B3AAD68009C7F58 /* TYVDataArrayModelInfo */,
 				5A883AF51B32B1B6000A084C /* TYVTableViewCell */,
+				5AE0CC191B3C035A002F0B6D /* TYVModelMovingPosition */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -299,6 +303,15 @@
 				5A9820B41B32E9F3009B9CF3 /* Orion_Nebula.jpg */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		5AE0CC191B3C035A002F0B6D /* TYVModelMovingPosition */ = {
+			isa = PBXGroup;
+			children = (
+				5AE0CC161B3C0357002F0B6D /* TYVModelMovingPosition.h */,
+				5AE0CC171B3C0357002F0B6D /* TYVModelMovingPosition.m */,
+			);
+			name = TYVModelMovingPosition;
 			sourceTree = "<group>";
 		};
 		5AF13C231B318914001D37FA /* Source */ = {
@@ -530,6 +543,7 @@
 				5AF13C3A1B318914001D37FA /* UIWindow+TYVExtentions.m in Sources */,
 				5A148AA51B33163E003B6542 /* NSString+TYVExtensions.m in Sources */,
 				5A22FDB11B2E935B0005AFDC /* main.m in Sources */,
+				5AE0CC181B3C0357002F0B6D /* TYVModelMovingPosition.m in Sources */,
 				5AF13C4E1B31A5F4001D37FA /* TYVDataModel.m in Sources */,
 				5A883AFC1B32B4DA000A084C /* TYVDataCell.m in Sources */,
 				5A13A4201B383B5800B4ED8D /* NSBundle+TYVExtensions.m in Sources */,

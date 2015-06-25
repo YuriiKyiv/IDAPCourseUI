@@ -7,6 +7,7 @@
 //
 
 #import "TYVDataArrayModelInfo.h"
+#import "TYVModelMovingPosition.h"
 
 @implementation TYVDataArrayModelInfo
 
@@ -18,7 +19,7 @@
     if (self) {
         self.insertIndexes = [NSMutableArray array];
         self.deleteIndexes = [NSMutableArray array];
-        self.moveIndexes = [NSMutableArray array];
+        self.movePosition = [TYVModelMovingPosition  new];
     }
     
     return self;

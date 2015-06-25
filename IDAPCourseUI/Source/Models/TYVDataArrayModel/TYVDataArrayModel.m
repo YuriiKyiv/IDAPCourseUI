@@ -9,6 +9,8 @@
 #import "TYVDataArrayModel.h"
 #import "TYVDataModel.h"
 #import "TYVDataArrayModelInfo.h"
+#import "TYVModelMovingPosition.h"
+
 #import "NSMutableArray+TYVExtensions.h"
 
 @interface TYVDataArrayModel ()
@@ -91,8 +93,8 @@
     [array moveObjectAtIndex:sourceIndex toIndex:destinationIndex];
     
     TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo new];
-    info.moveIndexes[0] = [NSIndexPath indexPathForItem:sourceIndex inSection:0];
-    info.moveIndexes[1] = [NSIndexPath indexPathForItem:destinationIndex inSection:0];
+    TYVModelMovingPosition *position = [TYVModelMovingPosition movingAtSourcePath:[NSIndexPath indexPathForItem:sourceIndex inSection:0] toDestinationPath:[NSIndexPath indexPathForItem:destinationIndex inSection:0]];
+    info.movePosition = position;
     [self setState:TYVDataArrayDidChangeOrder withObject:info];
 }
 

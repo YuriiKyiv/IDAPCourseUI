@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class TYVModelMovingPosition;
+
 @interface TYVDataArrayModelInfo : NSObject
-@property (nonatomic, strong)   NSMutableArray  *insertIndexes;
-@property (nonatomic, strong)   NSMutableArray  *deleteIndexes;
-@property (nonatomic, strong)   NSMutableArray  *moveIndexes;
+@property (nonatomic, strong)   NSMutableArray          *insertIndexes;
+@property (nonatomic, strong)   NSMutableArray          *deleteIndexes;
+@property (nonatomic, strong)   TYVModelMovingPosition  *movePosition;
 
 @end
