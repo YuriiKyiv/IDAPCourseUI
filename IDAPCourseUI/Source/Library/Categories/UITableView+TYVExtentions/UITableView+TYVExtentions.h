@@ -12,6 +12,8 @@
 
 @interface UITableView (TYVExtentions)
 
-- (id)dequeueReusableCellWithClass:(Class)class;
+- (id)dequeueReusableCellWithClass:(Class)cls;
+
+- (id)resusableCellWithClass:(Class)cls;
 
 @end

@@ -14,10 +14,14 @@
 #pragma mark -
 #pragma mark Public Methods
 
-- (id)dequeueReusableCellWithClass:(Class)class {
-    id cell = [self dequeueReusableCellWithIdentifier:NSStringFromClass(class)];
+- (id)dequeueReusableCellWithClass:(Class)cls {
+    return [self dequeueReusableCellWithIdentifier:NSStringFromClass(cls)];
+}
+
+- (id)resusableCellWithClass:(Class)cls {
+    id cell = [self dequeueReusableCellWithClass:cls];
     if (!cell) {
-        cell = [UINib objectWithClass:class];
+        cell = [UINib objectWithClass:cls];
     }
     
     return cell;
