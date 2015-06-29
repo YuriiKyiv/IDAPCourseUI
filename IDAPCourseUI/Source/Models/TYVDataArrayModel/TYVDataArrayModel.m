@@ -116,6 +116,14 @@
     [self.mutableDataArray exchangeObjectAtIndex:sourceIndex withObjectAtIndex:destinationIndex];
 }
 
+- (void)load {
+    
+}
+
+- (void)save {
+    
+}
+
 #pragma mark -
 #pragma mark Observer Object
 

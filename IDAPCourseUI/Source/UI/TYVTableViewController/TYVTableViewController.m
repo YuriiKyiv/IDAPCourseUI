@@ -41,9 +41,13 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 - (void)setDataArray:(TYVDataArrayModel *)dataArray {
     if (_dataArray != dataArray) {
         [_dataArray removeObserver:self];
+        [_dataArray save];
         
         _dataArray = dataArray;
         [_dataArray addObserver:self];
+        if (_dataArray.state != TYVDataArrayModelLoaded) {
+            [_dataArray load];
+        }
     }
 }
 
