@@ -116,6 +116,9 @@
     [self.mutableDataArray exchangeObjectAtIndex:sourceIndex withObjectAtIndex:destinationIndex];
 }
 
+#pragma mark -
+#pragma mark Observer Object
+
 - (SEL)selectorForState:(NSUInteger)state {
     switch (state) {
         case TYVDataArrayDidChange:
@@ -124,6 +127,22 @@
         default:
             return [super selectorForState:state];
     }
+}
+
+#pragma mark -
+#pragma mark NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:self.mutableDataArray forKey:@"mutableDataArray"];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    self = [super init];
+    if (self) {
+        _mutableDataArray = [decoder decodeObjectForKey:@"mutableDataArray"];
+    }
+    
+    return self;
 }
 
 @end

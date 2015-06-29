@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface TYVDataModel : NSObject
+@interface TYVDataModel : NSObject <NSCoding>
 @property (nonatomic, readonly) UIImage     *image;
 @property (nonatomic, copy)     NSString    *text;
 

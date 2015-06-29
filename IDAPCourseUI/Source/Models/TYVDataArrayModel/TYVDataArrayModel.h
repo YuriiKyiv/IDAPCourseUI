@@ -14,7 +14,7 @@ typedef NS_ENUM(NSUInteger, TYVDataModelArrayModelState) {
     TYVDataArrayDidChange
 };
 
-@interface TYVDataArrayModel : TYVProtocolObservableObject
+@interface TYVDataArrayModel : TYVProtocolObservableObject <NSCoding>
 @property (nonatomic, readonly) NSArray *dataArray;
 
 + (instancetype)dataWithModelsCount:(NSUInteger)count;

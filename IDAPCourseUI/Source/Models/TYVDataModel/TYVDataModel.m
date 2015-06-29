@@ -49,4 +49,21 @@ static NSString *const  kTYVImageType = @"jpeg";
     return [UIImage imageWithContentsOfFile:path];
 }
 
+#pragma mark -
+#pragma mark NSCoding
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:self.text forKey:@"text"];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    self = [super init];
+    if (self) {
+        _text = [decoder decodeObjectForKey:@"text"];
+    }
+    
+    return self;
+}
+
+
 @end
