@@ -132,6 +132,9 @@
         case TYVDataArrayDidChange:
             return @selector(dataArray:didChangeWithObject:);
             
+        case TYVDataArrayLoaded:
+            return @selector(dataArrayLoaded:);
+            
         default:
             return [super selectorForState:state];
     }

@@ -45,7 +45,7 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
         
         _dataArray = dataArray;
         [_dataArray addObserver:self];
-        if (_dataArray.state != TYVDataArrayModelLoaded) {
+        if (_dataArray.state != TYVDataArrayLoaded) {
             [self.tableView showSpiner];
             [_dataArray load];
         }
@@ -58,7 +58,7 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (self.dataArray.state == TYVDataArrayModelUnLoaded) {
+    if (self.dataArray.state == TYVDataArrayUnLoaded) {
         [self.tableView showSpiner];
     }
     
@@ -118,6 +118,10 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 
 - (void)dataArray:(TYVDataArrayModel *)dataArray didChangeWithObject:(TYVDataArrayModelInfo *)info {
     [self.tableView.tableView updateWithInfo:info];
+}
+
+- (void)dataArrayLoaded:(TYVDataArrayModel *)dataArray {
+    [self.tableView hideSpiner];
 }
 
 @end

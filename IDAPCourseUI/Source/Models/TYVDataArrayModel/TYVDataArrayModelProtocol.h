@@ -15,4 +15,6 @@
 @optional
 - (void)dataArray:(TYVDataArrayModel *)dataArray didChangeWithObject:(id)object;
 
+- (void)dataArrayLoaded:(TYVDataArrayModel *)dataArray;
+
 @end

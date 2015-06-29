@@ -43,7 +43,7 @@
                         <action selector="onClickEditButton:" destination="-1" eventType="touchUpInside" id="bBN-Oe-dRf"/>
                     </connections>
                 </button>
-                <view alpha="0.5" contentMode="scaleToFill" id="CQY-so-PNE" userLabel="Spiner">
+                <view alpha="0.0" contentMode="scaleToFill" id="CQY-so-PNE" userLabel="Spiner">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>

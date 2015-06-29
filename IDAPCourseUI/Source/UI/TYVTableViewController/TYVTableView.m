@@ -40,10 +40,17 @@ static NSString *const  kTYVButtonTitleEdit = @"Edit";
 #pragma mark Public Methods
 
 - (void)showSpiner {
-    
+    [UIView animateWithDuration:1 animations:^{
+        CGFloat alpha = 0.5;
+        self.spinerView.alpha = alpha;
+    }];
 }
 
 - (void)hideSpiner {
+    [UIView animateWithDuration:1 animations:^{
+        CGFloat alpha = 0;
+        self.spinerView.alpha = alpha;
+    }];
     
 }
 

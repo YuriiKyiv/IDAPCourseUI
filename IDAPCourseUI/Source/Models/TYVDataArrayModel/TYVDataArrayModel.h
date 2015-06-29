@@ -11,8 +11,8 @@
 @class TYVDataModel;
 
 typedef NS_ENUM(NSUInteger, TYVDataModelArrayModelState) {
-    TYVDataArrayModelUnLoaded,
-    TYVDataArrayModelLoaded,
+    TYVDataArrayUnLoaded,
+    TYVDataArrayLoaded,
     TYVDataArrayDidChange
 };
 
