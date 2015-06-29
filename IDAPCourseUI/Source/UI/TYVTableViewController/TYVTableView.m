@@ -8,6 +8,9 @@
 
 #import "TYVTableView.h"
 
+static const NSTimeInterval TYVDuration =   1.0;
+static const CGFloat        TYVAlpha    =   0.5;
+
 static NSString *const  kTYVButtonTitleDone = @"Done";
 static NSString *const  kTYVButtonTitleEdit = @"Edit";
 
@@ -40,16 +43,14 @@ static NSString *const  kTYVButtonTitleEdit = @"Edit";
 #pragma mark Public Methods
 
 - (void)showSpiner {
-    [UIView animateWithDuration:1 animations:^{
-        CGFloat alpha = 0.5;
-        self.spinerView.alpha = alpha;
+    [UIView animateWithDuration:TYVDuration animations:^{
+        self.spinerView.alpha = TYVAlpha;
     }];
 }
 
 - (void)hideSpiner {
-    [UIView animateWithDuration:1 animations:^{
-        CGFloat alpha = 0;
-        self.spinerView.alpha = alpha;
+    [UIView animateWithDuration:TYVDuration animations:^{
+        self.spinerView.alpha = CGFLOAT_MIN;
     }];
     
 }
