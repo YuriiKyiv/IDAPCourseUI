@@ -27,6 +27,7 @@
 
 - (id)objectWithClass:(Class)cls owner:(id)owner options:(NSDictionary *)options {
     NSArray *array = [self loadNibNamed:NSStringFromClass(cls) owner:owner options:options];
+    
     return [array objectWithBlock:[UINib objectWithClassBlock:cls]];
 }
 
