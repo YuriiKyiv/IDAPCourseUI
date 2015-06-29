@@ -23,11 +23,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="67" height="43"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="ncu-oo-Uv6">
+                        <rect key="frame" x="23" y="12" width="20" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </activityIndicatorView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="dataLabel" destination="elS-Gi-9kO" id="N85-CK-gi9"/>
                 <outlet property="imageView" destination="bjU-Cy-ZRM" id="faK-DL-Cpu"/>
+                <outlet property="spinerView" destination="ncu-oo-Uv6" id="I2g-bu-Jtu"/>
             </connections>
             <point key="canvasLocation" x="513" y="342"/>
         </tableViewCell>

@@ -15,6 +15,8 @@
 @property (nonatomic, strong)   IBOutlet UILabel        *dataLabel;
 @property (nonatomic, strong)   IBOutlet UIImageView    *imageView;
 
+@property (nonatomic ,strong)   IBOutlet UIActivityIndicatorView    *spinerView;
+
 @property (nonatomic, strong)   TYVDataModel    *data;
 
 - (void)fillWithModel:(TYVDataModel *)model;

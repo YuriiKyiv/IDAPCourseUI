@@ -65,9 +65,7 @@ typedef void(^TYVNotifyBlock)(id, id);
 }
 
 - (NSUInteger)state {
-    @synchronized (self) {
         return _state;
-    }
 }
 
 #pragma mark -

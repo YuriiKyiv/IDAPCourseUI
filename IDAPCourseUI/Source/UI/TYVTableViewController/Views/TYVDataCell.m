@@ -27,7 +27,6 @@
         
         _data = data;
         [_data addObserver:self];
-        
         [self fillWithModel:_data];
     }
 }
@@ -37,13 +36,18 @@
 
 - (void)fillWithModel:(TYVDataModel *)model {
     self.dataLabel.text = model.text;
-    self.imageView.image = model.image;
+    if (model.state == TYVImageUnLoaded) {
+        [self.spinerView startAnimating];
+    } else {
+        self.imageView.image = model.image;
+    }
 }
 
 #pragma mark -
 #pragma mark ImageProtocol
 
 - (void)dataModelDidLoadImage:(TYVDataModel *)dataModel {
+    [self.spinerView stopAnimating];
     [self fillWithModel:self.data];
 }
 

@@ -47,7 +47,9 @@ static NSString *const  kTYVImageType = @"jpeg";
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         NSString *path = [[NSBundle mainBundle] pathForResource:kTYVImageName ofType:kTYVImageType];
         self.image = [UIImage imageWithContentsOfFile:path];
-        self.state = TYVImageLoaded;
+        sleep(1);
+//        self.state = TYVImageLoaded;
+        [self setState:TYVImageLoaded withObject:nil];
     });
 }
 

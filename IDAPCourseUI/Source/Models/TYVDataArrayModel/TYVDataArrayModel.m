@@ -117,9 +117,10 @@
 }
 
 - (void)load {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         sleep(3);
-        self.state = TYVDataArrayLoaded;
+//        self.state = TYVDataArrayLoaded;
+        [self setState:TYVDataArrayLoaded withObject:nil];
     });
 }
 
