@@ -60,9 +60,9 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
     
     if (self.dataArray.state == TYVDataArrayUnLoaded) {
         [self.tableView showSpiner];
+    } else {
+        [self.tableView.tableView reloadData];
     }
-    
-    [self.tableView.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -129,6 +129,7 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 
 - (void)dataArrayLoaded:(TYVDataArrayModel *)dataArray {
     [self.tableView hideSpiner];
+    [self.tableView.tableView reloadData];
 }
 
 @end
