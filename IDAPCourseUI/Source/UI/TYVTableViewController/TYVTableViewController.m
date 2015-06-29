@@ -45,7 +45,7 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
         
         _dataArray = dataArray;
         [_dataArray addObserver:self];
-        if (_dataArray.state != TYVDataArrayLoaded) {
+        if (_dataArray.state == TYVDataArrayUnLoaded) {
             [self.tableView showSpiner];
             [_dataArray load];
         }
