@@ -12,11 +12,21 @@
 @implementation TYVDataCell
 
 #pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (void)dealloc {
+    self.data = nil;
+}
+
+#pragma mark -
 #pragma mark Accessors
 
 - (void)setData:(TYVDataModel *)data {
     if (_data != data) {
+        [_data removeObserver:self];
+        
         _data = data;
+        [_data addObserver:self];
         
         [self fillWithModel:_data];
     }
@@ -28,6 +38,13 @@
 - (void)fillWithModel:(TYVDataModel *)model {
     self.dataLabel.text = model.text;
     self.imageView.image = model.image;
+}
+
+#pragma mark -
+#pragma mark ImageProtocol
+
+- (void)dataModelDidLoadImage:(TYVDataModel *)dataModel {
+    [self fillWithModel:self.data];
 }
 
 @end
