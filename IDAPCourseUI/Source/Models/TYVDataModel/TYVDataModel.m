@@ -14,12 +14,11 @@ static NSString *const  kTYVImageName = @"image";
 static NSString *const  kTYVImageType = @"jpeg";
 
 @interface TYVDataModel ()
+@property (nonatomic, strong)   UIImage *image;
 
 @end
 
 @implementation TYVDataModel
-
-@dynamic image;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -35,18 +34,34 @@ static NSString *const  kTYVImageType = @"jpeg";
     self = [super init];
     if (self) {
         self.text = string;
+        [self load];
     }
     
     return self;
 }
 
 #pragma mark -
-#pragma mark Accessors
+#pragma mark Private Methods
 
-- (UIImage *)image {
-    NSString *path = [[NSBundle mainBundle] pathForResource:kTYVImageName ofType:kTYVImageType];
-    
-    return [UIImage imageWithContentsOfFile:path];
+- (void)load {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        NSString *path = [[NSBundle mainBundle] pathForResource:kTYVImageName ofType:kTYVImageType];
+        self.image = [UIImage imageWithContentsOfFile:path];
+        self.state = TYVImageLoaded;
+    });
+}
+
+#pragma mark -
+#pragma mark Observer Object
+
+- (SEL)selectorForState:(NSUInteger)state {
+    switch (state) {
+        case TYVImageLoaded:
+            return @selector(dataModelDidLoadImage:);
+            
+        default:
+            return [super selectorForState:state];
+    }
 }
 
 #pragma mark -

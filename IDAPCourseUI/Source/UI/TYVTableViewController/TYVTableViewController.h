@@ -14,4 +14,6 @@
 @interface TYVTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong)   TYVDataArrayModel   *dataArray;
 
+- (void)save;
+
 @end

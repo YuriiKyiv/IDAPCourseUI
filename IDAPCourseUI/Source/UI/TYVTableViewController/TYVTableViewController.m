@@ -83,6 +83,13 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 }
 
 #pragma mark -
+#pragma mark Public Methods
+
+- (void)save {
+    [self.dataArray save];
+}
+
+#pragma mark -
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
