@@ -120,12 +120,14 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         sleep(3);
 //        self.state = TYVDataArrayLoaded;
+        TYVDataArrayModel *modelsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:@"/tmp/myArchive"];
+        self.mutableDataArray = modelsArray.mutableDataArray;
         [self setState:TYVDataArrayLoaded withObject:nil];
     });
 }
 
 - (void)save {
-    
+    [NSKeyedArchiver archiveRootObject:self toFile:@"/tmp/myArchive"];
 }
 
 #pragma mark -
