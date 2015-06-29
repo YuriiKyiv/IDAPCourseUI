@@ -10,7 +10,6 @@
 #import "TYVMacro.h"
 #import "TYVTableView.h"
 #import "TYVDataCell.h"
-#import "UITableView+TYVExtentions.h"
 #import "TYVDataArrayModel.h"
 #import "TYVDataModel.h"
 #import "TYVDataArrayModelInfo.h"
@@ -18,6 +17,7 @@
 
 
 #import "UINib+TYVExtentions.h"
+#import "UITableView+TYVExtentions.h"
 
 TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 
@@ -107,25 +107,8 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 #pragma mark -
 #pragma mark DataArrayModelProtocol
 
-- (void)dataArray:(TYVDataArrayModel *)dataArray didChangeCountWithObject:(TYVDataArrayModelInfo *)info {
-    UITableView *tableView = self.tableView.tableView;
-    
-    [tableView beginUpdates];
-    [tableView insertRowsAtIndexPaths:info.insertIndexes
-                     withRowAnimation:UITableViewRowAnimationLeft];
-    [tableView deleteRowsAtIndexPaths:info.deleteIndexes
-                     withRowAnimation:UITableViewRowAnimationRight];
-    [tableView endUpdates];
-    
-}
-
-- (void)dataArray:(TYVDataArrayModel *)dataArray didChangeOrderWithObject:(TYVDataArrayModelInfo *)info {
-    UITableView *tableView = self.tableView.tableView;
-    
-    [tableView beginUpdates];
-    [tableView moveRowAtIndexPath:info.movePosition.sourcePath
-                      toIndexPath:info.movePosition.destinationPath];
-    [tableView endUpdates];
+- (void)dataArray:(TYVDataArrayModel *)dataArray didChangeWithObject:(TYVDataArrayModelInfo *)info {
+    [self.tableView.tableView updateWithInfo:info];
 }
 
 @end

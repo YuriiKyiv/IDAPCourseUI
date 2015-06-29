@@ -11,8 +11,7 @@
 @class TYVDataModel;
 
 typedef NS_ENUM(NSUInteger, TYVDataModelArrayModelState) {
-    TYVDataArrayDidChangeCount,
-    TYVDataArrayDidChangeOrder
+    TYVDataArrayDidChange
 };
 
 @interface TYVDataArrayModel : TYVProtocolObservableObject

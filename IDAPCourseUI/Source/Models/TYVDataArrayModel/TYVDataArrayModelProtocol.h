@@ -13,8 +13,6 @@
 @protocol TYVDataArrayModelProtocol <NSObject>
 
 @optional
-- (void)dataArray:(TYVDataArrayModel *)dataArray didChangeCountWithObject:(id)object;
-
-- (void)dataArray:(TYVDataArrayModel *)dataArray didChangeOrderWithObject:(id)object;
+- (void)dataArray:(TYVDataArrayModel *)dataArray didChangeWithObject:(id)object;
 
 @end

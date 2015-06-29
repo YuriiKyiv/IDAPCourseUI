@@ -7,6 +7,8 @@
 //
 
 #import "UITableView+TYVExtentions.h"
+#import "TYVDataArrayModelInfo.h"
+#import "TYVModelMovingPosition.h"
 #import "UINib+TYVExtentions.h"
 
 @implementation UITableView (TYVExtentions)
@@ -25,6 +27,19 @@
     }
     
     return cell;
+}
+
+- (void)updateWithInfo:(TYVDataArrayModelInfo *)info {
+    UITableView *tableView = self;
+    
+    [tableView beginUpdates];
+    [tableView insertRowsAtIndexPaths:info.insertIndexes
+                     withRowAnimation:UITableViewRowAnimationLeft];
+    [tableView deleteRowsAtIndexPaths:info.deleteIndexes
+                     withRowAnimation:UITableViewRowAnimationRight];
+    [tableView moveRowAtIndexPath:info.movePosition.sourcePath
+                      toIndexPath:info.movePosition.destinationPath];
+    [tableView endUpdates];
 }
 
 @end

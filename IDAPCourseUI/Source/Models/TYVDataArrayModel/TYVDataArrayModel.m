@@ -69,7 +69,7 @@
     
     TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo new];
     [info.insertIndexes addObject:[NSIndexPath pathWithIndex:[array count] - 1]];
-    [self setState:TYVDataArrayDidChangeCount withObject:info];
+    [self setState:TYVDataArrayDidChange withObject:info];
 }
 
 - (void)removeModel:(TYVDataModel *)model {
@@ -86,7 +86,7 @@
 
     TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo new];
     [info.deleteIndexes addObject:[NSIndexPath pathWithIndex:index]];
-    [self setState:TYVDataArrayDidChangeCount withObject:info];
+    [self setState:TYVDataArrayDidChange withObject:info];
 }
 
 - (void)moveModelAtIndex:(NSUInteger)sourceIndex toIndex:(NSUInteger)destinationIndex {
@@ -97,7 +97,7 @@
     info.movePosition = [TYVModelMovingPosition movingAtSourcePath:[NSIndexPath pathWithIndex:sourceIndex]
                                                  toDestinationPath:[NSIndexPath pathWithIndex:destinationIndex]];
     
-    [self setState:TYVDataArrayDidChangeOrder withObject:info];
+    [self setState:TYVDataArrayDidChange withObject:info];
 }
 
 - (TYVDataModel *)modelAtIndex:(NSUInteger)index {
@@ -118,11 +118,8 @@
 
 - (SEL)selectorForState:(NSUInteger)state {
     switch (state) {
-        case TYVDataArrayDidChangeCount:
-            return @selector(dataArray:didChangeCountWithObject:);
-            
-        case TYVDataArrayDidChangeOrder:
-            return @selector(dataArray:didChangeOrderWithObject:);
+        case TYVDataArrayDidChange:
+            return @selector(dataArray:didChangeWithObject:);
             
         default:
             return [super selectorForState:state];

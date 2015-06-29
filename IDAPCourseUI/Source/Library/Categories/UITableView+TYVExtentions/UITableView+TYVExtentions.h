@@ -16,4 +16,6 @@
 
 - (id)reusableCellWithClass:(Class)cls;
 
+- (void)updateWithInfo:(id)info;
+
 @end
