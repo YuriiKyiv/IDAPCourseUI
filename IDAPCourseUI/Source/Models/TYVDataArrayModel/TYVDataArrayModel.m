@@ -14,6 +14,8 @@
 #import "NSMutableArray+TYVExtensions.h"
 #import "NSIndexPath+TYVExtensions.h"
 
+static NSString *const  kTYVFilePath = @"/tmp/myArchive";
+
 @interface TYVDataArrayModel ()
 @property (nonatomic, strong)   NSMutableArray *mutableDataArray;
 
@@ -120,14 +122,14 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         sleep(3);
 //        self.state = TYVDataArrayLoaded;
-        TYVDataArrayModel *modelsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:@"/tmp/myArchive"];
+        TYVDataArrayModel *modelsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:kTYVFilePath];
         self.mutableDataArray = modelsArray.mutableDataArray;
         [self setState:TYVDataArrayLoaded withObject:nil];
     });
 }
 
 - (void)save {
-    [NSKeyedArchiver archiveRootObject:self toFile:@"/tmp/myArchive"];
+    [NSKeyedArchiver archiveRootObject:self toFile:kTYVFilePath];
 }
 
 #pragma mark -
