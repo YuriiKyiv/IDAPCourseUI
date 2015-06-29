@@ -8,11 +8,13 @@
 
 #import "TYVTableView.h"
 
+#import "UINib+TYVExtentions.h"
+
 static const NSTimeInterval TYVDuration =   1.0;
 static const CGFloat        TYVAlpha    =   0.5;
 
-static NSString *const  kTYVButtonTitleDone = @"Done";
-static NSString *const  kTYVButtonTitleEdit = @"Edit";
+static NSString * const  kTYVButtonTitleDone = @"Done";
+static NSString * const  kTYVButtonTitleEdit = @"Edit";
 
 @implementation TYVTableView
 
@@ -37,6 +39,10 @@ static NSString *const  kTYVButtonTitleEdit = @"Edit";
 
 - (void)awakeFromNib {
     [self setEditing:NO animated:NO];
+    UINib *nib = [UINib nibWithNibName:@"TYVSpinerView" bundle:nil];
+    id object = [nib objectWithClass:[UIView class]];
+    [self addSubview:object];
+    self.spinerView = object;
 }
 
 #pragma mark -
