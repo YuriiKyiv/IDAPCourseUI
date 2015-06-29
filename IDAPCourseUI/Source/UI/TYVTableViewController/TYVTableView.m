@@ -36,4 +36,15 @@ static NSString *const  kTYVButtonTitleEdit = @"Edit";
     [self setEditing:NO animated:NO];
 }
 
+#pragma mark -
+#pragma mark Public Methods
+
+- (void)showSpiner {
+    
+}
+
+- (void)hideSpiner {
+    
+}
+
 @end

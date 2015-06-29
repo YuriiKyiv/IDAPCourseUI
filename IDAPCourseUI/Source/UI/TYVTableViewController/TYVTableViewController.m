@@ -46,6 +46,7 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
         _dataArray = dataArray;
         [_dataArray addObserver:self];
         if (_dataArray.state != TYVDataArrayModelLoaded) {
+            [self.tableView showSpiner];
             [_dataArray load];
         }
     }
@@ -56,6 +57,10 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (self.dataArray.state == TYVDataArrayModelUnLoaded) {
+        [self.tableView showSpiner];
+    }
     
     [self.tableView.tableView reloadData];
 }
