@@ -36,12 +36,8 @@
 
 - (void)fillWithModel:(TYVDataModel *)model {
     self.dataLabel.text = model.text;
-    if (model.state == TYVImageUnloaded) {
-        [self.spinnerView startAnimating];
-        [model load];
-    } else {
-        self.pictureView.image = model.image;
-    }
+    [self.spinnerView startAnimating];
+    [model load];
 }
 
 #pragma mark -
@@ -49,7 +45,7 @@
 
 - (void)dataModelDidLoadImage:(TYVDataModel *)dataModel {
     [self.spinnerView stopAnimating];
-    [self fillWithModel:self.data];
+    self.pictureView.image = self.data.image;
 }
 
 @end
