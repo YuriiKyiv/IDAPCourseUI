@@ -10,4 +10,8 @@
 
 @interface TYVLoadingView : UIView
 
+- (void)showLoading;
+
+- (void)hideLoading;
+
 @end
