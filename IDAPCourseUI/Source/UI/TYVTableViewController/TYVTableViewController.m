@@ -56,10 +56,12 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (self.dataArray.state != TYVDataArrayLoaded) {
-        [self.tableView showLoading];
-    } else {
-        [self.tableView.tableView reloadData];
+    @synchronized (self) {
+        if (self.dataArray.state != TYVDataArrayLoaded) {
+            [self.tableView showLoading];
+        } else {
+            [self.tableView.tableView reloadData];
+        }
     }
 }
 

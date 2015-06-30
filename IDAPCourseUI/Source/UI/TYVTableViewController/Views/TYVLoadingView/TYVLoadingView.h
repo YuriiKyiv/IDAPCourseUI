@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TYVLoadingView : UIView
+@property (nonatomic, readonly, getter=isRunning) BOOL    running;
 
 - (void)showLoading;
 

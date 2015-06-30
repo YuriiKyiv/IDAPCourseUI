@@ -36,6 +36,8 @@ static NSString * const  kTYVButtonTitleEdit = @"Edit";
 #pragma mark View Lifecycle
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
+    
     [self setEditing:NO animated:NO];
     UINib *nib = [UINib nibWithNibName:@"TYVLoadingView" bundle:nil];
     id object = [nib objectWithClass:[TYVLoadingView class]];
