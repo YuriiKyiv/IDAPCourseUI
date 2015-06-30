@@ -150,7 +150,7 @@ static NSString *const  kTYVFilePath = @"/tmp/myArchive";
                 
                 self.state = TYVDataArrayLoaded;
             });
-        } else {
+        } else if (self.state == TYVDataArrayLoaded) {
             self.state = TYVDataArrayLoaded;
         }
     }
@@ -172,6 +172,12 @@ static NSString *const  kTYVFilePath = @"/tmp/myArchive";
             
         case TYVDataArrayLoaded:
             return @selector(dataArrayLoaded:);
+            
+        case TYVDataArrayLoading:
+            return @selector(dataArrayLoading:);
+            
+        case TYVDataArrayFailLoaded:
+            return @selector(dataArrayFailLoaded:);
             
         default:
             return [super selectorForState:state];

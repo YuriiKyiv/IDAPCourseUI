@@ -17,4 +17,8 @@
 
 - (void)dataArrayLoaded:(TYVDataArrayModel *)dataArray;
 
+- (void)dataArrayLoading:(TYVDataArrayModel *)dataArray;
+
+- (void)dataArrayFailLoaded:(TYVDataArrayModel *)dataArray;
+
 @end
