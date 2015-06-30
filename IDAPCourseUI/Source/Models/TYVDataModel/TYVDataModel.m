@@ -13,6 +13,9 @@
 static NSString * const  kTYVImageName = @"image";
 static NSString * const  kTYVImageType = @"jpeg";
 
+static NSString * const  kTYVBigImageName = @"Orion_Nebula";
+static NSString * const  kTYVBigImageType = @"jpg";
+
 static NSString * const  kTYVTextField = @"text";
 
 @interface TYVDataModel ()
