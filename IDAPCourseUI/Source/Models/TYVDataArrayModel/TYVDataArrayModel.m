@@ -59,19 +59,24 @@ static NSString *const  kTYVFilePath = @"/tmp/myArchive";
 #pragma mark Accessors
 
 - (NSArray *)dataArray {
-    return [self.mutableDataArray copy];
+    @synchronized (self) {
+        return [self.mutableDataArray copy];
+    }
 }
 
 #pragma mark -
 #pragma mark Public Methods
 
 - (void)addModel:(TYVDataModel *)model {
-    NSMutableArray *array = self.mutableDataArray;
-    [array addObject:model];
-    
-    TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo new];
-    [info.insertIndexes addObject:[NSIndexPath pathWithIndex:[array count] - 1]];
-    [self setState:TYVDataArrayDidChange withObject:info];
+    @synchronized (self) {
+        NSMutableArray *array = self.mutableDataArray;
+        [array addObject:model];
+        
+        TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo new];
+        [info.insertIndexes addObject:[NSIndexPath pathWithIndex:[array count] - 1]];
+        
+        [self setState:TYVDataArrayDidChange withObject:info];
+    };
 }
 
 - (void)removeModel:(TYVDataModel *)model {
@@ -82,56 +87,77 @@ static NSString *const  kTYVFilePath = @"/tmp/myArchive";
     [self.mutableDataArray insertObject:model atIndex:index];
 }
 
-- (void)removeModelAtIndex:(NSUInteger)index{
-    NSMutableArray *array = self.mutableDataArray;
-    [array removeObjectAtIndex:index];
-
-    TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo new];
-    [info.deleteIndexes addObject:[NSIndexPath pathWithIndex:index]];
-    [self setState:TYVDataArrayDidChange withObject:info];
+- (void)removeModelAtIndex:(NSUInteger)index {
+    @synchronized (self) {
+        NSMutableArray *array = self.mutableDataArray;
+        [array removeObjectAtIndex:index];
+        
+        TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo new];
+        [info.deleteIndexes addObject:[NSIndexPath pathWithIndex:index]];
+        
+        [self setState:TYVDataArrayDidChange withObject:info];
+    };
 }
 
 - (void)moveModelAtIndex:(NSUInteger)sourceIndex toIndex:(NSUInteger)destinationIndex {
-    NSMutableArray *array = self.mutableDataArray;
-    [array moveObjectAtIndex:sourceIndex toIndex:destinationIndex];
-    
-    TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo new];
-    info.movePosition = [TYVModelMovingPosition movingAtSourcePath:[NSIndexPath pathWithIndex:sourceIndex]
-                                                 toDestinationPath:[NSIndexPath pathWithIndex:destinationIndex]];
-    
-    [self setState:TYVDataArrayDidChange withObject:info];
+    @synchronized (self) {
+        NSMutableArray *array = self.mutableDataArray;
+        [array moveObjectAtIndex:sourceIndex toIndex:destinationIndex];
+        
+        TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo new];
+        info.movePosition = [TYVModelMovingPosition movingAtSourcePath:[NSIndexPath pathWithIndex:sourceIndex]
+                                                     toDestinationPath:[NSIndexPath pathWithIndex:destinationIndex]];
+        
+        [self setState:TYVDataArrayDidChange withObject:info];
+    }
 }
 
 - (TYVDataModel *)modelAtIndex:(NSUInteger)index {
-    return [self.mutableDataArray objectAtIndex:index];
+    @synchronized (self) {
+        return [self.mutableDataArray objectAtIndex:index];
+    }
 }
 
 - (TYVDataModel *)objectAtIndexedSubscript:(NSUInteger)index {
-    return [self.mutableDataArray objectAtIndexedSubscript:index];
+    @synchronized (self) {
+        return [self.mutableDataArray objectAtIndexedSubscript:index];
+    }
 }
 
 - (NSUInteger)count {
-    return [self.mutableDataArray count];
+    @synchronized (self) {
+        return [self.mutableDataArray count];
+    }
 }
 
 - (void)exchangeModelAtIndex:(NSUInteger)sourceIndex withModelAtIndex:(NSUInteger)destinationIndex {
-    [self.mutableDataArray exchangeObjectAtIndex:sourceIndex withObjectAtIndex:destinationIndex];
+    @synchronized (self) {
+        [self.mutableDataArray exchangeObjectAtIndex:sourceIndex withObjectAtIndex:destinationIndex];
+    }
 }
 
 - (void)load {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        sleep(3);
-//        self.state = TYVDataArrayLoaded;
-        TYVDataArrayModel *modelsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:kTYVFilePath];
-        if (modelsArray) {
-            self.mutableDataArray = modelsArray.mutableDataArray;
+    @synchronized (self) {
+        if (self.state == TYVDataArrayUnloaded) {
+            self.state = TYVDataArrayLoading;
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                sleep(3);
+                TYVDataArrayModel *modelsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:kTYVFilePath];
+                if (modelsArray) {
+                    self.mutableDataArray = modelsArray.mutableDataArray;
+                }
+                
+                self.state = TYVDataArrayLoaded;
+            });
         }
-        [self setState:TYVDataArrayLoaded withObject:nil];
-    });
+    }
 }
 
 - (void)save {
-    [NSKeyedArchiver archiveRootObject:self toFile:kTYVFilePath];
+    @synchronized (self) {
+        [NSKeyedArchiver archiveRootObject:self toFile:kTYVFilePath];
+    }
 }
 
 #pragma mark -
