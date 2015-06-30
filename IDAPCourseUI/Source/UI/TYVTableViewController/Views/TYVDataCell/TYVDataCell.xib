@@ -32,7 +32,7 @@
             <connections>
                 <outlet property="dataLabel" destination="elS-Gi-9kO" id="N85-CK-gi9"/>
                 <outlet property="pictureView" destination="bjU-Cy-ZRM" id="CBb-Bp-9wk"/>
-                <outlet property="spinerView" destination="ncu-oo-Uv6" id="I2g-bu-Jtu"/>
+                <outlet property="spinnerView" destination="ncu-oo-Uv6" id="1Nu-Of-hAm"/>
             </connections>
             <point key="canvasLocation" x="513" y="342"/>
         </tableViewCell>

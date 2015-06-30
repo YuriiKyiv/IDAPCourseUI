@@ -34,22 +34,28 @@ static NSString *const  kTYVImageType = @"jpeg";
     self = [super init];
     if (self) {
         self.text = string;
-        [self load];
     }
     
     return self;
 }
 
 #pragma mark -
-#pragma mark Private Methods
+#pragma mark Public Methods
 
 - (void)load {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        NSString *path = [[NSBundle mainBundle] pathForResource:kTYVImageName ofType:kTYVImageType];
-        self.image = [UIImage imageWithContentsOfFile:path];
-        sleep(1);
-        self.state = TYVImageLoaded;
-    });
+    @synchronized (self) {
+        if (self.state == TYVImageUnloaded) {
+            self.state = TYVImageLoading;
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                NSString *path = [[NSBundle mainBundle] pathForResource:kTYVImageName ofType:kTYVImageType];
+                self.image = [UIImage imageWithContentsOfFile:path];
+                sleep(1);
+                self.state = TYVImageLoaded;
+            });
+        } else if (self.state == TYVImageLoaded) {
+            self.state = TYVImageLoaded;
+        }
+    }
 }
 
 #pragma mark -

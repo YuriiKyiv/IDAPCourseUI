@@ -11,7 +11,8 @@
 #import "TYVProtocolObservableObject.h"
 
 typedef NS_ENUM(NSUInteger, TYVImageState) {
-    TYVImageUnLoaded,
+    TYVImageUnloaded,
+    TYVImageLoading,
     TYVImageLoaded
 };
 
@@ -22,5 +23,7 @@ typedef NS_ENUM(NSUInteger, TYVImageState) {
 + (instancetype)model;
 
 - (instancetype)initWithString:(NSString *)string;
+
+- (void)load;
 
 @end
