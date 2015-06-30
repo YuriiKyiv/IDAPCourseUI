@@ -45,10 +45,8 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
         
         _dataArray = dataArray;
         [_dataArray addObserver:self];
-        if (_dataArray.state == TYVDataArrayUnloaded) {
-            [self.tableView showSpiner];
-            [_dataArray load];
-        }
+        [self.tableView showLoading];
+        [_dataArray load];
     }
 }
 
@@ -58,8 +56,8 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (self.dataArray.state == TYVDataArrayUnloaded) {
-        [self.tableView showSpiner];
+    if (self.dataArray.state != TYVDataArrayLoaded) {
+        [self.tableView showLoading];
     } else {
         [self.tableView.tableView reloadData];
     }
@@ -128,7 +126,7 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 }
 
 - (void)dataArrayLoaded:(TYVDataArrayModel *)dataArray {
-    [self.tableView hideSpiner];
+    [self.tableView hideLoading];
     [self.tableView.tableView reloadData];
 }
 

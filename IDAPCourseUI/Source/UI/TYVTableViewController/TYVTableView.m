@@ -7,11 +7,9 @@
 //
 
 #import "TYVTableView.h"
+#import "TYVLoadingView.h"
 
 #import "UINib+TYVExtentions.h"
-
-static const NSTimeInterval TYVDuration =   1.0;
-static const CGFloat        TYVAlpha    =   0.5;
 
 static NSString * const  kTYVButtonTitleDone = @"Done";
 static NSString * const  kTYVButtonTitleEdit = @"Edit";
@@ -39,8 +37,8 @@ static NSString * const  kTYVButtonTitleEdit = @"Edit";
 
 - (void)awakeFromNib {
     [self setEditing:NO animated:NO];
-    UINib *nib = [UINib nibWithNibName:@"TYVSpinerView" bundle:nil];
-    id object = [nib objectWithClass:[UIView class]];
+    UINib *nib = [UINib nibWithNibName:@"TYVLoadingView" bundle:nil];
+    id object = [nib objectWithClass:[TYVLoadingView class]];
     [self addSubview:object];
     self.spinerView = object;
 }
@@ -48,16 +46,12 @@ static NSString * const  kTYVButtonTitleEdit = @"Edit";
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)showSpiner {
-    [UIView animateWithDuration:TYVDuration animations:^{
-        self.spinerView.alpha = TYVAlpha;
-    }];
+- (void)showLoading {
+    [self.spinerView showLoading];
 }
 
-- (void)hideSpiner {
-    [UIView animateWithDuration:TYVDuration animations:^{
-        self.spinerView.alpha = CGFLOAT_MIN;
-    }];
+- (void)hideLoading {
+    [self.spinerView hideLoading];
     
 }
 

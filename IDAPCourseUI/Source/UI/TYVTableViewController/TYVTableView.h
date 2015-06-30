@@ -9,18 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "TYVDataArrayModelProtocol.h"
 
+@class TYVLoadingView;
+
 @interface TYVTableView : UIView
-@property (nonatomic, strong)  IBOutlet UITableView *tableView;
-@property (nonatomic, strong)  IBOutlet UIButton    *addButton;
-@property (nonatomic, strong)  IBOutlet UIButton    *editButton;
-@property (nonatomic, strong)  IBOutlet UIView      *spinerView;
+@property (nonatomic, strong)  IBOutlet UITableView     *tableView;
+@property (nonatomic, strong)  IBOutlet UIButton        *addButton;
+@property (nonatomic, strong)  IBOutlet UIButton        *editButton;
+@property (nonatomic, strong)  IBOutlet TYVLoadingView  *spinerView;
 
 @property (nonatomic, readonly, getter=isEditing) BOOL    editing;
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animate;
 
-- (void)showSpiner;
+- (void)showLoading;
 
-- (void)hideSpiner;
+- (void)hideLoading;
 
 @end
