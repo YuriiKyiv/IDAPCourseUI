@@ -150,6 +150,8 @@ static NSString *const  kTYVFilePath = @"/tmp/myArchive";
                 
                 self.state = TYVDataArrayLoaded;
             });
+        } else {
+            self.state = TYVDataArrayLoaded;
         }
     }
 }
