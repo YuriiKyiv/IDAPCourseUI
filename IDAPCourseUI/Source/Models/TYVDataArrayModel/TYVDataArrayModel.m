@@ -16,6 +16,8 @@
 
 static NSString *const  kTYVFilePath = @"/tmp/myArchive";
 
+static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
+
 @interface TYVDataArrayModel ()
 @property (nonatomic, strong)   NSMutableArray *mutableDataArray;
 
@@ -188,13 +190,13 @@ static NSString *const  kTYVFilePath = @"/tmp/myArchive";
 #pragma mark NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeObject:self.mutableDataArray forKey:@"mutableDataArray"];
+    [coder encodeObject:self.mutableDataArray forKey:kTYVMutableArrayFiled];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super init];
     if (self) {
-        _mutableDataArray = [decoder decodeObjectForKey:@"mutableDataArray"];
+        _mutableDataArray = [decoder decodeObjectForKey:kTYVMutableArrayFiled];
     }
     
     return self;

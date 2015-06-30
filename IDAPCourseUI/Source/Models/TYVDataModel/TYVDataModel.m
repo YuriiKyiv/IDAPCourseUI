@@ -10,8 +10,10 @@
 
 #import "NSString+TYVExtensions.h"
 
-static NSString *const  kTYVImageName = @"image";
-static NSString *const  kTYVImageType = @"jpeg";
+static NSString * const  kTYVImageName = @"image";
+static NSString * const  kTYVImageType = @"jpeg";
+
+static NSString * const  kTYVTextField = @"text";
 
 @interface TYVDataModel ()
 @property (nonatomic, strong)   UIImage *image;
@@ -49,7 +51,7 @@ static NSString *const  kTYVImageType = @"jpeg";
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
                 NSString *path = [[NSBundle mainBundle] pathForResource:kTYVImageName ofType:kTYVImageType];
                 self.image = [UIImage imageWithContentsOfFile:path];
-                sleep(1);
+
                 self.state = TYVImageLoaded;
             });
         } else if (self.state == TYVImageLoaded) {
@@ -75,13 +77,13 @@ static NSString *const  kTYVImageType = @"jpeg";
 #pragma mark NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeObject:self.text forKey:@"text"];
+    [coder encodeObject:self.text forKey:kTYVTextField];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super init];
     if (self) {
-        _text = [decoder decodeObjectForKey:@"text"];
+        _text = [decoder decodeObjectForKey:kTYVTextField];
     }
     
     return self;
