@@ -8,6 +8,7 @@
 
 #import "TYVDataCell.h"
 #import "TYVDataModel.h"
+#import "TYVDispatch.h"
 
 @implementation TYVDataCell
 
@@ -35,8 +36,11 @@
 #pragma mark Public
 
 - (void)fillWithModel:(TYVDataModel *)model {
-    self.dataLabel.text = model.text;
-    [self.spinnerView startAnimating];
+    TYVDispatchSyncOnMainQueueWithBlock(^{
+        self.dataLabel.text = model.text;
+        [self.spinnerView startAnimating];
+    });
+
     [model load];
 }
 
@@ -44,8 +48,10 @@
 #pragma mark ImageProtocol
 
 - (void)dataModelDidLoadImage:(TYVDataModel *)dataModel {
-    [self.spinnerView stopAnimating];
-    self.pictureView.image = self.data.image;
+    TYVDispatchSyncOnMainQueueWithBlock(^{
+        [self.spinnerView stopAnimating];
+        self.pictureView.image = self.data.image;
+    });
 }
 
 @end

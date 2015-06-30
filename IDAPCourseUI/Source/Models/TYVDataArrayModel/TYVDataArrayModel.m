@@ -144,7 +144,6 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
             self.state = TYVDataArrayLoading;
             
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                sleep(3);
                 TYVDataArrayModel *modelsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:kTYVFilePath];
                 if (modelsArray) {
                     self.mutableDataArray = modelsArray.mutableDataArray;
