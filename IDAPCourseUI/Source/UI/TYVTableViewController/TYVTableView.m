@@ -42,18 +42,18 @@ static NSString * const  kTYVButtonTitleEdit = @"Edit";
     UINib *nib = [UINib nibWithNibName:@"TYVLoadingView" bundle:nil];
     id object = [nib objectWithClass:[TYVLoadingView class]];
     [self addSubview:object];
-    self.spinerView = object;
+    self.loadingView = object;
 }
 
 #pragma mark -
 #pragma mark Public Methods
 
 - (void)showLoading {
-    [self.spinerView showLoading];
+    [self.loadingView showLoading];
 }
 
 - (void)hideLoading {
-    [self.spinerView hideLoading];
+    [self.loadingView hideLoading];
     
 }
 

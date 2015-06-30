@@ -15,7 +15,7 @@
 @property (nonatomic, strong)  IBOutlet UITableView     *tableView;
 @property (nonatomic, strong)  IBOutlet UIButton        *addButton;
 @property (nonatomic, strong)  IBOutlet UIButton        *editButton;
-@property (nonatomic, strong)  IBOutlet TYVLoadingView  *spinerView;
+@property (nonatomic, strong)  IBOutlet TYVLoadingView  *loadingView;
 
 @property (nonatomic, readonly, getter=isEditing) BOOL    editing;
 
