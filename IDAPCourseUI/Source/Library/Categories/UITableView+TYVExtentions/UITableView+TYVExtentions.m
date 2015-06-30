@@ -33,12 +33,16 @@
     UITableView *tableView = self;
     
     [tableView beginUpdates];
+    
     [tableView insertRowsAtIndexPaths:info.insertIndexes
                      withRowAnimation:UITableViewRowAnimationLeft];
+    
     [tableView deleteRowsAtIndexPaths:info.deleteIndexes
                      withRowAnimation:UITableViewRowAnimationRight];
+    
     [tableView moveRowAtIndexPath:info.movePosition.sourcePath
                       toIndexPath:info.movePosition.destinationPath];
+    
     [tableView endUpdates];
 }
 
