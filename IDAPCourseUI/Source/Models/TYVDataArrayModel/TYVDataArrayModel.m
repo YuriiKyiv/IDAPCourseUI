@@ -123,7 +123,9 @@ static NSString *const  kTYVFilePath = @"/tmp/myArchive";
         sleep(3);
 //        self.state = TYVDataArrayLoaded;
         TYVDataArrayModel *modelsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:kTYVFilePath];
-        self.mutableDataArray = modelsArray.mutableDataArray;
+        if (modelsArray) {
+            self.mutableDataArray = modelsArray.mutableDataArray;
+        }
         [self setState:TYVDataArrayLoaded withObject:nil];
     });
 }
