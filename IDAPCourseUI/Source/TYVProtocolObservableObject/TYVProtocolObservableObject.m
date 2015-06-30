@@ -52,7 +52,7 @@ typedef void(^TYVNotifyBlock)(id, id);
     @synchronized(self) {
         _state = state;
         
-        TYVDispatchSyncOnMainQueueWithBlock(^{[self notify];});
+        [self notify];
     }
 }
 
@@ -60,14 +60,14 @@ typedef void(^TYVNotifyBlock)(id, id);
     @synchronized(self) {
         _state = state;
         
-        TYVDispatchSyncOnMainQueueWithBlock(^{[self notifyWithObject:object];});
+        [self notifyWithObject:object];
     }
 }
 
 - (NSUInteger)state {
-//    @synchronized (self) {
+    @synchronized (self) {
         return _state;
-//    }
+    }
 }
 
 #pragma mark -
