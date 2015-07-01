@@ -8,21 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "TYVDataArrayModelProtocol.h"
+#import "TYVLoadingTableView.h"
 
 @class TYVLoadingView;
 
-@interface TYVTableView : UIView
+@interface TYVTableView : TYVLoadingTableView
 @property (nonatomic, strong)  IBOutlet UITableView     *tableView;
 @property (nonatomic, strong)  IBOutlet UIButton        *addButton;
 @property (nonatomic, strong)  IBOutlet UIButton        *editButton;
-@property (nonatomic, strong)  IBOutlet TYVLoadingView  *loadingView;
 
 @property (nonatomic, readonly, getter=isEditing) BOOL    editing;
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animate;
-
-- (void)showLoadingView;
-
-- (void)hideLoadingView;
 
 @end

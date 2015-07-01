@@ -1,5 +1,5 @@
 //
-//  TYVLoaddingTableView.h
+//  TYVLoadingTableView.h
 //  IDAPCourseUI
 //
 //  Created by YURII on 01.07.15.
@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TYVLoaddingTableView : UIView
+@interface TYVLoadingTableView : UIView
 @property (nonatomic, strong)   IBOutlet id  loadingView;
+
+
+// shound not call this method directly
+- (void)connectLoadingView;
 
 - (void)showLoadingView;
 
