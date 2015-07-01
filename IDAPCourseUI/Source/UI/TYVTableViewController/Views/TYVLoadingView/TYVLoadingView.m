@@ -14,7 +14,9 @@ static const CGFloat        TYVShowAlpha    =   0.5;
 static const CGFloat        TYVHideAlpha    =   0.0;
 
 @interface TYVLoadingView ()
-@property (nonatomic, assign)   BOOL running;
+@property (nonatomic, assign)   BOOL visible;
+
+- (void)perfomLoadingView;
 
 @end
 
@@ -26,40 +28,40 @@ static const CGFloat        TYVHideAlpha    =   0.0;
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.running = NO;
+    self.visible = NO;
 }
 
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)showLoading {
-    @synchronized (self) {
-        if (self.running) {
-            return;
-        }
-        
-        self.running = YES;
-        TYVDispatchSyncOnMainQueueWithBlock(^{
-            [UIView animateWithDuration:TYVDuration animations:^{
-                self.alpha = TYVShowAlpha;
-            }];
-        });
+- (void)showLoadingView {
+    if (self.visible) {
+        return;
     }
+    
+    [self perfomLoadingView];
 }
 
-- (void)hideLoading {
-    @synchronized (self) {
-        if (!self.running) {
-            return;
-        }
-        
-        self.running = NO;
-        TYVDispatchSyncOnMainQueueWithBlock(^{
-            [UIView animateWithDuration:TYVDuration animations:^{
-                self.alpha = TYVHideAlpha;
-            }];
-        });
+- (void)hideLoadingView {
+    if (!self.visible) {
+        return;
     }
+    
+    [self perfomLoadingView];
+}
+
+#pragma mark -
+#pragma mark Private Methods
+
+- (void)perfomLoadingView {
+    BOOL visible = !self.visible;
+    self.visible = visible;
+    SEL selector = (visible) ? @selector(startAnimating) : @selector(stopAnimating);
+    [self.spinnerView performSelector:selector];
+    CGFloat alpha = (visible) ? TYVShowAlpha : TYVHideAlpha;
+    [UIView animateWithDuration:TYVDuration animations:^{
+        self.alpha = alpha;
+    }];
 }
 
 @end

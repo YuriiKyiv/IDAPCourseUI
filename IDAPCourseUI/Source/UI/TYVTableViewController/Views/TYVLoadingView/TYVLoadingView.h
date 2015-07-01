@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface TYVLoadingView : UIView
-@property (nonatomic, readonly, getter=isRunning) BOOL    running;
+@property (nonatomic, strong)   IBOutlet    UIActivityIndicatorView *spinnerView;
 
-- (void)showLoading;
+@property (nonatomic, readonly, getter=isVisible) BOOL    visible;
 
-- (void)hideLoading;
+- (void)showLoadingView;
+
+- (void)hideLoadingView;
 
 @end

@@ -149,7 +149,7 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
                 if (modelsArray) {
                     self.mutableDataArray = modelsArray.mutableDataArray;
                 }
-                
+
                 self.state = TYVDataArrayLoaded;
             });
         } else if (self.state == TYVDataArrayLoaded) {
