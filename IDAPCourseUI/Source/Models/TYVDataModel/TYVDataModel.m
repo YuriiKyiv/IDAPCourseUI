@@ -7,6 +7,7 @@
 //
 
 #import "TYVDataModel.h"
+#import "TYVImageProtocol.h"
 
 #import "NSString+TYVExtensions.h"
 

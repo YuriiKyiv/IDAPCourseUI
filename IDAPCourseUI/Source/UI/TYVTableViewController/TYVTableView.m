@@ -39,8 +39,8 @@ static NSString * const  kTYVButtonTitleEdit = @"Edit";
     [super awakeFromNib];
     
     [self setEditing:NO animated:NO];
-    UINib *nib = [UINib nibWithNibName:@"TYVLoadingView" bundle:nil];
-    id object = [nib objectWithClass:[TYVLoadingView class]];
+    
+    id object = [UINib objectWithClass:[TYVLoadingView class]];
     [self addSubview:object];
     self.loadingView = object;
 }

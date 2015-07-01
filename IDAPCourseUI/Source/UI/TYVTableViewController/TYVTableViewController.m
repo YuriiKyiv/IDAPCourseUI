@@ -14,14 +14,14 @@
 #import "TYVDataModel.h"
 #import "TYVDataArrayModelInfo.h"
 #import "TYVModelMovingPosition.h"
-
+#import "TYVDataArrayModelProtocol.h"
 
 #import "UINib+TYVExtentions.h"
 #import "UITableView+TYVExtentions.h"
 
 TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 
-@interface TYVTableViewController ()
+@interface TYVTableViewController () <TYVDataArrayModelProtocol>
 
 @end
 

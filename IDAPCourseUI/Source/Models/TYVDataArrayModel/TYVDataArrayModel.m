@@ -10,6 +10,7 @@
 #import "TYVDataModel.h"
 #import "TYVDataArrayModelInfo.h"
 #import "TYVModelMovingPosition.h"
+#import "TYVDataArrayModelProtocol.h"
 
 #import "NSMutableArray+TYVExtensions.h"
 #import "NSIndexPath+TYVExtensions.h"
