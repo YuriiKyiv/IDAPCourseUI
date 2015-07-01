@@ -48,11 +48,11 @@ static NSString * const  kTYVButtonTitleEdit = @"Edit";
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)showLoading {
+- (void)showLoadingView {
     [self.loadingView showLoadingView];
 }
 
-- (void)hideLoading {
+- (void)hideLoadingView {
     [self.loadingView hideLoadingView];
     
 }

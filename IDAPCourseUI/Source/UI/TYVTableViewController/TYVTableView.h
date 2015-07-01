@@ -21,8 +21,8 @@
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animate;
 
-- (void)showLoading;
+- (void)showLoadingView;
 
-- (void)hideLoading;
+- (void)hideLoadingView;
 
 @end

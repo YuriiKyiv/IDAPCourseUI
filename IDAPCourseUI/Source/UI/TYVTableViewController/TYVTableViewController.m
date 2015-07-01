@@ -44,7 +44,7 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
         
         _dataArray = dataArray;
         [_dataArray addObserver:self];
-        [self.tableView showLoading];
+        [self.tableView showLoadingView];
         [_dataArray load];
     }
 }
@@ -55,7 +55,7 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView showLoading];
+    [self.tableView showLoadingView];
     [self.dataArray load];
 }
 
@@ -122,7 +122,7 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 }
 
 - (void)dataArrayLoaded:(TYVDataArrayModel *)dataArray {
-    [self.tableView hideLoading];
+    [self.tableView hideLoadingView];
     [self.tableView.tableView reloadData];
 }
 

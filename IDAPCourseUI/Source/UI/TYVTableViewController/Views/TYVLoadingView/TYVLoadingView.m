@@ -16,7 +16,7 @@ static const CGFloat        TYVHideAlpha    =   0.0;
 @interface TYVLoadingView ()
 @property (nonatomic, assign)   BOOL visible;
 
-- (void)perfomLoadingView;
+- (void)animateLoadingView;
 
 @end
 
@@ -39,7 +39,7 @@ static const CGFloat        TYVHideAlpha    =   0.0;
         return;
     }
     
-    [self perfomLoadingView];
+    [self animateLoadingView];
 }
 
 - (void)hideLoadingView {
@@ -47,13 +47,13 @@ static const CGFloat        TYVHideAlpha    =   0.0;
         return;
     }
     
-    [self perfomLoadingView];
+    [self animateLoadingView];
 }
 
 #pragma mark -
 #pragma mark Private Methods
 
-- (void)perfomLoadingView {
+- (void)animateLoadingView {
     BOOL visible = !self.visible;
     self.visible = visible;
     SEL selector = (visible) ? @selector(startAnimating) : @selector(stopAnimating);
