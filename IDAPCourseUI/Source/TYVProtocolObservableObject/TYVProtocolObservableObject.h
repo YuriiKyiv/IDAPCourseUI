@@ -26,4 +26,6 @@
 
 - (SEL)selectorForState:(NSUInteger)state withObject:(id)object;
 
+- (void)notify;
+
 @end

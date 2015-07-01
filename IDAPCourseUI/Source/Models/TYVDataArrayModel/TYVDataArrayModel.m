@@ -152,8 +152,8 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
 
                 self.state = TYVDataArrayLoaded;
             });
-        } else if (self.state == TYVDataArrayLoaded) {
-            self.state = TYVDataArrayLoaded;
+        } else {
+            [self notify];
         }
     }
 }

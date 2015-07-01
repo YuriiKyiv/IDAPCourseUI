@@ -13,7 +13,8 @@
 typedef NS_ENUM(NSUInteger, TYVImageState) {
     TYVImageUnloaded,
     TYVImageLoading,
-    TYVImageLoaded
+    TYVImageLoaded,
+    TYVImageFailLoaded
 };
 
 @interface TYVDataModel : TYVProtocolObservableObject <NSCoding>

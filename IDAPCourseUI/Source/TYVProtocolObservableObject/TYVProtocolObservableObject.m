@@ -17,7 +17,6 @@ typedef void(^TYVNotifyBlock)(id, id);
 - (void)notifyWithSelector:(SEL)selector;
 - (void)notifyWithSelector:(SEL)selector withObject:(id)object;
 - (void)notifyWithSelector:(SEL)selector withObject:(id)object block:(TYVNotifyBlock)block;
-- (void)notify;
 
 @end
 
@@ -100,12 +99,12 @@ typedef void(^TYVNotifyBlock)(id, id);
     return NULL;
 }
 
-#pragma mark -
-#pragma mark Private Methods
-
 - (void)notify {
     [self notifyWithSelector:[self selectorForState:_state]];
 }
+
+#pragma mark -
+#pragma mark Private Methods
 
 - (void)notifyWithObject:(id)object {
     [self notifyWithSelector:[self selectorForState:_state] withObject:object];

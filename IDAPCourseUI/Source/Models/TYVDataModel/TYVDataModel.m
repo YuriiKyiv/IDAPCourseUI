@@ -58,8 +58,8 @@ static NSString * const  kTYVTextField = @"text";
 
                 self.state = TYVImageLoaded;
             });
-        } else if (self.state == TYVImageLoaded) {
-            self.state = TYVImageLoaded;
+        } else {
+            [self notify];
         }
     }
 }
@@ -71,6 +71,9 @@ static NSString * const  kTYVTextField = @"text";
     switch (state) {
         case TYVImageLoaded:
             return @selector(dataModelDidLoadImage:);
+            
+        case TYVImageLoading:
+            return @selector(dataModelLoadingImage:);
             
         default:
             return [super selectorForState:state];

@@ -15,4 +15,8 @@
 @optional
 - (void)dataModelDidLoadImage:(TYVDataModel *)dataModel;
 
+- (void)dataModelLoadingImage:(TYVDataModel *)dataModel;
+
+- (void)dataModelFailLoadedImage:(TYVDataModel *)dataModel;
+
 @end

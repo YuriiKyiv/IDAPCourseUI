@@ -28,6 +28,7 @@
         
         _data = data;
         [_data addObserver:self];
+        [data load];
         [self fillWithModel:_data];
     }
 }
@@ -38,10 +39,7 @@
 - (void)fillWithModel:(TYVDataModel *)model {
     TYVDispatchSyncOnMainQueueWithBlock(^{
         self.dataLabel.text = model.text;
-        [self.spinnerView startAnimating];
     });
-
-    [model load];
 }
 
 #pragma mark -
@@ -51,6 +49,12 @@
     TYVDispatchSyncOnMainQueueWithBlock(^{
         [self.spinnerView stopAnimating];
         self.pictureView.image = self.data.image;
+    });
+}
+
+- (void)dataModelLoadingImage:(TYVDataModel *)dataModel {
+    TYVDispatchSyncOnMainQueueWithBlock(^{
+        [self.spinnerView startAnimating];
     });
 }
 
