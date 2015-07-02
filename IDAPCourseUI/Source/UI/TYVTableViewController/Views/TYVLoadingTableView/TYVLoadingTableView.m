@@ -28,6 +28,8 @@
     id object = [UINib objectWithClass:[TYVLoadingView class]];
     [self addSubview:object];
     self.loadingView = object;
+    
+    [(UIView *)object setBounds:self.bounds];
 }
 
 - (void)showLoadingView {

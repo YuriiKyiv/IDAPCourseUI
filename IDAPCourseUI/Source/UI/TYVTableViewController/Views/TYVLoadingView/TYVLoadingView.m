@@ -28,8 +28,6 @@ static const CGFloat        TYVHideAlpha    =   0.0;
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.bounds = [[self superview] bounds];
     self.visible = NO;
 }
 
