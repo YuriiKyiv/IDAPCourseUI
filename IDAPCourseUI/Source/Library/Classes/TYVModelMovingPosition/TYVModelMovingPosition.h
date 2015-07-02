@@ -12,10 +12,16 @@
 @property (nonatomic, readonly) NSIndexPath *sourcePath;
 @property (nonatomic, readonly) NSIndexPath *destinationPath;
 
-+ (instancetype)movingAtSourcePath:(NSIndexPath *)sourcePath
-                 toDestinationPath:(NSIndexPath *)destinationPath;
++ (instancetype)movingAtSourceIndexPath:(NSIndexPath *)sourcePath
+                        destinationIndexPath:(NSIndexPath *)destinationPath;
 
-- (instancetype)initWithSourcePath:(NSIndexPath *)sourcePath
-                 toDestinationPath:(NSIndexPath *)destinationPath;
++ (instancetype)movingAtIndex:(NSUInteger)sourceIndex
+             destinationIndex:(NSUInteger)destinationIndex;
+
+- (instancetype)initWithIndexPath:(NSIndexPath *)sourcePath
+                  destinationIndexPath:(NSIndexPath *)destinationPath NS_DESIGNATED_INITIALIZER;
+
+- (instancetype)initWithIndex:(NSUInteger)sourceIndex
+             destinationIndex:(NSUInteger)destinationIndex;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "TYVModelMovingPosition.h"
+#import "NSIndexPath+TYVExtensions.h"
 
 @interface TYVModelMovingPosition ()
 @property (nonatomic, strong) NSIndexPath *sourcePath;
@@ -19,17 +20,22 @@
 #pragma mark -
 #pragma mark Class Methods
 
-+ (instancetype)movingAtSourcePath:(NSIndexPath *)sourcePath
-                 toDestinationPath:(NSIndexPath *)destinationPath
++ (instancetype)movingAtSourceIndexPath:(NSIndexPath *)sourcePath
+                 destinationIndexPath:(NSIndexPath *)destinationPath
 {
-    return [[self alloc] initWithSourcePath:sourcePath toDestinationPath:destinationPath];
+    return [[self alloc] initWithIndexPath:sourcePath destinationIndexPath:destinationPath];
+}
+
++ (instancetype)movingAtIndex:(NSUInteger)sourceIndex
+             destinationIndex:(NSUInteger)destinationIndex {
+    return [[self alloc] initWithIndex:sourceIndex destinationIndex:destinationIndex];
 }
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (instancetype)initWithSourcePath:(NSIndexPath *)sourcePath
-                 toDestinationPath:(NSIndexPath *)destinationPath
+- (instancetype)initWithIndexPath:(NSIndexPath *)sourcePath
+                 destinationIndexPath:(NSIndexPath *)destinationPath
 {
     self = [super init];
     if (self) {
@@ -38,6 +44,12 @@
     }
     
     return self;
+}
+
+- (instancetype)initWithIndex:(NSUInteger)sourceIndex
+             destinationIndex:(NSUInteger)destinationIndex {
+    return [self initWithIndexPath:[NSIndexPath pathWithIndex:sourceIndex]
+                   destinationIndexPath:[NSIndexPath pathWithIndex:destinationIndex]];
 }
 
 @end

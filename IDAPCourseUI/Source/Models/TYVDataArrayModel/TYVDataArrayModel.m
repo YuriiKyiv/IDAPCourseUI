@@ -108,8 +108,8 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
         [array moveObjectAtIndex:sourceIndex toIndex:destinationIndex];
         
         TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo new];
-        info.movePosition = [TYVModelMovingPosition movingAtSourcePath:[NSIndexPath pathWithIndex:sourceIndex]
-                                                     toDestinationPath:[NSIndexPath pathWithIndex:destinationIndex]];
+        info.movePosition = [TYVModelMovingPosition movingAtIndex:sourceIndex
+                                                 destinationIndex:destinationIndex];
         
         [self setState:TYVDataArrayDidChange withObject:info];
     }
