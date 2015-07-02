@@ -149,7 +149,7 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
                 if (modelsArray) {
                     self.mutableDataArray = modelsArray.mutableDataArray;
                 }
-
+                sleep(3);
                 self.state = TYVDataArrayLoaded;
             });
         } else {
@@ -196,7 +196,7 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super init];
     if (self) {
-        _mutableDataArray = [decoder decodeObjectForKey:kTYVMutableArrayFiled];
+        self.mutableDataArray = [decoder decodeObjectForKey:kTYVMutableArrayFiled];
     }
     
     return self;

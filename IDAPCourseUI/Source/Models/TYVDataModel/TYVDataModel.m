@@ -90,7 +90,7 @@ static NSString * const  kTYVTextField = @"text";
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super init];
     if (self) {
-        _text = [decoder decodeObjectForKey:kTYVTextField];
+        self.text = [decoder decodeObjectForKey:kTYVTextField];
     }
     
     return self;
