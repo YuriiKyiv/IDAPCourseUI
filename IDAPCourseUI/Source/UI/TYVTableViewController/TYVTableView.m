@@ -7,9 +7,6 @@
 //
 
 #import "TYVTableView.h"
-#import "TYVLoadingView.h"
-
-#import "UINib+TYVExtentions.h"
 
 static NSString * const  kTYVButtonTitleDone = @"Done";
 static NSString * const  kTYVButtonTitleEdit = @"Edit";

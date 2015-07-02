@@ -7,17 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TYVDataArrayModelProtocol.h"
 #import "TYVLoadingTableView.h"
-
-@class TYVLoadingView;
 
 @interface TYVTableView : TYVLoadingTableView
 @property (nonatomic, strong)  IBOutlet UITableView     *tableView;
 @property (nonatomic, strong)  IBOutlet UIButton        *addButton;
 @property (nonatomic, strong)  IBOutlet UIButton        *editButton;
 
-@property (nonatomic, readonly, getter=isEditing) BOOL    editing;
+@property (nonatomic, getter=isEditing) BOOL    editing;
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animate;
 
