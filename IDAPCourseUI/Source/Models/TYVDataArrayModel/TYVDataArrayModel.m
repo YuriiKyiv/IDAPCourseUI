@@ -15,10 +15,11 @@
 #import "NSMutableArray+TYVExtensions.h"
 #import "NSIndexPath+TYVExtensions.h"
 #import "NSFileManager+TYVExtensions.h"
+#import "NSString+TYVExtensions.h"
 
 static NSUInteger const  TYVArrayCount = 10;
 
-static NSString *const  kTYVFilePath = @"/tmp/myArchive";
+static NSString *const  kTYVFileName = @"Table";
 
 static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
 
@@ -134,9 +135,8 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
 
 - (void)save {
     @synchronized (self) {
-        NSString *path = [NSFileManager directoryForUserDocument];
-        NSURL *pathUrl = [NSURL fileURLWithPath:path];
-        [NSKeyedArchiver archiveRootObject:self toFile:kTYVFilePath];
+        NSString *path = [[NSString directoryForUserDocument] stringByAppendingString:kTYVFileName];
+        [NSKeyedArchiver archiveRootObject:self toFile:path];
     }
 }
 
@@ -144,7 +144,8 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
 #pragma mark TYVAbstractDataModel
 
 - (void)performLoading {
-    TYVDataArrayModel *modelsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:kTYVFilePath];
+    NSString *path = [[NSString directoryForUserDocument] stringByAppendingString:kTYVFileName];
+    TYVDataArrayModel *modelsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
     NSMutableArray *array = self.mutableDataArray;
     if (modelsArray) {
         array = modelsArray.mutableDataArray;

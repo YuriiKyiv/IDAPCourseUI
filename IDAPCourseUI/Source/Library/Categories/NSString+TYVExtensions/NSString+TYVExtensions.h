@@ -28,4 +28,6 @@
 
 + (instancetype)randomStringWithLength:(NSUInteger)length;
 
++ (NSString *)directoryForUserDocument;
+
 @end
