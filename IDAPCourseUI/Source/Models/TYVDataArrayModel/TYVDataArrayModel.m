@@ -14,6 +14,7 @@
 
 #import "NSMutableArray+TYVExtensions.h"
 #import "NSIndexPath+TYVExtensions.h"
+#import "NSFileManager+TYVExtensions.h"
 
 static NSUInteger const  TYVArrayCount = 10;
 
@@ -133,6 +134,8 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
 
 - (void)save {
     @synchronized (self) {
+        NSString *path = [NSFileManager directoryForUserDocument];
+        NSURL *pathUrl = [NSURL fileURLWithPath:path];
         [NSKeyedArchiver archiveRootObject:self toFile:kTYVFilePath];
     }
 }
