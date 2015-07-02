@@ -52,4 +52,8 @@
                    destinationIndexPath:[NSIndexPath pathWithIndex:destinationIndex]];
 }
 
+- (instancetype)init {
+    return [self initWithIndex:NSUIntegerMax destinationIndex:NSUIntegerMax];
+}
+
 @end
