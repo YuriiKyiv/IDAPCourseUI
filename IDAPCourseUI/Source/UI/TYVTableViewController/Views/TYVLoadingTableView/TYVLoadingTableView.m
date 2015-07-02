@@ -13,6 +13,14 @@
 @implementation TYVLoadingTableView
 
 #pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (void)dealloc
+{
+    self.loadingView = nil;
+}
+
+#pragma mark -
 #pragma mark View Lifecycle
 
 - (void)awakeFromNib {
@@ -22,14 +30,25 @@
 }
 
 #pragma mark -
+#pragma mark Accesors
+
+- (void)setLoadingView:(id)loadingView {
+    if (_loadingView != loadingView) {
+        [_loadingView removeFromSuperview];
+        
+        _loadingView = loadingView;
+        [self addSubview:loadingView];
+        [(UIView *)loadingView setBounds:self.bounds];
+    }
+}
+
+#pragma mark -
 #pragma mark Public Methods
 
 - (void)connectLoadingView {
     id object = [UINib objectWithClass:[TYVLoadingView class]];
-    [self addSubview:object];
+
     self.loadingView = object;
-    
-    [(UIView *)object setBounds:self.bounds];
 }
 
 - (void)showLoadingView {
