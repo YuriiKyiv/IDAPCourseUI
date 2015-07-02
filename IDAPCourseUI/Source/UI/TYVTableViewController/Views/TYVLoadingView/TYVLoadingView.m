@@ -55,13 +55,14 @@ static const CGFloat        TYVHideAlpha    =   0.0;
 
 - (void)animateLoadingView {
     BOOL visible = !self.visible;
-    self.visible = visible;
-    SEL selector = (visible) ? @selector(startAnimating) : @selector(stopAnimating);
-    [self.spinnerView performSelector:selector];
-    CGFloat alpha = (visible) ? TYVShowAlpha : TYVHideAlpha;
+    
+    (visible) ? [self.spinnerView startAnimating] : [self.spinnerView stopAnimating];
+
     [UIView animateWithDuration:TYVDuration animations:^{
-        self.alpha = alpha;
+        self.alpha = (visible) ? TYVShowAlpha : TYVHideAlpha;
     }];
+    
+    self.visible = visible;
 }
 
 @end
