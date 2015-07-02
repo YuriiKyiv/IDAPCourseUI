@@ -7,6 +7,7 @@
 //
 
 #import "TYVAbstractDataModel.h"
+#import "TYVAbstractDataModelProtocol.h"
 
 @implementation TYVAbstractDataModel
 
@@ -39,6 +40,31 @@
 
 - (void)setupLoading {
     
+}
+
+#pragma mark -
+#pragma mark ObserverObject
+
+- (SEL)selectorForState:(NSUInteger)state {
+    switch (state) {
+        case TYVAbstractDataModelLoaded:
+            return @selector(dataModelLoaded:);
+        
+        case TYVAbstractDataModelLoading:
+            return @selector(dataModelLoading:);
+            
+        case TYVAbstractDataModelFailedLoading:
+            return @selector(dataModelFailedLoading:);
+            
+        case TYVAbstractDataModelUnloaded:
+            return @selector(dataModelUnloaded:);
+            
+        case TYVAbstractDataModelDidChange:
+            return @selector(dataModelDidChange:);
+            
+        default:
+            return [super selectorForState:state];
+    }
 }
 
 @end
