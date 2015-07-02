@@ -18,4 +18,14 @@ typedef NS_ENUM(NSUInteger, TYVAbstractDataModelState) {
 
 @interface TYVAbstractDataModel : TYVProtocolObservableObject
 
+// do not call this methods directly
+// This is the method for overriding
+- (void)performLoading;
+
+// do not call this methods directly
+// This is the method for overriding
+- (void)setupLoading;
+
+- (void)load;
+
 @end
