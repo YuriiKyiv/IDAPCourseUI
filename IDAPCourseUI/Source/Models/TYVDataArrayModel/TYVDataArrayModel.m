@@ -78,7 +78,7 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
         TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo new];
         [info.insertIndexes addObject:[NSIndexPath pathWithIndex:[array count] - 1]];
         
-        [self setState:TYVDataArrayDidChange withObject:info];
+        [self setState:TYVAbstractDataModelDidChange withObject:info];
     };
 }
 
@@ -98,7 +98,7 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
         TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo new];
         [info.deleteIndexes addObject:[NSIndexPath pathWithIndex:index]];
         
-        [self setState:TYVDataArrayDidChange withObject:info];
+        [self setState:TYVAbstractDataModelDidChange withObject:info];
     };
 }
 
@@ -111,7 +111,7 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
         info.movePosition = [TYVModelMovingPosition movingAtIndex:sourceIndex
                                                  destinationIndex:destinationIndex];
         
-        [self setState:TYVDataArrayDidChange withObject:info];
+        [self setState:TYVAbstractDataModelDidChange withObject:info];
     }
 }
 
@@ -139,25 +139,6 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
     }
 }
 
-- (void)load {
-    @synchronized (self) {
-        if (self.state == TYVDataArrayUnloaded) {
-            self.state = TYVDataArrayLoading;
-            
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                TYVDataArrayModel *modelsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:kTYVFilePath];
-                if (modelsArray) {
-                    self.mutableDataArray = modelsArray.mutableDataArray;
-                }
-                sleep(3);
-                self.state = TYVDataArrayLoaded;
-            });
-        } else {
-            [self notify];
-        }
-    }
-}
-
 - (void)save {
     @synchronized (self) {
         [NSKeyedArchiver archiveRootObject:self toFile:kTYVFilePath];
@@ -165,24 +146,12 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
 }
 
 #pragma mark -
-#pragma mark Observer Object
+#pragma mark TYVAbstractDataModel
 
-- (SEL)selectorForState:(NSUInteger)state {
-    switch (state) {
-        case TYVDataArrayDidChange:
-            return @selector(dataArray:didChangeWithObject:);
-            
-        case TYVDataArrayLoaded:
-            return @selector(dataArrayLoaded:);
-            
-        case TYVDataArrayLoading:
-            return @selector(dataArrayLoading:);
-            
-        case TYVDataArrayFailLoaded:
-            return @selector(dataArrayFailLoaded:);
-            
-        default:
-            return [super selectorForState:state];
+- (void)performLoading {
+    TYVDataArrayModel *modelsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:kTYVFilePath];
+    if (modelsArray) {
+        self.mutableDataArray = modelsArray.mutableDataArray;
     }
 }
 

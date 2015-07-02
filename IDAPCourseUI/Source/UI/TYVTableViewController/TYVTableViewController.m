@@ -14,14 +14,14 @@
 #import "TYVDataModel.h"
 #import "TYVDataArrayModelInfo.h"
 #import "TYVModelMovingPosition.h"
-#import "TYVDataArrayModelProtocol.h"
+#import "TYVAbstractDataModelProtocol.h"
 
 #import "UINib+TYVExtentions.h"
 #import "UITableView+TYVExtentions.h"
 
 TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 
-@interface TYVTableViewController () <TYVDataArrayModelProtocol>
+@interface TYVTableViewController () <TYVAbstractDataModelProtocol>
 
 @end
 
@@ -115,13 +115,13 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 }
 
 #pragma mark -
-#pragma mark DataArrayModelProtocol
+#pragma mark TYVAbstractDataModelProtocol
 
-- (void)dataArray:(TYVDataArrayModel *)dataArray didChangeWithObject:(TYVDataArrayModelInfo *)info {
+- (void)dataModel:(TYVDataArrayModel *)dataArray didChangeWithObject:(TYVDataArrayModelInfo *)info {
     [self.tableView.tableView updateWithInfo:info];
 }
 
-- (void)dataArrayLoaded:(TYVDataArrayModel *)dataArray {
+- (void)dataModelLoaded:(TYVDataArrayModel *)dataArray {
     [self.tableView hideLoadingView];
     [self.tableView.tableView reloadData];
 }

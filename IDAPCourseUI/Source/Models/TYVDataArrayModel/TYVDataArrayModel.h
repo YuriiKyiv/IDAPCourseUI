@@ -6,19 +6,11 @@
 //  Copyright (c) 2015 YURII. All rights reserved.
 //
 
-#import "TYVProtocolObservableObject.h"
+#import "TYVAbstractDataModel.h"
 
 @class TYVDataModel;
 
-typedef NS_ENUM(NSUInteger, TYVDataModelArrayModelState) {
-    TYVDataArrayUnloaded,
-    TYVDataArrayLoading,
-    TYVDataArrayLoaded,
-    TYVDataArrayFailLoaded,
-    TYVDataArrayDidChange
-};
-
-@interface TYVDataArrayModel : TYVProtocolObservableObject <NSCoding>
+@interface TYVDataArrayModel : TYVAbstractDataModel <NSCoding>
 @property (nonatomic, readonly) NSArray *dataArray;
 
 + (instancetype)dataWithModelsCount:(NSUInteger)count;
@@ -43,7 +35,6 @@ typedef NS_ENUM(NSUInteger, TYVDataModelArrayModelState) {
 
 - (NSUInteger)count;
 
-- (void)load;
 - (void)save;
 
 @end

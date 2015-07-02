@@ -60,7 +60,7 @@
             return @selector(dataModelUnloaded:);
             
         case TYVAbstractDataModelDidChange:
-            return @selector(dataModelDidChange:);
+            return @selector(dataModel:didChangeWithObject:);
             
         default:
             return [super selectorForState:state];

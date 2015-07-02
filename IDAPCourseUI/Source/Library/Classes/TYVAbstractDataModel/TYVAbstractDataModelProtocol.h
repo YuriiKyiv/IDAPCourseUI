@@ -21,6 +21,6 @@
 
 - (void)dataModelFailedLoading:(TYVAbstractDataModel *)dataModel;
 
-- (void)dataModelDidChange:(TYVAbstractDataModel *)dataModel;
+- (void)dataModel:(TYVAbstractDataModel *)dataModel didChangeWithObject:(id)object;
 
 @end
