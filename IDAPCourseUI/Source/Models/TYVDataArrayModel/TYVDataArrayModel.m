@@ -15,6 +15,8 @@
 #import "NSMutableArray+TYVExtensions.h"
 #import "NSIndexPath+TYVExtensions.h"
 
+static NSUInteger const  TYVArrayCount = 10;
+
 static NSString *const  kTYVFilePath = @"/tmp/myArchive";
 
 static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
@@ -38,24 +40,14 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
 - (instancetype)initWithModelsCount:(NSUInteger)count {
     self = [super init];
     if (self) {
-        NSMutableArray *array = [NSMutableArray arrayWithCapacity:count];
-        for (int i = 0; i < count; i++) {
-            [array addObject:[TYVDataModel model]];
-        }
-        
-        self.mutableDataArray = array;
+        self.mutableDataArray = [NSMutableArray arrayWithCapacity:count];
     }
     
     return self;
 }
 
 - (instancetype)init {
-    self = [super init];
-    if (self) {
-        self.mutableDataArray = [NSMutableArray array];
-    }
-    
-    return self;
+    return [self initWithModelsCount:0];
 }
 
 #pragma mark -
@@ -150,8 +142,13 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
 
 - (void)performLoading {
     TYVDataArrayModel *modelsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:kTYVFilePath];
+    NSMutableArray *array = self.mutableDataArray;
     if (modelsArray) {
-        self.mutableDataArray = modelsArray.mutableDataArray;
+        array = modelsArray.mutableDataArray;
+    } else {
+        for (int i = 0; i < TYVArrayCount; i++) {
+            [array addObject:[TYVDataModel model]];
+        }
     }
 }
 
