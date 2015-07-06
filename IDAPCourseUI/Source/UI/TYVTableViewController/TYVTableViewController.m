@@ -121,10 +121,15 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
     [self.tableView.tableView updateWithInfo:info];
 }
 
-- (void)dataModelLoaded:(TYVDataArrayModel *)dataArray {
+- (void)dataModelDidLoad:(TYVDataArrayModel *)dataArray {
     TYVTableView *tableView = self.tableView;
     [tableView hideLoadingView];
     [tableView.tableView reloadData];
 }
+
+- (void)dataModelWillLoad:(TYVDataArrayModel *)dataArray {
+    
+}
+
 
 @end

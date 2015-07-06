@@ -15,9 +15,9 @@
 @optional
 - (void)dataArray:(TYVDataArrayModel *)dataArray didChangeWithObject:(id)object;
 
-- (void)dataArrayLoaded:(TYVDataArrayModel *)dataArray;
+- (void)dataArrayDidLoaded:(TYVDataArrayModel *)dataArray;
 
-- (void)dataArrayLoading:(TYVDataArrayModel *)dataArray;
+- (void)dataArrayWillLoad:(TYVDataArrayModel *)dataArray;
 
 - (void)dataArrayFailLoaded:(TYVDataArrayModel *)dataArray;
 

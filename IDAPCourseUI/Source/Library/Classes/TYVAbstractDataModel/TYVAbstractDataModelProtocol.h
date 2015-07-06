@@ -13,13 +13,13 @@
 @protocol TYVAbstractDataModelProtocol <NSObject>
 
 @optional
-- (void)dataModelUnloaded:(TYVAbstractDataModel *)dataModel;
+- (void)dataModelDidUnload:(TYVAbstractDataModel *)dataModel;
 
-- (void)dataModelLoading:(TYVAbstractDataModel *)dataModel;
+- (void)dataModelWillLoad:(TYVAbstractDataModel *)dataModel;
 
-- (void)dataModelLoaded:(TYVAbstractDataModel *)dataModel;
+- (void)dataModelDidLoad:(TYVAbstractDataModel *)dataModel;
 
-- (void)dataModelFailedLoading:(TYVAbstractDataModel *)dataModel;
+- (void)dataModelDidFailedLoading:(TYVAbstractDataModel *)dataModel;
 
 - (void)dataModel:(TYVAbstractDataModel *)dataModel didChangeWithObject:(id)object;
 

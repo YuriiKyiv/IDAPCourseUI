@@ -16,17 +16,17 @@
 
 - (void)load {
     @synchronized (self) {
-        if (TYVAbstractDataModelUnloaded == self.state
-            || TYVAbstractDataModelFailedLoading == self.state)
+        if (TYVAbstractDataModelDidUnload == self.state
+            || TYVAbstractDataModelDidFailedLoading == self.state)
         {
-            self.state = TYVAbstractDataModelLoading;
+            self.state = TYVAbstractDataModelWillLoad;
             
             [self setupLoading];
             
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 [self performLoading];
                 
-                self.state = TYVAbstractDataModelLoaded;
+                self.state = TYVAbstractDataModelDidLoad;
             });
         } else {
             [self notify];
@@ -47,17 +47,17 @@
 
 - (SEL)selectorForState:(NSUInteger)state {
     switch (state) {
-        case TYVAbstractDataModelLoaded:
-            return @selector(dataModelLoaded:);
+        case TYVAbstractDataModelDidLoad:
+            return @selector(dataModelDidLoad:);
         
-        case TYVAbstractDataModelLoading:
-            return @selector(dataModelLoading:);
+        case TYVAbstractDataModelWillLoad:
+            return @selector(dataModelWillLoad:);
             
-        case TYVAbstractDataModelFailedLoading:
-            return @selector(dataModelFailedLoading:);
+        case TYVAbstractDataModelDidFailedLoading:
+            return @selector(dataModelDidFailedLoading:);
             
-        case TYVAbstractDataModelUnloaded:
-            return @selector(dataModelUnloaded:);
+        case TYVAbstractDataModelDidUnload:
+            return @selector(dataModelDidUnload:);
             
         case TYVAbstractDataModelDidChange:
             return @selector(dataModel:didChangeWithObject:);
