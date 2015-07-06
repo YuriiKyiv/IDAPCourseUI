@@ -69,8 +69,8 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
         NSMutableArray *array = self.mutableDataArray;
         [array addObject:model];
         
-        TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo new];
-        [info.insertIndexes addObject:[NSIndexPath pathWithIndex:[array count] - 1]];
+        TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo infoWithChangeState:TYVDataArrayModelInsert
+                                                                        changing:@([array count] - 1)];
         
         [self setState:TYVAbstractDataModelDidChange withObject:info];
     };
@@ -89,8 +89,8 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
         NSMutableArray *array = self.mutableDataArray;
         [array removeObjectAtIndex:index];
         
-        TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo new];
-        [info.deleteIndexes addObject:[NSIndexPath pathWithIndex:index]];
+        TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo infoWithChangeState:TYVDataArrayModelDelete
+                                                                        changing:[NSIndexPath pathWithIndex:index]];
         
         [self setState:TYVAbstractDataModelDidChange withObject:info];
     };
@@ -101,9 +101,10 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
         NSMutableArray *array = self.mutableDataArray;
         [array moveObjectAtIndex:sourceIndex toIndex:destinationIndex];
         
-        TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo new];
-        info.movePosition = [TYVModelMovingPosition movingAtIndex:sourceIndex
-                                                 destinationIndex:destinationIndex];
+        TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo infoWithChangeState:TYVDataArrayModelMove
+                                                                        changing:[TYVModelMovingPosition
+                                                                                  movingAtIndex:sourceIndex
+                                                                                  destinationIndex:destinationIndex]];
         
         [self setState:TYVAbstractDataModelDidChange withObject:info];
     }
