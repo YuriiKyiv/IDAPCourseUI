@@ -34,7 +34,7 @@
     @end
 
 #define TYVWeakify(objectName) \
-    __weak __typeof(objectName) __TYVWeakified_##objectName = objectName;
+    __weak __typeof(objectName) __TYVWeakified_##objectName = objectName
 
 // Use only after TYVWeakify
 #define TYVStrongify(objectName) \
@@ -42,7 +42,7 @@
 
 // Use only after TYVWeakify
 #define TYVStrongifyAndReturnIfNil(objectName) \
-    TYVStrongify(objectName)    \
+    TYVStrongify(objectName);    \
     if  (!objectName) {  \
         return; \
     }

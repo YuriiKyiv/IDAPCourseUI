@@ -9,6 +9,7 @@
 #import "TYVDataCell.h"
 #import "TYVDataModel.h"
 #import "TYVDispatch.h"
+#import "TYVMacro.h"
 
 @implementation TYVDataCell
 
@@ -47,14 +48,18 @@
 #pragma mark TYVAbstractDataModelProtocol
 
 - (void)dataModelDidLoad:(TYVDataModel *)dataModel {
+    TYVWeakify(self);
     TYVDispatchSyncOnMainQueueWithBlock(^{
+        TYVStrongifyAndReturnIfNil(self);
         [self.spinnerView stopAnimating];
         [self fillWithModel:dataModel];
     });
 }
 
 - (void)dataModelWillLoad:(TYVDataModel *)dataModel {
+    TYVWeakify(self);
     TYVDispatchSyncOnMainQueueWithBlock(^{
+        TYVStrongifyAndReturnIfNil(self);
         [self.spinnerView startAnimating];
     });
 }
