@@ -34,16 +34,33 @@
     
     [tableView beginUpdates];
     
-    [tableView insertRowsAtIndexPaths:info.insertIndexes
-                     withRowAnimation:UITableViewRowAnimationLeft];
+    switch (info.changeState) {
+        case TYVDataArrayModelInsert:
+            [tableView insertRowsAtIndexPaths:info.changing
+                             withRowAnimation:UITableViewRowAnimationLeft];
+            break;
+            
+        case TYVDataArrayModelDelete:
+            [tableView deleteRowsAtIndexPaths:info.changing
+                             withRowAnimation:UITableViewRowAnimationRight];
+            break;
+            
+        case TYVDataArrayModelMove:
+            [tableView moveWithModelMovingPosition:info.changing];
+            break;
+            
+        default:
+            break;
+    }
     
-    [tableView deleteRowsAtIndexPaths:info.deleteIndexes
-                     withRowAnimation:UITableViewRowAnimationRight];
     
-    [tableView moveRowAtIndexPath:info.movePosition.sourcePath
-                      toIndexPath:info.movePosition.destinationPath];
     
     [tableView endUpdates];
+}
+
+- (void)moveWithModelMovingPosition:(TYVModelMovingPosition *)position; {
+    [self moveRowAtIndexPath:position.sourcePath
+                      toIndexPath:position.destinationPath];
 }
 
 @end

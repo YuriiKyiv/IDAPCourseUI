@@ -70,7 +70,8 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
         [array addObject:model];
         
         TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo infoWithChangeState:TYVDataArrayModelInsert
-                                                                        changing:@([array count] - 1)];
+                                                                        changing:[NSIndexPath
+                                                                                  pathWithIndex:[array count] - 1]];
         
         [self setState:TYVAbstractDataModelDidChange withObject:info];
     };
