@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@class TYVModelMovingPosition;
-
 NS_ENUM(NSUInteger, TYVDataArraModelChangeState) {
     TYVDataArrayModelInsert,
     TYVDataArrayModelDelete,

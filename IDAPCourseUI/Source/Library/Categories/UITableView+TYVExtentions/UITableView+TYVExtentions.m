@@ -36,12 +36,12 @@
     
     switch (info.changeState) {
         case TYVDataArrayModelInsert:
-            [tableView insertRowsAtIndexPaths:info.changing
+            [tableView insertRowsAtIndexPaths:@[info.changing]
                              withRowAnimation:UITableViewRowAnimationLeft];
             break;
             
         case TYVDataArrayModelDelete:
-            [tableView deleteRowsAtIndexPaths:info.changing
+            [tableView deleteRowsAtIndexPaths:@[info.changing]
                              withRowAnimation:UITableViewRowAnimationRight];
             break;
             

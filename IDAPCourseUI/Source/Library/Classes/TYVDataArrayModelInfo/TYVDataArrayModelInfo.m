@@ -7,7 +7,6 @@
 //
 
 #import "TYVDataArrayModelInfo.h"
-#import "TYVModelMovingPosition.h"
 
 @implementation TYVDataArrayModelInfo
 
