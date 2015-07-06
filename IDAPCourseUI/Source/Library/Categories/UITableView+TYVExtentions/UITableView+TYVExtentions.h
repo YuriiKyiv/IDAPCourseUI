@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class TYVTableViewCell;
+@class TYVModelMovingPosition;
 
 @interface UITableView (TYVExtentions)
 
@@ -17,5 +18,7 @@
 - (id)reusableCellWithClass:(Class)cls;
 
 - (void)updateWithInfo:(id)info;
+
+- (void)moveWithModelMovingPosition:(TYVModelMovingPosition *)position;
 
 @end
