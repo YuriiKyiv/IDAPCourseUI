@@ -12,14 +12,20 @@
 @implementation TYVDataArrayModelInfo
 
 #pragma mark -
+#pragma mark Class Methods
+
++ (instancetype)infoWithChangeState:(NSUInteger)state changing:(id)changing {
+    return [[self alloc] initWithChangeState:state changing:changing];
+}
+
+#pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (instancetype)init {
+- (instancetype)initWithChangeState:(NSUInteger)state changing:(id)changing {
     self = [super init];
     if (self) {
-        self.insertIndexes = [NSMutableArray array];
-        self.deleteIndexes = [NSMutableArray array];
-        self.movePosition = [TYVModelMovingPosition  new];
+        self.changeState = state;
+        self.changing = changing;
     }
     
     return self;

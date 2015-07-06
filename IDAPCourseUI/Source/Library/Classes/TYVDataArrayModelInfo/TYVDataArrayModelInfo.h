@@ -10,9 +10,19 @@
 
 @class TYVModelMovingPosition;
 
+NS_ENUM(NSUInteger, TYVDataArraModelChangeState) {
+    TYVDataArrayModelInsert,
+    TYVDataArrayModelDelete,
+    TYVDataArrayModelMove
+};
+
 @interface TYVDataArrayModelInfo : NSObject
-@property (nonatomic, strong)   NSMutableArray          *insertIndexes;
-@property (nonatomic, strong)   NSMutableArray          *deleteIndexes;
-@property (nonatomic, strong)   TYVModelMovingPosition  *movePosition;
+@property (nonatomic, assign)   NSUInteger  changeState;
+@property (nonatomic, strong)   id          changing;
+
+
++ (instancetype)infoWithChangeState:(NSUInteger)state changing:(id)changing;
+
+- (instancetype)initWithChangeState:(NSUInteger)state changing:(id)changing;
 
 @end
