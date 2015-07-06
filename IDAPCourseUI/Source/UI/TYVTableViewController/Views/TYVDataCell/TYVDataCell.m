@@ -38,7 +38,9 @@
 #pragma mark Public
 
 - (void)fillWithModel:(TYVDataModel *)model {
+    TYVWeakify(self);
     TYVDispatchSyncOnMainQueueWithBlock(^{
+        TYVStrongifyAndReturnIfNil(self);
         self.dataLabel.text = model.text;
         self.pictureView.image = self.data.image;
     });

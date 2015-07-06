@@ -7,11 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @protocol TYVLoadingViewProtocol <NSObject>
 
 - (void)showLoadingView;
 
 - (void)hideLoadingView;
+
+- (void)removeFromSuperview;
+
+- (void)addSubview:(id)subview;
+
+- (void)setBounds:(CGRect)rect;
 
 @end

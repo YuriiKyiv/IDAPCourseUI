@@ -9,6 +9,7 @@
 #import "TYVLoadingTableView.h"
 #import "UINib+TYVExtentions.h"
 #import "TYVLoadingView.h"
+#import "TYVLoadingViewProtocol.h"
 
 @implementation TYVLoadingTableView
 
@@ -32,13 +33,13 @@
 #pragma mark -
 #pragma mark Accesors
 
-- (void)setLoadingView:(id)loadingView {
+- (void)setLoadingView:(id<TYVLoadingViewProtocol>)loadingView {
     if (_loadingView != loadingView) {
         [_loadingView removeFromSuperview];
         
         _loadingView = loadingView;
         [self addSubview:loadingView];
-        [(UIView *)loadingView setBounds:self.bounds];
+        [loadingView setBounds:self.bounds];
     }
 }
 

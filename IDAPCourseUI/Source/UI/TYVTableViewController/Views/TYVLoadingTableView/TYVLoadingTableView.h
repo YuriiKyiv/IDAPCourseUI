@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol TYVLoadingViewProtocol;
+
 @interface TYVLoadingTableView : UIView
-@property (nonatomic, strong)   IBOutlet id  loadingView;
+@property (nonatomic, strong)   IBOutlet id<TYVLoadingViewProtocol>  loadingView;
 
 
 // shound not call this method directly
