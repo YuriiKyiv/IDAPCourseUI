@@ -7,7 +7,6 @@
 //
 
 #import "TYVDataModel.h"
-#import "TYVImageProtocol.h"
 
 #import "NSString+TYVExtensions.h"
 
@@ -46,38 +45,13 @@ static NSString * const  kTYVTextField = @"text";
 }
 
 #pragma mark -
-#pragma mark Public Methods
+#pragma mark TYVAbstractDataModel
 
-- (void)load {
-    @synchronized (self) {
-        if (self.state == TYVImageUnloaded) {
-            self.state = TYVImageLoading;
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                NSString *path = [[NSBundle mainBundle] pathForResource:kTYVImageName ofType:kTYVImageType];
-                self.image = [UIImage imageWithContentsOfFile:path];
-
-                self.state = TYVImageLoaded;
-            });
-        } else {
-            [self notify];
-        }
-    }
-}
-
-#pragma mark -
-#pragma mark Observer Object
-
-- (SEL)selectorForState:(NSUInteger)state {
-    switch (state) {
-        case TYVImageLoaded:
-            return @selector(dataModelDidLoadImage:);
-            
-        case TYVImageLoading:
-            return @selector(dataModelLoadingImage:);
-            
-        default:
-            return [super selectorForState:state];
-    }
+- (void)performLoading {
+    NSString *path = [[NSBundle mainBundle] pathForResource:kTYVImageName ofType:kTYVImageType];
+    self.image = [UIImage imageWithContentsOfFile:path];
+    
+    self.state = TYVAbstractDataModelDidLoad;
 }
 
 #pragma mark -

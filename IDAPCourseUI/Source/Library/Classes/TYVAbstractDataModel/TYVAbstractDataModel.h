@@ -20,6 +20,7 @@ typedef NS_ENUM(NSUInteger, TYVAbstractDataModelState) {
 
 // do not call this methods directly
 // This is the method for overriding
+// You have to set the state in this method manually
 - (void)performLoading;
 
 // do not call this methods directly

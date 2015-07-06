@@ -44,7 +44,6 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
         
         _dataArray = dataArray;
         [_dataArray addObserver:self];
-        [self.tableView showLoadingView];
         [_dataArray load];
     }
 }
@@ -55,7 +54,6 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView showLoadingView];
     [self.dataArray load];
 }
 
@@ -74,13 +72,6 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
     TYVTableView *tableView = self.tableView;
     BOOL editing = tableView.editing;
     [tableView setEditing:!editing animated:YES];
-}
-
-#pragma mark -
-#pragma mark Public Methods
-
-- (void)save {
-    [self.dataArray save];
 }
 
 #pragma mark -
@@ -128,7 +119,7 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 }
 
 - (void)dataModelWillLoad:(TYVDataArrayModel *)dataArray {
-    
+    [self.tableView showLoadingView];
 }
 
 

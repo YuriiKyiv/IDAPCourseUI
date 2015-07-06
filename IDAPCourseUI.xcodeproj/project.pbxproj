@@ -58,7 +58,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5A13A41D1B381C3000B4ED8D /* TYVDataArrayModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVDataArrayModelProtocol.h; path = TYVDataArrayModel/TYVDataArrayModelProtocol.h; sourceTree = "<group>"; };
 		5A13A41E1B383B5800B4ED8D /* NSBundle+TYVExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBundle+TYVExtensions.h"; path = "NSBundle+TYVExtensions/NSBundle+TYVExtensions.h"; sourceTree = "<group>"; };
 		5A13A41F1B383B5800B4ED8D /* NSBundle+TYVExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+TYVExtensions.m"; path = "NSBundle+TYVExtensions/NSBundle+TYVExtensions.m"; sourceTree = "<group>"; };
 		5A148AA31B33163E003B6542 /* NSString+TYVExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TYVExtensions.h"; sourceTree = "<group>"; };
@@ -89,7 +88,6 @@
 		5A432F111B454AC100F2598B /* TYVAbstractDataModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVAbstractDataModelProtocol.h; path = TYVAbstractDataModel/TYVAbstractDataModelProtocol.h; sourceTree = "<group>"; };
 		5A432F121B455E0900F2598B /* NSFileManager+TYVExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileManager+TYVExtensions.h"; path = "NSFileManager+TYVExtensions/NSFileManager+TYVExtensions.h"; sourceTree = "<group>"; };
 		5A432F131B455E0900F2598B /* NSFileManager+TYVExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+TYVExtensions.m"; path = "NSFileManager+TYVExtensions/NSFileManager+TYVExtensions.m"; sourceTree = "<group>"; };
-		5A4B63731B414E8E00EBA769 /* TYVImageProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVImageProtocol.h; path = TYVDataModel/TYVImageProtocol.h; sourceTree = "<group>"; };
 		5A4BF2FE1B3AAD68009C7F58 /* TYVDataArrayModelInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVDataArrayModelInfo.h; sourceTree = "<group>"; };
 		5A4BF2FF1B3AAD68009C7F58 /* TYVDataArrayModelInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVDataArrayModelInfo.m; sourceTree = "<group>"; };
 		5A7E4FB61B39705C00698367 /* NSMutableArray+TYVExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+TYVExtensions.h"; path = "NSMutableArray+TYVExtensions/NSMutableArray+TYVExtensions.h"; sourceTree = "<group>"; };
@@ -501,7 +499,6 @@
 			children = (
 				5AF13C4C1B31A5F4001D37FA /* TYVDataModel.h */,
 				5AF13C4D1B31A5F4001D37FA /* TYVDataModel.m */,
-				5A4B63731B414E8E00EBA769 /* TYVImageProtocol.h */,
 			);
 			name = TYVDataModel;
 			sourceTree = "<group>";
@@ -511,7 +508,6 @@
 			children = (
 				5AF13C501B31A645001D37FA /* TYVDataArrayModel.h */,
 				5AF13C511B31A645001D37FA /* TYVDataArrayModel.m */,
-				5A13A41D1B381C3000B4ED8D /* TYVDataArrayModelProtocol.h */,
 			);
 			name = TYVDataArrayModel;
 			sourceTree = "<group>";

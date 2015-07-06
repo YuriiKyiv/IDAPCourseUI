@@ -10,7 +10,6 @@
 #import "TYVDataModel.h"
 #import "TYVDataArrayModelInfo.h"
 #import "TYVModelMovingPosition.h"
-#import "TYVDataArrayModelProtocol.h"
 
 #import "NSMutableArray+TYVExtensions.h"
 #import "NSIndexPath+TYVExtensions.h"
@@ -156,6 +155,8 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
             [array addObject:[TYVDataModel model]];
         }
     }
+    
+    self.state = TYVAbstractDataModelDidLoad;
 }
 
 #pragma mark -

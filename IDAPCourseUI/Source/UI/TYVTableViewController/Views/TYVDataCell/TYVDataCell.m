@@ -44,16 +44,16 @@
 }
 
 #pragma mark -
-#pragma mark ImageProtocol
+#pragma mark TYVAbstractDataModelProtocol
 
-- (void)dataModelDidLoadImage:(TYVDataModel *)dataModel {
+- (void)dataModelDidLoad:(TYVDataModel *)dataModel {
     TYVDispatchSyncOnMainQueueWithBlock(^{
         [self.spinnerView stopAnimating];
         [self fillWithModel:dataModel];
     });
 }
 
-- (void)dataModelLoadingImage:(TYVDataModel *)dataModel {
+- (void)dataModelWillLoad:(TYVDataModel *)dataModel {
     TYVDispatchSyncOnMainQueueWithBlock(^{
         [self.spinnerView startAnimating];
     });

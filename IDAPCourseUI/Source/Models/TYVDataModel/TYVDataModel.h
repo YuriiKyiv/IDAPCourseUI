@@ -8,23 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "TYVProtocolObservableObject.h"
 
-typedef NS_ENUM(NSUInteger, TYVImageState) {
-    TYVImageUnloaded,
-    TYVImageLoading,
-    TYVImageLoaded,
-    TYVImageFailLoaded
-};
+#import "TYVAbstractDataModel.h"
 
-@interface TYVDataModel : TYVProtocolObservableObject <NSCoding>
+@interface TYVDataModel : TYVAbstractDataModel <NSCoding>
 @property (nonatomic, readonly) UIImage     *image;
 @property (nonatomic, copy)     NSString    *text;
 
 + (instancetype)model;
 
 - (instancetype)initWithString:(NSString *)string;
-
-- (void)load;
 
 @end

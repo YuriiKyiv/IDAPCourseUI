@@ -7,11 +7,11 @@
 //
 
 #import "TYVTableViewCell.h"
-#import "TYVImageProtocol.h"
+#import "TYVAbstractDataModelProtocol.h"
 
 @class TYVDataModel;
 
-@interface TYVDataCell : TYVTableViewCell <TYVImageProtocol>
+@interface TYVDataCell : TYVTableViewCell <TYVAbstractDataModelProtocol>
 @property (nonatomic, strong)   IBOutlet UILabel        *dataLabel;
 @property (nonatomic, strong)   IBOutlet UIImageView    *pictureView;
 
