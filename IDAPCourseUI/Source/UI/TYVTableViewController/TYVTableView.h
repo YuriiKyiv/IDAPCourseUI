@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TYVLoadingTableView.h"
+#import "TYVAbstractLoadingView.h"
 
-@interface TYVTableView : TYVLoadingTableView
+@interface TYVTableView : TYVAbstractLoadingView
 @property (nonatomic, strong)  IBOutlet UITableView     *tableView;
 @property (nonatomic, strong)  IBOutlet UIButton        *addButton;
 @property (nonatomic, strong)  IBOutlet UIButton        *editButton;
