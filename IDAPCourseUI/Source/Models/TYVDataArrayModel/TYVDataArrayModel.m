@@ -47,7 +47,7 @@ static NSString * const  kTYVFileName   = @"info.plist";
     
     self.mutableDataArray = modelsArray;
     
-    self.state = TYVAbstractDataModelDidLoad;
+    self.state = TYVModelLoaded;
 }
 
 @end

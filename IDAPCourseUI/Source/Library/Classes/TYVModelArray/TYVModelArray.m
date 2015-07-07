@@ -19,18 +19,6 @@ static NSString *const  kTYVFileName = @"info.plist";
 
 static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
 
-@implementation TYVModelArray (TYVPrivate)
-
-- (NSMutableArray *)mutableDataArray {
-    return nil;
-}
-
-- (void)setMutableDataArray:(NSMutableArray *)mutableDataArray {
-    
-}
-
-@end
-
 @implementation TYVModelArray
 
 @dynamic dataArray;
@@ -79,7 +67,7 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
         TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo infoWithChangeState:TYVDataArrayModelInsert
                                                                         changing:path];
         
-        [self setState:TYVAbstractDataModelDidChange withObject:info];
+        [self setState:TYVModelDidChange withObject:info];
     };
 }
 
@@ -100,7 +88,7 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
         TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo infoWithChangeState:TYVDataArrayModelDelete
                                                                         changing:path];
         
-        [self setState:TYVAbstractDataModelDidChange withObject:info];
+        [self setState:TYVModelDidChange withObject:info];
     };
 }
 
@@ -114,7 +102,7 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
         TYVDataArrayModelInfo *info = [TYVDataArrayModelInfo infoWithChangeState:TYVDataArrayModelMove
                                                                         changing:position];
         
-        [self setState:TYVAbstractDataModelDidChange withObject:info];
+        [self setState:TYVModelDidChange withObject:info];
     }
 }
 
