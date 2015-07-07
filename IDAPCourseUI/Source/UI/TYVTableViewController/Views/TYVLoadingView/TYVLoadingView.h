@@ -13,6 +13,8 @@
 
 @property (nonatomic, readonly, getter=isVisible) BOOL    visible;
 
++ (instancetype)viewInSuperview:(UIView *)superview;
+
 - (void)showLoadingView;
 
 - (void)hideLoadingView;

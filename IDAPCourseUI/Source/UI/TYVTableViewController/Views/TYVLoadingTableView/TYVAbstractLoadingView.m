@@ -47,7 +47,6 @@
         
         _loadingView = loadingView;
         [self addSubview:loadingView];
-        [loadingView setBounds:self.bounds];
     }
 }
 

@@ -9,6 +9,8 @@
 #import "TYVLoadingView.h"
 #import "TYVDispatch.h"
 
+#import "UINib+TYVExtentions.h"
+
 static const NSTimeInterval TYVDuration     =   1.0;
 static const CGFloat        TYVShowAlpha    =   0.5;
 static const CGFloat        TYVHideAlpha    =   0.0;
@@ -21,6 +23,16 @@ static const CGFloat        TYVHideAlpha    =   0.0;
 @end
 
 @implementation TYVLoadingView
+
+#pragma mark -
+#pragma mark Class Methods
+
+- (instancetype)viewInSuperview:(UIView *)superview {
+    id object = [UINib objectWithClass:[self class]];
+    [object setBounds:self.bounds];
+    
+    return object;
+}
 
 #pragma mark -
 #pragma mark View Lifecycle
