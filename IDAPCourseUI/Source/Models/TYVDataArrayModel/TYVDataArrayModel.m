@@ -14,11 +14,11 @@
 #import "NSMutableArray+TYVExtensions.h"
 #import "NSIndexPath+TYVExtensions.h"
 #import "NSFileManager+TYVExtensions.h"
-#import "NSString+TYVExtensions.h"
+#import "NSFileManager+TYVExtensions.h"
 
 static NSUInteger const  TYVArrayCount = 10;
 
-static NSString *const  kTYVFileName = @"Table";
+static NSString *const  kTYVFileName = @"info.plist";
 
 static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
 
@@ -137,8 +137,10 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
 
 - (void)save {
     @synchronized (self) {
-        NSString *path = [[NSString directoryForUserDocument] stringByAppendingString:kTYVFileName];
-        [NSKeyedArchiver archiveRootObject:self toFile:path];
+        NSString *filePath = [[NSFileManager directoryForUserDocument]
+                              stringByAppendingFormat:@"/%@", kTYVFileName];
+        
+        [NSKeyedArchiver archiveRootObject:self.mutableDataArray toFile:filePath];
     }
 }
 
@@ -146,17 +148,21 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
 #pragma mark TYVAbstractDataModel
 
 - (void)performLoading {
-    sleep(1);
-    NSString *path = [[NSString directoryForUserDocument] stringByAppendingString:kTYVFileName];
-    TYVDataArrayModel *modelsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-    NSMutableArray *array = self.mutableDataArray;
-    if (modelsArray) {
-        array = modelsArray.mutableDataArray;
+    NSString *filePath = [[NSFileManager directoryForUserDocument]
+                          stringByAppendingFormat:@"/%@", kTYVFileName];
+    
+    NSMutableArray *modelsArray = [NSMutableArray array];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:filePath]) {
+        modelsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
     } else {
         for (int i = 0; i < TYVArrayCount; i++) {
-            [array addObject:[TYVDataModel model]];
+            [modelsArray addObject:[TYVDataModel model]];
         }
     }
+    
+    self.mutableDataArray = modelsArray;
     
     self.state = TYVAbstractDataModelDidLoad;
 }

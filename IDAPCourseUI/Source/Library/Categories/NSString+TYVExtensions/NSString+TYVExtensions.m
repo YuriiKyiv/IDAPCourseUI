@@ -71,8 +71,4 @@ static const NSUInteger kNSStringDefaultRandomStringLength  = 25;
     return [self randomStringWithLength:length alphabet:[self letterAlphabet]];
 }
 
-+ (NSString *)directoryForUserDocument {
-    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-}
-
 @end
