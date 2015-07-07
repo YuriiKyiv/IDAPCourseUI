@@ -8,15 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ENUM(NSUInteger, TYVDataArraModelChangeState) {
+typedef NS_ENUM(NSUInteger, TYVDataArraModelChangeState) {
     TYVDataArrayModelInsert,
     TYVDataArrayModelDelete,
     TYVDataArrayModelMove
 };
 
 @interface TYVDataArrayModelInfo : NSObject
-@property (nonatomic, assign)   NSUInteger  changeState;
-@property (nonatomic, strong)   id          changing;
+@property (nonatomic, assign)   TYVDataArraModelChangeState changeState;
+@property (nonatomic, strong)   id                          changing;
 
 
 + (instancetype)infoWithChangeState:(NSUInteger)state changing:(id)changing;

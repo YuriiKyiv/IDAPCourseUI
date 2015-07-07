@@ -51,7 +51,7 @@ static NSString * const  kTYVTextField = @"text";
     NSString *path = [[NSBundle mainBundle] pathForResource:kTYVImageName ofType:kTYVImageType];
     self.image = [UIImage imageWithContentsOfFile:path];
     
-    self.state = TYVAbstractDataModelDidLoad;
+    self.state = TYVModelLoaded;
 }
 
 #pragma mark -

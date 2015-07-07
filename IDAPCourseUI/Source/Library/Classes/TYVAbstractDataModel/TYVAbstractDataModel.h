@@ -9,11 +9,11 @@
 #import "TYVProtocolObservableObject.h"
 
 typedef NS_ENUM(NSUInteger, TYVAbstractDataModelState) {
-    TYVAbstractDataModelDidUnload,
-    TYVAbstractDataModelWillLoad,
-    TYVAbstractDataModelDidLoad,
-    TYVAbstractDataModelDidFailedLoading,
-    TYVAbstractDataModelDidChange
+    TYVModelUnloaded,
+    TYVModelWillLoad,
+    TYVModelLoaded,
+    TYVModelFailedLoading,
+    TYVModelDidChange
 };
 
 @interface TYVAbstractDataModel : TYVProtocolObservableObject

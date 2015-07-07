@@ -16,10 +16,10 @@
 
 - (void)load {
     @synchronized (self) {
-        if (TYVAbstractDataModelDidUnload == self.state
-            || TYVAbstractDataModelDidFailedLoading == self.state)
+        if (TYVModelUnloaded == self.state
+            || TYVModelWillLoad == self.state)
         {
-            self.state = TYVAbstractDataModelWillLoad;
+            self.state = TYVModelWillLoad;
             
             [self setupLoading];
             
@@ -45,19 +45,19 @@
 
 - (SEL)selectorForState:(NSUInteger)state {
     switch (state) {
-        case TYVAbstractDataModelDidLoad:
+        case TYVModelLoaded:
             return @selector(dataModelDidLoad:);
         
-        case TYVAbstractDataModelWillLoad:
+        case TYVModelWillLoad:
             return @selector(dataModelWillLoad:);
             
-        case TYVAbstractDataModelDidFailedLoading:
+        case TYVModelFailedLoading:
             return @selector(dataModelDidFailedLoading:);
             
-        case TYVAbstractDataModelDidUnload:
+        case TYVModelUnloaded:
             return @selector(dataModelDidUnload:);
             
-        case TYVAbstractDataModelDidChange:
+        case TYVModelDidChange:
             return @selector(dataModel:didChangeWithObject:);
             
         default:
