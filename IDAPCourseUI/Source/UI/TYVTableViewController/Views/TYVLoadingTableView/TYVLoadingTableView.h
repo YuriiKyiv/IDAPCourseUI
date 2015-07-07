@@ -11,7 +11,7 @@
 @protocol TYVLoadingViewProtocol;
 
 @interface TYVLoadingTableView : UIView
-@property (nonatomic, strong)   IBOutlet id<TYVLoadingViewProtocol>  loadingView;
+@property (nonatomic, strong)   IBOutlet UIView<TYVLoadingViewProtocol>  *loadingView;
 
 
 // shound not call this method directly

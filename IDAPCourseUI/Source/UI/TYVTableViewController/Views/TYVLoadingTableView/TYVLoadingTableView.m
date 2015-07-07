@@ -33,7 +33,7 @@
 #pragma mark -
 #pragma mark Accesors
 
-- (void)setLoadingView:(id<TYVLoadingViewProtocol>)loadingView {
+- (void)setLoadingView:(UIView<TYVLoadingViewProtocol> *)loadingView {
     if (_loadingView != loadingView) {
         [_loadingView removeFromSuperview];
         

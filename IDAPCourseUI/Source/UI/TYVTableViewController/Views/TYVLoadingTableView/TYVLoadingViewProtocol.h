@@ -15,10 +15,4 @@
 
 - (void)hideLoadingView;
 
-- (void)removeFromSuperview;
-
-- (void)addSubview:(id)subview;
-
-- (void)setBounds:(CGRect)rect;
-
 @end
