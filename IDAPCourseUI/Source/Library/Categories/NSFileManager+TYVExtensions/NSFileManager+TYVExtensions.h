@@ -10,6 +10,6 @@
 
 @interface NSFileManager (TYVExtensions)
 
-+ (NSString *)directoryForUserDocument;
++ (NSString *)usersDocumentDirectory;
 
 @end

@@ -137,7 +137,7 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
 
 - (void)save {
     @synchronized (self) {
-        NSString *filePath = [[NSFileManager directoryForUserDocument]
+        NSString *filePath = [[NSFileManager usersDocumentDirectory]
                               stringByAppendingFormat:@"/%@", kTYVFileName];
         
         [NSKeyedArchiver archiveRootObject:self.mutableDataArray toFile:filePath];
@@ -148,7 +148,7 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
 #pragma mark TYVAbstractDataModel
 
 - (void)performLoading {
-    NSString *filePath = [[NSFileManager directoryForUserDocument]
+    NSString *filePath = [[NSFileManager usersDocumentDirectory]
                           stringByAppendingFormat:@"/%@", kTYVFileName];
     
     NSMutableArray *modelsArray = [NSMutableArray array];
