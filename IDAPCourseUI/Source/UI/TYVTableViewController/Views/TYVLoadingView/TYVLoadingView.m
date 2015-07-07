@@ -64,7 +64,7 @@ static const CGFloat        TYVHideAlpha    =   0.0;
         self.alpha = (visible) ? TYVShowAlpha : TYVHideAlpha;
     } completion:^(BOOL finished) {
         if (finished) {
-            self.visible = !visible;
+            self.visible = visible;
         }
     }];
 }
