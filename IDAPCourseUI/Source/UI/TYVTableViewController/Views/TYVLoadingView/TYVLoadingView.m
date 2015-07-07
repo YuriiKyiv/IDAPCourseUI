@@ -16,7 +16,7 @@ static const CGFloat        TYVHideAlpha    =   0.0;
 @interface TYVLoadingView ()
 @property (nonatomic, assign)   BOOL visible;
 
-- (void)animateLoadingView;
+- (void)animateLoadingViewWithState:(BOOL)visible;
 
 @end
 
@@ -35,34 +35,26 @@ static const CGFloat        TYVHideAlpha    =   0.0;
 #pragma mark Public Methods
 
 - (void)showLoadingView {
-    if (self.visible) {
-        return;
-    }
-    
-    [self animateLoadingView];
+    [self animateLoadingViewWithState:YES];
 }
 
 - (void)hideLoadingView {
-    if (!self.visible) {
-        return;
-    }
-    
-    [self animateLoadingView];
+    [self animateLoadingViewWithState:NO];
 }
 
 #pragma mark -
 #pragma mark Private Methods
 
-- (void)animateLoadingView {
-    BOOL visible = !self.visible;
-    
+- (void)animateLoadingViewWithState:(BOOL)visible {
     (visible) ? [self.spinnerView startAnimating] : [self.spinnerView stopAnimating];
-
+    
     [UIView animateWithDuration:TYVDuration animations:^{
         self.alpha = (visible) ? TYVShowAlpha : TYVHideAlpha;
+    } completion:^(BOOL finished) {
+        if (finished) {
+            self.visible = !visible;
+        }
     }];
-    
-    self.visible = visible;
 }
 
 @end

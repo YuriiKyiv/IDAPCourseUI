@@ -145,6 +145,7 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
 #pragma mark TYVAbstractDataModel
 
 - (void)performLoading {
+    sleep(1);
     NSString *path = [[NSString directoryForUserDocument] stringByAppendingString:kTYVFileName];
     TYVDataArrayModel *modelsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
     NSMutableArray *array = self.mutableDataArray;
