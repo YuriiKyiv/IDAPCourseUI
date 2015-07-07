@@ -10,7 +10,7 @@
 
 @interface TYVDataArrayModelInfo ()
 @property (nonatomic, assign)   TYVDataArraModelChangeState changeState;
-@property (nonatomic, strong)   id<NSCopying>               changing;
+@property (nonatomic, strong)   id                          changing;
 
 @end
 
@@ -30,7 +30,7 @@
     self = [super init];
     if (self) {
         self.changeState = state;
-        self.changing = [changing copy];
+        self.changing = changing;
     }
     
     return self;

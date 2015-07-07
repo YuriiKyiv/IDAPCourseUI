@@ -19,6 +19,11 @@ static NSString *const  kTYVFileName = @"info.plist";
 
 static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
 
+@interface TYVModelArray ()
+@property (nonatomic, strong)   NSMutableArray *mutableDataArray;
+
+@end
+
 @implementation TYVModelArray
 
 @dynamic dataArray;
