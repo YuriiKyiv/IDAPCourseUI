@@ -15,12 +15,12 @@ typedef NS_ENUM(NSUInteger, TYVDataArraModelChangeState) {
 };
 
 @interface TYVDataArrayModelInfo : NSObject
-@property (nonatomic, assign)   TYVDataArraModelChangeState changeState;
-@property (nonatomic, strong)   id                          changing;
+@property (nonatomic, readonly)   TYVDataArraModelChangeState changeState;
+@property (nonatomic, readonly)   id<NSCopying>               changing;
 
 
-+ (instancetype)infoWithChangeState:(NSUInteger)state changing:(id)changing;
++ (instancetype)infoWithChangeState:(NSUInteger)state changing:(id<NSCopying>)changing;
 
-- (instancetype)initWithChangeState:(NSUInteger)state changing:(id)changing;
+- (instancetype)initWithChangeState:(NSUInteger)state changing:(id<NSCopying>)changing;
 
 @end

@@ -8,6 +8,12 @@
 
 #import "TYVDataArrayModelInfo.h"
 
+@interface TYVDataArrayModelInfo ()
+@property (nonatomic, assign)   TYVDataArraModelChangeState changeState;
+@property (nonatomic, strong)   id<NSCopying>               changing;
+
+@end
+
 @implementation TYVDataArrayModelInfo
 
 #pragma mark -
@@ -24,7 +30,7 @@
     self = [super init];
     if (self) {
         self.changeState = state;
-        self.changing = changing;
+        self.changing = [changing copy];
     }
     
     return self;
