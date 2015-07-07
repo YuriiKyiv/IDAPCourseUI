@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol TYVLoadingViewProtocol <NSObject>
+@property (nonatomic, readonly, getter=isVisible)   BOOL    visible;
 
 - (void)showLoadingView;
 

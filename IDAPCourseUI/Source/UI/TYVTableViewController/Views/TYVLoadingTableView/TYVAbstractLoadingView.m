@@ -13,12 +13,20 @@
 
 @implementation TYVAbstractLoadingView
 
+@dynamic visible;
+
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (void)dealloc
-{
+- (void)dealloc {
     self.loadingView = nil;
+}
+
+#pragma mark -
+#pragma mark Accsecors
+
+- (BOOL)isVisible {
+    return self.loadingView.visible;
 }
 
 #pragma mark -
