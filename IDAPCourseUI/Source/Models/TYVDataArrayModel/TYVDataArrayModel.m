@@ -16,14 +16,18 @@ static NSUInteger const  TYVArrayCount  = 10;
 static NSString * const  kTYVFileName   = @"info.plist";
 
 @interface TYVDataArrayModel ()
-@property (nonatomic, strong)   NSString    *fileName;
-@property (nonatomic, strong)   NSString    *filePath;
+@property (nonatomic, readonly)   NSString    *fileName;
+@property (nonatomic, readonly)   NSString    *filePath;
 
-@property (nonatomic, assign, getter=isFileVailable)    BOOL    fileVailable;
+@property (nonatomic, assign, getter=isFileVailable)    BOOL    fileAvailable;
 
 @end
 
 @implementation TYVDataArrayModel
+
+@dynamic fileName;
+@dynamic filePath;
+@dynamic fileAvailable;
 
 - (void)save {
     @synchronized (self) {
@@ -57,7 +61,7 @@ static NSString * const  kTYVFileName   = @"info.plist";
 
     sleep(3);
     
-    if (self.fileVailable) {
+    if (self.fileAvailable) {
         modelsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:self.filePath];
     } else {
         for (int i = 0; i < TYVArrayCount; i++) {
