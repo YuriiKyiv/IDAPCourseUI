@@ -17,7 +17,7 @@
 - (void)load {
     @synchronized (self) {
         if (TYVModelUnloaded == self.state
-            || TYVModelWillLoad == self.state)
+            || TYVModelFailedLoading == self.state)
         {
             self.state = TYVModelWillLoad;
             
