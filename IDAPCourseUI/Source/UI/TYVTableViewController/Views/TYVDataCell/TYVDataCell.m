@@ -29,7 +29,13 @@
         
         _data = data;
         [_data addObserver:self];
-        [self fillWithModel:_data];
+        
+        TYVWeakify(self);
+        TYVDispatchAsyncOnMainQueueWithBlock(^{
+            TYVStrongifyAndReturnIfNil(self);
+            [self fillWithModel:_data];
+        });
+        
         [data load];
     }
 }
@@ -38,12 +44,8 @@
 #pragma mark Public
 
 - (void)fillWithModel:(TYVDataModel *)model {
-    TYVWeakify(self);
-    TYVDispatchSyncOnMainQueueWithBlock(^{
-        TYVStrongifyAndReturnIfNil(self);
-        self.dataLabel.text = model.text;
-        self.pictureView.image = self.data.image;
-    });
+    self.dataLabel.text = model.text;
+    self.pictureView.image = self.data.image;
 }
 
 #pragma mark -

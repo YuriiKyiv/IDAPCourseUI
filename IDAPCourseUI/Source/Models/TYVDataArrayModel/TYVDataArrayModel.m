@@ -31,6 +31,7 @@ static NSString * const  kTYVFileName   = @"info.plist";
 #pragma mark TYVAbstractDataModel
 
 - (void)performLoading {
+    sleep(3);
     NSString *filePath = [[NSFileManager usersDocumentDirectory]
                           stringByAppendingFormat:@"/%@", kTYVFileName];
     

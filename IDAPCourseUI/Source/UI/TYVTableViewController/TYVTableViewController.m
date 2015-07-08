@@ -15,6 +15,8 @@
 #import "TYVDataArrayModelInfo.h"
 #import "TYVModelMovingPosition.h"
 #import "TYVAbstractDataModelProtocol.h"
+#import "TYVDispatch.h"
+#import "TYVMacro.h"
 
 #import "UINib+TYVExtentions.h"
 #import "UITableView+TYVExtentions.h"
@@ -109,17 +111,29 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 #pragma mark TYVAbstractDataModelProtocol
 
 - (void)dataModel:(TYVDataArrayModel *)dataArray didChangeWithObject:(TYVDataArrayModelInfo *)info {
-    [self.tableView.tableView updateWithInfo:info];
+    TYVWeakify(self);
+    TYVDispatchAsyncOnMainQueueWithBlock(^{
+        TYVStrongifyAndReturnIfNil(self)
+        [self.tableView.tableView updateWithInfo:info];
+    });
 }
 
 - (void)dataModelDidLoad:(TYVDataArrayModel *)dataArray {
-    TYVTableView *tableView = self.tableView;
-    [tableView hideLoadingView];
-    [tableView.tableView reloadData];
+    TYVWeakify(self);
+    TYVDispatchAsyncOnMainQueueWithBlock(^{
+        TYVStrongifyAndReturnIfNil(self)
+        TYVTableView *tableView = self.tableView;
+        [tableView hideLoadingView];
+        [tableView.tableView reloadData];
+    });
 }
 
 - (void)dataModelWillLoad:(TYVDataArrayModel *)dataArray {
-    [self.tableView showLoadingView];
+    TYVWeakify(self);
+    TYVDispatchAsyncOnMainQueueWithBlock(^{
+        TYVStrongifyAndReturnIfNil(self)
+        [self.tableView showLoadingView];
+    });
 }
 
 
