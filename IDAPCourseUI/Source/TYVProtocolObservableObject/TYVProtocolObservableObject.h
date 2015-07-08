@@ -11,6 +11,7 @@
 @class TYVSelector;
 
 @interface TYVProtocolObservableObject : NSObject
+@property (nonatomic, assign)   BOOL        shouldNotify;
 @property (atomic, assign)      NSUInteger  state;
 @property (nonatomic, readonly) NSSet       *observersSet;
 

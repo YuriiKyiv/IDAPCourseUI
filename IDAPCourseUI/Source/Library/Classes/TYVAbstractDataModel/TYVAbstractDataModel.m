@@ -10,50 +10,6 @@
 #import "TYVAbstractDataModelProtocol.h"
 
 @implementation TYVAbstractDataModel
-@synthesize state = _state;
-
-#pragma mark -
-#pragma mark Initializations and Deallocations
-
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        self.shouldNotify = YES;
-    }
-    
-    return self;
-}
-
-#pragma mark -
-#pragma mark Accessors
-
-- (void)setState:(NSUInteger)state  {
-    @synchronized(self) {
-        _state = state;
-        
-        NSLog(@"%lu", (unsigned long)self.state);
-        
-        if ([self shouldNotify]) {
-            [self notify];
-        }
-    }
-}
-
-- (void)setState:(NSUInteger)state withObject:(id)object {
-    @synchronized(self) {
-        _state = state;
-        
-        if ([self shouldNotify]) {
-            [self notifyWithObject:object];
-        }
-    }
-}
-
-- (NSUInteger)state {
-    @synchronized (self) {
-        return _state;
-    }
-}
 
 #pragma mark -
 #pragma mark Public Methods

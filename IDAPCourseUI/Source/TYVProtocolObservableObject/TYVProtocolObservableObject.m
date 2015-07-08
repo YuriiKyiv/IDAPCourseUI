@@ -41,17 +41,15 @@ typedef void(^TYVNotifyBlock)(id, id);
 #pragma mark -
 #pragma mark Accessors
 
-- (NSSet *)observersSet {
-    @synchronized(self) {
-        return self.observersHashTable.setRepresentation;
-    }
-}
-
-- (void)setState:(NSUInteger)state {
+- (void)setState:(NSUInteger)state  {
     @synchronized(self) {
         _state = state;
         
-        [self notify];
+        NSLog(@"%lu", (unsigned long)self.state);
+        
+        if ([self shouldNotify]) {
+            [self notify];
+        }
     }
 }
 
@@ -59,7 +57,9 @@ typedef void(^TYVNotifyBlock)(id, id);
     @synchronized(self) {
         _state = state;
         
-        [self notifyWithObject:object];
+        if ([self shouldNotify]) {
+            [self notifyWithObject:object];
+        }
     }
 }
 
