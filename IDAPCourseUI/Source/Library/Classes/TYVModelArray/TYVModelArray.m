@@ -10,8 +10,6 @@
 #import "TYVDataArrayModelInfo.h"
 #import "TYVModelMovingPosition.h"
 
-#import "TYVModelArray+TYVPrivate.h"
-
 #import "NSIndexPath+TYVExtensions.h"
 #import "NSMutableArray+TYVExtensions.h"
 
@@ -22,9 +20,12 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
 @interface TYVModelArray ()
 @property (nonatomic, strong)   NSMutableArray *mutableDataArray;
 
+@property (nonatomic, assign)   BOOL    shouldNotify;
+
 @end
 
 @implementation TYVModelArray
+@synthesize state = _state;
 
 @dynamic dataArray;
 
@@ -42,6 +43,7 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
     self = [super init];
     if (self) {
         self.mutableDataArray = [NSMutableArray arrayWithCapacity:count];
+        self.shouldNotify = YES;
     }
     
     return self;
@@ -60,8 +62,28 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
     }
 }
 
+- (void)setState:(NSUInteger)state  {
+    @synchronized(self) {
+        _state = state;
+        
+        if ([self shouldNotify]) {
+            [self notify];
+        }
+    }
+}
+
 #pragma mark -
 #pragma mark Public Methods
+
+- (void)addModelsFromArray:(NSArray *)otherArray {
+    @synchronized (self) {
+        NSMutableArray *array = self.mutableDataArray;
+        [array addObjectsFromArray:otherArray];
+        
+        [self setState:TYVModelDidChange];
+    }
+    
+}
 
 - (void)addModel:(id)model {
     @synchronized (self) {
