@@ -17,6 +17,7 @@ typedef NS_ENUM(NSUInteger, TYVAbstractDataModelState) {
 };
 
 @interface TYVAbstractDataModel : TYVProtocolObservableObject
+@property (nonatomic, assign)   BOOL    shouldNotify;
 
 // do not call this methods directly
 // This is the method for overriding

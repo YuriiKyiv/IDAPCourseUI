@@ -23,7 +23,6 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
 @end
 
 @implementation TYVModelArray
-@synthesize state = _state;
 
 @dynamic dataArray;
 
@@ -41,7 +40,6 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
     self = [super init];
     if (self) {
         self.mutableDataArray = [NSMutableArray arrayWithCapacity:count];
-        self.shouldNotify = YES;
     }
     
     return self;
@@ -57,24 +55,6 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
 - (NSArray *)dataArray {
     @synchronized (self) {
         return [self.mutableDataArray copy];
-    }
-}
-
-- (void)setState:(NSUInteger)state  {
-    @synchronized(self) {
-        _state = state;
-        
-        NSLog(@"%lu", (unsigned long)self.state);
-        
-        if ([self shouldNotify]) {
-            [self notify];
-        }
-    }
-}
-
-- (NSUInteger)state {
-    @synchronized (self) {
-       return _state;
     }
 }
 
