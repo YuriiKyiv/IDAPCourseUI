@@ -9,7 +9,6 @@
 #import "TYVDataArrayModel.h"
 #import "TYVDataModel.h"
 
-#import "TYVModelArray+TYVPrivate.h"
 #import "NSFileManager+TYVExtensions.h"
 
 static NSUInteger const  TYVArrayCount  = 10;
@@ -19,7 +18,8 @@ static NSString * const  kTYVFileName   = @"info.plist";
 @interface TYVDataArrayModel ()
 @property (nonatomic, strong)   NSString    *fileName;
 @property (nonatomic, strong)   NSString    *filePath;
-@property (nonatomic, strong, getter=isFileVailable)   BOOL        fileVailable;
+
+@property (nonatomic, assign, getter=isFileVailable)    BOOL    fileVailable;
 
 @end
 
@@ -30,7 +30,7 @@ static NSString * const  kTYVFileName   = @"info.plist";
         NSString *filePath = [[NSFileManager usersDocumentDirectory]
                               stringByAppendingFormat:@"/%@", kTYVFileName];
         
-        [NSKeyedArchiver archiveRootObject:self.mutableDataArray toFile:filePath];
+        [NSKeyedArchiver archiveRootObject:self.dataArray toFile:filePath];
     }
 }
 
@@ -66,7 +66,7 @@ static NSString * const  kTYVFileName   = @"info.plist";
         }
     }
     
-    self.mutableDataArray = modelsArray;
+    [self addModelsFromArray:modelsArray];
     
     self.state = TYVModelLoaded;
 }
