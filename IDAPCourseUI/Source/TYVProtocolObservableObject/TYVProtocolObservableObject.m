@@ -100,15 +100,15 @@ typedef void(^TYVNotifyBlock)(id, id);
 }
 
 - (void)notify {
-    [self notifyWithSelector:[self selectorForState:_state]];
+    [self notifyWithSelector:[self selectorForState:self.state]];
+}
+
+- (void)notifyWithObject:(id)object {
+    [self notifyWithSelector:[self selectorForState:self.state] withObject:object];
 }
 
 #pragma mark -
 #pragma mark Private Methods
-
-- (void)notifyWithObject:(id)object {
-    [self notifyWithSelector:[self selectorForState:_state] withObject:object];
-}
 
 - (void)notifyWithSelector:(SEL)selector {
 //    NSHashTable *observers = self.observersHashTable;

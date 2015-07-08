@@ -66,7 +66,11 @@ static NSString * const  kTYVFileName   = @"info.plist";
         }
     }
     
-    [self addModelsFromArray:modelsArray];
+    @synchronized (self) {
+        self.shouldNotify = NO;
+        [self addModelsFromArray:modelsArray];
+        self.shouldNotify = YES;
+    }
     
     self.state = TYVModelLoaded;
 }

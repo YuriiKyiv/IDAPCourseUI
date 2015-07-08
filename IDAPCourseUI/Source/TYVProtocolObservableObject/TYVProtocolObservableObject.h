@@ -28,4 +28,6 @@
 
 - (void)notify;
 
+- (void)notifyWithObject:(id)object;
+
 @end
