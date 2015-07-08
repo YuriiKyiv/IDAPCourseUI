@@ -39,24 +39,10 @@
 }
 
 #pragma mark -
-#pragma mark Accesors
-
-- (void)setLoadingView:(UIView<TYVLoadingViewProtocol> *)loadingView {
-    if (_loadingView != loadingView) {
-        [_loadingView removeFromSuperview];
-        
-        _loadingView = loadingView;
-        [self addSubview:loadingView];
-    }
-}
-
-#pragma mark -
 #pragma mark Public Methods
 
 - (void)connectLoadingView {
-    id object = [UINib objectWithClass:[TYVLoadingView class]];
-
-    self.loadingView = object;
+    self.loadingView = [TYVLoadingView viewInSuperview:self];
 }
 
 - (void)showLoadingView {

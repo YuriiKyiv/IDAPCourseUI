@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TYVLoadingViewProtocol.h"
 
-@interface TYVLoadingView : UIView
+@interface TYVLoadingView : UIView <TYVLoadingViewProtocol>
 @property (nonatomic, strong)   IBOutlet    UIActivityIndicatorView *spinnerView;
 
 @property (nonatomic, readonly, getter=isVisible) BOOL    visible;

@@ -27,9 +27,10 @@ static const CGFloat        TYVHideAlpha    =   0.0;
 #pragma mark -
 #pragma mark Class Methods
 
-- (instancetype)viewInSuperview:(UIView *)superview {
++ (instancetype)viewInSuperview:(UIView *)superview {
     id object = [UINib objectWithClass:[self class]];
-    [object setBounds:self.bounds];
+    [superview addSubview:object];
+    [object setBounds:superview.bounds];
     
     return object;
 }
