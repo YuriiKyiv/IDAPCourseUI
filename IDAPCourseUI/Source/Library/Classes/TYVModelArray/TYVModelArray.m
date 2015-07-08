@@ -20,8 +20,6 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
 @interface TYVModelArray ()
 @property (nonatomic, strong)   NSMutableArray *mutableDataArray;
 
-@property (nonatomic, assign)   BOOL    shouldNotify;
-
 @end
 
 @implementation TYVModelArray
@@ -43,7 +41,7 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
     self = [super init];
     if (self) {
         self.mutableDataArray = [NSMutableArray arrayWithCapacity:count];
-        self.shouldNotify = YES;
+        self.shouldNotify = NO;
     }
     
     return self;
@@ -65,6 +63,8 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
 - (void)setState:(NSUInteger)state  {
     @synchronized(self) {
         _state = state;
+        
+        NSLog(@"%lu", (unsigned long)self.state);
         
         if ([self shouldNotify]) {
             [self notify];

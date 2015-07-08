@@ -54,8 +54,6 @@ static NSString * const  kTYVFileName   = @"info.plist";
 #pragma mark TYVAbstractDataModel
 
 - (void)performLoading {
-    sleep(3);
-    
     NSMutableArray *modelsArray = [NSMutableArray array];
     
     if (self.fileVailable) {

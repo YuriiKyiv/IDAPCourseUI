@@ -11,6 +11,8 @@
 @interface TYVModelArray : TYVAbstractDataModel <NSCoding>
 @property (nonatomic, readonly) NSArray *dataArray;
 
+@property (nonatomic, assign)   BOOL    shouldNotify;
+
 + (instancetype)dataWithModelsCount:(NSUInteger)count;
 
 - (instancetype)initWithModelsCount:(NSUInteger)count;
