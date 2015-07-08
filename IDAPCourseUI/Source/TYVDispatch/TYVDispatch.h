@@ -13,4 +13,6 @@ typedef void(^TYVBlock)();
 
 void TYVDispatchSyncOnMainQueueWithBlock(TYVBlock block);
 
+void TYVDispatchAsyncOnMainQueueWithBlock(TYVBlock block);
+
 #endif /* defined(__IDAPCoursesHomework__TYVDispatch__) */

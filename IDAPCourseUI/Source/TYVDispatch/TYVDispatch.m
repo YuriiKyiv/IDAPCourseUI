@@ -20,3 +20,11 @@ void TYVDispatchSyncOnMainQueueWithBlock(TYVBlock block) {
         dispatch_sync(dispatch_get_main_queue(), block);
     }
 }
+
+void TYVDispatchAsyncOnMainQueueWithBlock(TYVBlock block) {
+    if ([NSThread isMainThread]) {
+        block();
+    } else {
+        dispatch_async(dispatch_get_main_queue(), block);
+    }
+}
