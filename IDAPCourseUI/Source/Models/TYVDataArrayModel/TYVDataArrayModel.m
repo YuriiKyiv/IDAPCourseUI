@@ -55,6 +55,8 @@ static NSString * const  kTYVFileName   = @"info.plist";
 
 - (void)performLoading {
     NSMutableArray *modelsArray = [NSMutableArray array];
+
+    sleep(1);
     
     if (self.fileVailable) {
         modelsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:self.filePath];

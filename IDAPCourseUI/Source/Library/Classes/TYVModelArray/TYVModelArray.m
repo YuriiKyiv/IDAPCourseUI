@@ -41,7 +41,7 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
     self = [super init];
     if (self) {
         self.mutableDataArray = [NSMutableArray arrayWithCapacity:count];
-        self.shouldNotify = NO;
+        self.shouldNotify = YES;
     }
     
     return self;
@@ -69,6 +69,12 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
         if ([self shouldNotify]) {
             [self notify];
         }
+    }
+}
+
+- (NSUInteger)state {
+    @synchronized (self) {
+       return _state;
     }
 }
 
