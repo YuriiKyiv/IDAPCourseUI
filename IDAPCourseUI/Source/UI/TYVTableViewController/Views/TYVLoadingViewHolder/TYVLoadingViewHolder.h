@@ -1,5 +1,5 @@
 //
-//  TYVAbstractLoadingView.h
+//  TYVLoadingViewHolder.h
 //  IDAPCourseUI
 //
 //  Created by YURII on 01.07.15.
@@ -10,7 +10,7 @@
 
 @protocol TYVLoadingViewProtocol;
 
-@interface TYVAbstractLoadingView : UIView
+@interface TYVLoadingViewHolder : UIView
 @property (nonatomic, strong)   IBOutlet UIView<TYVLoadingViewProtocol>  *loadingView;
 
 @property (nonatomic, readonly, getter=isVisibleLoadingView)   BOOL    visibleLoadingView;
