@@ -53,7 +53,7 @@
 
 - (void)modelDidLoad:(TYVDataModel *)dataModel {
     TYVWeakify(self);
-    TYVDispatchSyncOnMainQueueWithBlock(^{
+    TYVDispatchAsyncOnMainQueueWithBlock(^{
         TYVStrongifyAndReturnIfNil(self);
         [self.spinnerView stopAnimating];
         [self fillWithModel:dataModel];
@@ -62,7 +62,7 @@
 
 - (void)modelWillLoad:(TYVDataModel *)dataModel {
     TYVWeakify(self);
-    TYVDispatchSyncOnMainQueueWithBlock(^{
+    TYVDispatchAsyncOnMainQueueWithBlock(^{
         TYVStrongifyAndReturnIfNil(self);
         [self.spinnerView startAnimating];
     });
