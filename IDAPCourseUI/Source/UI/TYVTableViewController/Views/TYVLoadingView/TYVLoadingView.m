@@ -60,8 +60,6 @@ static const CGFloat        TYVHideAlpha    =   0.0;
 #pragma mark Private Methods
 
 - (void)animateLoadingViewWithState:(BOOL)visible {
-    (visible) ? [self.spinnerView startAnimating] : [self.spinnerView stopAnimating];
-    
     [UIView animateWithDuration:TYVDuration animations:^{
         self.alpha = (visible) ? TYVShowAlpha : TYVHideAlpha;
     } completion:^(BOOL finished) {
