@@ -110,7 +110,7 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
 #pragma mark -
 #pragma mark TYVAbstractDataModelProtocol
 
-- (void)dataModel:(TYVDataArrayModel *)dataArray didChangeWithObject:(TYVDataArrayModelInfo *)info {
+- (void)model:(TYVDataArrayModel *)dataArray didChangeWithObject:(TYVDataArrayModelInfo *)info {
     TYVWeakify(self);
     TYVDispatchAsyncOnMainQueueWithBlock(^{
         TYVStrongifyAndReturnIfNil(self)
@@ -118,7 +118,7 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
     });
 }
 
-- (void)dataModelDidLoad:(TYVDataArrayModel *)dataArray {
+- (void)modelDidLoad:(TYVDataArrayModel *)dataArray {
     TYVWeakify(self);
     TYVDispatchAsyncOnMainQueueWithBlock(^{
         TYVStrongifyAndReturnIfNil(self)
@@ -128,7 +128,7 @@ TYVViewControllerProperty(TYVTableViewController, tableView, TYVTableView)
     });
 }
 
-- (void)dataModelWillLoad:(TYVDataArrayModel *)dataArray {
+- (void)modelWillLoad:(TYVDataArrayModel *)dataArray {
     TYVWeakify(self);
     TYVDispatchAsyncOnMainQueueWithBlock(^{
         TYVStrongifyAndReturnIfNil(self)

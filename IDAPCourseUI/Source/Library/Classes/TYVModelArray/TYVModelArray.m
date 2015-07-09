@@ -13,8 +13,6 @@
 #import "NSIndexPath+TYVExtensions.h"
 #import "NSMutableArray+TYVExtensions.h"
 
-static NSString *const  kTYVFileName = @"info.plist";
-
 static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
 
 @interface TYVModelArray ()

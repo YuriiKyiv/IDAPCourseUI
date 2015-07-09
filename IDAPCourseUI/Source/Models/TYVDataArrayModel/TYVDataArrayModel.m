@@ -53,7 +53,7 @@ static NSString * const  kTYVFileName   = @"info.plist";
 
 - (void)save {
     @synchronized (self) {
-        NSString *filePath = [[NSFileManager usersDocumentDirectory] stringByAppendingPathComponent:kTYVFileName];
+        NSString *filePath = [[NSFileManager usersDocumentDirectory] stringByAppendingPathComponent:self.fileName];
         
         [NSKeyedArchiver archiveRootObject:self.dataArray toFile:filePath];
     }

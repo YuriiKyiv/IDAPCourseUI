@@ -51,7 +51,7 @@
 #pragma mark -
 #pragma mark TYVAbstractDataModelProtocol
 
-- (void)dataModelDidLoad:(TYVDataModel *)dataModel {
+- (void)modelDidLoad:(TYVDataModel *)dataModel {
     TYVWeakify(self);
     TYVDispatchSyncOnMainQueueWithBlock(^{
         TYVStrongifyAndReturnIfNil(self);
@@ -60,7 +60,7 @@
     });
 }
 
-- (void)dataModelWillLoad:(TYVDataModel *)dataModel {
+- (void)modelWillLoad:(TYVDataModel *)dataModel {
     TYVWeakify(self);
     TYVDispatchSyncOnMainQueueWithBlock(^{
         TYVStrongifyAndReturnIfNil(self);
