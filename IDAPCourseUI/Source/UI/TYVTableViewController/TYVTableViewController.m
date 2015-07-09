@@ -7,7 +7,6 @@
 //
 
 #import "TYVTableViewController.h"
-#import "TYVMacro.h"
 #import "TYVTableView.h"
 #import "TYVDataCell.h"
 #import "TYVDataArrayModel.h"
