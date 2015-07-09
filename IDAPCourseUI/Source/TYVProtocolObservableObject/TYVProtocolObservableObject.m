@@ -33,6 +33,7 @@ typedef void(^TYVNotifyBlock)(id, id);
     self = [super init];
     if (self) {
         self.observersHashTable = [NSHashTable weakObjectsHashTable];
+        self.shouldNotify = YES;
     }
     
     return self;
@@ -100,11 +101,11 @@ typedef void(^TYVNotifyBlock)(id, id);
 }
 
 - (void)notify {
-    [self notifyWithSelector:[self selectorForState:self.state]];
+    [self notifyWithSelector:[self selectorForState:_state]];
 }
 
 - (void)notifyWithObject:(id)object {
-    [self notifyWithSelector:[self selectorForState:self.state] withObject:object];
+    [self notifyWithSelector:[self selectorForState:_state] withObject:object];
 }
 
 #pragma mark -
