@@ -46,19 +46,19 @@
 - (SEL)selectorForState:(NSUInteger)state {
     switch (state) {
         case TYVModelLoaded:
-            return @selector(dataModelDidLoad:);
+            return @selector(modelDidLoad:);
         
         case TYVModelWillLoad:
-            return @selector(dataModelWillLoad:);
+            return @selector(modelWillLoad:);
             
         case TYVModelFailedLoading:
-            return @selector(dataModelDidFailedLoading:);
+            return @selector(modelDidFailedLoading:);
             
         case TYVModelUnloaded:
-            return @selector(dataModelDidUnload:);
+            return @selector(modelDidUnload:);
             
         case TYVModelDidChange:
-            return @selector(dataModel:didChangeWithObject:);
+            return @selector(model:didChangeWithObject:);
             
         default:
             return [super selectorForState:state];
