@@ -42,6 +42,7 @@
 #pragma mark Public Methods
 
 - (void)connectLoadingView {
+    [self insertSubview:self.loadingView atIndex:0];
     self.loadingView = [TYVLoadingView viewInSuperview:self];
 }
 
