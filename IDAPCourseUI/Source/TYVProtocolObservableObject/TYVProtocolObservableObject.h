@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@class TYVSelector;
-
 typedef void(^TYVBlock)();
 
 @interface TYVProtocolObservableObject : NSObject
@@ -28,8 +26,6 @@ typedef void(^TYVBlock)();
 - (BOOL)containsObserver:(id)observer;
 
 - (SEL)selectorForState:(NSUInteger)state;
-
-- (SEL)selectorForState:(NSUInteger)state withObject:(id)object;
 
 - (void)notify;
 
