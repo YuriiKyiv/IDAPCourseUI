@@ -19,7 +19,11 @@ static NSString * const  kTYVFileName   = @"info.plist";
 @property (nonatomic, readonly)   NSString    *fileName;
 @property (nonatomic, readonly)   NSString    *filePath;
 
-@property (nonatomic, assign, getter=isFileVailable)    BOOL    fileAvailable;
+@property (nonatomic, assign, getter=isFileAvailable)    BOOL    fileAvailable;
+
+- (NSMutableArray *)defaultContent;
+
+- (NSMutableArray *)contentFromFile:(NSString *)filePath;
 
 @end
 
@@ -28,14 +32,6 @@ static NSString * const  kTYVFileName   = @"info.plist";
 @dynamic fileName;
 @dynamic filePath;
 @dynamic fileAvailable;
-
-- (void)save {
-    @synchronized (self) {
-        NSString *filePath = [[NSFileManager usersDocumentDirectory] stringByAppendingPathComponent:kTYVFileName];
-        
-        [NSKeyedArchiver archiveRootObject:self.dataArray toFile:filePath];
-    }
-}
 
 #pragma mark -
 #pragma mark Accsesors
@@ -48,9 +44,35 @@ static NSString * const  kTYVFileName   = @"info.plist";
     return [[NSFileManager usersDocumentDirectory] stringByAppendingPathComponent:self.fileName];
 }
 
-- (BOOL)isFileVailable {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    return [fileManager fileExistsAtPath:self.filePath];
+- (BOOL)isFileAvailable {
+    return [[NSFileManager defaultManager] fileExistsAtPath:self.filePath];
+}
+
+#pragma mark -
+#pragma mark Public Methods
+
+- (void)save {
+    @synchronized (self) {
+        NSString *filePath = [[NSFileManager usersDocumentDirectory] stringByAppendingPathComponent:kTYVFileName];
+        
+        [NSKeyedArchiver archiveRootObject:self.dataArray toFile:filePath];
+    }
+}
+
+#pragma mark -
+#pragma mark Private Methods
+
+- (NSMutableArray *)defaultContent {
+    NSMutableArray *modelsArray = [NSMutableArray arrayWithCapacity:TYVArrayCount];
+    for (int i = 0; i < TYVArrayCount; i++) {
+        [modelsArray addObject:[TYVDataModel model]];
+    }
+    
+    return modelsArray;
+}
+
+- (NSMutableArray *)contentFromFile:(NSString *)filePath {
+    return [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
 }
 
 #pragma mark -
@@ -61,13 +83,7 @@ static NSString * const  kTYVFileName   = @"info.plist";
 
     sleep(3);
     
-    if (self.fileAvailable) {
-        modelsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:self.filePath];
-    } else {
-        for (int i = 0; i < TYVArrayCount; i++) {
-            [modelsArray addObject:[TYVDataModel model]];
-        }
-    }
+    modelsArray = (self.fileAvailable) ? [self contentFromFile:self.filePath] : [self defaultContent];
     
     @synchronized (self) {
         self.shouldNotify = NO;
