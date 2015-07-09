@@ -85,11 +85,9 @@ static NSString * const  kTYVFileName   = @"info.plist";
     
     modelsArray = (self.fileAvailable) ? [self contentFromFile:self.filePath] : [self defaultContent];
     
-    @synchronized (self) {
-        self.shouldNotify = NO;
+    [self performBlockWithoutNotification:^{
         [self addModelsFromArray:modelsArray];
-        self.shouldNotify = YES;
-    }
+    }];
     
     self.state = TYVModelLoaded;
 }

@@ -10,10 +10,13 @@
 
 @class TYVSelector;
 
+typedef void(^TYVBlock)();
+
 @interface TYVProtocolObservableObject : NSObject
 // default shouldNotify = YES
-@property (nonatomic, assign)   BOOL        shouldNotify;
-@property (atomic, assign)      NSUInteger  state;
+@property (atomic, assign)  BOOL        shouldNotify;
+@property (atomic, assign)  NSUInteger  state;
+
 @property (nonatomic, readonly) NSSet       *observersSet;
 
 - (void)setState:(NSUInteger)state withObject:(id)object;
@@ -31,5 +34,9 @@
 - (void)notify;
 
 - (void)notifyWithObject:(id)object;
+
+- (void)performBlockWithoutNotification:(TYVBlock)block;
+
+- (void)performBlockWithNotification:(TYVBlock)block;
 
 @end

@@ -18,6 +18,8 @@ typedef void(^TYVNotifyBlock)(id, id);
 - (void)notifyWithSelector:(SEL)selector withObject:(id)object;
 - (void)notifyWithSelector:(SEL)selector withObject:(id)object block:(TYVNotifyBlock)block;
 
+- (void)performBlock:(TYVBlock)block WithNotificationState:(BOOL)state;
+
 @end
 
 @implementation TYVProtocolObservableObject
@@ -65,6 +67,14 @@ typedef void(^TYVNotifyBlock)(id, id);
 #pragma mark -
 #pragma mark Public Methods
 
+- (void)performBlockWithoutNotification:(TYVBlock)block {
+    [self performBlock:block WithNotificationState:NO];
+}
+
+- (void)performBlockWithNotification:(TYVBlock)block {
+    [self performBlock:block WithNotificationState:YES];
+}
+
 - (void)addObserver:(id)observer {
     @synchronized(self) {
         [self.observersHashTable addObject:observer];
@@ -102,6 +112,15 @@ typedef void(^TYVNotifyBlock)(id, id);
 
 #pragma mark -
 #pragma mark Private Methods
+
+- (void)performBlock:(TYVBlock)block WithNotificationState:(BOOL)state {
+    @synchronized (self) {
+        BOOL tmpState = self.shouldNotify;
+        self.shouldNotify = state;
+        block();
+        self.shouldNotify = tmpState;
+    }
+}
 
 - (void)notifyWithSelector:(SEL)selector {
 //    NSHashTable *observers = self.observersHashTable;
