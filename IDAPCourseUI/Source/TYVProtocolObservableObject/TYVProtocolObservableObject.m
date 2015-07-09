@@ -50,7 +50,7 @@ typedef void(^TYVNotifyBlock)(id, id);
     @synchronized(self) {
         _state = state;
         
-        if ([self shouldNotify]) {
+        if (self.shouldNotify) {
             [self notifyWithObject:object];
         }
     }

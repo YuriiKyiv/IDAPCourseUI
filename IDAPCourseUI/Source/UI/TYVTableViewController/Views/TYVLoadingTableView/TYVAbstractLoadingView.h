@@ -13,7 +13,7 @@
 @interface TYVAbstractLoadingView : UIView
 @property (nonatomic, strong)   IBOutlet UIView<TYVLoadingViewProtocol>  *loadingView;
 
-@property (nonatomic, readonly, getter=isVisible)   BOOL    visible;
+@property (nonatomic, readonly, getter=isVisibleLoadingView)   BOOL    visibleLoadingView;
 
 
 // shound not call this method directly
