@@ -43,15 +43,7 @@ typedef void(^TYVNotifyBlock)(id, id);
 #pragma mark Accessors
 
 - (void)setState:(NSUInteger)state  {
-    @synchronized(self) {
-        _state = state;
-        
-        NSLog(@"%lu", (unsigned long)self.state);
-        
-        if ([self shouldNotify]) {
-            [self notify];
-        }
-    }
+    [self setState:state withObject:nil];
 }
 
 - (void)setState:(NSUInteger)state withObject:(id)object {
@@ -101,7 +93,7 @@ typedef void(^TYVNotifyBlock)(id, id);
 }
 
 - (void)notify {
-    [self notifyWithSelector:[self selectorForState:_state]];
+    [self notifyWithObject:nil];
 }
 
 - (void)notifyWithObject:(id)object {
