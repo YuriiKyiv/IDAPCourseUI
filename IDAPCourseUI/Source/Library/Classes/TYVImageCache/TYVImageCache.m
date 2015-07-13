@@ -67,4 +67,8 @@
     }
 }
 
+- (BOOL)containsObjectForKey:(id)key {
+    return [self objectForKey:key];
+}
+
 @end

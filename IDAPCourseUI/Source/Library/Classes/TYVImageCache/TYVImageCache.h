@@ -16,4 +16,6 @@
 - (void)addObject:(id)object forKey:(id)key;
 - (id)objectForKey:(id)key;
 
+- (BOOL)containsObjectForKey:(id)key;
+
 @end
