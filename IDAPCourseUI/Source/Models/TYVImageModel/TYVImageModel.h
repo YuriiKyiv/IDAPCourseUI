@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 YURII. All rights reserved.
 //
 
-#import "TYVProtocolObservableObject.h"
+#import "TYVAbstractDataModel.h"
 
 typedef NS_ENUM(NSUInteger, TYVImageModelState) {
     TYVImageModelUnloaded,
@@ -15,10 +15,8 @@ typedef NS_ENUM(NSUInteger, TYVImageModelState) {
     TYVImageModelFailedLoading
 };
 
-@interface TYVImageModel : TYVProtocolObservableObject
+@interface TYVImageModel : TYVAbstractDataModel
 
 - (instancetype)initWithURL:(NSURL *)url;
-
-- (void)load;
 
 @end
