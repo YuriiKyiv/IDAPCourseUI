@@ -35,6 +35,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+    [self prepareView];
+    
     [self connectLoadingView];
 }
 
@@ -42,7 +44,7 @@
 #pragma mark Public Methods
 
 - (void)connectLoadingView {
-    [self insertSubview:self.loadingView atIndex:0];
+    [self bringSubviewToFront:self.loadingView];
     self.loadingView = [TYVLoadingView viewInSuperview:self];
 }
 
@@ -52,6 +54,10 @@
 
 - (void)hideLoadingView {
     [self.loadingView hideLoadingView];
+    
+}
+
+- (void)prepareView {
     
 }
 

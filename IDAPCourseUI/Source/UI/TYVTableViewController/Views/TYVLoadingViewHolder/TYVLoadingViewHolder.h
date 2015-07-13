@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+// if you want to overloading awakeFromNib you have to call connectLoadingView
+
 @protocol TYVLoadingViewProtocol;
 
 @interface TYVLoadingViewHolder : UIView
@@ -22,5 +24,9 @@
 - (void)showLoadingView;
 
 - (void)hideLoadingView;
+
+// this method for overloading instead awakeFromNib
+// Never overload awakeFromNib
+- (void)prepareView;
 
 @end
