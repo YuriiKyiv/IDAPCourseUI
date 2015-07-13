@@ -98,7 +98,21 @@
 }
 
 - (TYVBlock)loadFromUrlBlock {
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
+                                                          delegate:self
+                                                     delegateQueue:nil];
+    
+    NSOperationQueue *queue = nil;
     return nil;
+}
+
+#pragma mark -
+#pragma mark NSURLSessionDelegate
+
+- (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error {
+    @synchronized (self) {
+        self.state = TYVModelFailedLoading;
+    }
 }
 
 @end

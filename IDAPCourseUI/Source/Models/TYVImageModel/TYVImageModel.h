@@ -15,7 +15,7 @@ typedef NS_ENUM(NSUInteger, TYVImageModelState) {
     TYVImageModelFailedLoading
 };
 
-@interface TYVImageModel : TYVAbstractDataModel
+@interface TYVImageModel : TYVAbstractDataModel <NSURLSessionDelegate>
 
 - (instancetype)initWithURL:(NSURL *)url;
 
