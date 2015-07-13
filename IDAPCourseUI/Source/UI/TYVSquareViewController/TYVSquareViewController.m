@@ -9,15 +9,14 @@
 #import "TYVSquareViewController.h"
 #import "TYVSquareView.h"
 #import "TYVSquare.h"
+#import "TYVMacro.h"
 
 typedef TYVSquarePositionType(^TYVSquarePositionBlock)(void);
 
+TYVViewControllerProperty(TYVSquareViewController, squareView, TYVSquareView)
+
 @interface TYVSquareViewController ()
-@property (nonatomic, readonly)   TYVSquareView   *squareView;
-
 @property (nonatomic, assign, getter=isRunning)   BOOL running;
-
-- (void)moveSquareToPosition:(TYVSquarePositionType)position;
 
 - (void)moveSquareWithBlock:(TYVSquarePositionType(^)(void))block;
 
@@ -29,18 +28,8 @@ typedef TYVSquarePositionType(^TYVSquarePositionBlock)(void);
 
 @implementation TYVSquareViewController
 
-@dynamic squareView;
-
 #pragma mark -
 #pragma mark Accessors
-
-- (TYVSquareView *)squareView {
-    if ([self isViewLoaded] && [self.view isKindOfClass:[TYVSquareView class]]) {
-        return (TYVSquareView *)self.view;
-    }
-    
-    return nil;
-}
 
 - (void)setSquare:(TYVSquare *)square {
     if (_square != square) {
@@ -70,22 +59,13 @@ typedef TYVSquarePositionType(^TYVSquarePositionBlock)(void);
 #pragma mark -
 #pragma mark Private Methods
 
-- (void)moveSquareToPosition:(TYVSquarePositionType)position {
-    if (self.running) {
-        [self.squareView setSquarePosition:position animated:YES completion:^(BOOL finished){
-            if (finished) {
-                self.square.position = position;
-                [self moveSquareToPosition:(self.square.position + 1) % TYVSquarePositionTypeCount];
-            }
-        }];
-    }
-}
-
 - (void)moveSquareWithBlock:(TYVSquarePositionType(^)(void))block {
     if (self.running) {
         TYVSquarePositionType position = block();
+        TYVWeakify(self);
         [self.squareView setSquarePosition:position animated:YES completion:^(BOOL finished){
-            if (finished) {
+            TYVStrongify(self);
+            if (self && finished) {
                 self.square.position = position;
                 [self moveSquareWithBlock:block];
             }
