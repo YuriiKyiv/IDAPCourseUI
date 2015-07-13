@@ -10,4 +10,8 @@
 
 @interface TYVImageModel : TYVProtocolObservableObject
 
+- (instancetype)initWithURL:(NSURL *)url;
+
+- (void)load;
+
 @end

@@ -31,6 +31,7 @@
 		5A883B051B32D0C3000A084C /* NSArray+TYVExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A883B041B32D0C3000A084C /* NSArray+TYVExtentions.m */; };
 		5A883B091B32DE90000A084C /* UITableView+TYVExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A883B081B32DE90000A084C /* UITableView+TYVExtentions.m */; };
 		5A8C62171B53AD8F00383DCE /* TYVImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8C62161B53AD8F00383DCE /* TYVImageModel.m */; };
+		5A8C621B1B53AF6000383DCE /* TYVImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8C621A1B53AF6000383DCE /* TYVImageCache.m */; };
 		5A9820B51B32E9F3009B9CF3 /* image.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5A9820B31B32E9F3009B9CF3 /* image.jpeg */; };
 		5A9820B61B32E9F3009B9CF3 /* Orion_Nebula.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5A9820B41B32E9F3009B9CF3 /* Orion_Nebula.jpg */; };
 		5AE0CC181B3C0357002F0B6D /* TYVModelMovingPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE0CC171B3C0357002F0B6D /* TYVModelMovingPosition.m */; };
@@ -106,6 +107,8 @@
 		5A883B081B32DE90000A084C /* UITableView+TYVExtentions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITableView+TYVExtentions.m"; path = "UITableView+TYVExtentions/UITableView+TYVExtentions.m"; sourceTree = "<group>"; };
 		5A8C62151B53AD8F00383DCE /* TYVImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVImageModel.h; path = TYVImageModel/TYVImageModel.h; sourceTree = "<group>"; };
 		5A8C62161B53AD8F00383DCE /* TYVImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYVImageModel.m; path = TYVImageModel/TYVImageModel.m; sourceTree = "<group>"; };
+		5A8C62191B53AF6000383DCE /* TYVImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVImageCache.h; path = TYVImageCache/TYVImageCache.h; sourceTree = "<group>"; };
+		5A8C621A1B53AF6000383DCE /* TYVImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYVImageCache.m; path = TYVImageCache/TYVImageCache.m; sourceTree = "<group>"; };
 		5A9820B31B32E9F3009B9CF3 /* image.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpeg; sourceTree = "<group>"; };
 		5A9820B41B32E9F3009B9CF3 /* Orion_Nebula.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Orion_Nebula.jpg; sourceTree = "<group>"; };
 		5AE0CC161B3C0357002F0B6D /* TYVModelMovingPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVModelMovingPosition.h; path = TYVModelMovingPosition/TYVModelMovingPosition.h; sourceTree = "<group>"; };
@@ -340,6 +343,7 @@
 				5AE0CC191B3C035A002F0B6D /* TYVModelMovingPosition */,
 				5A432F101B4546C600F2598B /* TYVAbstractDataModel */,
 				5A7DA7AD1B4BE889001A1C96 /* TYVModelArray */,
+				5A8C621C1B53AF6300383DCE /* TYVImageCache */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -387,6 +391,15 @@
 				5A8C62161B53AD8F00383DCE /* TYVImageModel.m */,
 			);
 			name = TYVImageModel;
+			sourceTree = "<group>";
+		};
+		5A8C621C1B53AF6300383DCE /* TYVImageCache */ = {
+			isa = PBXGroup;
+			children = (
+				5A8C62191B53AF6000383DCE /* TYVImageCache.h */,
+				5A8C621A1B53AF6000383DCE /* TYVImageCache.m */,
+			);
+			name = TYVImageCache;
 			sourceTree = "<group>";
 		};
 		5A9820B21B32E9F3009B9CF3 /* Images */ = {
@@ -662,6 +675,7 @@
 				5A883B011B32CBAB000A084C /* UINib+TYVExtentions.m in Sources */,
 				5A883B091B32DE90000A084C /* UITableView+TYVExtentions.m in Sources */,
 				5A883AF81B32B1B6000A084C /* TYVTableViewCell.m in Sources */,
+				5A8C621B1B53AF6000383DCE /* TYVImageCache.m in Sources */,
 				5A2EA6B51B32904B0091CCEC /* TYVProtocolObservableObject.m in Sources */,
 				5AF13C471B318B4E001D37FA /* TYVTableView.m in Sources */,
 				5A432F141B455E0900F2598B /* NSFileManager+TYVExtensions.m in Sources */,
