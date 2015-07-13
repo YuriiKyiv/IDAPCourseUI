@@ -8,6 +8,13 @@
 
 #import "TYVProtocolObservableObject.h"
 
+typedef NS_ENUM(NSUInteger, TYVImageModelState) {
+    TYVImageModelUnloaded,
+    TYVImageModelWillLoad,
+    TYVImageModelLoaded,
+    TYVImageModelFailedLoading
+};
+
 @interface TYVImageModel : TYVProtocolObservableObject
 
 - (instancetype)initWithURL:(NSURL *)url;
