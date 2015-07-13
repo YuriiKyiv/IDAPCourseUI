@@ -28,3 +28,7 @@ void TYVDispatchAsyncOnMainQueueWithBlock(TYVBlock block) {
         dispatch_async(dispatch_get_main_queue(), block);
     }
 }
+
+void TYVDispatchAsyncOnDefaultQueueWithBlock(TYVBlock block) {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block);
+}
