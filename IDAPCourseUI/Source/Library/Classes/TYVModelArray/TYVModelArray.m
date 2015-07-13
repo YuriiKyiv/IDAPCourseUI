@@ -69,6 +69,15 @@ static NSString * const  kTYVMutableArrayFiled = @"mutableDataArray";
     
 }
 
+- (void)removeModelsInArray:(NSArray *)otherArray {
+    @synchronized (self) {
+        NSMutableArray *array = self.mutableDataArray;
+        [array removeObjectsInArray:otherArray];
+        
+        [self setState:TYVModelDidChange];
+    }
+}
+
 - (void)addModel:(id)model {
     @synchronized (self) {
         NSMutableArray *array = self.mutableDataArray;

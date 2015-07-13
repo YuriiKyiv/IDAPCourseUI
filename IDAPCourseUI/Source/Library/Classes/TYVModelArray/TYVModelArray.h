@@ -16,6 +16,7 @@
 - (instancetype)initWithModelsCount:(NSUInteger)count;
 
 - (void)addModelsFromArray:(NSArray *)otherArray;
+- (void)removeModelsInArray:(NSArray *)otherArray;
 
 - (void)addModel:(id)model;
 - (void)removeModel:(id)model;

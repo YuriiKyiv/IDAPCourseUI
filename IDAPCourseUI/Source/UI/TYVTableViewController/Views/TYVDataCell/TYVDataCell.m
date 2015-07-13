@@ -29,12 +29,8 @@
         
         _data = data;
         [_data addObserver:self];
-        
-        TYVWeakify(self);
-        TYVDispatchAsyncOnMainQueueWithBlock(^{
-            TYVStrongifyAndReturnIfNil(self);
-            [self fillWithModel:_data];
-        });
+
+        [self fillWithModel:_data];
         
         [data load];
     }
