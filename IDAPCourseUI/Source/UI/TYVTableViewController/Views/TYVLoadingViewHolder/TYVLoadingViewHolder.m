@@ -35,29 +35,19 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    [self prepareView];
-    
-    [self connectLoadingView];
+    self.loadingView = [TYVLoadingView viewInSuperview:self];
 }
 
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)connectLoadingView {
-    [self bringSubviewToFront:self.loadingView];
-    self.loadingView = [TYVLoadingView viewInSuperview:self];
-}
-
 - (void)showLoadingView {
+    [self bringSubviewToFront:self.loadingView];
     [self.loadingView showLoadingView];
 }
 
 - (void)hideLoadingView {
     [self.loadingView hideLoadingView];
-    
-}
-
-- (void)prepareView {
     
 }
 

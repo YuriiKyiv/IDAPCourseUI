@@ -135,7 +135,6 @@
 		5A8C627E1B53DADF00383DCE /* TYVLoadingViewHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVLoadingViewHolder.h; sourceTree = "<group>"; };
 		5A8C627F1B53DADF00383DCE /* TYVLoadingViewHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVLoadingViewHolder.m; sourceTree = "<group>"; };
 		5A8C62801B53DADF00383DCE /* TYVLoadingViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVLoadingViewProtocol.h; sourceTree = "<group>"; };
-		5A8C62A31B53DB9500383DCE /* TYVImageModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVImageModelProtocol.h; sourceTree = "<group>"; };
 		5A9820B31B32E9F3009B9CF3 /* image.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpeg; sourceTree = "<group>"; };
 		5A9820B41B32E9F3009B9CF3 /* Orion_Nebula.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Orion_Nebula.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -446,7 +445,6 @@
 			children = (
 				5A8C625A1B53DADF00383DCE /* TYVImageModel.h */,
 				5A8C625B1B53DADF00383DCE /* TYVImageModel.m */,
-				5A8C62A31B53DB9500383DCE /* TYVImageModelProtocol.h */,
 			);
 			path = TYVImageModel;
 			sourceTree = "<group>";

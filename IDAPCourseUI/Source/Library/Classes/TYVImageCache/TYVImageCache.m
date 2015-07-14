@@ -68,7 +68,7 @@
 }
 
 - (BOOL)containsObjectForKey:(id)key {
-    return [self objectForKey:key];
+    return nil != [self objectForKey:key];
 }
 
 @end
