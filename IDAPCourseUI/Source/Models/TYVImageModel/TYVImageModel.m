@@ -51,6 +51,7 @@ static NSString * const  kTYVSessionName   = @"backgroung";
         self.cache = [TYVImageCache sharedImageCache];
         NSURLSessionConfiguration *config = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:kTYVSessionName];
         config.HTTPShouldSetCookies = NO;
+        config.HTTPCookieStorage = nil;
         self.session = [NSURLSession sessionWithConfiguration:config
                                                      delegate:self
                                                 delegateQueue:nil];
