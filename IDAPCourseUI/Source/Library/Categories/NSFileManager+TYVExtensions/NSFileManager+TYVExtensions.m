@@ -14,7 +14,7 @@
 #pragma mark Class Methods
 
 + (NSString *)usersDocumentDirectory {
-    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    return [self directoryPathWithType:NSDocumentDirectory];
 }
 
 + (NSString *)usersDocumentDirectoryWithFileName:(NSString *)fileName {
