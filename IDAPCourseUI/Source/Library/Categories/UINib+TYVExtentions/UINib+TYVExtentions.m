@@ -42,16 +42,16 @@
 #pragma mark Public Methods
 
 - (id)objectWithClass:(Class)cls {
-    return [[self instantiate] objectWithBlock:[UINib objectWithClassBlock:cls]];
+    return [[self instantiate] objectWithClass:cls];
 }
 
 - (id)objectWithClass:(Class)cls owner:(id)owner {
     return [[self instantiateWithOwner:owner]
-            objectWithBlock:[UINib objectWithClassBlock:cls]];
+            objectWithClass:cls];
 }
 
 - (id)objectWithClass:(Class)cls owner:(id)owner options:(NSDictionary *)options {
-    return [[self instantiateWithOwner:owner options:options] objectWithBlock:[UINib objectWithClassBlock:cls]];
+    return [[self instantiateWithOwner:owner options:options] objectWithClass:cls];
 }
 
 - (NSArray *)instantiate {
