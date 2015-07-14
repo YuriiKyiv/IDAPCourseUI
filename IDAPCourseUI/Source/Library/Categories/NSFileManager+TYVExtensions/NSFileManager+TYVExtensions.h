@@ -12,4 +12,8 @@
 
 + (NSString *)usersDocumentDirectory;
 
++ (NSString *)usersDocumentDirectoryWithFileName:(NSString *)fileName;
+
++ (NSString *)directoryPathWithType:(NSSearchPathDirectory)searchPath;
+
 @end

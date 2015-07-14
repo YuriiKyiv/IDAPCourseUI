@@ -17,4 +17,12 @@
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 }
 
++ (NSString *)usersDocumentDirectoryWithFileName:(NSString *)fileName {
+    return [[NSFileManager usersDocumentDirectory] stringByAppendingPathComponent:fileName];
+}
+
++ (NSString *)directoryPathWithType:(NSSearchPathDirectory)searchPath {
+    return [NSSearchPathForDirectoriesInDomains(searchPath, NSUserDomainMask, YES) objectAtIndex:0];
+}
+
 @end
