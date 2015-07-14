@@ -13,6 +13,8 @@
 #import "TYVDispatch.h"
 #import "TYVMacro.h"
 
+static NSString * const  kTYVSessionName   = @"backgroung";
+
 @interface TYVImageModel ()
 @property (nonatomic, strong)   NSURL           *url;
 @property (nonatomic, strong)   UIImage         *image;
@@ -47,7 +49,9 @@
     if (self) {
         self.url = url;
         self.cache = [TYVImageCache sharedImageCache];
-        self.session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration]
+        NSURLSessionConfiguration *config = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:kTYVSessionName];
+        config.HTTPShouldSetCookies = NO;
+        self.session = [NSURLSession sessionWithConfiguration:config
                                                      delegate:self
                                                 delegateQueue:nil];
     }
@@ -109,9 +113,7 @@
     TYVBlock block = ^{
         TYVStrongifyAndReturnIfNil(self);
         
-        NSURLSessionDownloadTask *task = [self.session downloadTaskWithURL:self.url completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-            NSLog(@"Done %@", location);
-        }];
+        NSURLSessionDownloadTask *task = [self.session downloadTaskWithURL:self.url];
         
         [task resume];
     };
@@ -135,8 +137,9 @@
               downloadTask:(NSURLSessionDownloadTask *)downloadTask
  didFinishDownloadingToURL:(NSURL *)location
 {
-    //save a file
-    NSLog(@"Delegate");
+#warning    save a file
+    self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
+    self.state = TYVModelLoaded;
 }
 
 @end

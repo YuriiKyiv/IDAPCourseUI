@@ -24,6 +24,8 @@ static NSString * const  kTYVImageUrl = @"http://cdn-www.i-am-bored.com/media/th
 @interface TYVDataModel ()
 @property (nonatomic, strong)   TYVImageModel *imageModel;
 
+- (void)prepareImageModel;
+
 @end
 
 @implementation TYVDataModel
@@ -44,7 +46,7 @@ static NSString * const  kTYVImageUrl = @"http://cdn-www.i-am-bored.com/media/th
     self = [super init];
     if (self) {
         self.text = string;
-        self.imageModel = [TYVImageModel imageWithURL:[NSURL URLWithString:kTYVImageUrl]];
+        [self prepareImageModel];
     }
     
     return self;
@@ -58,6 +60,14 @@ static NSString * const  kTYVImageUrl = @"http://cdn-www.i-am-bored.com/media/th
 }
 
 #pragma mark -
+#pragma mark Private Methods
+
+- (void)prepareImageModel {
+    self.imageModel = [TYVImageModel imageWithURL:[NSURL URLWithString:kTYVImageUrl]];
+    [self.imageModel addObserver:self];
+}
+
+#pragma mark -
 #pragma mark TYVAbstractDataModel
 
 - (void)performLoading {
@@ -65,8 +75,6 @@ static NSString * const  kTYVImageUrl = @"http://cdn-www.i-am-bored.com/media/th
 //    self.image = [UIImage imageWithContentsOfFile:path];
     
     [self.imageModel load];
-    
-    self.state = TYVModelLoaded;
 }
 
 #pragma mark -
@@ -83,6 +91,13 @@ static NSString * const  kTYVImageUrl = @"http://cdn-www.i-am-bored.com/media/th
     }
     
     return self;
+}
+
+#pragma mark -
+#pragma mark TYVAbstractDataModelProtocol
+
+- (void)modelDidLoad:(TYVImageModel *)imageModel {
+    self.state = TYVModelLoaded;
 }
 
 
