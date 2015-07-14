@@ -11,6 +11,17 @@
 @implementation NSArray (TYVExtentions)
 
 #pragma mark -
+#pragma mark Class Methods
+
++ (TYVFindObjectBlock)objectWithClassBlock:(Class)class {
+    TYVFindObjectBlock result = ^(id object) {
+        return ([object isMemberOfClass:class]);
+    };
+    
+    return result;
+}
+
+#pragma mark -
 #pragma mark Public Methods
 
 - (id)objectWithBlock:(TYVFindObjectBlock)block {
@@ -21,6 +32,10 @@
     }
     
     return nil;
+}
+
+- (id)objectWithClass:(Class)cls {
+    return [self objectWithBlock:[NSArray objectWithClassBlock:cls]];
 }
 
 @end

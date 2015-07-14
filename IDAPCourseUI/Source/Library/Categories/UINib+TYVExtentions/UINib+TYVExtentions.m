@@ -38,14 +38,6 @@
     return [[UINib nibWithClass:cls bundle:bundle] objectWithClass:cls];
 }
 
-+ (TYVFindObjectBlock)objectWithClassBlock:(Class)class {
-    TYVFindObjectBlock result = ^(UIView *view) {
-        return ([view isMemberOfClass:class]);
-    };
-    
-    return result;
-}
-
 #pragma mark -
 #pragma mark Public Methods
 

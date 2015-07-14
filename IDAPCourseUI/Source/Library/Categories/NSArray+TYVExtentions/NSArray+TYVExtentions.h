@@ -12,6 +12,10 @@ typedef BOOL(^TYVFindObjectBlock)(id);
 
 @interface NSArray (TYVExtentions)
 
++ (TYVFindObjectBlock)objectWithClassBlock:(Class)class;
+
 - (id)objectWithBlock:(TYVFindObjectBlock)block;
+
+- (id)objectWithClass:(Class)cls;
 
 @end
