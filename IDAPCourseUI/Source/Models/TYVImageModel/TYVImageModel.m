@@ -138,8 +138,10 @@ static NSString * const  kTYVSessionName   = @"backgroung";
  didFinishDownloadingToURL:(NSURL *)location
 {
 #warning    save a file
-    self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
-    self.state = TYVModelLoaded;
+    @synchronized (self) {
+        self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
+        self.state = TYVModelLoaded;
+    }
 }
 
 @end
