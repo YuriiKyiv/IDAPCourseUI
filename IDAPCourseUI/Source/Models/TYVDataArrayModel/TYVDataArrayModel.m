@@ -80,8 +80,6 @@ static NSString * const  kTYVFileName   = @"info.plist";
 
 - (void)performLoading {
     NSMutableArray *modelsArray = [NSMutableArray array];
-
-    sleep(3);
     
     modelsArray = (self.fileAvailable) ? [self contentFromFile:self.filePath] : [self defaultContent];
     

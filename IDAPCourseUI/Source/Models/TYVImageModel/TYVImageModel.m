@@ -14,12 +14,11 @@
 #import "TYVMacro.h"
 
 @interface TYVImageModel ()
-@property (nonatomic, strong)   NSURL   *url;
-@property (nonatomic, strong)   UIImage *image;
-
+@property (nonatomic, strong)   NSURL           *url;
+@property (nonatomic, strong)   UIImage         *image;
 @property (nonatomic, strong)   TYVImageCache   *cache;
-
-@property (nonatomic, readonly) NSString    *path;
+@property (nonatomic, readonly) NSString        *path;
+@property (nonatomic, retain)   NSURLSession    *session;
 
 - (void)dump;
 
@@ -40,7 +39,7 @@
     self = [super init];
     if (self) {
         self.url = url;
-        self.cache = [TYVImageCache sharedImageChace];
+        self.cache = [TYVImageCache sharedImageCache];
     }
     
     return self;
@@ -98,11 +97,12 @@
 }
 
 - (TYVBlock)loadFromUrlBlock {
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration]
                                                           delegate:self
                                                      delegateQueue:nil];
     
-    NSOperationQueue *queue = nil;
+    NSURLSessionDownloadTask *task = [session downloadTaskWithURL:self.url];
+    
     return nil;
 }
 
@@ -113,6 +113,16 @@
     @synchronized (self) {
         self.state = TYVModelFailedLoading;
     }
+}
+
+#pragma mark -
+#pragma mark NSURLSessionDownloadDelegate
+
+- (void)        URLSession:(NSURLSession *)session
+              downloadTask:(NSURLSessionDownloadTask *)downloadTask
+ didFinishDownloadingToURL:(NSURL *)location
+{
+    //save a file
 }
 
 @end
