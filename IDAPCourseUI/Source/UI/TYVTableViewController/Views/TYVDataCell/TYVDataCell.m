@@ -51,7 +51,7 @@
     TYVWeakify(self);
     TYVDispatchAsyncOnMainQueueWithBlock(^{
         TYVStrongifyAndReturnIfNil(self);
-        [self.spinnerView stopAnimating];
+        self.spinnerView.hidden = YES;
         [self fillWithModel:dataModel];
     });
 }
@@ -60,7 +60,7 @@
     TYVWeakify(self);
     TYVDispatchAsyncOnMainQueueWithBlock(^{
         TYVStrongifyAndReturnIfNil(self);
-        [self.spinnerView startAnimating];
+        self.spinnerView.hidden = NO;
     });
 }
 
