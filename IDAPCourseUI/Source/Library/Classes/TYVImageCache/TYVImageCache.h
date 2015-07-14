@@ -9,9 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface TYVImageCache : NSObject
-@property (nonatomic, readonly) NSMapTable  *cacheMapTable;
 
-+ (instancetype)sharedImageChace;
++ (instancetype)sharedImageCache;
 
 - (void)addObject:(id)object forKey:(id)key;
 - (id)objectForKey:(id)key;

@@ -15,12 +15,10 @@
 
 @implementation TYVImageCache
 
-@dynamic cacheMapTable;
-
 #pragma mark -
 #pragma mark Class Methods
 
-+ (instancetype)sharedImageChace {
++ (instancetype)sharedImageCache {
     static TYVImageCache *__sharedObject = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -41,16 +39,6 @@
     
     return self;
 }
-
-#pragma mark -
-#pragma mark Accesors
-
-- (NSMapTable *)cacheMapTable {
-    @synchronized (self) {
-        return [self.cache copy];
-    }
-}
-
 
 #pragma mark -
 #pragma mark Public Methods
