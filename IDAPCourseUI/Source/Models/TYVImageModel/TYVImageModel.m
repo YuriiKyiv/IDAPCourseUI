@@ -33,6 +33,13 @@
 @dynamic path;
 
 #pragma mark -
+#pragma mark Class Methods
+
++ (instancetype)imageWithURL:(NSURL *)url {
+    return [[self alloc] initWithURL:url];
+}
+
+#pragma mark -
 #pragma mark Initializations and Deallocations
 
 - (instancetype)initWithURL:(NSURL *)url {
@@ -40,6 +47,9 @@
     if (self) {
         self.url = url;
         self.cache = [TYVImageCache sharedImageCache];
+        self.session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration]
+                                                     delegate:self
+                                                delegateQueue:nil];
     }
     
     return self;
@@ -62,9 +72,7 @@
         {
             self.state = TYVModelWillLoad;
             
-            id object = nil;
-            
-            TYVBlock block = (object == [self.cache objectForKey:self.url]) ? [self loadFromCacheBlock]
+            TYVBlock block = ([self.cache containsObjectForKey:self.url]) ? [self loadFromCacheBlock]
                                                                             : [self loadFromUrlBlock];
             TYVDispatchAsyncOnDefaultQueueWithBlock(block);
 
@@ -97,13 +105,18 @@
 }
 
 - (TYVBlock)loadFromUrlBlock {
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration]
-                                                          delegate:self
-                                                     delegateQueue:nil];
+    TYVWeakify(self);
+    TYVBlock block = ^{
+        TYVStrongifyAndReturnIfNil(self);
+        
+        NSURLSessionDownloadTask *task = [self.session downloadTaskWithURL:self.url completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+            NSLog(@"Done %@", location);
+        }];
+        
+        [task resume];
+    };
     
-    NSURLSessionDownloadTask *task = [session downloadTaskWithURL:self.url];
-    
-    return nil;
+    return block;
 }
 
 #pragma mark -
@@ -123,6 +136,7 @@
  didFinishDownloadingToURL:(NSURL *)location
 {
     //save a file
+    NSLog(@"Delegate");
 }
 
 @end

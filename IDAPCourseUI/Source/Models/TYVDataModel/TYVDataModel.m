@@ -7,6 +7,7 @@
 //
 
 #import "TYVDataModel.h"
+#import "TYVImageModel.h"
 
 #import "NSString+TYVExtensions.h"
 
@@ -18,12 +19,16 @@ static NSString * const  kTYVBigImageType = @"jpg";
 
 static NSString * const  kTYVTextField = @"text";
 
+static NSString * const  kTYVImageUrl = @"http://cdn-www.i-am-bored.com/media/thumbnails/apple_for-diabetics[1].jpg";
+
 @interface TYVDataModel ()
-@property (nonatomic, strong)   UIImage *image;
+@property (nonatomic, strong)   TYVImageModel *imageModel;
 
 @end
 
 @implementation TYVDataModel
+
+@dynamic image;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -39,17 +44,27 @@ static NSString * const  kTYVTextField = @"text";
     self = [super init];
     if (self) {
         self.text = string;
+        self.imageModel = [TYVImageModel imageWithURL:[NSURL URLWithString:kTYVImageUrl]];
     }
     
     return self;
 }
 
 #pragma mark -
+#pragma mark Accessor
+
+- (UIImage *)image {
+    return self.imageModel.image;
+}
+
+#pragma mark -
 #pragma mark TYVAbstractDataModel
 
 - (void)performLoading {
-    NSString *path = [[NSBundle mainBundle] pathForResource:kTYVImageName ofType:kTYVImageType];
-    self.image = [UIImage imageWithContentsOfFile:path];
+//    NSString *path = [[NSBundle mainBundle] pathForResource:kTYVImageName ofType:kTYVImageType];
+//    self.image = [UIImage imageWithContentsOfFile:path];
+    
+    [self.imageModel load];
     
     self.state = TYVModelLoaded;
 }
