@@ -41,7 +41,7 @@ static NSString * const  kTYVFileName   = @"info.plist";
 }
 
 - (NSString *)filePath {
-    return [[NSFileManager usersDocumentDirectory] stringByAppendingPathComponent:self.fileName];
+    return [NSFileManager fileInDocumentsDirectoryWithName:self.fileName];
 }
 
 - (BOOL)isFileAvailable {
@@ -53,9 +53,7 @@ static NSString * const  kTYVFileName   = @"info.plist";
 
 - (void)save {
     @synchronized (self) {
-        NSString *filePath = [[NSFileManager usersDocumentDirectory] stringByAppendingPathComponent:self.fileName];
-        
-        [NSKeyedArchiver archiveRootObject:self.dataArray toFile:filePath];
+        [NSKeyedArchiver archiveRootObject:self.dataArray toFile:self.filePath];
     }
 }
 

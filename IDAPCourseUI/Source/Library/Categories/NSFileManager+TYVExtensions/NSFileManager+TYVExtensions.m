@@ -13,12 +13,12 @@
 #pragma mark -
 #pragma mark Class Methods
 
-+ (NSString *)usersDocumentDirectory {
++ (NSString *)documentsDirectory {
     return [self directoryPathWithType:NSDocumentDirectory];
 }
 
-+ (NSString *)usersDocumentDirectoryWithFileName:(NSString *)fileName {
-    return [[NSFileManager usersDocumentDirectory] stringByAppendingPathComponent:fileName];
++ (NSString *)fileInDocumentsDirectoryWithName:(NSString *)fileName {
+    return [[NSFileManager documentsDirectory] stringByAppendingPathComponent:fileName];
 }
 
 + (NSString *)directoryPathWithType:(NSSearchPathDirectory)searchPath {
