@@ -12,6 +12,8 @@
 		5A22FDB11B2E935B0005AFDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A22FDA61B2E935B0005AFDC /* main.m */; };
 		5A22FDB21B2E935B0005AFDC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A22FDA81B2E935B0005AFDC /* LaunchScreen.xib */; };
 		5A22FDB31B2E935B0005AFDC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A22FDAA1B2E935B0005AFDC /* Images.xcassets */; };
+		5A5FFF301B563F3A001191EF /* TYVImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FFF2F1B563F3A001191EF /* TYVImageView.m */; };
+		5A5FFF331B563F70001191EF /* TYVImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A5FFF321B563F70001191EF /* TYVImageView.xib */; };
 		5A8C62811B53DADF00383DCE /* NSArray+TYVExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8C62221B53DADE00383DCE /* NSArray+TYVExtentions.m */; };
 		5A8C62821B53DADF00383DCE /* NSBundle+TYVExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8C62251B53DADE00383DCE /* NSBundle+TYVExtensions.m */; };
 		5A8C62831B53DADF00383DCE /* NSFileManager+TYVExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8C62281B53DADE00383DCE /* NSFileManager+TYVExtensions.m */; };
@@ -69,6 +71,9 @@
 		5A22FDA61B2E935B0005AFDC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5A22FDA91B2E935B0005AFDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		5A22FDAA1B2E935B0005AFDC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5A5FFF2E1B563F3A001191EF /* TYVImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVImageView.h; path = TYVImageView/TYVImageView.h; sourceTree = "<group>"; };
+		5A5FFF2F1B563F3A001191EF /* TYVImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYVImageView.m; path = TYVImageView/TYVImageView.m; sourceTree = "<group>"; };
+		5A5FFF321B563F70001191EF /* TYVImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYVImageView.xib; sourceTree = "<group>"; };
 		5A8C62211B53DADE00383DCE /* NSArray+TYVExtentions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+TYVExtentions.h"; sourceTree = "<group>"; };
 		5A8C62221B53DADE00383DCE /* NSArray+TYVExtentions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+TYVExtentions.m"; sourceTree = "<group>"; };
 		5A8C62241B53DADE00383DCE /* NSBundle+TYVExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+TYVExtensions.h"; sourceTree = "<group>"; };
@@ -211,6 +216,16 @@
 				5A22FDAA1B2E935B0005AFDC /* Images.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		5A5FFF311B563F3E001191EF /* TYVImageView */ = {
+			isa = PBXGroup;
+			children = (
+				5A5FFF2E1B563F3A001191EF /* TYVImageView.h */,
+				5A5FFF2F1B563F3A001191EF /* TYVImageView.m */,
+				5A5FFF321B563F70001191EF /* TYVImageView.xib */,
+			);
+			name = TYVImageView;
 			sourceTree = "<group>";
 		};
 		5A8C621D1B53DADE00383DCE /* Source */ = {
@@ -516,6 +531,7 @@
 				5A8C62751B53DADF00383DCE /* TYVDataCell */,
 				5A8C62791B53DADF00383DCE /* TYVLoadingView */,
 				5A8C627D1B53DADF00383DCE /* TYVLoadingViewHolder */,
+				5A5FFF311B563F3E001191EF /* TYVImageView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -640,6 +656,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A5FFF331B563F70001191EF /* TYVImageView.xib in Resources */,
 				5A22FDB31B2E935B0005AFDC /* Images.xcassets in Resources */,
 				5A8C629A1B53DADF00383DCE /* TYVSquareViewController.xib in Resources */,
 				5A22FDB21B2E935B0005AFDC /* LaunchScreen.xib in Resources */,
@@ -676,6 +693,7 @@
 				5A8C628D1B53DADF00383DCE /* TYVModelArray.m in Sources */,
 				5A8C628C1B53DADF00383DCE /* TYVImageCache.m in Sources */,
 				5A8C62981B53DADF00383DCE /* TYVSquareView.m in Sources */,
+				5A5FFF301B563F3A001191EF /* TYVImageView.m in Sources */,
 				5A8C62831B53DADF00383DCE /* NSFileManager+TYVExtensions.m in Sources */,
 				5A8C62991B53DADF00383DCE /* TYVSquareViewController.m in Sources */,
 				5A8C62A21B53DADF00383DCE /* TYVLoadingViewHolder.m in Sources */,
