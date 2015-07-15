@@ -35,6 +35,8 @@ typedef void(^TYVCompletionBlock)(NSURL *, NSURLResponse *, NSError *);
 
 - (TYVCompletionBlock)completionBlock;
 
+- (BOOL)performWorkWithLocation:(NSURL *)location;
+
 @end
 
 @implementation TYVImageModel
@@ -89,6 +91,16 @@ typedef void(^TYVCompletionBlock)(NSURL *, NSURLResponse *, NSError *);
     self.state = TYVModelUnloaded;
 }
 
+- (BOOL)performWorkWithLocation:(NSURL *)location {
+    [NSFileManager createDirectoryAtPath:self.path];
+    NSData *data = [NSData dataWithContentsOfURL:location];
+    BOOL result = [data writeToFile:self.path atomically:YES];
+    NSLog(@"%@", self.path);
+    self.image = [UIImage imageWithData:data];
+    
+    return result;
+}
+
 #pragma mark -
 #pragma mark TYVAbstractDataModel
 
@@ -134,13 +146,9 @@ typedef void(^TYVCompletionBlock)(NSURL *, NSURLResponse *, NSError *);
         if (error) {
             self.state = TYVModelFailedLoading;
         } else {
-            [[NSFileManager defaultManager] createDirectoryAtPath:[self.path stringByDeletingLastPathComponent] withIntermediateDirectories:YES attributes:nil error:nil];
-            NSData *data = [NSData dataWithContentsOfURL:location];
-            BOOL result = [data writeToFile:self.path atomically:YES];
-            NSLog(@"%@, %d",self.path, result);
-            self.image = [UIImage imageWithData:data];
-            self.state = TYVModelLoaded;
+            [self performWorkWithLocation:location];
             
+            self.state = TYVModelLoaded;
         }
     };
     

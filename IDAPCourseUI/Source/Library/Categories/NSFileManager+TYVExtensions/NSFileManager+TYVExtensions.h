@@ -16,4 +16,6 @@
 
 + (NSString *)directoryPathWithType:(NSSearchPathDirectory)searchPath;
 
++ (void)createDirectoryAtPath:(NSString *)path;
+
 @end
