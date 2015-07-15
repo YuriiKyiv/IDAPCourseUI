@@ -11,9 +11,11 @@
 
 #import "TYVAbstractDataModel.h"
 
+@class TYVImageModel;
+
 @interface TYVDataModel : TYVAbstractDataModel <NSCoding>
-@property (nonatomic, readonly) UIImage     *image;
-@property (nonatomic, copy)     NSString    *text;
+@property (nonatomic, readonly) TYVImageModel   *imageModel;
+@property (nonatomic, copy)     NSString        *text;
 
 + (instancetype)model;
 
