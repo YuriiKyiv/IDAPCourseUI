@@ -49,12 +49,8 @@ static NSString * const  kTYVSessionName   = @"backgroung";
     if (self) {
         self.url = url;
         self.cache = [TYVImageCache sharedImageCache];
-        NSURLSessionConfiguration *config = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:kTYVSessionName];
-        config.HTTPShouldSetCookies = NO;
-        config.HTTPCookieStorage = nil;
-        self.session = [NSURLSession sessionWithConfiguration:config
-                                                     delegate:self
-                                                delegateQueue:nil];
+        NSURLSessionConfiguration *config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+        self.session = [NSURLSession sessionWithConfiguration:config];
     }
     
     return self;
@@ -114,7 +110,12 @@ static NSString * const  kTYVSessionName   = @"backgroung";
     TYVBlock block = ^{
         TYVStrongifyAndReturnIfNil(self);
         
-        NSURLSessionDownloadTask *task = [self.session downloadTaskWithURL:self.url];
+        NSURLSessionDownloadTask *task = [self.session downloadTaskWithURL:self.url
+                                                         completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error)
+        {
+            self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
+            self.state = TYVModelLoaded;
+        }];
         
         [task resume];
     };
@@ -128,20 +129,6 @@ static NSString * const  kTYVSessionName   = @"backgroung";
 - (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error {
     @synchronized (self) {
         self.state = TYVModelFailedLoading;
-    }
-}
-
-#pragma mark -
-#pragma mark NSURLSessionDownloadDelegate
-
-- (void)        URLSession:(NSURLSession *)session
-              downloadTask:(NSURLSessionDownloadTask *)downloadTask
- didFinishDownloadingToURL:(NSURL *)location
-{
-#warning    save a file
-    @synchronized (self) {
-        self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
-        self.state = TYVModelLoaded;
     }
 }
 
