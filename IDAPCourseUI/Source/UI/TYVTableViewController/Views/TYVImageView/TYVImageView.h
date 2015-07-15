@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TYVLoadingViewHolder.h"
 
 @class TYVImageModel;
 
-@interface TYVImageView : UIView
+@interface TYVImageView : TYVLoadingViewHolder
 @property (nonatomic, strong)   IBOutlet    UIImageView *imageView;
 
 @property (nonatomic, strong)   TYVImageModel   *imageModel;

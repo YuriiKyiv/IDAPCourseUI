@@ -8,6 +8,8 @@
 
 #import "TYVImageView.h"
 #import "TYVImageModel.h"
+#import "TYVDispatch.h"
+#import "TYVMacro.h"
 
 @implementation TYVImageView
 
@@ -38,8 +40,28 @@
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)fillWithModel:(TYVImageModel *)imageModel {
-    self.imageView.image = imageModel.image;
+- (void)fillWithModel:(TYVImageModel *)model {
+    self.imageView.image = model.image;
+}
+
+#pragma mark -
+#pragma mark TYVAbstractDataModelProtocol
+
+- (void)modelDidLoad:(TYVImageModel *)model {
+    TYVWeakify(self);
+    TYVDispatchAsyncOnMainQueueWithBlock(^{
+        TYVStrongifyAndReturnIfNil(self);
+        [self fillWithModel:model];
+        [self hideLoadingView];
+    });
+}
+
+- (void)modelWillLoad:(TYVImageModel *)model {
+    TYVWeakify(self);
+    TYVDispatchAsyncOnMainQueueWithBlock(^{
+        TYVStrongifyAndReturnIfNil(self);
+        [self showLoadingView];
+    });
 }
 
 @end
