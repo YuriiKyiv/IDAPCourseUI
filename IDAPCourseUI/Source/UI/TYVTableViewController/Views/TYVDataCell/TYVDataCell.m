@@ -10,6 +10,7 @@
 #import "TYVDataModel.h"
 #import "TYVDispatch.h"
 #import "TYVMacro.h"
+#import "TYVImageView.h"
 
 @implementation TYVDataCell
 
@@ -29,6 +30,7 @@
         
         _data = data;
         [_data addObserver:self];
+        self.pictureView.imageModel = _data.imageModel;
 
         [self fillWithModel:_data];
         
@@ -37,11 +39,18 @@
 }
 
 #pragma mark -
+#pragma mark View LifeCycle
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+}
+
+#pragma mark -
 #pragma mark Public
 
 - (void)fillWithModel:(TYVDataModel *)model {
     self.dataLabel.text = model.text;
-    self.pictureView.image = self.data.image;
 }
 
 #pragma mark -
@@ -51,7 +60,6 @@
     TYVWeakify(self);
     TYVDispatchAsyncOnMainQueueWithBlock(^{
         TYVStrongifyAndReturnIfNil(self);
-        self.spinnerView.hidden = YES;
         [self fillWithModel:dataModel];
     });
 }
@@ -60,7 +68,6 @@
     TYVWeakify(self);
     TYVDispatchAsyncOnMainQueueWithBlock(^{
         TYVStrongifyAndReturnIfNil(self);
-        self.spinnerView.hidden = NO;
     });
 }
 

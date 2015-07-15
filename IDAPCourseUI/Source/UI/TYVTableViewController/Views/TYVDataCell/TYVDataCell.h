@@ -10,12 +10,11 @@
 #import "TYVAbstractDataModelProtocol.h"
 
 @class TYVDataModel;
+@class TYVImageView;
 
 @interface TYVDataCell : TYVTableViewCell <TYVAbstractDataModelProtocol>
 @property (nonatomic, strong)   IBOutlet UILabel        *dataLabel;
-@property (nonatomic, strong)   IBOutlet UIImageView    *pictureView;
-
-@property (nonatomic ,strong)   IBOutlet UIActivityIndicatorView    *spinnerView;
+@property (nonatomic, strong)   IBOutlet TYVImageView   *pictureView;
 
 @property (nonatomic, strong)   TYVDataModel    *data;
 
