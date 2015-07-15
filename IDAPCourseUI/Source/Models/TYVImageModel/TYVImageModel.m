@@ -22,7 +22,9 @@ static NSString * const  kTYVSessionName   = @"backgroung";
 @property (nonatomic, strong)   UIImage         *image;
 @property (nonatomic, strong)   TYVImageCache   *cache;
 @property (nonatomic, readonly) NSString        *path;
-@property (nonatomic, retain)   NSURLSession    *session;
+@property (nonatomic, strong)   NSURLSession    *session;
+
+@property (nonatomic, strong)   NSURLSessionDownloadTask    *task;
 
 - (void)dump;
 
@@ -70,6 +72,15 @@ static NSString * const  kTYVSessionName   = @"backgroung";
 #pragma mark -
 #pragma mark Public Methods
 
+- (void)cancelLoading {
+    @synchronized (self) {
+        if (self.state == TYVModelWillLoad) {
+            [self.task cancel];
+            self.state = TYVModelUnloaded;
+        }
+    }
+}
+
 - (void)load {
     @synchronized (self) {
         if (TYVModelUnloaded == self.state
@@ -116,6 +127,8 @@ static NSString * const  kTYVSessionName   = @"backgroung";
                                                          completionHandler:[self completionBlock]];
         
         [task resume];
+        
+        self.task = task;
     };
     
     return block;

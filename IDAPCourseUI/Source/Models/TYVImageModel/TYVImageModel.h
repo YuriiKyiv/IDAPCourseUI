@@ -22,4 +22,6 @@ typedef NS_ENUM(NSUInteger, TYVImageModelState) {
 
 - (instancetype)initWithURL:(NSURL *)url;
 
+- (void)cancelLoading;
+
 @end
