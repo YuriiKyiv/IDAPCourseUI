@@ -12,16 +12,17 @@
 #import "TYVImageCache.h"
 #import "TYVDispatch.h"
 #import "TYVMacro.h"
+#import "NSFileManager+TYVExtensions.h"
 
 typedef void(^TYVCompletionBlock)(NSURL *, NSURLResponse *, NSError *);
-
-static NSString * const  kTYVSessionName   = @"backgroung";
 
 @interface TYVImageModel ()
 @property (nonatomic, strong)   NSURL           *url;
 @property (nonatomic, strong)   UIImage         *image;
 @property (nonatomic, strong)   TYVImageCache   *cache;
+
 @property (nonatomic, readonly) NSString        *path;
+
 @property (nonatomic, strong)   NSURLSession    *session;
 
 @property (nonatomic, strong)   NSURLSessionDownloadTask    *task;
@@ -66,7 +67,7 @@ static NSString * const  kTYVSessionName   = @"backgroung";
 #pragma mark Accessors
 
 - (NSString *)path {
-    return nil;
+    return [[NSFileManager documentsDirectory] stringByAppendingString:self.url.path];
 }
 
 #pragma mark -
@@ -81,26 +82,20 @@ static NSString * const  kTYVSessionName   = @"backgroung";
     }
 }
 
-- (void)load {
-    @synchronized (self) {
-        if (TYVModelUnloaded == self.state
-            || TYVModelFailedLoading == self.state)
-        {
-            self.state = TYVModelWillLoad;
-            
-            TYVBlock block = ([self.cache containsObjectForKey:self.url]) ? [self loadFromCacheBlock]
-                                                                            : [self loadFromUrlBlock];
-            TYVDispatchAsyncOnDefaultQueueWithBlock(block);
-
-        }
-    }
-}
-
 #pragma mark -
 #pragma mark Private Methods
 
 - (void)dump {
     self.state = TYVModelUnloaded;
+}
+
+#pragma mark -
+#pragma mark TYVAbstractDataModel
+
+- (void)performLoading {
+    TYVBlock block = ([self.cache containsObjectForKey:self.url]) ? [self loadFromCacheBlock]
+                                                                    : [self loadFromUrlBlock];
+    TYVDispatchAsyncOnDefaultQueueWithBlock(block);
 }
 
 #pragma mark -
@@ -139,8 +134,13 @@ static NSString * const  kTYVSessionName   = @"backgroung";
         if (error) {
             self.state = TYVModelFailedLoading;
         } else {
-            self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
+            [[NSFileManager defaultManager] createDirectoryAtPath:[self.path stringByDeletingLastPathComponent] withIntermediateDirectories:YES attributes:nil error:nil];
+            NSData *data = [NSData dataWithContentsOfURL:location];
+            BOOL result = [data writeToFile:self.path atomically:YES];
+            NSLog(@"%@, %d",self.path, result);
+            self.image = [UIImage imageWithData:data];
             self.state = TYVModelLoaded;
+            
         }
     };
     
