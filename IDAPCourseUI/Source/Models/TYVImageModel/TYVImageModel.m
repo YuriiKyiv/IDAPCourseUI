@@ -92,12 +92,18 @@ typedef void(^TYVCompletionBlock)(NSURL *, NSURLResponse *, NSError *);
 }
 
 - (BOOL)performWorkWithLocation:(NSURL *)location {
-    [NSFileManager createDirectoryAtPath:self.path];
+    NSString *path = self.path;
+    [NSFileManager createDirectoryAtPath:path];
     NSData *data = [NSData dataWithContentsOfURL:location];
-    BOOL result = [data writeToFile:self.path atomically:YES];
-    NSLog(@"%@", self.path);
+    BOOL result = [data writeToFile:path atomically:YES];
+    NSLog(@"%@", path);
     self.image = [UIImage imageWithData:data];
     
+    if (result) {
+        TYVImageCache *cache = self.cache;
+        [cache addObject:path forKey:self.url];
+    }
+        
     return result;
 }
 
@@ -105,8 +111,8 @@ typedef void(^TYVCompletionBlock)(NSURL *, NSURLResponse *, NSError *);
 #pragma mark TYVAbstractDataModel
 
 - (void)performLoading {
-    TYVBlock block = ([self.cache containsObjectForKey:self.url]) ? [self loadFromCacheBlock]
-                                                                    : [self loadFromUrlBlock];
+    id object = [self.cache objectForKey:self.url];
+    TYVBlock block = (object) ? [self loadFromCacheBlock] : [self loadFromUrlBlock];
     TYVDispatchAsyncOnDefaultQueueWithBlock(block);
 }
 
