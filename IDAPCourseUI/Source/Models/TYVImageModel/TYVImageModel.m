@@ -13,6 +13,8 @@
 #import "TYVDispatch.h"
 #import "TYVMacro.h"
 
+typedef void(^TYVCompletionBlock)(NSURL *, NSURLResponse *, NSError *);
+
 static NSString * const  kTYVSessionName   = @"backgroung";
 
 @interface TYVImageModel ()
@@ -27,6 +29,8 @@ static NSString * const  kTYVSessionName   = @"backgroung";
 - (TYVBlock)loadFromCacheBlock;
 
 - (TYVBlock)loadFromUrlBlock;
+
+- (TYVCompletionBlock)completionBlock;
 
 @end
 
@@ -85,9 +89,7 @@ static NSString * const  kTYVSessionName   = @"backgroung";
 #pragma mark Private Methods
 
 - (void)dump {
-    @synchronized (self) {
-        self.state = TYVModelUnloaded;
-    }
+    self.state = TYVModelUnloaded;
 }
 
 #pragma mark -
@@ -111,11 +113,7 @@ static NSString * const  kTYVSessionName   = @"backgroung";
         TYVStrongifyAndReturnIfNil(self);
         
         NSURLSessionDownloadTask *task = [self.session downloadTaskWithURL:self.url
-                                                         completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error)
-        {
-            self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
-            self.state = TYVModelLoaded;
-        }];
+                                                         completionHandler:[self completionBlock]];
         
         [task resume];
     };
@@ -123,13 +121,17 @@ static NSString * const  kTYVSessionName   = @"backgroung";
     return block;
 }
 
-#pragma mark -
-#pragma mark NSURLSessionDelegate
-
-- (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error {
-    @synchronized (self) {
-        self.state = TYVModelFailedLoading;
-    }
+- (TYVCompletionBlock)completionBlock {
+    TYVCompletionBlock block = ^(NSURL *location, NSURLResponse *response, NSError *error) {
+        if (error) {
+            self.state = TYVModelFailedLoading;
+        } else {
+            self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
+            self.state = TYVModelLoaded;
+        }
+    };
+    
+    return block;
 }
 
 @end
