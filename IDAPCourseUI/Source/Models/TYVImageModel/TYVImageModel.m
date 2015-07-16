@@ -157,7 +157,13 @@ TYVImageCache *TYVCache() {
             }
         }
         
-        self.image = image;
+//        UIImage *image = [UIImage imageWithContentsOfFile:self.path];
+//        
+//        if (!image) {
+//            TYVDispatchAsyncOnDefaultQueueWithBlock([self loadFromUrlBlock]);
+//        }
+//        
+//        self.image = image;
         
         self.state = TYVModelLoaded;
     };
