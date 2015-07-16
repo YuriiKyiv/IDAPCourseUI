@@ -49,6 +49,12 @@
     }
 }
 
+- (void)removeObjectForKey:(id)key {
+    @synchronized (self) {
+        [self.cache removeObjectForKey:key];
+    }
+}
+
 - (id)objectForKey:(id)key {
     @synchronized (self) {
         return [self.cache objectForKey:key];

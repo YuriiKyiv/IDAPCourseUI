@@ -13,6 +13,8 @@
 + (instancetype)sharedImageCache;
 
 - (void)addObject:(id)object forKey:(id)key;
+- (void)removeObjectForKey:(id)key;
+
 - (id)objectForKey:(id)key;
 
 - (BOOL)containsObjectForKey:(id)key;
