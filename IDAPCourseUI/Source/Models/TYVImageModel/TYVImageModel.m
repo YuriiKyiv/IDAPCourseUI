@@ -27,15 +27,13 @@ typedef void(^TYVCompletionBlock)(NSURL *, NSURLResponse *, NSError *);
 
 @property (nonatomic, strong)   NSURLSessionDownloadTask    *task;
 
-- (void)dump;
-
 - (TYVBlock)loadFromCacheBlock;
 
 - (TYVBlock)loadFromUrlBlock;
 
 - (TYVCompletionBlock)completionBlock;
 
-- (BOOL)performWorkWithLocation:(NSURL *)location;
+- (void)performWorkWithLocation:(NSURL *)location;
 
 @end
 
@@ -53,13 +51,26 @@ typedef void(^TYVCompletionBlock)(NSURL *, NSURLResponse *, NSError *);
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
+- (void)dealloc {
+    [self cancelLoading];
+    TYVImageCache *cache = [TYVImageCache sharedImageCache];
+    [cache removeObjectForKey:self.url];
+}
+
 - (instancetype)initWithURL:(NSURL *)url {
-    self = [super init];
-    if (self) {
-        self.url = url;
-        self.cache = [TYVImageCache sharedImageCache];
-        NSURLSessionConfiguration *config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
-        self.session = [NSURLSession sessionWithConfiguration:config];
+    TYVImageCache *cache = [TYVImageCache sharedImageCache];
+    
+    if (![cache containsObjectForKey:url]) {
+        self = [super init];
+        if (self) {
+            self.url = url;
+            self.cache = [TYVImageCache sharedImageCache];
+            NSURLSessionConfiguration *config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+            self.session = [NSURLSession sessionWithConfiguration:config];
+            [cache addObject:self forKey:url];
+        }
+    } else {
+        self = [cache objectForKey:url];
     }
     
     return self;
@@ -79,32 +90,29 @@ typedef void(^TYVCompletionBlock)(NSURL *, NSURLResponse *, NSError *);
     @synchronized (self) {
         if (self.state == TYVModelWillLoad) {
             [self.task cancel];
-            self.state = TYVModelUnloaded;
+        } else {
+            self.image = nil;
         }
+        
+        self.state = TYVModelUnloaded;
     }
 }
 
 #pragma mark -
 #pragma mark Private Methods
 
-- (void)dump {
-    self.state = TYVModelUnloaded;
-}
-
-- (BOOL)performWorkWithLocation:(NSURL *)location {
+- (void)performWorkWithLocation:(NSURL *)location {
     NSString *path = self.path;
-    [NSFileManager createDirectoryAtPath:path];
-    NSData *data = [NSData dataWithContentsOfURL:location];
-    BOOL result = [data writeToFile:path atomically:YES];
-    NSLog(@"%@", path);
-    self.image = [UIImage imageWithData:data];
     
-    if (result) {
-        TYVImageCache *cache = self.cache;
-        [cache addObject:path forKey:self.url];
-    }
-        
-    return result;
+    [NSFileManager createDirectoryAtFilePath:path];
+    NSData *data = [NSData dataWithContentsOfURL:location];
+    
+    [data writeToFile:path atomically:YES];
+    
+    [self.cache addObject:self forKey:self.url];
+    NSLog(@"%lu", (unsigned long)[self.cache count]);
+    
+    self.image = [UIImage imageWithData:data];
 }
 
 #pragma mark -
@@ -123,7 +131,13 @@ typedef void(^TYVCompletionBlock)(NSURL *, NSURLResponse *, NSError *);
     TYVWeakify(self);
     TYVBlock block = ^{
         TYVStrongifyAndReturnIfNil(self);
-        self.image = [UIImage imageWithContentsOfFile:self.path];
+        UIImage *image = [UIImage imageWithContentsOfFile:self.path];
+        
+        if (image) {
+            TYVDispatchAsyncOnDefaultQueueWithBlock([self loadFromUrlBlock]);
+        }
+        
+        self.image = image;
         
         self.state = TYVModelLoaded;
     };
