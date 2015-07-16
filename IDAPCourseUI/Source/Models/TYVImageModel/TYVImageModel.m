@@ -16,6 +16,12 @@
 
 typedef void(^TYVCompletionBlock)(NSURL *, NSURLResponse *, NSError *);
 
+TYVImageCache *TYVCache();
+
+TYVImageCache *TYVCache() {
+    return [TYVImageCache sharedImageCache];
+}
+
 @interface TYVImageModel ()
 @property (nonatomic, strong)   NSURL           *url;
 @property (nonatomic, strong)   UIImage         *image;
@@ -52,13 +58,11 @@ typedef void(^TYVCompletionBlock)(NSURL *, NSURLResponse *, NSError *);
 
 - (void)dealloc {
     [self cancelLoading];
-    TYVImageCache *cache = [TYVImageCache sharedImageCache];
-    [cache removeObjectForKey:self.url];
+    [TYVCache() removeObjectForKey:self.url];
 }
 
 - (instancetype)initWithURL:(NSURL *)url {
-    TYVImageCache *cache = [TYVImageCache sharedImageCache];
-    
+    TYVImageCache *cache = TYVCache();
     if (![cache containsObjectForKey:url]) {
         self = [super init];
         if (self) {
@@ -117,10 +121,8 @@ typedef void(^TYVCompletionBlock)(NSURL *, NSURLResponse *, NSError *);
 #pragma mark TYVAbstractDataModel
 
 - (void)performLoading {
-    TYVImageCache *cache = [TYVImageCache sharedImageCache];
-    NSLog(@"count = %lu", (unsigned long)[cache count]);
-    id object = [cache objectForKey:self.url];
-    TYVBlock block = (object) ? [self loadFromCacheBlock] : [self loadFromUrlBlock];
+    TYVBlock block = ([TYVCache() containsObjectForKey:self.url]) ? [self loadFromCacheBlock]
+                                                                    : [self loadFromUrlBlock];
     TYVDispatchAsyncOnDefaultQueueWithBlock(block);
 }
 
@@ -149,10 +151,8 @@ typedef void(^TYVCompletionBlock)(NSURL *, NSURLResponse *, NSError *);
     TYVWeakify(self);
     TYVBlock block = ^{
         TYVStrongifyAndReturnIfNil(self);
-        
         NSURLSessionDownloadTask *task = [self.session downloadTaskWithURL:self.url
                                                          completionHandler:[self completionBlock]];
-        
         [task resume];
         
         self.task = task;
