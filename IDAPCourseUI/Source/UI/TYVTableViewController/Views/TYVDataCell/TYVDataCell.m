@@ -26,24 +26,9 @@
 
 - (void)setData:(TYVDataModel *)data {
     if (_data != data) {
-        [_data removeObserver:self];
-        
         _data = data;
-        [_data addObserver:self];
-        self.pictureView.imageModel = _data.imageModel;
-
         [self fillWithModel:_data];
-        
-        [data load];
     }
-}
-
-#pragma mark -
-#pragma mark View LifeCycle
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
 }
 
 #pragma mark -
@@ -51,24 +36,7 @@
 
 - (void)fillWithModel:(TYVDataModel *)model {
     self.dataLabel.text = model.text;
-}
-
-#pragma mark -
-#pragma mark TYVAbstractDataModelProtocol
-
-- (void)modelDidLoad:(TYVDataModel *)dataModel {
-    TYVWeakify(self);
-    TYVDispatchAsyncOnMainQueueWithBlock(^{
-        TYVStrongifyAndReturnIfNil(self);
-        [self fillWithModel:dataModel];
-    });
-}
-
-- (void)modelWillLoad:(TYVDataModel *)dataModel {
-    TYVWeakify(self);
-    TYVDispatchAsyncOnMainQueueWithBlock(^{
-        TYVStrongifyAndReturnIfNil(self);
-    });
+    self.pictureView.imageModel = _data.imageModel;
 }
 
 @end

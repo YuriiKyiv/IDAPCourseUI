@@ -38,25 +38,10 @@
 }
 
 #pragma mark -
-#pragma mark View LifeCycle
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    UIImageView *imageView = self.imageView;
-    if (!imageView) {
-        imageView = [UIImageView new];
-    }
-    
-    imageView.backgroundColor = [UIColor yellowColor];
-}
-
-#pragma mark -
 #pragma mark Public Methods
 
 - (void)fillWithModel:(TYVImageModel *)model {
     self.imageView.image = model.image;
-    self.imageView.backgroundColor = [UIColor blackColor];
 }
 
 #pragma mark -
