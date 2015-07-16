@@ -13,7 +13,7 @@
 
 @implementation TYVLoadingViewHolder
 
-@dynamic visibleLoadingView;
+@dynamic loadingViewVisible;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -25,7 +25,7 @@
 #pragma mark -
 #pragma mark Accsecors
 
-- (BOOL)isVisibleLoadingView {
+- (BOOL)isLoadingViewVisible {
     return self.loadingView.visible;
 }
 
@@ -35,11 +35,15 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.loadingView = [TYVLoadingView viewInSuperview:self];
+    [self connectLoadingView];
 }
 
 #pragma mark -
 #pragma mark Public Methods
+
+- (void)connectLoadingView {
+    self.loadingView = [TYVLoadingView viewInSuperview:self];
+}
 
 - (void)showLoadingView {
     [self bringSubviewToFront:self.loadingView];

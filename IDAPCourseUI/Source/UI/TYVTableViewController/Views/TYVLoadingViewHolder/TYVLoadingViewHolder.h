@@ -13,7 +13,9 @@
 @interface TYVLoadingViewHolder : UIView
 @property (nonatomic, strong)   IBOutlet UIView<TYVLoadingViewProtocol>  *loadingView;
 
-@property (nonatomic, readonly, getter=isVisibleLoadingView)   BOOL    visibleLoadingView;
+@property (nonatomic, readonly, getter=isLoadingViewVisible)   BOOL    loadingViewVisible;
+
+- (void)connectLoadingView;
 
 - (void)showLoadingView;
 

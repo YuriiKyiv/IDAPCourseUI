@@ -33,7 +33,6 @@
         [self fillWithModel:_imageModel];
         
         [_imageModel load];
-        
     }
 }
 
