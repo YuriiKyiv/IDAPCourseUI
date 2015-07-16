@@ -16,6 +16,8 @@
 
 typedef void(^TYVCompletionBlock)(NSURL *, NSURLResponse *, NSError *);
 
+//static NSURLSession * TYVURLSession = nil;
+
 TYVImageCache *TYVCache();
 
 TYVImageCache *TYVCache() {
@@ -103,6 +105,17 @@ TYVImageCache *TYVCache() {
 #pragma mark -
 #pragma mark Private Methods
 
+//- (NSURLSession *)session {
+//    @synchronized (self) {
+//        if (!TYVURLSession) {
+//            NSURLSessionConfiguration *config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+//            TYVURLSession = [NSURLSession sessionWithConfiguration:config];
+//        }
+//    }
+//    
+//    return TYVURLSession;
+//}
+
 - (void)performWorkWithLocation:(NSURL *)location {
     NSString *path = self.path;
     
@@ -133,10 +146,15 @@ TYVImageCache *TYVCache() {
     TYVWeakify(self);
     TYVBlock block = ^{
         TYVStrongifyAndReturnIfNil(self);
-        UIImage *image = [UIImage imageWithContentsOfFile:self.path];
+        
+        UIImage *image = self.image;
         
         if (!image) {
-            TYVDispatchAsyncOnDefaultQueueWithBlock([self loadFromUrlBlock]);
+            image = [UIImage imageWithContentsOfFile:self.path];
+            
+            if (!image) {
+                TYVDispatchAsyncOnDefaultQueueWithBlock([self loadFromUrlBlock]);
+            }
         }
         
         self.image = image;
