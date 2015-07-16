@@ -17,4 +17,6 @@
 
 - (BOOL)containsObjectForKey:(id)key;
 
+- (NSUInteger)count;
+
 @end

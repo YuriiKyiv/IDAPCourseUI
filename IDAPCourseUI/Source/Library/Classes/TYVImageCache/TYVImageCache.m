@@ -43,9 +43,9 @@
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)addObject:(id)object forKey:(id)key {
+- (void)addObject:(id)object forKey:(NSObject *)key {
     @synchronized (self) {
-        [self.cache setObject:object forKey:key];
+        [self.cache setObject:object forKey:[key copy]];
     }
 }
 
@@ -57,6 +57,12 @@
 
 - (BOOL)containsObjectForKey:(id)key {
     return nil != [self objectForKey:key];
+}
+
+- (NSUInteger)count {
+    @synchronized (self) {
+        return [self.cache count];
+    }
 }
 
 @end
