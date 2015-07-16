@@ -34,7 +34,8 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.cache = [NSMapTable strongToWeakObjectsMapTable];
+        self.cache = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsCopyIn
+                                           valueOptions:NSPointerFunctionsWeakMemory];
     }
     
     return self;
@@ -43,9 +44,9 @@
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)addObject:(id)object forKey:(NSObject *)key {
+- (void)addObject:(id)object forKey:(id)key {
     @synchronized (self) {
-        [self.cache setObject:object forKey:[key copy]];
+        [self.cache setObject:object forKey:key];
     }
 }
 
