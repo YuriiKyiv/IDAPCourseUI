@@ -25,8 +25,8 @@
     return [NSSearchPathForDirectoriesInDomains(searchPath, NSUserDomainMask, YES) objectAtIndex:0];
 }
 
-+ (void)createDirectoryAtPath:(NSString *)path {
-    [[NSFileManager defaultManager] createDirectoryAtPath:[path stringByDeletingLastPathComponent]
++ (void)createDirectoryAtFilePath:(NSString *)filePath {
+    [[NSFileManager defaultManager] createDirectoryAtPath:[filePath stringByDeletingLastPathComponent]
                               withIntermediateDirectories:YES
                                                attributes:nil
                                                     error:nil];
