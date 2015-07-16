@@ -19,7 +19,6 @@ typedef void(^TYVCompletionBlock)(NSURL *, NSURLResponse *, NSError *);
 @interface TYVImageModel ()
 @property (nonatomic, strong)   NSURL           *url;
 @property (nonatomic, strong)   UIImage         *image;
-@property (nonatomic, strong)   TYVImageCache   *cache;
 
 @property (nonatomic, readonly) NSString        *path;
 
@@ -64,7 +63,6 @@ typedef void(^TYVCompletionBlock)(NSURL *, NSURLResponse *, NSError *);
         self = [super init];
         if (self) {
             self.url = url;
-            self.cache = [TYVImageCache sharedImageCache];
             NSURLSessionConfiguration *config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
             self.session = [NSURLSession sessionWithConfiguration:config];
             [cache addObject:self forKey:url];
@@ -109,8 +107,8 @@ typedef void(^TYVCompletionBlock)(NSURL *, NSURLResponse *, NSError *);
     
     [data writeToFile:path atomically:YES];
     
-    [self.cache addObject:self forKey:self.url];
-    NSLog(@"%lu", (unsigned long)[self.cache count]);
+    TYVImageCache *cache = [TYVImageCache sharedImageCache];
+    [cache addObject:self forKey:self.url];
     
     self.image = [UIImage imageWithData:data];
 }
@@ -119,7 +117,9 @@ typedef void(^TYVCompletionBlock)(NSURL *, NSURLResponse *, NSError *);
 #pragma mark TYVAbstractDataModel
 
 - (void)performLoading {
-    id object = [self.cache objectForKey:self.url];
+    TYVImageCache *cache = [TYVImageCache sharedImageCache];
+    NSLog(@"count = %lu", (unsigned long)[cache count]);
+    id object = [cache objectForKey:self.url];
     TYVBlock block = (object) ? [self loadFromCacheBlock] : [self loadFromUrlBlock];
     TYVDispatchAsyncOnDefaultQueueWithBlock(block);
 }
@@ -133,7 +133,7 @@ typedef void(^TYVCompletionBlock)(NSURL *, NSURLResponse *, NSError *);
         TYVStrongifyAndReturnIfNil(self);
         UIImage *image = [UIImage imageWithContentsOfFile:self.path];
         
-        if (image) {
+        if (!image) {
             TYVDispatchAsyncOnDefaultQueueWithBlock([self loadFromUrlBlock]);
         }
         
