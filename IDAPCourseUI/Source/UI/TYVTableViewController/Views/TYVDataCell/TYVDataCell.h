@@ -14,7 +14,7 @@
 
 @interface TYVDataCell : TYVTableViewCell <TYVAbstractDataModelProtocol>
 @property (nonatomic, strong)   IBOutlet UILabel        *dataLabel;
-@property (nonatomic, strong)   IBOutlet TYVImageView   *pictureView;
+@property (nonatomic, strong)   IBOutlet TYVImageView   *imageContentView;
 
 @property (nonatomic, strong)   TYVDataModel    *data;
 

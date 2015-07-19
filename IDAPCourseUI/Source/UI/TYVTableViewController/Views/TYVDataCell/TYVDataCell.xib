@@ -36,7 +36,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="dataLabel" destination="elS-Gi-9kO" id="N85-CK-gi9"/>
-                <outlet property="pictureView" destination="e84-aa-G0E" id="ODS-Nl-Pgw"/>
+                <outlet property="imageContentView" destination="e84-aa-G0E" id="hgt-yv-EAW"/>
             </connections>
             <point key="canvasLocation" x="513" y="342"/>
         </tableViewCell>
