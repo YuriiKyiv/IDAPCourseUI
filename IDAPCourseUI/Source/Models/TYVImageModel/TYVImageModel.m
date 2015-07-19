@@ -70,7 +70,7 @@ typedef void(^TYVCompletionBlock)(id, id, id);
 
 - (void)dealloc {
     self.task = nil;
-    [TYVCache() removeObjectForKey:self.url];
+    [self.cache removeObjectForKey:self.url];
 }
 
 - (instancetype)initWithURL:(NSURL *)url {
@@ -156,6 +156,7 @@ typedef void(^TYVCompletionBlock)(id, id, id);
         TYVDispatchAsyncOnDefaultQueueWithBlock([self loadFromUrlBlock]);
     } else {
         self.image = image;
+        self.state = TYVModelLoaded;
     }
 }
 
