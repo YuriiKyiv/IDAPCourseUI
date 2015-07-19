@@ -21,14 +21,9 @@ static NSString * const  kTYVTextField = @"text";
 
 static NSString * const  kTYVImageUrl = @"http://cdn-www.i-am-bored.com/media/thumbnails/apple_for-diabetics[1].jpg";
 
-@interface TYVDataModel ()
-@property (nonatomic, strong)   TYVImageModel *imageModel;
-
-- (void)prepareImageModel;
-
-@end
-
 @implementation TYVDataModel
+
+@dynamic imageModel;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -44,17 +39,16 @@ static NSString * const  kTYVImageUrl = @"http://cdn-www.i-am-bored.com/media/th
     self = [super init];
     if (self) {
         self.text = string;
-        [self prepareImageModel];
     }
     
     return self;
 }
 
 #pragma mark -
-#pragma mark Private Methods
+#pragma mark Accesors
 
-- (void)prepareImageModel {
-    self.imageModel = [TYVImageModel imageWithURL:[NSURL URLWithString:kTYVImageUrl]];
+- (TYVImageModel *)imageModel {
+    return [TYVImageModel imageWithURL:[NSURL URLWithString:kTYVImageUrl]];
 }
 
 #pragma mark -
