@@ -14,27 +14,22 @@
 #import "TYVMacro.h"
 #import "NSFileManager+TYVExtensions.h"
 
-typedef void(^TYVCompletionBlock)(NSURL *, NSURLResponse *, NSError *);
-
-//static NSURLSession * TYVURLSession = nil;
-
-TYVImageCache *TYVCache();
-
-TYVImageCache *TYVCache() {
-    return [TYVImageCache sharedImageCache];
-}
+typedef void(^TYVCompletionBlock)(id, id, id);
 
 @interface TYVImageModel ()
 @property (nonatomic, strong)   NSURL           *url;
 @property (nonatomic, strong)   UIImage         *image;
-
 @property (nonatomic, readonly) NSString        *path;
 
-@property (nonatomic, strong)   NSURLSession    *session;
+@property (nonatomic, readonly) TYVImageCache   *cache;
+@property (nonatomic, readonly) NSURLSession    *session;
+
 
 @property (nonatomic, strong)   NSURLSessionDownloadTask    *task;
 
-- (TYVBlock)loadFromCacheBlock;
++ (NSURLSession *)session;
+
++ (TYVImageCache *)cache;
 
 - (TYVBlock)loadFromUrlBlock;
 
@@ -51,6 +46,21 @@ TYVImageCache *TYVCache() {
 #pragma mark -
 #pragma mark Class Methods
 
++ (NSURLSession *)session {
+    static NSURLSession *__sharedObject = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSURLSessionConfiguration *config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+        __sharedObject = [NSURLSession sessionWithConfiguration:config];
+    });
+    
+    return __sharedObject;
+}
+
++ (TYVImageCache *)cache {
+    return [TYVImageCache sharedImageCache];
+}
+
 + (instancetype)imageWithURL:(NSURL *)url {
     return [[self alloc] initWithURL:url];
 }
@@ -59,22 +69,23 @@ TYVImageCache *TYVCache() {
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    [self cancelLoading];
+    self.task = nil;
     [TYVCache() removeObjectForKey:self.url];
 }
 
 - (instancetype)initWithURL:(NSURL *)url {
-    TYVImageCache *cache = TYVCache();
-    if (![cache containsObjectForKey:url]) {
-        self = [super init];
-        if (self) {
-            self.url = url;
-            NSURLSessionConfiguration *config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
-            self.session = [NSURLSession sessionWithConfiguration:config];
-            [cache addObject:self forKey:url];
-        }
-    } else {
-        self = [cache objectForKey:url];
+    TYVImageCache *cache = self.cache;
+    id object = [cache objectForKey:url];
+    
+    if (object) {
+        return object;
+    }
+    
+    self = [super init];
+    
+    if (self) {
+        self.url = url;
+        [cache addObject:self forKey:url];
     }
     
     return self;
@@ -85,6 +96,23 @@ TYVImageCache *TYVCache() {
 
 - (NSString *)path {
     return [[NSFileManager documentsDirectory] stringByAppendingString:self.url.path];
+}
+
+- (TYVImageCache *)cache {
+    return [[self class] cache];
+}
+
+- (NSURLSession *)session {
+    return [[self class] session];
+}
+
+- (void)setTask:(NSURLSessionDownloadTask *)task {
+    if (task != _task) {
+        [_task cancel];
+        
+        _task = task;
+        [_task resume];
+    }
 }
 
 #pragma mark -
@@ -105,17 +133,6 @@ TYVImageCache *TYVCache() {
 #pragma mark -
 #pragma mark Private Methods
 
-//- (NSURLSession *)session {
-//    @synchronized (self) {
-//        if (!TYVURLSession) {
-//            NSURLSessionConfiguration *config = [NSURLSessionConfiguration ephemeralSessionConfiguration];
-//            TYVURLSession = [NSURLSession sessionWithConfiguration:config];
-//        }
-//    }
-//    
-//    return TYVURLSession;
-//}
-
 - (void)performWorkWithLocation:(NSURL *)location {
     NSString *path = self.path;
     
@@ -124,9 +141,6 @@ TYVImageCache *TYVCache() {
     
     [data writeToFile:path atomically:YES];
     
-    TYVImageCache *cache = [TYVImageCache sharedImageCache];
-    [cache addObject:self forKey:self.url];
-    
     self.image = [UIImage imageWithData:data];
 }
 
@@ -134,60 +148,34 @@ TYVImageCache *TYVCache() {
 #pragma mark TYVAbstractDataModel
 
 - (void)performLoading {
-    TYVBlock block = ([TYVCache() containsObjectForKey:self.url]) ? [self loadFromCacheBlock]
-                                                                    : [self loadFromUrlBlock];
-    TYVDispatchAsyncOnDefaultQueueWithBlock(block);
+    UIImage *image = self.image;
+    
+    image = [UIImage imageWithContentsOfFile:self.path];
+    
+    if (!image) {
+        TYVDispatchAsyncOnDefaultQueueWithBlock([self loadFromUrlBlock]);
+    } else {
+        self.image = image;
+    }
 }
 
 #pragma mark -
 #pragma mark TYVImageBlock
 
-- (TYVBlock)loadFromCacheBlock {
-    TYVWeakify(self);
-    TYVBlock block = ^{
-        TYVStrongifyAndReturnIfNil(self);
-        
-        UIImage *image = self.image;
-        
-        if (!image) {
-            image = [UIImage imageWithContentsOfFile:self.path];
-            
-            if (!image) {
-                TYVDispatchAsyncOnDefaultQueueWithBlock([self loadFromUrlBlock]);
-            }
-        }
-        
-//        UIImage *image = [UIImage imageWithContentsOfFile:self.path];
-//        
-//        if (!image) {
-//            TYVDispatchAsyncOnDefaultQueueWithBlock([self loadFromUrlBlock]);
-//        }
-//        
-//        self.image = image;
-        
-        self.state = TYVModelLoaded;
-    };
-    
-    return block;
-}
-
 - (TYVBlock)loadFromUrlBlock {
     TYVWeakify(self);
     TYVBlock block = ^{
         TYVStrongifyAndReturnIfNil(self);
-        NSURLSessionDownloadTask *task = [self.session downloadTaskWithURL:self.url
+        self.task  = [self.session downloadTaskWithURL:self.url
                                                          completionHandler:[self completionBlock]];
-        [task resume];
-        
-        self.task = task;
     };
     
     return block;
 }
 
 - (TYVCompletionBlock)completionBlock {
-    TYVCompletionBlock block = ^(NSURL *location, NSURLResponse *response, NSError *error) {
-        if (error) {
+    TYVCompletionBlock block = ^(NSURL *location, NSHTTPURLResponse *response, NSError *error) {
+        if (error || response.statusCode != 200) {
             self.state = TYVModelFailedLoading;
         } else {
             [self performWorkWithLocation:location];
