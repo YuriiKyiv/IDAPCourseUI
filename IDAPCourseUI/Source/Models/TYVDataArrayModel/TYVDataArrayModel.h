@@ -12,4 +12,6 @@
 
 - (void)save;
 
+- (void)saveWithCompletionHandler:(TYVBlock)block;
+
 @end

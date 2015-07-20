@@ -8,6 +8,9 @@
 
 #import "TYVDataArrayModel.h"
 #import "TYVDataModel.h"
+#import "TYVDataArrayModelInfo.h"
+#import "TYVDispatch.h"
+#import "TYVMacro.h"
 
 #import "NSFileManager+TYVExtensions.h"
 
@@ -15,11 +18,15 @@ static NSUInteger const  TYVArrayCount  = 10;
 
 static NSString * const  kTYVFileName   = @"info.plist";
 
+static char * const  kTYVQueue   = "info.plist";
+
 @interface TYVDataArrayModel ()
 @property (nonatomic, readonly)   NSString    *fileName;
 @property (nonatomic, readonly)   NSString    *filePath;
 
 @property (nonatomic, assign, getter=isFileAvailable)    BOOL    fileAvailable;
+
+@property (nonatomic, strong)   dispatch_queue_t    savingQueue;
 
 - (NSMutableArray *)defaultContent;
 
@@ -38,12 +45,17 @@ static NSString * const  kTYVFileName   = @"info.plist";
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self removeObserver:self];
 }
 
 - (instancetype)initWithModelsCount:(NSUInteger)count {
     self = [super initWithModelsCount:count];
     
     if (self) {
+        [self addObserver:self];
+        
+        self.savingQueue = dispatch_queue_create(kTYVQueue, NULL);
+        
         NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
         [center addObserver:self
                    selector:@selector(save)
@@ -72,9 +84,18 @@ static NSString * const  kTYVFileName   = @"info.plist";
 #pragma mark Public Methods
 
 - (void)save {
-    @synchronized (self) {
+    [self saveWithCompletionHandler:nil];
+}
+
+- (void)saveWithCompletionHandler:(TYVBlock)block {
+    TYVWeakify(self);
+    dispatch_async(self.savingQueue, ^{
+        TYVStrongifyAndReturnIfNil(self);
         [NSKeyedArchiver archiveRootObject:self.dataArray toFile:self.filePath];
-    }
+        if (block) {
+            block();
+        }
+    });
 }
 
 #pragma mark -
@@ -106,6 +127,10 @@ static NSString * const  kTYVFileName   = @"info.plist";
     }];
     
     self.state = TYVModelLoaded;
+}
+
+- (void)model:(TYVDataArrayModel *)model didChangeWithObject:(TYVDataArrayModelInfo *)info {
+    [self save];
 }
 
 @end
