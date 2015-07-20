@@ -13,7 +13,7 @@
 
 + (instancetype)dataWithModelsCount:(NSUInteger)count;
 
-- (instancetype)initWithModelsCount:(NSUInteger)count;
+- (instancetype)initWithModelsCount:(NSUInteger)count NS_DESIGNATED_INITIALIZER;
 
 - (void)addModelsFromArray:(NSArray *)otherArray;
 - (void)removeModelsInArray:(NSArray *)otherArray;
