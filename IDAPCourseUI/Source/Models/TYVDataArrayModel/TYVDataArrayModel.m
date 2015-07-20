@@ -34,6 +34,26 @@ static NSString * const  kTYVFileName   = @"info.plist";
 @dynamic fileAvailable;
 
 #pragma mark -
+#pragma mark Deallocations and Initializations
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (instancetype)initWithModelsCount:(NSUInteger)count {
+    self = [super initWithModelsCount:count];
+    
+    if (self) {
+        NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+        [center addObserver:self
+                   selector:@selector(save)
+                       name:UIApplicationWillTerminateNotification object:nil];
+    }
+    
+    return self;
+}
+
+#pragma mark -
 #pragma mark Accsesors
 
 - (NSString *)fileName {

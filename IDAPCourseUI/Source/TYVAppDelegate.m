@@ -60,7 +60,7 @@ static const NSUInteger kTYVDataArrayModelCount = 10;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    [self.model save];
+    NSLog(@"applicationWillTerminate");
 }
 
 @end

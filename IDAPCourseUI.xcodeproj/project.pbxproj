@@ -394,18 +394,10 @@
 		5A8C62461B53DADE00383DCE /* TYVModelArray */ = {
 			isa = PBXGroup;
 			children = (
-				5A8C62471B53DADE00383DCE /* Private */,
 				5A8C62481B53DADE00383DCE /* TYVModelArray.h */,
 				5A8C62491B53DADE00383DCE /* TYVModelArray.m */,
 			);
 			path = TYVModelArray;
-			sourceTree = "<group>";
-		};
-		5A8C62471B53DADE00383DCE /* Private */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Private;
 			sourceTree = "<group>";
 		};
 		5A8C624A1B53DADE00383DCE /* TYVModelMovingPosition */ = {
