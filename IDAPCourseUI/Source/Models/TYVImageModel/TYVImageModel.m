@@ -76,21 +76,23 @@ typedef void(^TYVCompletionBlock)(id, id, id);
 }
 
 - (instancetype)initWithURL:(NSURL *)url {
-    TYVImageCache *cache = self.cache;
-    id object = [cache objectForKey:url];
-    
-    if (object) {
-        return object;
+    @synchronized (self) {
+        TYVImageCache *cache = self.cache;
+        id object = [cache objectForKey:url];
+        
+        if (object) {
+            return object;
+        }
+        
+        self = [super init];
+        
+        if (self) {
+            self.url = url;
+            [cache addObject:self forKey:url];
+        }
+        
+        return self;
     }
-    
-    self = [super init];
-    
-    if (self) {
-        self.url = url;
-        [cache addObject:self forKey:url];
-    }
-    
-    return self;
 }
 
 #pragma mark -
@@ -176,7 +178,9 @@ typedef void(^TYVCompletionBlock)(id, id, id);
 }
 
 - (TYVCompletionBlock)completionBlock {
+    TYVWeakify(self);
     TYVCompletionBlock block = ^(NSURL *location, NSHTTPURLResponse *response, NSError *error) {
+        TYVStrongifyAndReturnIfNil(self);
         if (error || response.statusCode != 200) {
             self.state = TYVModelFailedLoading;
         } else {
