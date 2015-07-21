@@ -42,6 +42,8 @@ typedef void(^TYVCompletionBlock)(id, id, id);
 @implementation TYVImageModel
 
 @dynamic path;
+@dynamic cache;
+@dynamic session;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -116,32 +118,22 @@ typedef void(^TYVCompletionBlock)(id, id, id);
 }
 
 #pragma mark -
-#pragma mark Public Methods
-
-- (void)cancelLoading {
-    @synchronized (self) {
-        if (self.state == TYVModelWillLoad) {
-            [self.task cancel];
-        } else {
-            self.image = nil;
-        }
-        
-        self.state = TYVModelUnloaded;
-    }
-}
-
-#pragma mark -
 #pragma mark Private Methods
 
 - (void)performWorkWithLocation:(NSURL *)location {
     NSString *path = self.path;
     
+    NSFileManager *fileManager = [NSFileManager defaultManager];
     [NSFileManager createDirectoryAtFilePath:path];
+    [fileManager copyItemAtPath:location.absoluteString toPath:path error:nil];
+    
     NSData *data = [NSData dataWithContentsOfURL:location];
-    
-    [data writeToFile:path atomically:YES];
-    
-    self.image = [UIImage imageWithData:data];
+    UIImage *image = [UIImage imageWithData:data];
+    if (!image) {
+        self.image = image;
+    } else  {
+        self.state = TYVModelFailedLoading;
+    }
 }
 
 #pragma mark -
@@ -150,14 +142,23 @@ typedef void(^TYVCompletionBlock)(id, id, id);
 - (void)performLoading {
     UIImage *image = self.image;
     
-    image = [UIImage imageWithContentsOfFile:self.path];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    if (!image) {
-        TYVDispatchAsyncOnDefaultQueueWithBlock([self loadFromUrlBlock]);
+    NSString *path = self.path;
+    
+    if ([fileManager fileExistsAtPath:path]) {
+        image = [UIImage imageWithContentsOfFile:path];
+        if (!image) {
+            [fileManager removeItemAtPath:path error:nil];
+            TYVDispatchAsyncOnDefaultQueueWithBlock([self loadFromUrlBlock]);
+        } else {
+            self.image = image;
+            self.state = TYVModelLoaded;
+        }
     } else {
-        self.image = image;
-        self.state = TYVModelLoaded;
+        TYVDispatchAsyncOnDefaultQueueWithBlock([self loadFromUrlBlock]);
     }
+
 }
 
 #pragma mark -
@@ -168,7 +169,7 @@ typedef void(^TYVCompletionBlock)(id, id, id);
     TYVBlock block = ^{
         TYVStrongifyAndReturnIfNil(self);
         self.task  = [self.session downloadTaskWithURL:self.url
-                                                         completionHandler:[self completionBlock]];
+                                     completionHandler:[self completionBlock]];
     };
     
     return block;
