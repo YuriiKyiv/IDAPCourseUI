@@ -36,7 +36,7 @@
 
 - (void)fillWithModel:(TYVDataModel *)model {
     self.dataLabel.text = model.text;
-    self.imageContentView.imageModel = _data.imageModel;
+    self.imageContentView.imageModel = model.imageModel;
 }
 
 @end

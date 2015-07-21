@@ -30,8 +30,7 @@ static const CGFloat        TYVHideAlpha    =   0.0;
 + (instancetype)viewInSuperview:(UIView *)superview {
     TYVLoadingView *object = [UINib objectWithClass:[self class]];
     [superview addSubview:object];
-//    object.bounds = superview.bounds;
-    object.frame = superview.frame;
+    object.frame = superview.bounds;
     object.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     
     return object;
