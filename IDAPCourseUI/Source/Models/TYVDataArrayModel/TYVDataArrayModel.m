@@ -32,6 +32,12 @@ static char * const  kTYVQueue   = "info.plist";
 
 - (NSMutableArray *)contentFromFile:(NSString *)filePath;
 
+- (NSArray *)notifications;
+- (void)subscribeToNotifications;
+- (void)unsubscribeToNotifications;
+- (void)subscribeToNotification:(NSString *)notification;
+- (void)unsubscribeToNotification:(NSString *)notification;
+
 @end
 
 @implementation TYVDataArrayModel
@@ -44,7 +50,7 @@ static char * const  kTYVQueue   = "info.plist";
 #pragma mark Deallocations and Initializations
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self unsubscribeToNotifications];
     [self removeObserver:self];
 }
 
@@ -56,10 +62,7 @@ static char * const  kTYVQueue   = "info.plist";
         
         self.savingQueue = dispatch_queue_create(kTYVQueue, NULL);
         
-        NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-        [center addObserver:self
-                   selector:@selector(save)
-                       name:UIApplicationWillTerminateNotification object:nil];
+        [self subscribeToNotifications];
     }
     
     return self;
@@ -100,6 +103,40 @@ static char * const  kTYVQueue   = "info.plist";
 
 #pragma mark -
 #pragma mark Private Methods
+
+- (NSArray *)notifications {
+    return @[UIApplicationWillTerminateNotification,
+             UIApplicationWillTerminateNotification];
+}
+
+- (void)subscribeToNotifications {
+    NSArray *notifications = [self notifications];
+    for (NSString *notification in notifications) {
+        [self subscribeToNotification:notification];
+    }
+}
+
+- (void)subscribeToNotification:(NSString *)notification {
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self
+               selector:@selector(save)
+                   name:notification
+                 object:nil];
+}
+
+- (void)unsubscribeToNotification:(NSString *)notification {
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center removeObserver:self
+                      name:notification
+                    object:nil];
+}
+
+- (void)unsubscribeToNotifications {
+    NSArray *notifications = [self notifications];
+    for (NSString *notification in notifications) {
+        [self unsubscribeToNotification:notification];
+    }
+}
 
 - (NSMutableArray *)defaultContent {
     NSMutableArray *modelsArray = [NSMutableArray arrayWithCapacity:TYVArrayCount];
