@@ -44,7 +44,7 @@ static const NSUInteger kTYVDataArrayModelCount = 10;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    [self.model save];
+    
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -60,7 +60,7 @@ static const NSUInteger kTYVDataArrayModelCount = 10;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    NSLog(@"applicationWillTerminate");
+
 }
 
 @end

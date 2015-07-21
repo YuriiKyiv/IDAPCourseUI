@@ -12,6 +12,6 @@
 
 - (void)save;
 
-- (void)saveWithCompletionHandler:(TYVBlock)block;
+- (void)saveForNotifications;
 
 @end

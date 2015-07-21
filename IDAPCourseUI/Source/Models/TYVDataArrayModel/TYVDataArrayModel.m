@@ -26,8 +26,6 @@ static char * const  kTYVQueue   = "info.plist";
 
 @property (nonatomic, assign, getter=isFileAvailable)    BOOL    fileAvailable;
 
-@property (nonatomic, strong)   dispatch_queue_t    savingQueue;
-
 - (NSMutableArray *)defaultContent;
 
 - (NSMutableArray *)contentFromFile:(NSString *)filePath;
@@ -59,9 +57,6 @@ static char * const  kTYVQueue   = "info.plist";
     
     if (self) {
         [self addObserver:self];
-        
-        self.savingQueue = dispatch_queue_create(kTYVQueue, NULL);
-        
         [self subscribeToNotifications];
     }
     
@@ -87,18 +82,11 @@ static char * const  kTYVQueue   = "info.plist";
 #pragma mark Public Methods
 
 - (void)save {
-    [self saveWithCompletionHandler:nil];
+    [NSKeyedArchiver archiveRootObject:self.dataArray toFile:self.filePath];
 }
 
-- (void)saveWithCompletionHandler:(TYVBlock)block {
-    TYVWeakify(self);
-    dispatch_async(self.savingQueue, ^{
-        TYVStrongifyAndReturnIfNil(self);
-        [NSKeyedArchiver archiveRootObject:self.dataArray toFile:self.filePath];
-        if (block) {
-            block();
-        }
-    });
+- (void)saveForNotifications {
+    [self save];
 }
 
 #pragma mark -
@@ -119,7 +107,7 @@ static char * const  kTYVQueue   = "info.plist";
 - (void)subscribeToNotification:(NSString *)notification {
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:self
-               selector:@selector(save)
+               selector:@selector(saveForNotifications)
                    name:notification
                  object:nil];
 }
