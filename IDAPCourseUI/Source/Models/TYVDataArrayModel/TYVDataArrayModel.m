@@ -8,12 +8,17 @@
 
 #import "TYVDataArrayModel.h"
 #import "TYVDataModel.h"
+#import "TYVDataArrayModelInfo.h"
+#import "TYVDispatch.h"
+#import "TYVMacro.h"
 
 #import "NSFileManager+TYVExtensions.h"
 
 static NSUInteger const  TYVArrayCount  = 10;
 
 static NSString * const  kTYVFileName   = @"info.plist";
+
+static char * const  kTYVQueue   = "info.plist";
 
 @interface TYVDataArrayModel ()
 @property (nonatomic, readonly)   NSString    *fileName;
@@ -25,6 +30,12 @@ static NSString * const  kTYVFileName   = @"info.plist";
 
 - (NSMutableArray *)contentFromFile:(NSString *)filePath;
 
+- (NSArray *)notifications;
+- (void)subscribeToNotifications;
+- (void)unsubscribeToNotifications;
+- (void)subscribeToNotification:(NSString *)notification;
+- (void)unsubscribeToNotification:(NSString *)notification;
+
 @end
 
 @implementation TYVDataArrayModel
@@ -34,6 +45,25 @@ static NSString * const  kTYVFileName   = @"info.plist";
 @dynamic fileAvailable;
 
 #pragma mark -
+#pragma mark Deallocations and Initializations
+
+- (void)dealloc {
+    [self unsubscribeToNotifications];
+    [self removeObserver:self];
+}
+
+- (instancetype)initWithModelsCount:(NSUInteger)count {
+    self = [super initWithModelsCount:count];
+    
+    if (self) {
+        [self addObserver:self];
+        [self subscribeToNotifications];
+    }
+    
+    return self;
+}
+
+#pragma mark -
 #pragma mark Accsesors
 
 - (NSString *)fileName {
@@ -41,7 +71,7 @@ static NSString * const  kTYVFileName   = @"info.plist";
 }
 
 - (NSString *)filePath {
-    return [[NSFileManager usersDocumentDirectory] stringByAppendingPathComponent:self.fileName];
+    return [NSFileManager fileInDocumentsDirectoryWithName:self.fileName];
 }
 
 - (BOOL)isFileAvailable {
@@ -52,15 +82,49 @@ static NSString * const  kTYVFileName   = @"info.plist";
 #pragma mark Public Methods
 
 - (void)save {
-    @synchronized (self) {
-        NSString *filePath = [[NSFileManager usersDocumentDirectory] stringByAppendingPathComponent:self.fileName];
-        
-        [NSKeyedArchiver archiveRootObject:self.dataArray toFile:filePath];
-    }
+    [NSKeyedArchiver archiveRootObject:self.dataArray toFile:self.filePath];
+}
+
+- (void)saveForNotifications {
+    [self save];
 }
 
 #pragma mark -
 #pragma mark Private Methods
+
+- (NSArray *)notifications {
+    return @[UIApplicationWillTerminateNotification,
+             UIApplicationWillTerminateNotification];
+}
+
+- (void)subscribeToNotifications {
+    NSArray *notifications = [self notifications];
+    for (NSString *notification in notifications) {
+        [self subscribeToNotification:notification];
+    }
+}
+
+- (void)subscribeToNotification:(NSString *)notification {
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self
+               selector:@selector(saveForNotifications)
+                   name:notification
+                 object:nil];
+}
+
+- (void)unsubscribeToNotification:(NSString *)notification {
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center removeObserver:self
+                      name:notification
+                    object:nil];
+}
+
+- (void)unsubscribeToNotifications {
+    NSArray *notifications = [self notifications];
+    for (NSString *notification in notifications) {
+        [self unsubscribeToNotification:notification];
+    }
+}
 
 - (NSMutableArray *)defaultContent {
     NSMutableArray *modelsArray = [NSMutableArray arrayWithCapacity:TYVArrayCount];
@@ -80,8 +144,6 @@ static NSString * const  kTYVFileName   = @"info.plist";
 
 - (void)performLoading {
     NSMutableArray *modelsArray = [NSMutableArray array];
-
-    sleep(3);
     
     modelsArray = (self.fileAvailable) ? [self contentFromFile:self.filePath] : [self defaultContent];
     
@@ -90,6 +152,10 @@ static NSString * const  kTYVFileName   = @"info.plist";
     }];
     
     self.state = TYVModelLoaded;
+}
+
+- (void)model:(TYVDataArrayModel *)model didChangeWithObject:(TYVDataArrayModelInfo *)info {
+    [self save];
 }
 
 @end

@@ -10,6 +10,12 @@
 
 @interface NSFileManager (TYVExtensions)
 
-+ (NSString *)usersDocumentDirectory;
++ (NSString *)documentsDirectory;
+
++ (NSString *)fileInDocumentsDirectoryWithName:(NSString *)fileName;
+
++ (NSString *)directoryPathWithType:(NSSearchPathDirectory)searchPath;
+
++ (void)createDirectoryAtFilePath:(NSString *)filePath;
 
 @end

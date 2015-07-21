@@ -10,6 +10,7 @@
 #import "TYVDataModel.h"
 #import "TYVDispatch.h"
 #import "TYVMacro.h"
+#import "TYVImageView.h"
 
 @implementation TYVDataCell
 
@@ -25,14 +26,8 @@
 
 - (void)setData:(TYVDataModel *)data {
     if (_data != data) {
-        [_data removeObserver:self];
-        
         _data = data;
-        [_data addObserver:self];
-
         [self fillWithModel:_data];
-        
-        [data load];
     }
 }
 
@@ -41,27 +36,7 @@
 
 - (void)fillWithModel:(TYVDataModel *)model {
     self.dataLabel.text = model.text;
-    self.pictureView.image = self.data.image;
-}
-
-#pragma mark -
-#pragma mark TYVAbstractDataModelProtocol
-
-- (void)modelDidLoad:(TYVDataModel *)dataModel {
-    TYVWeakify(self);
-    TYVDispatchAsyncOnMainQueueWithBlock(^{
-        TYVStrongifyAndReturnIfNil(self);
-        [self.spinnerView stopAnimating];
-        [self fillWithModel:dataModel];
-    });
-}
-
-- (void)modelWillLoad:(TYVDataModel *)dataModel {
-    TYVWeakify(self);
-    TYVDispatchAsyncOnMainQueueWithBlock(^{
-        TYVStrongifyAndReturnIfNil(self);
-        [self.spinnerView startAnimating];
-    });
+    self.imageContentView.imageModel = model.imageModel;
 }
 
 @end

@@ -15,4 +15,6 @@ void TYVDispatchSyncOnMainQueueWithBlock(TYVBlock block);
 
 void TYVDispatchAsyncOnMainQueueWithBlock(TYVBlock block);
 
+void TYVDispatchAsyncOnDefaultQueueWithBlock(TYVBlock block);
+
 #endif /* defined(__IDAPCoursesHomework__TYVDispatch__) */

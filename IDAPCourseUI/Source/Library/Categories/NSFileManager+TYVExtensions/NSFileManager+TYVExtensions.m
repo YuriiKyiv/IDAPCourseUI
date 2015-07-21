@@ -13,8 +13,23 @@
 #pragma mark -
 #pragma mark Class Methods
 
-+ (NSString *)usersDocumentDirectory {
-    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
++ (NSString *)documentsDirectory {
+    return [self directoryPathWithType:NSDocumentDirectory];
+}
+
++ (NSString *)fileInDocumentsDirectoryWithName:(NSString *)fileName {
+    return [[NSFileManager documentsDirectory] stringByAppendingPathComponent:fileName];
+}
+
++ (NSString *)directoryPathWithType:(NSSearchPathDirectory)searchPath {
+    return [NSSearchPathForDirectoriesInDomains(searchPath, NSUserDomainMask, YES) objectAtIndex:0];
+}
+
++ (void)createDirectoryAtFilePath:(NSString *)filePath {
+    [[NSFileManager defaultManager] createDirectoryAtPath:[filePath stringByDeletingLastPathComponent]
+                              withIntermediateDirectories:YES
+                                               attributes:nil
+                                                    error:nil];
 }
 
 @end

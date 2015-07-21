@@ -19,20 +19,24 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="bjU-Cy-ZRM">
-                        <rect key="frame" x="0.0" y="0.0" width="67" height="43"/>
+                    <view contentMode="scaleToFill" id="e84-aa-G0E" customClass="TYVImageView">
+                        <rect key="frame" x="0.0" y="0.0" width="70" height="43"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
-                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" id="ncu-oo-Uv6">
-                        <rect key="frame" x="23" y="12" width="20" height="20"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </activityIndicatorView>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="cE4-FR-wpD">
+                                <rect key="frame" x="0.0" y="0.0" width="70" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <connections>
+                            <outlet property="imageView" destination="cE4-FR-wpD" id="297-cw-O4z"/>
+                        </connections>
+                    </view>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="dataLabel" destination="elS-Gi-9kO" id="N85-CK-gi9"/>
-                <outlet property="pictureView" destination="bjU-Cy-ZRM" id="CBb-Bp-9wk"/>
-                <outlet property="spinnerView" destination="ncu-oo-Uv6" id="1Nu-Of-hAm"/>
+                <outlet property="imageContentView" destination="e84-aa-G0E" id="hgt-yv-EAW"/>
             </connections>
             <point key="canvasLocation" x="513" y="342"/>
         </tableViewCell>
