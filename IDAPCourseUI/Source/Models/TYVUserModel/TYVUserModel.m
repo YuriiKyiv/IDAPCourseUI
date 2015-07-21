@@ -8,10 +8,15 @@
 
 #import "TYVUserModel.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import "TYVImageModel.h"
+
+static CGSize   TYVImageSize =  {100, 100};
 
 @interface TYVUserModel ()
-@property (nonatomic, strong) NSString    *firstName;
-@property (nonatomic, strong) NSString    *lastName;
+@property (nonatomic, strong) NSString  *firstName;
+@property (nonatomic, strong) NSString  *lastName;
+
+@property (nonatomic, strong) NSString  *imagePath;
 
 @end
 
@@ -27,6 +32,8 @@
     if (self) {
         self.firstName = profile.firstName;
         self.lastName = profile.lastName;
+        self.imagePath = [profile imagePathForPictureMode:FBSDKProfilePictureModeSquare
+                                                     size:TYVImageSize];
     }
     
     return self;
@@ -36,7 +43,7 @@
 #pragma mark Accesors
 
 - (TYVImageModel *)imageModel {
-    return nil;
+    return [TYVImageModel imageWithURL:[NSURL URLWithString:self.imagePath]];
 }
 
 @end
