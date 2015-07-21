@@ -52,6 +52,7 @@
 		5A9790DD1B5E528D00ADE1AE /* TYVLoginContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9790DC1B5E528D00ADE1AE /* TYVLoginContext.m */; };
 		5A9790E01B5E59B900ADE1AE /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A9790DF1B5E59B800ADE1AE /* FBSDKCoreKit.framework */; };
 		5A9790E21B5E622400ADE1AE /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A9790E11B5E622400ADE1AE /* FBSDKLoginKit.framework */; };
+		5A9790E51B5E73D800ADE1AE /* TYVUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9790E41B5E73D800ADE1AE /* TYVUserModel.m */; };
 		5A9820B51B32E9F3009B9CF3 /* image.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5A9820B31B32E9F3009B9CF3 /* image.jpeg */; };
 		5A9820B61B32E9F3009B9CF3 /* Orion_Nebula.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5A9820B41B32E9F3009B9CF3 /* Orion_Nebula.jpg */; };
 /* End PBXBuildFile section */
@@ -150,6 +151,8 @@
 		5A9790DC1B5E528D00ADE1AE /* TYVLoginContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYVLoginContext.m; path = TYVLoginContext/TYVLoginContext.m; sourceTree = "<group>"; };
 		5A9790DF1B5E59B800ADE1AE /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = IDAPCourseUI/Source/Library/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		5A9790E11B5E622400ADE1AE /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = IDAPCourseUI/Source/Library/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		5A9790E31B5E73D800ADE1AE /* TYVUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVUserModel.h; path = TYVUserModel/TYVUserModel.h; sourceTree = "<group>"; };
+		5A9790E41B5E73D800ADE1AE /* TYVUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYVUserModel.m; path = TYVUserModel/TYVUserModel.m; sourceTree = "<group>"; };
 		5A9820B31B32E9F3009B9CF3 /* image.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpeg; sourceTree = "<group>"; };
 		5A9820B41B32E9F3009B9CF3 /* Orion_Nebula.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Orion_Nebula.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -441,6 +444,7 @@
 				5A8C62561B53DADF00383DCE /* TYVDataModel */,
 				5A8C62591B53DADF00383DCE /* TYVImageModel */,
 				5A8C625C1B53DADF00383DCE /* TYVSquare */,
+				5A9790E61B5E73DD00ADE1AE /* TYVUserModel */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -592,6 +596,15 @@
 			name = TYVLoginContext;
 			sourceTree = "<group>";
 		};
+		5A9790E61B5E73DD00ADE1AE /* TYVUserModel */ = {
+			isa = PBXGroup;
+			children = (
+				5A9790E31B5E73D800ADE1AE /* TYVUserModel.h */,
+				5A9790E41B5E73D800ADE1AE /* TYVUserModel.m */,
+			);
+			name = TYVUserModel;
+			sourceTree = "<group>";
+		};
 		5A9820B21B32E9F3009B9CF3 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -724,6 +737,7 @@
 				5A8C62991B53DADF00383DCE /* TYVSquareViewController.m in Sources */,
 				5A8C62A21B53DADF00383DCE /* TYVLoadingViewHolder.m in Sources */,
 				5A9790D91B5E518800ADE1AE /* TYVContext.m in Sources */,
+				5A9790E51B5E73D800ADE1AE /* TYVUserModel.m in Sources */,
 				5A8C628E1B53DADF00383DCE /* TYVModelMovingPosition.m in Sources */,
 				5A8C629B1B53DADF00383DCE /* TYVTableView.m in Sources */,
 				5A8C62821B53DADF00383DCE /* NSBundle+TYVExtensions.m in Sources */,
