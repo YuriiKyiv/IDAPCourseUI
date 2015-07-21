@@ -11,6 +11,9 @@
 #import "TYVSquare.h"
 #import "TYVMacro.h"
 
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+
 typedef TYVSquarePositionType(^TYVSquarePositionBlock)(void);
 
 TYVViewControllerProperty(TYVSquareViewController, squareView, TYVSquareView)
@@ -96,6 +99,10 @@ TYVViewControllerProperty(TYVSquareViewController, squareView, TYVSquareView)
     [super viewDidLoad];
     
     self.squareView.square = self.square;
+    
+    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+    loginButton.center = self.view.center;
+    [self.view addSubview:loginButton];
 }
 
 - (void)didReceiveMemoryWarning {

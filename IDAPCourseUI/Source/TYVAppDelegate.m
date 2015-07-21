@@ -29,14 +29,15 @@ static const NSUInteger kTYVDataArrayModelCount = 10;
     UIWindow *window = [UIWindow window];
     self.window = window;
     
-//    TYVSquareViewController *controller = [TYVSquareViewController new];
-//    controller.square = [[TYVSquare alloc] initWithSquarePosition:TYVBottomRightCorner];
+    TYVSquareViewController *controller = [TYVSquareViewController new];
+    controller.square = [[TYVSquare alloc] initWithSquarePosition:TYVBottomRightCorner];
     
-    TYVDataArrayModel *dataArray = [TYVDataArrayModel dataWithModelsCount:kTYVDataArrayModelCount];
-    self.model = dataArray;
+//    TYVDataArrayModel *dataArray = [TYVDataArrayModel dataWithModelsCount:kTYVDataArrayModelCount];
+//    self.model = dataArray;
+//    
+//    TYVTableViewController *controller = [TYVTableViewController new];
+//    controller.dataArray = dataArray;
     
-    TYVTableViewController *controller = [TYVTableViewController new];
-    controller.dataArray = dataArray;
     window.rootViewController = controller;
     
     [window makeKeyAndVisible];
@@ -65,7 +66,10 @@ static const NSUInteger kTYVDataArrayModelCount = 10;
 
 }
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                                           openURL:url
                                                 sourceApplication:sourceApplication

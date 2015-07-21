@@ -51,6 +51,7 @@
 		5A9790D91B5E518800ADE1AE /* TYVContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9790D81B5E518800ADE1AE /* TYVContext.m */; };
 		5A9790DD1B5E528D00ADE1AE /* TYVLoginContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9790DC1B5E528D00ADE1AE /* TYVLoginContext.m */; };
 		5A9790E01B5E59B900ADE1AE /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A9790DF1B5E59B800ADE1AE /* FBSDKCoreKit.framework */; };
+		5A9790E21B5E622400ADE1AE /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A9790E11B5E622400ADE1AE /* FBSDKLoginKit.framework */; };
 		5A9820B51B32E9F3009B9CF3 /* image.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5A9820B31B32E9F3009B9CF3 /* image.jpeg */; };
 		5A9820B61B32E9F3009B9CF3 /* Orion_Nebula.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5A9820B41B32E9F3009B9CF3 /* Orion_Nebula.jpg */; };
 /* End PBXBuildFile section */
@@ -148,6 +149,7 @@
 		5A9790DB1B5E528D00ADE1AE /* TYVLoginContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVLoginContext.h; path = TYVLoginContext/TYVLoginContext.h; sourceTree = "<group>"; };
 		5A9790DC1B5E528D00ADE1AE /* TYVLoginContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYVLoginContext.m; path = TYVLoginContext/TYVLoginContext.m; sourceTree = "<group>"; };
 		5A9790DF1B5E59B800ADE1AE /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = IDAPCourseUI/Source/Library/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		5A9790E11B5E622400ADE1AE /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = IDAPCourseUI/Source/Library/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		5A9820B31B32E9F3009B9CF3 /* image.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpeg; sourceTree = "<group>"; };
 		5A9820B41B32E9F3009B9CF3 /* Orion_Nebula.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Orion_Nebula.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,6 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A9790E21B5E622400ADE1AE /* FBSDKLoginKit.framework in Frameworks */,
 				5A9790E01B5E59B900ADE1AE /* FBSDKCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,6 +177,7 @@
 		5A22FD721B2E92250005AFDC = {
 			isa = PBXGroup;
 			children = (
+				5A9790E11B5E622400ADE1AE /* FBSDKLoginKit.framework */,
 				5A9790DF1B5E59B800ADE1AE /* FBSDKCoreKit.framework */,
 				5A22FDA41B2E935B0005AFDC /* IDAPCourseUI */,
 				5A22FD971B2E92250005AFDC /* IDAPCourseUITests */,
