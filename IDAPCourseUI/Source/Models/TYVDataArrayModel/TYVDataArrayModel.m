@@ -18,8 +18,6 @@ static NSUInteger const  TYVArrayCount  = 10;
 
 static NSString * const  kTYVFileName   = @"info.plist";
 
-static char * const  kTYVQueue   = "info.plist";
-
 @interface TYVDataArrayModel ()
 @property (nonatomic, readonly)   NSString    *fileName;
 @property (nonatomic, readonly)   NSString    *filePath;
