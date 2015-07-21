@@ -35,7 +35,7 @@ typedef void(^TYVCompletionBlock)(id, id, id);
 
 - (TYVCompletionBlock)completionBlock;
 
-- (void)performWorkWithLocation:(NSURL *)location;
+- (void)performImageWithLocation:(NSURL *)location;
 
 @end
 
@@ -122,7 +122,7 @@ typedef void(^TYVCompletionBlock)(id, id, id);
 #pragma mark -
 #pragma mark Private Methods
 
-- (void)performWorkWithLocation:(NSURL *)location {
+- (void)performImageWithLocation:(NSURL *)location {
     NSString *path = self.path;
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -184,7 +184,7 @@ typedef void(^TYVCompletionBlock)(id, id, id);
         if (error || response.statusCode != 200) {
             self.state = TYVModelFailedLoading;
         } else {
-            [self performWorkWithLocation:location];
+            [self performImageWithLocation:location];
             
             self.state = TYVModelLoaded;
         }
