@@ -35,7 +35,11 @@ typedef void(^TYVCompletionBlock)(id, id, id);
 
 - (TYVCompletionBlock)completionBlock;
 
-- (void)performImageWithLocation:(NSURL *)location;
+- (void)performWorkWithLocation:(NSURL *)location;
+
+- (void)copyFileAtPath:(NSURL *)location
+                toPath:(NSString *)path
+                 error:(NSError **)error;
 
 @end
 
@@ -76,7 +80,7 @@ typedef void(^TYVCompletionBlock)(id, id, id);
 }
 
 - (instancetype)initWithURL:(NSURL *)url {
-    @synchronized (self) {
+    @synchronized (self.cache) {
         TYVImageCache *cache = self.cache;
         id object = [cache objectForKey:url];
         
@@ -122,20 +126,20 @@ typedef void(^TYVCompletionBlock)(id, id, id);
 #pragma mark -
 #pragma mark Private Methods
 
-- (void)performImageWithLocation:(NSURL *)location {
-    NSString *path = self.path;
-    
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    [NSFileManager createDirectoryAtFilePath:path];
-    [fileManager copyItemAtPath:location.absoluteString toPath:path error:nil];
-    
-    NSData *data = [NSData dataWithContentsOfURL:location];
-    UIImage *image = [UIImage imageWithData:data];
-    if (!image) {
+- (void)performWorkWithLocation:(NSURL *)location {
+    UIImage *image = [UIImage imageWithContentsOfFile:location.path];
+    if (image) {
+        [self copyFileAtPath:location toPath:self.path error:nil];
         self.image = image;
     } else  {
         self.state = TYVModelFailedLoading;
     }
+}
+
+- (void)copyFileAtPath:(NSURL *)location toPath:(NSString *)path error:(NSError **)error {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [NSFileManager createDirectoryAtFilePath:path];
+    [fileManager copyItemAtPath:location.absoluteString toPath:path error:nil];
 }
 
 #pragma mark -
@@ -160,7 +164,7 @@ typedef void(^TYVCompletionBlock)(id, id, id);
     } else {
         TYVDispatchAsyncOnDefaultQueueWithBlock([self loadFromUrlBlock]);
     }
-
+    
 }
 
 #pragma mark -
@@ -184,7 +188,7 @@ typedef void(^TYVCompletionBlock)(id, id, id);
         if (error || response.statusCode != 200) {
             self.state = TYVModelFailedLoading;
         } else {
-            [self performImageWithLocation:location];
+            [self performWorkWithLocation:location];
             
             self.state = TYVModelLoaded;
         }
