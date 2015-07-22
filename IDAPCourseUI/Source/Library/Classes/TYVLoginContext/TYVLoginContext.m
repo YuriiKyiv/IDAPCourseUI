@@ -17,7 +17,9 @@
 
 - (void)execute {
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
-    [login logInWithReadPermissions:nil handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+    [login logInWithReadPermissions:@[@"public_profile", @"email", @"user_friends"]
+                            handler:^(FBSDKLoginManagerLoginResult *result, NSError *error)
+    {
         if (error) {
             NSLog(@"Error");
         } else if (result.isCancelled) {

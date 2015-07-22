@@ -19,9 +19,11 @@ static CGSize   TYVImageSize =  {100, 100};
 #pragma mark Class Methods
 
 + (TYVUserModel *)userModelWithModel:(TYVUserModel *)model {
-    if ([FBSDKAccessToken currentAccessToken]) {
+    FBSDKAccessToken *token = [FBSDKAccessToken currentAccessToken];
+    if (token) {
+        NSSet *permission = token.permissions;
         FBSDKProfile *profile = [FBSDKProfile currentProfile];
-        model.ID = profile.userID;
+        model.ID = token.userID;
         model.firstName = profile.firstName;
         model.lastName = profile.lastName;
         model.imagePath = [profile imagePathForPictureMode:FBSDKProfilePictureModeSquare
@@ -32,7 +34,7 @@ static CGSize   TYVImageSize =  {100, 100};
                                                                        HTTPMethod:@"GET"];
         
         [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-
+            NSLog(@"%@", result);
         }];
     }
     

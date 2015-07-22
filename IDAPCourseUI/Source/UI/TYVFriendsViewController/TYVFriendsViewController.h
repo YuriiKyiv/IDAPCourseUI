@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "TYVAbstractViewController.h"
 
-@interface TYVFriendsViewController : TYVAbstractViewController
+@interface TYVFriendsViewController : TYVAbstractViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

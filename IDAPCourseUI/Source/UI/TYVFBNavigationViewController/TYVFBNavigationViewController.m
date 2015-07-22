@@ -23,7 +23,8 @@
 #pragma mark Initialization and Deallocation
 
 - (void)dealloc {
-    
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center removeObserver:self name:FBSDKAccessTokenDidChangeNotification object:nil];
 }
 
 - (instancetype)initWithRootViewController:(UIViewController *)rootViewController {
