@@ -29,13 +29,23 @@ static CGSize   TYVImageSize =  {100, 100};
         model.imagePath = [profile imagePathForPictureMode:FBSDKProfilePictureModeSquare
                                                      size:TYVImageSize];
         
-        FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:@"/{friend-list-id}"
+        FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:@"me/friendlists"
                                                                        parameters:nil
                                                                        HTTPMethod:@"GET"];
-        
         [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-            NSLog(@"%@", result);
+            if (!error) {
+                NSLog(@"result = %@", result);
+            }
         }];
+    }
+    
+    if ([FBSDKAccessToken currentAccessToken]) {
+        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:nil]
+         startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+             if (!error) {
+                 NSLog(@"fetched user:%@", result);
+             }
+         }];
     }
     
     return model;

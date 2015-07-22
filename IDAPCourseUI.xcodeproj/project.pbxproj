@@ -339,6 +339,15 @@
 			name = TYVFBNavigationViewController;
 			sourceTree = "<group>";
 		};
+		5A3A75861B5FD37100DFBC52 /* TYVUsersContext */ = {
+			isa = PBXGroup;
+			children = (
+				5A3A75831B5FD2FD00DFBC52 /* TYVUsersContext.h */,
+				5A3A75841B5FD2FD00DFBC52 /* TYVUsersContext.m */,
+			);
+			name = TYVUsersContext;
+			sourceTree = "<group>";
+		};
 		5A5FFF311B563F3E001191EF /* TYVImageView */ = {
 			isa = PBXGroup;
 			children = (
@@ -485,8 +494,7 @@
 				5A3A756B1B5F889300DFBC52 /* TYVUserContext */,
 				5A3A75751B5FAFFB00DFBC52 /* TYVAbstractViewController */,
 				5A3A75791B5FB0F200DFBC52 /* TYVAbstractNavigationViewController */,
-				5A3A75831B5FD2FD00DFBC52 /* TYVUsersContext.h */,
-				5A3A75841B5FD2FD00DFBC52 /* TYVUsersContext.m */,
+				5A3A75861B5FD37100DFBC52 /* TYVUsersContext */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
