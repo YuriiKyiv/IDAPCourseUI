@@ -1,5 +1,5 @@
 //
-//  TYVLoginViewController.h
+//  TYVAbstractViewController.h
 //  IDAPCourseUI
 //
 //  Created by YURII on 22.07.15.
@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TYVAbstractViewController.h"
 
-@interface TYVLoginViewController : TYVAbstractViewController
+@interface TYVAbstractViewController : UIViewController
 
 @end

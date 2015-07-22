@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TYVAbstractViewController.h"
 
-@interface TYVFriendsViewController : UIViewController
+@interface TYVFriendsViewController : TYVAbstractViewController
 
 @end
