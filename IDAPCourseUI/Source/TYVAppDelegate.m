@@ -16,6 +16,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "TYVLoginViewController.h"
 #import "TYVFriendsViewController.h"
+#import "TYVFBNavigationViewController.h"
 
 static const NSUInteger kTYVDataArrayModelCount = 10;
 
@@ -44,7 +45,9 @@ static const NSUInteger kTYVDataArrayModelCount = 10;
     
 //    TYVFriendsViewController *controller = [TYVFriendsViewController new];
     
-    window.rootViewController = controller;
+    TYVFBNavigationViewController *navigationController = [[TYVFBNavigationViewController alloc] initWithRootViewController:controller];
+    
+    window.rootViewController = navigationController;
     
     [window makeKeyAndVisible];
     

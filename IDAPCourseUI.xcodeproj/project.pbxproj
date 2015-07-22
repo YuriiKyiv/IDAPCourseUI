@@ -22,6 +22,7 @@
 		5A3A75741B5FAFF400DFBC52 /* TYVAbstractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3A75731B5FAFF400DFBC52 /* TYVAbstractViewController.m */; };
 		5A3A75781B5FB0EE00DFBC52 /* TYVAbstractNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3A75771B5FB0EE00DFBC52 /* TYVAbstractNavigationViewController.m */; };
 		5A3A757C1B5FB13600DFBC52 /* TYVFBNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3A757B1B5FB13600DFBC52 /* TYVFBNavigationViewController.m */; };
+		5A3A757F1B5FB1D300DFBC52 /* TYVFBNavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3A757E1B5FB1D300DFBC52 /* TYVFBNavigationViewController.xib */; };
 		5A5FFF301B563F3A001191EF /* TYVImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FFF2F1B563F3A001191EF /* TYVImageView.m */; };
 		5A5FFF331B563F70001191EF /* TYVImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A5FFF321B563F70001191EF /* TYVImageView.xib */; };
 		5A8C62811B53DADF00383DCE /* NSArray+TYVExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8C62221B53DADE00383DCE /* NSArray+TYVExtentions.m */; };
@@ -104,6 +105,7 @@
 		5A3A75771B5FB0EE00DFBC52 /* TYVAbstractNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYVAbstractNavigationViewController.m; path = TYVAbstractNavigationViewController/TYVAbstractNavigationViewController.m; sourceTree = "<group>"; };
 		5A3A757A1B5FB13600DFBC52 /* TYVFBNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVFBNavigationViewController.h; path = TYVFBNavigationViewController/TYVFBNavigationViewController.h; sourceTree = "<group>"; };
 		5A3A757B1B5FB13600DFBC52 /* TYVFBNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYVFBNavigationViewController.m; path = TYVFBNavigationViewController/TYVFBNavigationViewController.m; sourceTree = "<group>"; };
+		5A3A757E1B5FB1D300DFBC52 /* TYVFBNavigationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYVFBNavigationViewController.xib; sourceTree = "<group>"; };
 		5A5FFF2E1B563F3A001191EF /* TYVImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVImageView.h; path = TYVImageView/TYVImageView.h; sourceTree = "<group>"; };
 		5A5FFF2F1B563F3A001191EF /* TYVImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYVImageView.m; path = TYVImageView/TYVImageView.m; sourceTree = "<group>"; };
 		5A5FFF321B563F70001191EF /* TYVImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYVImageView.xib; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 			children = (
 				5A3A757A1B5FB13600DFBC52 /* TYVFBNavigationViewController.h */,
 				5A3A757B1B5FB13600DFBC52 /* TYVFBNavigationViewController.m */,
+				5A3A757E1B5FB1D300DFBC52 /* TYVFBNavigationViewController.xib */,
 			);
 			name = TYVFBNavigationViewController;
 			sourceTree = "<group>";
@@ -808,6 +811,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A3A757F1B5FB1D300DFBC52 /* TYVFBNavigationViewController.xib in Resources */,
 				5A5FFF331B563F70001191EF /* TYVImageView.xib in Resources */,
 				5A3A75701B5F98A300DFBC52 /* TYVFriendDetailViewController.xib in Resources */,
 				5A22FDB31B2E935B0005AFDC /* Images.xcassets in Resources */,
