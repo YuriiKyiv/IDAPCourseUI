@@ -24,6 +24,8 @@ typedef void(^TYVCompletionBlock)(id, id, id);
 @property (nonatomic, readonly) TYVImageCache   *cache;
 @property (nonatomic, readonly) NSURLSession    *session;
 
+@property (nonatomic, readonly, getter=isCached)    BOOL    cached;
+
 
 @property (nonatomic, strong)   NSURLSessionDownloadTask    *task;
 
@@ -48,6 +50,7 @@ typedef void(^TYVCompletionBlock)(id, id, id);
 @dynamic path;
 @dynamic cache;
 @dynamic session;
+@dynamic cached;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -102,6 +105,11 @@ typedef void(^TYVCompletionBlock)(id, id, id);
 #pragma mark -
 #pragma mark Accessors
 
+- (BOOL)isCached {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    return [fileManager fileExistsAtPath:self.path];
+}
+
 - (NSString *)path {
     return [[NSFileManager documentsDirectory] stringByAppendingString:self.url.path];
 }
@@ -146,22 +154,17 @@ typedef void(^TYVCompletionBlock)(id, id, id);
 #pragma mark TYVAbstractDataModel
 
 - (void)performLoading {
-    UIImage *image = self.image;
-    
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    
     NSString *path = self.path;
+    UIImage *image = nil;
     
-    if ([fileManager fileExistsAtPath:path]) {
-        image = [UIImage imageWithContentsOfFile:path];
-        if (!image) {
-            [fileManager removeItemAtPath:path error:nil];
-            TYVDispatchAsyncOnDefaultQueueWithBlock([self loadFromUrlBlock]);
-        } else {
-            self.image = image;
-            self.state = TYVModelLoaded;
-        }
+    if ([self isCached]
+        && (image = [UIImage imageWithContentsOfFile:path]))
+    {
+        self.image = image;
+        self.state = TYVModelLoaded;
     } else {
+        [fileManager removeItemAtPath:path error:nil];
         TYVDispatchAsyncOnDefaultQueueWithBlock([self loadFromUrlBlock]);
     }
     
