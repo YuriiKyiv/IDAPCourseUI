@@ -127,8 +127,10 @@ typedef void(^TYVCompletionBlock)(id, id, id);
 #pragma mark Private Methods
 
 - (void)performWorkWithLocation:(NSURL *)location {
-    UIImage *image = [UIImage imageWithContentsOfFile:location.path];
-    if (image) {
+    
+    NSData *data = [NSData dataWithContentsOfURL:location];
+    UIImage *image = [UIImage imageWithData:data];
+    if (!image) {
         [self copyFileAtPath:location toPath:self.path error:nil];
         self.image = image;
     } else  {

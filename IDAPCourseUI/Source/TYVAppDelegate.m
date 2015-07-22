@@ -29,14 +29,14 @@ static const NSUInteger kTYVDataArrayModelCount = 10;
     UIWindow *window = [UIWindow window];
     self.window = window;
     
-//    TYVSquareViewController *controller = [TYVSquareViewController new];
-//    controller.square = [[TYVSquare alloc] initWithSquarePosition:TYVBottomRightCorner];
+    TYVSquareViewController *controller = [TYVSquareViewController new];
+    controller.square = [[TYVSquare alloc] initWithSquarePosition:TYVBottomRightCorner];
     
-    TYVDataArrayModel *dataArray = [TYVDataArrayModel dataWithModelsCount:kTYVDataArrayModelCount];
-    self.model = dataArray;
-    
-    TYVTableViewController *controller = [TYVTableViewController new];
-    controller.dataArray = dataArray;
+//    TYVDataArrayModel *dataArray = [TYVDataArrayModel dataWithModelsCount:kTYVDataArrayModelCount];
+//    self.model = dataArray;
+//    
+//    TYVTableViewController *controller = [TYVTableViewController new];
+//    controller.dataArray = dataArray;
     
     window.rootViewController = controller;
     
