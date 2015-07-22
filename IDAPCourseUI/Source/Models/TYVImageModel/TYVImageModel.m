@@ -37,10 +37,6 @@ typedef void(^TYVCompletionBlock)(id, id, id);
 
 - (void)performWorkWithLocation:(NSURL *)location;
 
-- (void)copyFileAtPath:(NSURL *)location
-                toPath:(NSString *)path
-                 error:(NSError **)error;
-
 @end
 
 @implementation TYVImageModel
@@ -80,7 +76,7 @@ typedef void(^TYVCompletionBlock)(id, id, id);
 }
 
 - (instancetype)initWithURL:(NSURL *)url {
-    @synchronized (self.cache) {
+    @synchronized (self) {
         TYVImageCache *cache = self.cache;
         id object = [cache objectForKey:url];
         
@@ -127,21 +123,19 @@ typedef void(^TYVCompletionBlock)(id, id, id);
 #pragma mark Private Methods
 
 - (void)performWorkWithLocation:(NSURL *)location {
+    NSString *path = self.path;
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [NSFileManager createDirectoryAtFilePath:path];
+    [fileManager copyItemAtPath:location.absoluteString toPath:path error:nil];
     
     NSData *data = [NSData dataWithContentsOfURL:location];
     UIImage *image = [UIImage imageWithData:data];
     if (!image) {
-        [self copyFileAtPath:location toPath:self.path error:nil];
         self.image = image;
     } else  {
         self.state = TYVModelFailedLoading;
     }
-}
-
-- (void)copyFileAtPath:(NSURL *)location toPath:(NSString *)path error:(NSError **)error {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    [NSFileManager createDirectoryAtFilePath:path];
-    [fileManager copyItemAtPath:location.absoluteString toPath:path error:nil];
 }
 
 #pragma mark -
