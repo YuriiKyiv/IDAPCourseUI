@@ -29,6 +29,7 @@ static NSString * const  kTYVFileName   = @"info.plist";
 - (NSMutableArray *)contentFromFile:(NSString *)filePath;
 
 - (NSArray *)notifications;
+- (void)saveWithNotification:(NSNotification *)notification;
 - (void)subscribeToNotifications;
 - (void)unsubscribeToNotifications;
 - (void)subscribeToNotification:(NSString *)notification;
@@ -83,7 +84,7 @@ static NSString * const  kTYVFileName   = @"info.plist";
     [NSKeyedArchiver archiveRootObject:self.dataArray toFile:self.filePath];
 }
 
-- (void)saveForNotifications {
+- (void)saveWithNotification:(NSNotification *)notification {
     [self save];
 }
 
@@ -92,7 +93,7 @@ static NSString * const  kTYVFileName   = @"info.plist";
 
 - (NSArray *)notifications {
     return @[UIApplicationWillTerminateNotification,
-             UIApplicationWillTerminateNotification];
+             UIApplicationWillResignActiveNotification];
 }
 
 - (void)subscribeToNotifications {
@@ -105,7 +106,7 @@ static NSString * const  kTYVFileName   = @"info.plist";
 - (void)subscribeToNotification:(NSString *)notification {
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:self
-               selector:@selector(saveForNotifications)
+               selector:@selector(saveWithNotification:)
                    name:notification
                  object:nil];
 }
