@@ -15,6 +15,8 @@ typedef NS_ENUM(NSUInteger, TYVImageModelState) {
     TYVImageModelFailedLoading
 };
 
+@class UIImage;
+
 @interface TYVImageModel : TYVAbstractDataModel
 @property (nonatomic, readonly) UIImage *image;
 

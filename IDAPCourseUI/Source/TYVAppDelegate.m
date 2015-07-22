@@ -15,6 +15,7 @@
 #import "TYVDataArrayModel.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "TYVLoginViewController.h"
+#import "TYVFriendsViewController.h"
 
 static const NSUInteger kTYVDataArrayModelCount = 10;
 
@@ -40,6 +41,8 @@ static const NSUInteger kTYVDataArrayModelCount = 10;
 //    controller.dataArray = dataArray;
     
     TYVLoginViewController *controller = [TYVLoginViewController new];
+    
+//    TYVFriendsViewController *controller = [TYVFriendsViewController new];
     
     window.rootViewController = controller;
     

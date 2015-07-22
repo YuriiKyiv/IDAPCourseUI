@@ -19,18 +19,24 @@ static CGSize   TYVImageSize =  {100, 100};
 #pragma mark Class Methods
 
 + (TYVUserModel *)userModelWithModel:(TYVUserModel *)model {
-    TYVUserModel *user = nil;
     if ([FBSDKAccessToken currentAccessToken]) {
-        user = [TYVUserModel new];
         FBSDKProfile *profile = [FBSDKProfile currentProfile];
-        user.ID = profile.userID;
-        user.firstName = profile.firstName;
-        user.lastName = profile.lastName;
-        user.imagePath = [profile imagePathForPictureMode:FBSDKProfilePictureModeSquare
+        model.ID = profile.userID;
+        model.firstName = profile.firstName;
+        model.lastName = profile.lastName;
+        model.imagePath = [profile imagePathForPictureMode:FBSDKProfilePictureModeSquare
                                                      size:TYVImageSize];
+        
+        FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:@"/{friend-list-id}"
+                                                                       parameters:nil
+                                                                       HTTPMethod:@"GET"];
+        
+        [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+
+        }];
     }
     
-    return user;
+    return model;
 }
 
 @end
