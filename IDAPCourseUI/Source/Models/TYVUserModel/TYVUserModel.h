@@ -9,10 +9,13 @@
 #import "TYVAbstractDataModel.h"
 
 @class TYVImageModel;
+@class TYVUsersModel;
 
 @interface TYVUserModel : TYVAbstractDataModel
-@property (nonatomic, readonly) NSString    *firstName;
-@property (nonatomic, readonly) NSString    *lastName;
+@property (nonatomic, assign) NSUInteger    ID;
+@property (nonatomic, strong) NSString      *firstName;
+@property (nonatomic, strong) NSString      *lastName;
+@property (nonatomic, strong) TYVUsersModel *friends;
 
 @property (nonatomic, readonly) TYVImageModel   *imageModel;
 
