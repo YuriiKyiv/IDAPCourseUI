@@ -35,7 +35,7 @@ typedef void(^TYVCompletionBlock)(id, id, id);
 
 - (TYVCompletionBlock)completionBlock;
 
-- (void)performWorkWithLocation:(NSURL *)location;
+- (void)loadImageWithLocation:(NSURL *)location;
 
 - (void)copyFileAtPath:(NSURL *)location
                 toPath:(NSString *)path
@@ -126,7 +126,7 @@ typedef void(^TYVCompletionBlock)(id, id, id);
 #pragma mark -
 #pragma mark Private Methods
 
-- (void)performWorkWithLocation:(NSURL *)location {
+- (void)loadImageWithLocation:(NSURL *)location {
     UIImage *image = [UIImage imageWithContentsOfFile:location.path];
     if (image) {
         [self copyFileAtPath:location toPath:self.path error:nil];
@@ -188,7 +188,7 @@ typedef void(^TYVCompletionBlock)(id, id, id);
         if (error || response.statusCode != 200) {
             self.state = TYVModelFailedLoading;
         } else {
-            [self performWorkWithLocation:location];
+            [self loadImageWithLocation:location];
             
             self.state = TYVModelLoaded;
         }
