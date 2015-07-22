@@ -7,10 +7,7 @@
 //
 
 #import "TYVUserModel.h"
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "TYVImageModel.h"
-
-static CGSize   TYVImageSize =  {100, 100};
 
 @implementation TYVUserModel
 

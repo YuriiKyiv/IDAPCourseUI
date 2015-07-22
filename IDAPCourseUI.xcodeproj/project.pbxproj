@@ -16,6 +16,7 @@
 		5A3A75601B5F83DB00DFBC52 /* TYVLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3A755E1B5F83DB00DFBC52 /* TYVLoginViewController.xib */; };
 		5A3A75651B5F843300DFBC52 /* TYVFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3A75631B5F843300DFBC52 /* TYVFriendsViewController.m */; };
 		5A3A75661B5F843300DFBC52 /* TYVFriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3A75641B5F843300DFBC52 /* TYVFriendsViewController.xib */; };
+		5A3A756A1B5F889000DFBC52 /* TYVUserContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3A75691B5F889000DFBC52 /* TYVUserContext.m */; };
 		5A5FFF301B563F3A001191EF /* TYVImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5FFF2F1B563F3A001191EF /* TYVImageView.m */; };
 		5A5FFF331B563F70001191EF /* TYVImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A5FFF321B563F70001191EF /* TYVImageView.xib */; };
 		5A8C62811B53DADF00383DCE /* NSArray+TYVExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8C62221B53DADE00383DCE /* NSArray+TYVExtentions.m */; };
@@ -87,6 +88,8 @@
 		5A3A75621B5F843300DFBC52 /* TYVFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVFriendsViewController.h; path = TYVFriendsViewController/TYVFriendsViewController.h; sourceTree = "<group>"; };
 		5A3A75631B5F843300DFBC52 /* TYVFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYVFriendsViewController.m; path = TYVFriendsViewController/TYVFriendsViewController.m; sourceTree = "<group>"; };
 		5A3A75641B5F843300DFBC52 /* TYVFriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TYVFriendsViewController.xib; path = TYVFriendsViewController/TYVFriendsViewController.xib; sourceTree = "<group>"; };
+		5A3A75681B5F889000DFBC52 /* TYVUserContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVUserContext.h; path = TYVUserContext/TYVUserContext.h; sourceTree = "<group>"; };
+		5A3A75691B5F889000DFBC52 /* TYVUserContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYVUserContext.m; path = TYVUserContext/TYVUserContext.m; sourceTree = "<group>"; };
 		5A5FFF2E1B563F3A001191EF /* TYVImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVImageView.h; path = TYVImageView/TYVImageView.h; sourceTree = "<group>"; };
 		5A5FFF2F1B563F3A001191EF /* TYVImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYVImageView.m; path = TYVImageView/TYVImageView.m; sourceTree = "<group>"; };
 		5A5FFF321B563F70001191EF /* TYVImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TYVImageView.xib; sourceTree = "<group>"; };
@@ -268,6 +271,15 @@
 			name = TYVFriendsViewController;
 			sourceTree = "<group>";
 		};
+		5A3A756B1B5F889300DFBC52 /* TYVUserContext */ = {
+			isa = PBXGroup;
+			children = (
+				5A3A75681B5F889000DFBC52 /* TYVUserContext.h */,
+				5A3A75691B5F889000DFBC52 /* TYVUserContext.m */,
+			);
+			name = TYVUserContext;
+			sourceTree = "<group>";
+		};
 		5A5FFF311B563F3E001191EF /* TYVImageView */ = {
 			isa = PBXGroup;
 			children = (
@@ -411,6 +423,7 @@
 				5A8C624D1B53DADE00383DCE /* TYVTableViewCell */,
 				5A9790DA1B5E518C00ADE1AE /* TYVContext */,
 				5A9790DE1B5E529400ADE1AE /* TYVLoginContext */,
+				5A3A756B1B5F889300DFBC52 /* TYVUserContext */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -788,6 +801,7 @@
 				5A9790E51B5E73D800ADE1AE /* TYVUserModel.m in Sources */,
 				5A9790E91B5E74B900ADE1AE /* TYVUsersModel.m in Sources */,
 				5A8C628E1B53DADF00383DCE /* TYVModelMovingPosition.m in Sources */,
+				5A3A756A1B5F889000DFBC52 /* TYVUserContext.m in Sources */,
 				5A8C629B1B53DADF00383DCE /* TYVTableView.m in Sources */,
 				5A8C62821B53DADF00383DCE /* NSBundle+TYVExtensions.m in Sources */,
 				5A8C62941B53DADF00383DCE /* TYVSquare.m in Sources */,

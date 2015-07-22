@@ -12,7 +12,7 @@
 @class TYVUsersModel;
 
 @interface TYVUserModel : TYVAbstractDataModel
-@property (nonatomic, assign) NSUInteger    ID;
+@property (nonatomic, assign) NSString      *ID;
 @property (nonatomic, strong) NSString      *firstName;
 @property (nonatomic, strong) NSString      *lastName;
 @property (nonatomic, strong) TYVUsersModel *friends;
