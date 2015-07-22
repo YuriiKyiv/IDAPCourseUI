@@ -14,6 +14,7 @@
 #import "TYVDataModel.h"
 #import "TYVDataArrayModel.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import "TYVLoginViewController.h"
 
 static const NSUInteger kTYVDataArrayModelCount = 10;
 
@@ -32,11 +33,13 @@ static const NSUInteger kTYVDataArrayModelCount = 10;
 //    TYVSquareViewController *controller = [TYVSquareViewController new];
 //    controller.square = [[TYVSquare alloc] initWithSquarePosition:TYVBottomRightCorner];
     
-    TYVDataArrayModel *dataArray = [TYVDataArrayModel dataWithModelsCount:kTYVDataArrayModelCount];
-    self.model = dataArray;
+//    TYVDataArrayModel *dataArray = [TYVDataArrayModel dataWithModelsCount:kTYVDataArrayModelCount];
+//    self.model = dataArray;
+//    
+//    TYVTableViewController *controller = [TYVTableViewController new];
+//    controller.dataArray = dataArray;
     
-    TYVTableViewController *controller = [TYVTableViewController new];
-    controller.dataArray = dataArray;
+    TYVLoginViewController *controller = [TYVLoginViewController new];
     
     window.rootViewController = controller;
     

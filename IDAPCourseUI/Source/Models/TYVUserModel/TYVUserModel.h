@@ -18,5 +18,6 @@
 @property (nonatomic, strong) TYVUsersModel *friends;
 
 @property (nonatomic, readonly) TYVImageModel   *imageModel;
+@property (nonatomic, strong)   NSString        *imagePath;
 
 @end
