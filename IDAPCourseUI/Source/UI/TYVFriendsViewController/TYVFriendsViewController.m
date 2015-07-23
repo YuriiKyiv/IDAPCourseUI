@@ -8,9 +8,16 @@
 
 #import "TYVFriendsViewController.h"
 #import "TYVUserContext.h"
+#import "TYVUsersContext.h"
 #import "TYVUserModel.h"
+#import "TYVUsersModel.h"
+#import "TYVMacro.h"
+#import "TYVFriendsView.h"
+
+TYVViewControllerProperty(TYVFriendsViewController, friendsView, TYVFriendsView)
 
 @interface TYVFriendsViewController ()
+@property (nonatomic, strong)   TYVUsersModel   *model;
 
 @end
 
@@ -20,7 +27,12 @@
     [super viewDidLoad];
     
     TYVUserModel *model = [TYVUserModel new];
-    [TYVUserContext userContextWithModel:model];
+    TYVUserContext *context = [TYVUserContext contextWithModel:model];
+    [context execute];
+    
+    TYVUsersModel *models = [TYVUsersModel new];
+    TYVUsersContext *contexts = [TYVUsersContext contextWithModel:models];
+    [contexts execute];
     
 }
 

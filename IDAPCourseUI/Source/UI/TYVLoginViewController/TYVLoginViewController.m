@@ -12,6 +12,8 @@
 
 @interface TYVLoginViewController () <FBSDKLoginButtonDelegate>
 
+- (void)pushFriendsViewController:(BOOL)animated;
+
 @end
 
 @implementation TYVLoginViewController
@@ -20,11 +22,18 @@
 #pragma mark View LifeCycle
 
 - (void)viewWillAppear:(BOOL)animated {
-    FBSDKAccessToken *token = [FBSDKAccessToken currentAccessToken];
-    if (token) {
-        TYVFriendsViewController *controller = [TYVFriendsViewController new];
-        [self.navigationController pushViewController:controller animated:NO];
+    [super viewWillAppear:animated];
+    if ([FBSDKAccessToken currentAccessToken]) {
+        [self pushFriendsViewController:NO];
     }
+}
+
+#pragma mark -
+#pragma mark Private Methods
+
+- (void)pushFriendsViewController:(BOOL)animated {
+    TYVFriendsViewController *controller = [TYVFriendsViewController new];
+    [self.navigationController pushViewController:controller animated:animated];
 }
 
 #pragma mark -
@@ -33,8 +42,9 @@
 - (void)    loginButton:(FBSDKLoginButton *)loginButton
   didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
                   error:(NSError *)error {
-    TYVFriendsViewController *controller = [TYVFriendsViewController new];
-    [self.navigationController pushViewController:controller animated:YES];
+    [self pushFriendsViewController:YES];
+    
+    loginButton.readPermissions = @[@"email", @"read_custom_friendlists"];
 }
 
 - (void) loginButtonDidLogOut:(FBSDKLoginButton *)loginButton {
