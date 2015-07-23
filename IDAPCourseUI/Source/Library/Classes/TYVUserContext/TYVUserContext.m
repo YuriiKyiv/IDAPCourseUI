@@ -27,6 +27,18 @@ static CGSize   TYVImageSize =  {100, 100};
     model.lastName = profile.lastName;
     model.imagePath = [profile imagePathForPictureMode:FBSDKProfilePictureModeSquare
                                                   size:TYVImageSize];
+    
+    FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
+                                  initWithGraphPath:@"/me/friendlists"
+                                  parameters:nil
+                                  HTTPMethod:@"GET"];
+    [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection,
+                                          id result,
+                                          NSError *error) {
+        NSLog(@"Done");
+    }];
+    
+    model.state = TYVModelLoaded;
 }
 
 @end

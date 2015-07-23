@@ -30,9 +30,9 @@ TYVViewControllerProperty(TYVFriendsViewController, friendsView, TYVFriendsView)
     TYVUserContext *context = [TYVUserContext contextWithModel:model];
     [context execute];
     
-    TYVUsersModel *models = [TYVUsersModel new];
-    TYVUsersContext *contexts = [TYVUsersContext contextWithModel:models];
-    [contexts execute];
+    TYVUsersModel *usersmodel = [TYVUsersModel new];
+    TYVUsersContext *userscontext = [TYVUsersContext contextWithModel:usersmodel];
+    [userscontext execute];
     
 }
 

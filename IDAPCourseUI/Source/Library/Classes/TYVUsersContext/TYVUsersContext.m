@@ -24,26 +24,19 @@
 }
 
 - (void)fillModel:(TYVUsersModel *)model {
-    FBSDKAccessToken *token = [FBSDKAccessToken currentAccessToken];
-    TYVAbstractDataModelState state = model.state;
-    if (token || TYVModelUnloaded == state || TYVModelFailedLoading == state) {
-        TYVUsersModel *model = self.model;
-        FBSDKProfile *profile = [FBSDKProfile currentProfile];
-        NSString *ID = profile.userID;
-        
-        if ([FBSDKAccessToken currentAccessToken]) {
-            [[[FBSDKGraphRequest alloc] initWithGraphPath:ID parameters:nil]
-             startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-                 if (!error) {
-                     NSLog(@"fetched user:%@", result);
-                 }
-             }];
-        }
-        
-        model.state = TYVModelLoaded;
-    } else {
-        model.state = TYVModelFailedLoading;
-    }
+    NSString *path = @"me/friendlists";
+    FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:path parameters:nil];
+    
+    id handler = ^(FBSDKGraphRequestConnection *connection,
+                   id result,
+                   NSError *error) {
+        NSLog(@"%@", result);
+    };
+    
+    [request startWithCompletionHandler:handler];
+    
+    
+    model.state = TYVModelLoaded;
 }
 
 @end

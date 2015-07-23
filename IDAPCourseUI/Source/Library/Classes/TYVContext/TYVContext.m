@@ -27,6 +27,7 @@
     self = [super init];
     if (self) {
         self.model = model;
+//        self.connection = [[FBSDKGraphRequestConnection alloc] init];
     }
     
     return self;
@@ -58,15 +59,12 @@
                 TYVStrongifyAndReturnIfNil(self);
                 [self fillModel:model];
             });
-            
-            model.state = TYVModelLoaded;
         } else {
             model.state = TYVModelFailedLoading;
         }
     } else {
         [model notify];
     }
-    
 }
 
 - (void)fillModel:(TYVAbstractDataModel *)model {
@@ -74,7 +72,11 @@
 }
 
 - (void)cancel {
-    self.connection = nil;
+    TYVAbstractDataModel *model = self.model;
+    if (TYVModelLoaded != model.state) {
+        self.connection = nil;
+        model.state  = TYVModelUnloaded;
+    }
 }
 
 @end
