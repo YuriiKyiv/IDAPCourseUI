@@ -6,28 +6,39 @@
 //  Copyright (c) 2015 YURII. All rights reserved.
 //
 
-#import "TYVLoginViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "TYVLoginViewController.h"
+#import "TYVFriendsViewController.h"
 
-@interface TYVLoginViewController ()
+@interface TYVLoginViewController () <FBSDKLoginButtonDelegate>
 
 @end
 
 @implementation TYVLoginViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-    loginButton.center = self.view.center;
-    [self.view addSubview:loginButton];
-    
+#pragma mark -
+#pragma mark View LifeCycle
+
+- (void)viewWillAppear:(BOOL)animated {
+    FBSDKAccessToken *token = [FBSDKAccessToken currentAccessToken];
+    if (token) {
+        TYVFriendsViewController *controller = [TYVFriendsViewController new];
+        [self.navigationController pushViewController:controller animated:NO];
+    }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+#pragma mark -
+#pragma mark FBSDKLoginButtonDelegate
 
+- (void)    loginButton:(FBSDKLoginButton *)loginButton
+  didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
+                  error:(NSError *)error {
+    TYVFriendsViewController *controller = [TYVFriendsViewController new];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void) loginButtonDidLogOut:(FBSDKLoginButton *)loginButton {
+    
 }
 
 @end

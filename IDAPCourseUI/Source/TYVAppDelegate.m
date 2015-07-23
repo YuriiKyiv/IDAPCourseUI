@@ -29,6 +29,8 @@ static const NSUInteger kTYVDataArrayModelCount = 10;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [FBSDKLoginButton class];
+    
     UIWindow *window = [UIWindow window];
     self.window = window;
     
