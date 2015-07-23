@@ -142,9 +142,7 @@ static NSString * const  kTYVFileName   = @"info.plist";
 #pragma mark TYVAbstractDataModel
 
 - (void)performLoading {
-    NSMutableArray *modelsArray = [NSMutableArray array];
-    
-    modelsArray = (self.fileAvailable) ? [self contentFromFile:self.filePath] : [self defaultContent];
+    NSMutableArray *modelsArray = (self.fileAvailable) ? [self contentFromFile:self.filePath] : [self defaultContent];
     
     [self performBlockWithoutNotification:^{
         [self addModelsFromArray:modelsArray];
