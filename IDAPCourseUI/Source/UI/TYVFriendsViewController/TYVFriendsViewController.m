@@ -20,7 +20,7 @@
     [super viewDidLoad];
     
     TYVUserModel *model = [TYVUserModel new];
-    model = [TYVUserContext userModelWithModel:model];
+    [TYVUserContext userContextWithModel:model];
     
 }
 

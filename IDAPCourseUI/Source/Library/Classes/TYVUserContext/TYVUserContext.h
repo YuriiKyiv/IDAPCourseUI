@@ -12,6 +12,9 @@
 
 @interface TYVUserContext : TYVContext
 
-+ (TYVUserModel *)userModelWithModel:(TYVUserModel *)model;
++ (TYVUserContext *)userContextWithModel:(TYVUserModel *)model;
+- (instancetype)initWithModel:(TYVUserModel *)model;
+
+- (void)fillModel:(TYVUserModel *)model;
 
 @end

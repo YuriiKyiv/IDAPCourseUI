@@ -30,6 +30,7 @@
 - (instancetype)initWithRootViewController:(UIViewController *)rootViewController {
     self = [super initWithRootViewController:rootViewController];
     if (self) {
+        [FBSDKProfile enableUpdatesOnAccessTokenChange:YES];
         NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
         [center addObserver:self
                    selector:@selector(FBSDKAccessTokenDidChange:)

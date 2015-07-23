@@ -13,21 +13,46 @@
 
 static CGSize   TYVImageSize =  {100, 100};
 
+@interface TYVUserContext ()
+@property (nonatomic, strong)   TYVUserModel    *model;
+
+@end
+
 @implementation TYVUserContext
 
 #pragma mark -
 #pragma mark Class Methods
 
-+ (TYVUserModel *)userModelWithModel:(TYVUserModel *)model {
++ (TYVUserContext *)userContextWithModel:(TYVUserModel *)model {
+    return [[self alloc] initWithModel:model];
+}
+
+#pragma mark -
+#pragma mark Initialization and Deallocation
+
+- (instancetype)initWithModel:(TYVUserModel *)model {
+    self = [super init];
+    if (self) {
+        self.model = model;
+    }
+    
+    return self;
+}
+
+- (void)execute {
+    [self fillModel:self.model];
+}
+
+- (void)fillModel:(TYVUserModel *)model {
     FBSDKAccessToken *token = [FBSDKAccessToken currentAccessToken];
     if (token) {
-        NSSet *permission = token.permissions;
+        TYVUserModel *model = self.model;
         FBSDKProfile *profile = [FBSDKProfile currentProfile];
-        model.ID = token.userID;
+        model.ID = profile.userID;
         model.firstName = profile.firstName;
         model.lastName = profile.lastName;
         model.imagePath = [profile imagePathForPictureMode:FBSDKProfilePictureModeSquare
-                                                     size:TYVImageSize];
+                                                      size:TYVImageSize];
         
         FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:@"me/friendlists"
                                                                        parameters:nil
@@ -38,17 +63,6 @@ static CGSize   TYVImageSize =  {100, 100};
             }
         }];
     }
-    
-    if ([FBSDKAccessToken currentAccessToken]) {
-        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:nil]
-         startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-             if (!error) {
-                 NSLog(@"fetched user:%@", result);
-             }
-         }];
-    }
-    
-    return model;
 }
 
 @end
