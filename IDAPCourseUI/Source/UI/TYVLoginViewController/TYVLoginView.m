@@ -8,6 +8,8 @@
 
 #import "TYVLoginView.h"
 #import "TYVUserModel.h"
+#import "TYVMacro.h"
+#import "TYVDispatch.h"
 
 static NSString * const  kTYVButtonTitleLogIn = @"LogIn";
 static NSString * const  kTYVButtonTitleLogOut = @"LogOut";
@@ -35,9 +37,25 @@ static NSString * const  kTYVButtonTitleLogOut = @"LogOut";
 #pragma mark Public Methods
 
 - (void)fillWithModel:(TYVUserModel *)model {
-    [self.loginButton setTitle:model.ID ? kTYVButtonTitleLogOut
-                                        : kTYVButtonTitleLogIn
-                      forState:UIControlStateNormal];
+    NSString *title = model.ID ? kTYVButtonTitleLogOut : kTYVButtonTitleLogIn;
+    [self.loginButton setTitle:title forState:UIControlStateNormal];
+    NSLog(@"%@", title);
+}
+
+#pragma mark -
+#pragma mark Model observer
+
+- (void)modelDidLoad:(TYVUserModel *)model {
+    TYVDispatchAsyncOnMainQueueWithBlock(^{
+        [self fillWithModel:model];
+    });
+    
+}
+
+- (void)modelDidUnload:(id)model {
+    TYVDispatchAsyncOnMainQueueWithBlock(^{
+        [self fillWithModel:model];
+    });
 }
 
 @end

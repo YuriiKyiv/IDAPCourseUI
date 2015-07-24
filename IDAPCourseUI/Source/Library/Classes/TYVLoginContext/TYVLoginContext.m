@@ -19,7 +19,7 @@
 - (void)execute {
     if (![FBSDKAccessToken currentAccessToken]) {
         self.login = [[FBSDKLoginManager alloc] init];
-        [self.login logInWithReadPermissions:@[@"public_profile", @"email", @"user_friends"]
+        [self.login logInWithReadPermissions:@[@"public_profile", @"email", @"user_friends", @"read_custom_friendlists"]
                                      handler:^(FBSDKLoginManagerLoginResult *result, NSError *error)
          {
              if (error) {
@@ -29,11 +29,11 @@
              } else {
                  NSLog(@"%@", result);
                  self.result = result;
+                 self.model.ID = [FBSDKAccessToken currentAccessToken].userID;
+                 self.model.state = TYVModelLoaded;
              }
          }];
     }
-    
-    self.model.ID = [FBSDKAccessToken currentAccessToken].userID;
 }
 
 @end

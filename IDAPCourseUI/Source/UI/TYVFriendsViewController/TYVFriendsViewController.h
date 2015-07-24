@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "TYVAbstractViewController.h"
 
+@class TYVUserModel;
+
 @interface TYVFriendsViewController : TYVAbstractViewController <UITableViewDataSource, UITableViewDelegate>
+@property (nonatomic, strong)   TYVUserModel   *model;
 
 @end

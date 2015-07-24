@@ -17,22 +17,30 @@
 TYVViewControllerProperty(TYVFriendsViewController, friendsView, TYVFriendsView)
 
 @interface TYVFriendsViewController ()
-@property (nonatomic, strong)   TYVUsersModel   *model;
-
+@property (nonatomic, strong)   TYVUsersContext *context;
 @end
 
 @implementation TYVFriendsViewController
 
+#pragma mark -
+#pragma mark Accessors
+
+- (void)setModel:(TYVUserModel *)model {
+    if (_model != model) {
+        [_model removeObserver:self];
+        
+        _model = model;
+        [_model addObserver:self];
+        
+        self.context = [TYVUsersContext contextWithModel:_model];
+    }
+}
+
+#pragma mark -
+#pragma mark View Lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    TYVUserModel *model = [TYVUserModel new];
-    TYVUserContext *context = [TYVUserContext contextWithModel:model];
-    [context execute];
-    
-    TYVUsersModel *usersmodel = [TYVUsersModel new];
-    TYVUsersContext *userscontext = [TYVUsersContext contextWithModel:usersmodel];
-    [userscontext execute];
     
 }
 
@@ -45,7 +53,7 @@ TYVViewControllerProperty(TYVFriendsViewController, friendsView, TYVFriendsView)
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return [self.model.friends count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

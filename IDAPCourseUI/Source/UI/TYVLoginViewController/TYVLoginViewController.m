@@ -34,10 +34,20 @@ TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.userModel = [TYVUserModel new];
-        [self prerareModel];
     }
     
     return self;
+}
+
+#pragma mark -
+#pragma mark Accessors
+
+- (void)setUserModel:(TYVUserModel *)userModel {
+    if (_userModel != userModel) {
+        _userModel = userModel;
+        
+        [self prerareModel];
+    }
 }
 
 #pragma mark -
@@ -58,6 +68,21 @@ TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 }
 
 #pragma mark -
+#pragma mark Interface Handling
+
+- (IBAction)onLoginButton:(id)sender {
+    TYVUserModel *model = self.userModel;
+    if (model.ID) {
+        [[[FBSDKLoginManager alloc] init] logOut];
+        model.ID = nil;
+        model.state = TYVModelUnloaded;
+    } else {
+        self.loginContext = [TYVLoginContext contextWithModel:self.userModel];
+        [self.loginContext execute];
+    }
+}
+
+#pragma mark -
 #pragma mark Private Methods
 
 - (void)prerareModel {
@@ -66,6 +91,7 @@ TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 
 - (void)pushFriendsViewControllerWithModel:(TYVUserModel *)model {
     TYVFriendsViewController *controller = [TYVFriendsViewController new];
+    controller.model = model;
     [self.navigationController pushViewController:controller animated:YES];
     
 }

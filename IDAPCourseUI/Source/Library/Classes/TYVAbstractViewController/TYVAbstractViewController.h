@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class TYVUserModel;
+
 @interface TYVAbstractViewController : UIViewController
 
 @end
