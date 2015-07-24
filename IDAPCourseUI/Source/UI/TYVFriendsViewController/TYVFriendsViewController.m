@@ -13,6 +13,7 @@
 #import "TYVUsersModel.h"
 #import "TYVMacro.h"
 #import "TYVFriendsView.h"
+#import "TYVDispatch.h"
 
 TYVViewControllerProperty(TYVFriendsViewController, friendsView, TYVFriendsView)
 
@@ -21,6 +22,13 @@ TYVViewControllerProperty(TYVFriendsViewController, friendsView, TYVFriendsView)
 @end
 
 @implementation TYVFriendsViewController
+
+#pragma mark -
+#pragma mark Initialization and Deallocation
+
+- (void)dealloc {
+    self.model = nil;
+}
 
 #pragma mark -
 #pragma mark Accessors
@@ -33,6 +41,7 @@ TYVViewControllerProperty(TYVFriendsViewController, friendsView, TYVFriendsView)
         [_model addObserver:self];
         
         self.context = [TYVUsersContext contextWithModel:_model];
+        [self.context execute];
     }
 }
 
@@ -42,6 +51,12 @@ TYVViewControllerProperty(TYVFriendsViewController, friendsView, TYVFriendsView)
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.friendsView.model = self.model;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,6 +73,15 @@ TYVViewControllerProperty(TYVFriendsViewController, friendsView, TYVFriendsView)
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     return nil;
+}
+
+#pragma mark -
+#pragma mark Model observer
+
+- (void)modelDidLoad:(TYVUserModel *)model {
+    TYVDispatchAsyncOnMainQueueWithBlock(^{
+        [self.friendsView.tableView reloadData];
+    });
 }
 
 @end

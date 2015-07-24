@@ -24,6 +24,7 @@
 }
 
 - (void)fillModel:(TYVUsersModel *)model {
+    model.state = TYVModelWillLoad;
     NSString *path = @"me/friendlists";
     FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:path parameters:nil];
     
@@ -31,12 +32,10 @@
                    id result,
                    NSError *error) {
         NSLog(@"%@", result);
+        model.state = TYVModelLoaded;
     };
     
     [request startWithCompletionHandler:handler];
-    
-    
-    model.state = TYVModelLoaded;
 }
 
 @end

@@ -30,6 +30,10 @@ TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 #pragma mark -
 #pragma mark Initialization and Dealocation
 
+- (void)dealloc {
+    self.userModel = nil;
+}
+
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {

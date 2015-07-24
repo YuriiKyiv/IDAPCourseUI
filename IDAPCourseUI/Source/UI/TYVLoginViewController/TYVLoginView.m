@@ -21,6 +21,13 @@ static NSString * const  kTYVButtonTitleLogOut = @"LogOut";
 @implementation TYVLoginView
 
 #pragma mark -
+#pragma mark Initialization and Deallocation
+
+- (void)dealloc {
+    self.model = nil;
+}
+
+#pragma mark -
 #pragma mark Accessors
 
 - (void)setModel:(TYVUserModel *)model {
@@ -39,7 +46,6 @@ static NSString * const  kTYVButtonTitleLogOut = @"LogOut";
 - (void)fillWithModel:(TYVUserModel *)model {
     NSString *title = model.ID ? kTYVButtonTitleLogOut : kTYVButtonTitleLogIn;
     [self.loginButton setTitle:title forState:UIControlStateNormal];
-    NSLog(@"%@", title);
 }
 
 #pragma mark -

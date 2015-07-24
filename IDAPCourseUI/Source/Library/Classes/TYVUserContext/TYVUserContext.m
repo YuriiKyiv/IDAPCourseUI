@@ -21,6 +21,7 @@ static CGSize   TYVImageSize =  {100, 100};
 #pragma mark Public Methods
 
 - (void)fillModel:(TYVUserModel *)model {
+    model.state = TYVModelWillLoad;
     FBSDKProfile *profile = [FBSDKProfile currentProfile];
     model.ID = profile.userID;
     model.firstName = profile.firstName;
