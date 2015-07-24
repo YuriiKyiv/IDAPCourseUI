@@ -49,22 +49,7 @@
 
 - (void)execute {
     TYVAbstractDataModel *model = self.model;
-    TYVAbstractDataModelState state = model.state;
-    if (TYVModelUnloaded == state || TYVModelFailedLoading == state) {
-        if ([FBSDKAccessToken currentAccessToken]) {
-            model.state = TYVModelWillLoad;
-            
-            TYVWeakify(self);
-            TYVDispatchAsyncOnDefaultQueueWithBlock(^{
-                TYVStrongifyAndReturnIfNil(self);
-                [self fillModel:model];
-            });
-        } else {
-            model.state = TYVModelFailedLoading;
-        }
-    } else {
-        [model notify];
-    }
+    [self fillModel:model];
 }
 
 - (void)fillModel:(TYVAbstractDataModel *)model {
@@ -72,11 +57,7 @@
 }
 
 - (void)cancel {
-    TYVAbstractDataModel *model = self.model;
-    if (TYVModelLoaded != model.state) {
-        self.connection = nil;
-        model.state  = TYVModelUnloaded;
-    }
+
 }
 
 @end

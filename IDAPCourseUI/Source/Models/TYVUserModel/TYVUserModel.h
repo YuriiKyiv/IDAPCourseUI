@@ -12,12 +12,12 @@
 @class TYVUsersModel;
 
 @interface TYVUserModel : TYVAbstractDataModel
-@property (nonatomic, assign) NSString      *ID;
+@property (nonatomic, strong) NSString      *ID;
 @property (nonatomic, strong) NSString      *firstName;
 @property (nonatomic, strong) NSString      *lastName;
 @property (nonatomic, strong) TYVUsersModel *friends;
 
-@property (nonatomic, readonly) TYVImageModel   *imageModel;
 @property (nonatomic, strong)   NSString        *imagePath;
+@property (nonatomic, readonly) TYVImageModel   *imageModel;
 
 @end

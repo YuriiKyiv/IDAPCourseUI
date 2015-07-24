@@ -8,6 +8,11 @@
 
 #import "TYVContext.h"
 
+@class TYVUserModel;
+
 @interface TYVLoginContext : TYVContext
+@property (nonatomic, strong)   FBSDKLoginManager   *login;
+@property (nonatomic, strong)   id                  result;
+@property (nonatomic, strong)   TYVUserModel        *model;;
 
 @end

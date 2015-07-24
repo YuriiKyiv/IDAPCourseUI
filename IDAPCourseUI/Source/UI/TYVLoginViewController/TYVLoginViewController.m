@@ -9,10 +9,18 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "TYVLoginViewController.h"
 #import "TYVFriendsViewController.h"
+#import "TYVMacro.h"
+#import "TYVLoginView.h"
+#import "TYVUserModel.h"
+#import "TYVLoginContext.h"
+
+TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 
 @interface TYVLoginViewController () <FBSDKLoginButtonDelegate>
+@property (nonatomic, strong)   TYVUserModel    *userModel;
+@property (nonatomic, strong)   TYVLoginContext *loginContext;
 
-- (void)pushFriendsViewController:(BOOL)animated;
+- (void)pushFriendsViewControllerWithModel:(TYVUserModel *)model;
 
 @end
 
@@ -21,19 +29,27 @@
 #pragma mark -
 #pragma mark View LifeCycle
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    if ([FBSDKAccessToken currentAccessToken]) {
-        [self pushFriendsViewController:NO];
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    TYVUserModel *model = self.userModel;
+    if (model.ID) {
+        [self pushFriendsViewControllerWithModel:model];
+    } else {
+        self.userModel = [TYVUserModel new];
+        self.loginContext = [TYVLoginContext contextWithModel:self.userModel];
+        [self.loginContext execute];
     }
+    
+    self.loginView.model = self.userModel;
+    
 }
 
 #pragma mark -
 #pragma mark Private Methods
 
-- (void)pushFriendsViewController:(BOOL)animated {
+- (void)pushFriendsViewControllerWithModel:(TYVUserModel *)model {
     TYVFriendsViewController *controller = [TYVFriendsViewController new];
-    [self.navigationController pushViewController:controller animated:animated];
+    
 }
 
 #pragma mark -
@@ -41,13 +57,12 @@
 
 - (void)    loginButton:(FBSDKLoginButton *)loginButton
   didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
-                  error:(NSError *)error {
-    [self pushFriendsViewController:YES];
-    
-    loginButton.readPermissions = @[@"email", @"read_custom_friendlists"];
+                  error:(NSError *)error
+{
+
 }
 
-- (void) loginButtonDidLogOut:(FBSDKLoginButton *)loginButton {
+- (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton {
     
 }
 

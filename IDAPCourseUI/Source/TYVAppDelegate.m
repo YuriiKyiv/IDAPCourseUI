@@ -29,23 +29,15 @@ static const NSUInteger kTYVDataArrayModelCount = 10;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    BOOL result = [[FBSDKApplicationDelegate sharedInstance] application:application
+                                           didFinishLaunchingWithOptions:launchOptions];
     [FBSDKLoginButton class];
     
     UIWindow *window = [UIWindow window];
     self.window = window;
     
-//    TYVSquareViewController *controller = [TYVSquareViewController new];
-//    controller.square = [[TYVSquare alloc] initWithSquarePosition:TYVBottomRightCorner];
-    
-//    TYVDataArrayModel *dataArray = [TYVDataArrayModel dataWithModelsCount:kTYVDataArrayModelCount];
-//    self.model = dataArray;
-//    
-//    TYVTableViewController *controller = [TYVTableViewController new];
-//    controller.dataArray = dataArray;
-    
     TYVLoginViewController *controller = [TYVLoginViewController new];
     
-//    TYVFriendsViewController *controller = [TYVFriendsViewController new];
     
     TYVFBNavigationViewController *navigationController = [[TYVFBNavigationViewController alloc] initWithRootViewController:controller];
     
@@ -53,8 +45,7 @@ static const NSUInteger kTYVDataArrayModelCount = 10;
     
     [window makeKeyAndVisible];
     
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                    didFinishLaunchingWithOptions:launchOptions];
+    return result;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

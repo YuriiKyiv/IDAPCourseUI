@@ -11,6 +11,5 @@
 #import "TYVAbstractViewController.h"
 
 @interface TYVLoginViewController : TYVAbstractViewController
-@property (nonatomic, strong)   IBOutlet FBSDKLoginButton   *loginButton;
 
 @end
