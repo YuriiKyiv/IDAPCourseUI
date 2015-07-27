@@ -63,6 +63,10 @@ TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (self.userModel.ID) {
+        [self pushFriendsViewControllerWithModel:self.userModel];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -93,12 +97,13 @@ TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 
 - (void)prerareModel {
     self.userModel.ID = [FBSDKAccessToken currentAccessToken].userID;
+    self.userModel.state = TYVModelLoaded;
 }
 
 - (void)pushFriendsViewControllerWithModel:(TYVUserModel *)model {
-//    TYVFriendsViewController *controller = [TYVFriendsViewController new];
-//    controller.model = model;
-//    [self.navigationController pushViewController:controller animated:YES];
+    TYVFriendsViewController *controller = [TYVFriendsViewController new];
+    controller.model = nil;
+    [self.navigationController pushViewController:controller animated:YES];
     
 }
 
