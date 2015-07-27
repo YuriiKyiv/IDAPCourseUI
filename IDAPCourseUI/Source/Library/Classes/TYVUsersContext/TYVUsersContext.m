@@ -10,8 +10,12 @@
 #import "TYVUsersModel.h"
 #import "TYVUserModel.h"
 
-@interface TYVUsersContext ()
+static NSString * const kTYVDataKey = @"data";
+static NSString * const kTYVNameKey = @"name";
+static NSString * const kTYVIDKey = @"id";
+static NSString * const kTYVFriendsGraphPath = @"me/friends";
 
+@interface TYVUsersContext ()
 
 @end
 
@@ -21,22 +25,25 @@
 #pragma mark Accessors
 
 - (NSString *)graphPath {
-    return @"me/friends";
+    return kTYVFriendsGraphPath;
 }
 
 #pragma mark -
 #pragma mark Public Methods
 
 - (void)parseResult:(id)result {
-    NSArray *data = result[@"data"];
+    NSArray *data = result[kTYVDataKey];
     TYVUserModel *userModel = self.model;
-    TYVUsersModel *usersModel = userModel.friends;
+    TYVUsersModel *usersModel = [TYVUsersModel dataWithModelsCount:[data count]];
     
     for (id friend in data) {
         TYVUserModel *tempUser = [TYVUserModel new];
-        tempUser.firstName = friend[@"name"];
+        tempUser.firstName = friend[kTYVNameKey];
+        tempUser.ID = friend[kTYVIDKey];
         [usersModel addModel:tempUser];
     }
+    
+    userModel.friends = usersModel;
 }
 
 @end

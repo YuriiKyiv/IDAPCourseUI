@@ -14,6 +14,9 @@
 #import "TYVMacro.h"
 #import "TYVFriendsView.h"
 #import "TYVDispatch.h"
+#import "TYVFriendCell.h"
+
+#import "UITableView+TYVExtentions.h"
 
 TYVViewControllerProperty(TYVFriendsViewController, friendsView, TYVFriendsView)
 
@@ -72,7 +75,11 @@ TYVViewControllerProperty(TYVFriendsViewController, friendsView, TYVFriendsView)
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    TYVFriendCell *cell = [tableView reusableCellWithClass:[TYVFriendCell class]];
+    
+    cell.model = self.model.friends[indexPath.row];
+    
+    return cell;
 }
 
 @end

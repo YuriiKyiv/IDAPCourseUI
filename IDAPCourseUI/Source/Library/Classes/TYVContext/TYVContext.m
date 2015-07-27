@@ -51,11 +51,11 @@
     
     [self fillModel:self.model];
     
-    if (self.error.code) {
-        self.model.state = TYVModelFailedLoading;
-    } else {
-        self.model.state = TYVModelLoaded;
-    }
+//    if (self.error.code) {
+//        self.model.state = TYVModelFailedLoading;
+//    } else {
+//        self.model.state = TYVModelLoaded;
+//    }
 }
 
 - (void)fillModel:(TYVAbstractDataModel *)model {

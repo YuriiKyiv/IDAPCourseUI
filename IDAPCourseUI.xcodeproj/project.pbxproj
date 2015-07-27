@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5A1369D51B664C5200495091 /* TYVFacebookContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1369D41B664C5200495091 /* TYVFacebookContext.m */; };
+		5A1369E11B6662F200495091 /* TYVFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1369DF1B6662F200495091 /* TYVFriendCell.m */; };
+		5A1369E21B6662F200495091 /* TYVFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A1369E01B6662F200495091 /* TYVFriendCell.xib */; };
 		5A22FD9B1B2E92250005AFDC /* IDAPCourseUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A22FD9A1B2E92250005AFDC /* IDAPCourseUITests.m */; };
 		5A22FDB01B2E935B0005AFDC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A22FDA51B2E935B0005AFDC /* Info.plist */; };
 		5A22FDB11B2E935B0005AFDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A22FDA61B2E935B0005AFDC /* main.m */; };
@@ -87,6 +89,9 @@
 		459BAD12DEC453190A158615 /* Pods-IDAPCourseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDAPCourseUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IDAPCourseUITests/Pods-IDAPCourseUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5A1369D31B664C5200495091 /* TYVFacebookContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVFacebookContext.h; path = TYVFacebookContext/TYVFacebookContext.h; sourceTree = "<group>"; };
 		5A1369D41B664C5200495091 /* TYVFacebookContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYVFacebookContext.m; path = TYVFacebookContext/TYVFacebookContext.m; sourceTree = "<group>"; };
+		5A1369DE1B6662F200495091 /* TYVFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVFriendCell.h; path = TYVFriendsViewController/Views/TYVFriendCell/TYVFriendCell.h; sourceTree = "<group>"; };
+		5A1369DF1B6662F200495091 /* TYVFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYVFriendCell.m; path = TYVFriendsViewController/Views/TYVFriendCell/TYVFriendCell.m; sourceTree = "<group>"; };
+		5A1369E01B6662F200495091 /* TYVFriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TYVFriendCell.xib; path = TYVFriendsViewController/Views/TYVFriendCell/TYVFriendCell.xib; sourceTree = "<group>"; };
 		5A22FD7B1B2E92250005AFDC /* IDAPCourseUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IDAPCourseUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A22FD941B2E92250005AFDC /* IDAPCourseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IDAPCourseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A22FD991B2E92250005AFDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -243,6 +248,24 @@
 			name = TYVFacebookContext;
 			sourceTree = "<group>";
 		};
+		5A1369DA1B66612E00495091 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5A1369DB1B66613500495091 /* TYVFriendCell */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		5A1369DB1B66613500495091 /* TYVFriendCell */ = {
+			isa = PBXGroup;
+			children = (
+				5A1369DE1B6662F200495091 /* TYVFriendCell.h */,
+				5A1369DF1B6662F200495091 /* TYVFriendCell.m */,
+				5A1369E01B6662F200495091 /* TYVFriendCell.xib */,
+			);
+			name = TYVFriendCell;
+			sourceTree = "<group>";
+		};
 		5A22FD721B2E92250005AFDC = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +344,7 @@
 				5A3A75641B5F843300DFBC52 /* TYVFriendsViewController.xib */,
 				5A3A75801B5FBB5C00DFBC52 /* TYVFriendsView.h */,
 				5A3A75811B5FBB5C00DFBC52 /* TYVFriendsView.m */,
+				5A1369DA1B66612E00495091 /* View */,
 			);
 			name = TYVFriendsViewController;
 			sourceTree = "<group>";
@@ -881,6 +905,7 @@
 				5A9820B51B32E9F3009B9CF3 /* image.jpeg in Resources */,
 				5A8C62A11B53DADF00383DCE /* TYVLoadingView.xib in Resources */,
 				5A9820B61B32E9F3009B9CF3 /* Orion_Nebula.jpg in Resources */,
+				5A1369E21B6662F200495091 /* TYVFriendCell.xib in Resources */,
 				5A8C629F1B53DADF00383DCE /* TYVDataCell.xib in Resources */,
 				5A3A75601B5F83DB00DFBC52 /* TYVLoginViewController.xib in Resources */,
 				5A8C629D1B53DADF00383DCE /* TYVTableViewController.xib in Resources */,
@@ -970,6 +995,7 @@
 				5A22FDB11B2E935B0005AFDC /* main.m in Sources */,
 				5A8C62901B53DADF00383DCE /* TYVMacro.m in Sources */,
 				5A1369D51B664C5200495091 /* TYVFacebookContext.m in Sources */,
+				5A1369E11B6662F200495091 /* TYVFriendCell.m in Sources */,
 				5A8C62811B53DADF00383DCE /* NSArray+TYVExtentions.m in Sources */,
 				5A8C62861B53DADF00383DCE /* NSString+TYVExtensions.m in Sources */,
 				5A8C628F1B53DADF00383DCE /* TYVTableViewCell.m in Sources */,

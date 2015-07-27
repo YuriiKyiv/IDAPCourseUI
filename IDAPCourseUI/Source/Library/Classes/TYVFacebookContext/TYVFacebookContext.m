@@ -8,6 +8,7 @@
 
 #import "TYVFacebookContext.h"
 #import "TYVAbstractDataModel.h"
+
 @implementation TYVFacebookContext
 
 @dynamic graphPath;
@@ -22,6 +23,7 @@
              NSError *error)
     {
         [self parseResult:result];
+        self.model.state = TYVModelLoaded;
     };
 }
 
