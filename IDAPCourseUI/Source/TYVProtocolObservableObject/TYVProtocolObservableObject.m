@@ -98,7 +98,9 @@
 }
 
 - (void)notifyWithObject:(id)object {
-    [self notifyWithSelector:[self selectorForState:_state] withObject:object];
+    @synchronized (self) {
+        [self notifyWithSelector:[self selectorForState:_state] withObject:object];
+    }
 }
 
 #pragma mark -

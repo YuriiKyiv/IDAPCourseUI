@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A1369D51B664C5200495091 /* TYVFacebookContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1369D41B664C5200495091 /* TYVFacebookContext.m */; };
 		5A22FD9B1B2E92250005AFDC /* IDAPCourseUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A22FD9A1B2E92250005AFDC /* IDAPCourseUITests.m */; };
 		5A22FDB01B2E935B0005AFDC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A22FDA51B2E935B0005AFDC /* Info.plist */; };
 		5A22FDB11B2E935B0005AFDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A22FDA61B2E935B0005AFDC /* main.m */; };
@@ -84,6 +85,8 @@
 /* Begin PBXFileReference section */
 		03B92650CB89E7C229EF2529 /* libPods-IDAPCourseUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IDAPCourseUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		459BAD12DEC453190A158615 /* Pods-IDAPCourseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDAPCourseUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IDAPCourseUITests/Pods-IDAPCourseUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5A1369D31B664C5200495091 /* TYVFacebookContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVFacebookContext.h; path = TYVFacebookContext/TYVFacebookContext.h; sourceTree = "<group>"; };
+		5A1369D41B664C5200495091 /* TYVFacebookContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYVFacebookContext.m; path = TYVFacebookContext/TYVFacebookContext.m; sourceTree = "<group>"; };
 		5A22FD7B1B2E92250005AFDC /* IDAPCourseUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IDAPCourseUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A22FD941B2E92250005AFDC /* IDAPCourseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IDAPCourseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A22FD991B2E92250005AFDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -229,6 +232,15 @@
 				459BAD12DEC453190A158615 /* Pods-IDAPCourseUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		5A1369D61B664C5900495091 /* TYVFacebookContext */ = {
+			isa = PBXGroup;
+			children = (
+				5A1369D31B664C5200495091 /* TYVFacebookContext.h */,
+				5A1369D41B664C5200495091 /* TYVFacebookContext.m */,
+			);
+			name = TYVFacebookContext;
 			sourceTree = "<group>";
 		};
 		5A22FD721B2E92250005AFDC = {
@@ -515,6 +527,7 @@
 				5A3A75751B5FAFFB00DFBC52 /* TYVAbstractViewController */,
 				5A3A75791B5FB0F200DFBC52 /* TYVAbstractNavigationViewController */,
 				5A3A75861B5FD37100DFBC52 /* TYVUsersContext */,
+				5A1369D61B664C5900495091 /* TYVFacebookContext */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -956,6 +969,7 @@
 				5A8C62921B53DADF00383DCE /* TYVDataModel.m in Sources */,
 				5A22FDB11B2E935B0005AFDC /* main.m in Sources */,
 				5A8C62901B53DADF00383DCE /* TYVMacro.m in Sources */,
+				5A1369D51B664C5200495091 /* TYVFacebookContext.m in Sources */,
 				5A8C62811B53DADF00383DCE /* NSArray+TYVExtentions.m in Sources */,
 				5A8C62861B53DADF00383DCE /* NSString+TYVExtensions.m in Sources */,
 				5A8C628F1B53DADF00383DCE /* TYVTableViewCell.m in Sources */,

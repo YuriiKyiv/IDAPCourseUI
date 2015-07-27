@@ -8,6 +8,7 @@
 
 #import "TYVUsersContext.h"
 #import "TYVUsersModel.h"
+#import "TYVUserModel.h"
 
 @interface TYVUsersContext ()
 
@@ -17,24 +18,25 @@
 @implementation TYVUsersContext
 
 #pragma mark -
-#pragma mark Public Methods
+#pragma mark Accessors
 
-- (void)execute {
-    [self fillModel:self.model];
+- (NSString *)graphPath {
+    return @"me/friends";
 }
 
-- (void)fillModel:(TYVUsersModel *)model {
-    NSString *path = @"me/friends";
-    FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:path parameters:nil];
+#pragma mark -
+#pragma mark Public Methods
+
+- (void)parseResult:(id)result {
+    NSArray *data = result[@"data"];
+    TYVUserModel *userModel = self.model;
+    TYVUsersModel *usersModel = userModel.friends;
     
-    id handler = ^(FBSDKGraphRequestConnection *connection,
-                   id result,
-                   NSError *error) {
-        NSLog(@"%@", result);
-        model.state = TYVModelLoaded;
-    };
-    
-    [request startWithCompletionHandler:handler];
+    for (id friend in data) {
+        TYVUserModel *tempUser = [TYVUserModel new];
+        tempUser.firstName = friend[@"name"];
+        [usersModel addModel:tempUser];
+    }
 }
 
 @end

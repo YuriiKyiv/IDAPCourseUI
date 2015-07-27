@@ -75,13 +75,4 @@ TYVViewControllerProperty(TYVFriendsViewController, friendsView, TYVFriendsView)
     return nil;
 }
 
-#pragma mark -
-#pragma mark Model observer
-
-- (void)modelDidLoad:(TYVUserModel *)model {
-    TYVDispatchAsyncOnMainQueueWithBlock(^{
-        [self.friendsView.tableView reloadData];
-    });
-}
-
 @end

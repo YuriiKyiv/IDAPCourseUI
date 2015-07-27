@@ -47,7 +47,15 @@
 #pragma mark Public Methods
 
 - (void)execute {
-
+    self.model.state = TYVModelWillLoad;
+    
+    [self fillModel:self.model];
+    
+    if (self.error.code) {
+        self.model.state = TYVModelFailedLoading;
+    } else {
+        self.model.state = TYVModelLoaded;
+    }
 }
 
 - (void)fillModel:(TYVAbstractDataModel *)model {

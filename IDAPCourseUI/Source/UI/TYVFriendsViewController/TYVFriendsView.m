@@ -36,6 +36,7 @@
 
 - (void)modelDidLoad:(TYVUserModel *)model {
     TYVDispatchAsyncOnMainQueueWithBlock(^{
+        [self.tableView reloadData];
         [self hideLoadingView];
     });
     

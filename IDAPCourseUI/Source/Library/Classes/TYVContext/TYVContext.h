@@ -14,8 +14,9 @@
 @class TYVAbstractDataModel;
 
 @interface TYVContext : NSObject
-@property (nonatomic, strong)   id                          model;
+@property (nonatomic, strong)   TYVAbstractDataModel        *model;
 @property (nonatomic, strong)   FBSDKGraphRequestConnection *connection;
+@property (nonatomic, assign)   NSError                     *error;
 
 + (instancetype)contextWithModel:(TYVAbstractDataModel *)model;
 - (instancetype)initWithModel:(TYVAbstractDataModel *)model;
