@@ -23,7 +23,6 @@
 - (void)execute;
 
 // This is the method for overriding
-// You have to set the state in this method manually
 - (void)fillModel:(TYVAbstractDataModel *)model;
 
 - (void)cancel;

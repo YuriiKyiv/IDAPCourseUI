@@ -27,7 +27,6 @@
     self = [super init];
     if (self) {
         self.model = model;
-//        self.connection = [[FBSDKGraphRequestConnection alloc] init];
     }
     
     return self;
@@ -48,8 +47,7 @@
 #pragma mark Public Methods
 
 - (void)execute {
-    TYVAbstractDataModel *model = self.model;
-    [self fillModel:model];
+
 }
 
 - (void)fillModel:(TYVAbstractDataModel *)model {

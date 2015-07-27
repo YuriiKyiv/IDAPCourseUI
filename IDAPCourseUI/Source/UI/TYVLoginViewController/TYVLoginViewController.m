@@ -13,6 +13,7 @@
 #import "TYVLoginView.h"
 #import "TYVUserModel.h"
 #import "TYVLoginContext.h"
+#import "TYVDispatch.h"
 
 TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 
@@ -48,7 +49,10 @@ TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 
 - (void)setUserModel:(TYVUserModel *)userModel {
     if (_userModel != userModel) {
+        [_userModel removeObserver:self];
+        
         _userModel = userModel;
+        [_userModel addObserver:self];
         
         [self prerareModel];
     }
@@ -59,16 +63,14 @@ TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    TYVUserModel *model = self.userModel;
-    if (model.ID) {
-        [self pushFriendsViewControllerWithModel:model];
-    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.loginView.model = self.userModel;
+    TYVDispatchAsyncOnMainQueueWithBlock(^{
+        self.loginView.model = self.userModel;
+    });
 }
 
 #pragma mark -
@@ -94,10 +96,19 @@ TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 }
 
 - (void)pushFriendsViewControllerWithModel:(TYVUserModel *)model {
-    TYVFriendsViewController *controller = [TYVFriendsViewController new];
-    controller.model = model;
-    [self.navigationController pushViewController:controller animated:YES];
+//    TYVFriendsViewController *controller = [TYVFriendsViewController new];
+//    controller.model = model;
+//    [self.navigationController pushViewController:controller animated:YES];
     
+}
+
+#pragma mark -
+#pragma mark Observer Model
+
+- (void)modelDidLoad:(TYVUserModel *)model {
+    if (model.ID) {
+        [self pushFriendsViewControllerWithModel:model];
+    }
 }
 
 @end
