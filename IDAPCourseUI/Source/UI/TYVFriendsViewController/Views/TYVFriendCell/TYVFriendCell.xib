@@ -34,8 +34,8 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="NameLabel" destination="mnC-fG-WRZ" id="pDc-0b-Ndb"/>
                 <outlet property="imageContentView" destination="NRp-jU-anC" id="AdF-le-E8Q"/>
+                <outlet property="nameLabel" destination="mnC-fG-WRZ" id="GPq-mK-gG2"/>
             </connections>
             <point key="canvasLocation" x="577" y="335"/>
         </tableViewCell>
