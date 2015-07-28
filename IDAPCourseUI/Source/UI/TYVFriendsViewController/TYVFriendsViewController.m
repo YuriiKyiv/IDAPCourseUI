@@ -31,6 +31,7 @@ TYVViewControllerProperty(TYVFriendsViewController, friendsView, TYVFriendsView)
 
 - (void)dealloc {
     self.model = nil;
+    self.context = nil;
 }
 
 #pragma mark -
@@ -48,23 +49,22 @@ TYVViewControllerProperty(TYVFriendsViewController, friendsView, TYVFriendsView)
     }
 }
 
+- (void)setContext:(TYVUsersContext *)context {
+    if (_context != context) {
+        [_context cancel];
+        
+        _context = context;
+        [_context execute];
+    }
+}
+
 #pragma mark -
 #pragma mark View Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
     self.friendsView.model = self.model;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-
 }
 
 #pragma mark -
