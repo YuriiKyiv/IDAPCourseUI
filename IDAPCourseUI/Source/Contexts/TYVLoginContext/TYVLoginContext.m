@@ -17,10 +17,11 @@ static NSString * const kTYVEmail = @"email";
 static NSString * const kTYVUserFriends = @"user_friends";
 
 @interface TYVLoginContext ()
-@property (nonatomic, strong)   NSArray *permissions;
+@property (nonatomic, strong)   NSArray             *permissions;
+@property (nonatomic, strong)   FBSDKLoginManager   *login;
+@property (nonatomic, strong)   id                  result;
 
-- (void)performWork;
-- (void)request;
+- (void)makeLogin;
 
 @end
 
@@ -35,36 +36,42 @@ static NSString * const kTYVUserFriends = @"user_friends";
     return @[kTYVPublicProfile, kTYVEmail, kTYVUserFriends];
 }
 
-#pragma mark -
-#pragma mark Private Methods
-
-- (void)performWork {
-    self.model.ID = [FBSDKAccessToken currentAccessToken].userID;
+- (id)handler {
+   return ^(FBSDKLoginManagerLoginResult *result, NSError *error)
+    {
+        self.error = error;
+        if (result.isCancelled) {
+            NSLog(@"Cancelled");
+        } else {
+            NSLog(@"%@", result);
+            self.result = result;
+            [self parseWithResult:result error:error];
+        }
+    };
 }
 
-- (void)fillModel:(TYVUserModel *)model {
+#pragma mark -
+#pragma mark Public Methods
+
+- (void)request {
     if (![FBSDKAccessToken currentAccessToken]) {
-        [self request];
+        [self parseWithResult:nil error:nil];
     } else {
-        [self fillModel:self.model];
+        [self makeLogin];
     }
 }
 
-- (void)request {
+- (void)parseWithResult:(id)result error:(NSError *)error {
+    ((TYVUserModel *)self.model).ID = [FBSDKAccessToken currentAccessToken].userID;
+}
+
+#pragma mark -
+#pragma mark Private Methods
+
+- (void)makeLogin {
     self.login = [[FBSDKLoginManager alloc] init];
     [self.login logInWithReadPermissions:self.permissions
-                                 handler:^(FBSDKLoginManagerLoginResult *result, NSError *error)
-     {
-         if (error) {
-             NSLog(@"Error");
-         } else if (result.isCancelled) {
-             NSLog(@"Cancelled");
-         } else {
-             NSLog(@"%@", result);
-             self.result = result;
-             [self fillModel:self.model];
-         }
-     }];
+                                 handler:self.handler];
 }
 
 @end

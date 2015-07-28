@@ -11,6 +11,12 @@
 #import "TYVDispatch.h"
 #import "TYVMacro.h"
 
+@interface TYVContext ()
+
+- (void)request;
+
+@end
+
 @implementation TYVContext
 
 #pragma mark -
@@ -22,6 +28,10 @@
 
 #pragma mark -
 #pragma mark Initialization and Deallocation
+
+- (void)dealloc {
+    self.connection = nil;
+}
 
 - (instancetype)initWithModel:(TYVAbstractDataModel *)model {
     self = [super init];
@@ -39,31 +49,40 @@
     if (_connection != connection) {
         [_connection cancel];
         _connection = connection;
-        [_connection start];
     }
+}
+
+- (id)handler {
+    return ^(FBSDKGraphRequestConnection *connection,
+                    id result,
+                    NSError *error)
+    {
+        [self parseWithResult:result error:error];
+    };
+}
+
+- (NSString *)graphPath {
+    return nil;
 }
 
 #pragma mark -
 #pragma mark Public Methods
 
 - (void)execute {
-    self.model.state = TYVModelWillLoad;
-    
-    [self fillModel:self.model];
-    
-//    if (self.error.code) {
-//        self.model.state = TYVModelFailedLoading;
-//    } else {
-//        self.model.state = TYVModelLoaded;
-//    }
+    [self request];
 }
 
-- (void)fillModel:(TYVAbstractDataModel *)model {
+- (void)parseWithResult:(id)result error:(NSError *)error {
     
 }
 
 - (void)cancel {
+    [self.connection cancel];
+}
 
+- (void)request {
+    FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:self.graphPath parameters:nil];
+    self.connection = [request startWithCompletionHandler:self.handler];
 }
 
 @end

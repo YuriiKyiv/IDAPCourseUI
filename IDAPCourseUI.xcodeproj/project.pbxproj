@@ -13,7 +13,6 @@
 		5A22FDB21B2E935B0005AFDC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A22FDA81B2E935B0005AFDC /* LaunchScreen.xib */; };
 		5A22FDB31B2E935B0005AFDC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A22FDAA1B2E935B0005AFDC /* Images.xcassets */; };
 		5A4CC0A11B6770A300A79584 /* TYVContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CC00A1B6770A300A79584 /* TYVContext.m */; };
-		5A4CC0A21B6770A300A79584 /* TYVFacebookContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CC00D1B6770A300A79584 /* TYVFacebookContext.m */; };
 		5A4CC0A31B6770A300A79584 /* TYVLoginContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CC0101B6770A300A79584 /* TYVLoginContext.m */; };
 		5A4CC0A41B6770A300A79584 /* TYVUserContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CC0131B6770A300A79584 /* TYVUserContext.m */; };
 		5A4CC0A51B6770A300A79584 /* TYVUsersContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CC0161B6770A300A79584 /* TYVUsersContext.m */; };
@@ -97,8 +96,6 @@
 		5A22FDAA1B2E935B0005AFDC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5A4CC0091B6770A300A79584 /* TYVContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVContext.h; sourceTree = "<group>"; };
 		5A4CC00A1B6770A300A79584 /* TYVContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVContext.m; sourceTree = "<group>"; };
-		5A4CC00C1B6770A300A79584 /* TYVFacebookContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVFacebookContext.h; sourceTree = "<group>"; };
-		5A4CC00D1B6770A300A79584 /* TYVFacebookContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVFacebookContext.m; sourceTree = "<group>"; };
 		5A4CC00F1B6770A300A79584 /* TYVLoginContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVLoginContext.h; sourceTree = "<group>"; };
 		5A4CC0101B6770A300A79584 /* TYVLoginContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVLoginContext.m; sourceTree = "<group>"; };
 		5A4CC0121B6770A300A79584 /* TYVUserContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVUserContext.h; sourceTree = "<group>"; };
@@ -316,7 +313,6 @@
 			isa = PBXGroup;
 			children = (
 				5A4CC0081B6770A300A79584 /* TYVContext */,
-				5A4CC00B1B6770A300A79584 /* TYVFacebookContext */,
 				5A4CC00E1B6770A300A79584 /* TYVLoginContext */,
 				5A4CC0111B6770A300A79584 /* TYVUserContext */,
 				5A4CC0141B6770A300A79584 /* TYVUsersContext */,
@@ -331,15 +327,6 @@
 				5A4CC00A1B6770A300A79584 /* TYVContext.m */,
 			);
 			path = TYVContext;
-			sourceTree = "<group>";
-		};
-		5A4CC00B1B6770A300A79584 /* TYVFacebookContext */ = {
-			isa = PBXGroup;
-			children = (
-				5A4CC00C1B6770A300A79584 /* TYVFacebookContext.h */,
-				5A4CC00D1B6770A300A79584 /* TYVFacebookContext.m */,
-			);
-			path = TYVFacebookContext;
 			sourceTree = "<group>";
 		};
 		5A4CC00E1B6770A300A79584 /* TYVLoginContext */ = {
@@ -1001,7 +988,6 @@
 				5A4CC0A61B6770A300A79584 /* NSArray+TYVExtentions.m in Sources */,
 				5A4CC0C21B6770A300A79584 /* TYVFriendDetailViewController.m in Sources */,
 				5A4CC0C91B6770A300A79584 /* TYVLoginView.m in Sources */,
-				5A4CC0A21B6770A300A79584 /* TYVFacebookContext.m in Sources */,
 				5A4CC0C11B6770A300A79584 /* TYVFBNavigationViewController.m in Sources */,
 				5A4CC0C01B6770A300A79584 /* TYVProtocolObservableObject.m in Sources */,
 				5A4CC0D41B6770A300A79584 /* TYVImageView.m in Sources */,

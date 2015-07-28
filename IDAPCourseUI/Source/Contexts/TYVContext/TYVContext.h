@@ -11,21 +11,32 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSUInteger, TYVContextState) {
+    TYVContextStateCount
+};
+
 @class TYVAbstractDataModel;
 
 @interface TYVContext : NSObject
-@property (nonatomic, strong)   TYVAbstractDataModel        *model;
+@property (nonatomic, strong)   id                          model;
 @property (nonatomic, strong)   FBSDKGraphRequestConnection *connection;
-@property (nonatomic, assign)   NSError                     *error;
+@property (nonatomic, strong)   NSError                     *error;
+
+//You should overrinde this property
+@property (nonatomic, readonly)   NSString    *graphPath;
+@property (nonatomic, readonly)   id          handler;
 
 + (instancetype)contextWithModel:(TYVAbstractDataModel *)model;
 - (instancetype)initWithModel:(TYVAbstractDataModel *)model;
 
 - (void)execute;
 
-// This is the method for overriding
-- (void)fillModel:(TYVAbstractDataModel *)model;
-
 - (void)cancel;
+
+//You should overrinde this method
+- (void)parseWithResult:(id)result error:(NSError *)error;
+
+//You should overrinde this method
+- (void)request;
 
 @end
