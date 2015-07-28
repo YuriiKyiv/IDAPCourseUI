@@ -31,7 +31,7 @@ static NSString * const kTYVFriendsGraphPath    = @"me/friends";
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)parseResult:(id)result {
+- (void)parseWithResult:(id)result error:(NSError *)error {
     NSArray *data = result[kTYVDataKey];
     TYVUserModel *userModel = self.model;
     TYVUsersModel *usersModel = [TYVUsersModel dataWithModelsCount:[data count]];
@@ -44,6 +44,7 @@ static NSString * const kTYVFriendsGraphPath    = @"me/friends";
     }
     
     userModel.friends = usersModel;
+    userModel.state = TYVUserModelFriendsLoaded;
 }
 
 @end

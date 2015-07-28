@@ -13,6 +13,8 @@
 @optional
 - (void)userIDDidLoad:(id)model;
 
+- (void)userFriendsDidLoad:(id)model;
+
 //- (void)modelWillLoad:(id)model;
 //
 //- (void)modelDidLoad:(id)model;

@@ -19,6 +19,12 @@
     self.model = nil;
 }
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    [self showLoadingView];
+}
+
 #pragma mark -
 #pragma mark Accessors
 
@@ -34,7 +40,7 @@
 #pragma mark -
 #pragma mark Model observer
 
-- (void)modelDidLoad:(TYVUserModel *)model {
+- (void)userFriendsDidLoad:(TYVUserModel *)model {
     TYVDispatchAsyncOnMainQueueWithBlock(^{
         [self.tableView reloadData];
         [self hideLoadingView];
