@@ -51,7 +51,7 @@ static NSString * const  kTYVButtonTitleLogOut = @"LogOut";
 #pragma mark -
 #pragma mark Model observer
 
-- (void)modelDidLoad:(TYVUserModel *)model {
+- (void)userIDDidLoad:(TYVUserModel *)model {
     TYVDispatchAsyncOnMainQueueWithBlock(^{
         [self fillWithModel:model];
     });

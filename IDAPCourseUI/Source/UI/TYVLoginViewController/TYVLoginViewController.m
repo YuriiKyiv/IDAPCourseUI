@@ -23,6 +23,7 @@ TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 
 - (void)pushFriendsViewControllerWithModel:(TYVUserModel *)model;
 - (void)prerareModel;
+- (void)zeroingModelID:(TYVUserModel *)model;
 
 @end
 
@@ -83,9 +84,7 @@ TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 - (IBAction)onLoginButton:(id)sender {
     TYVUserModel *model = self.userModel;
     if (model.ID) {
-        [[[FBSDKLoginManager alloc] init] logOut];
-        model.ID = nil;
-        model.state = TYVModelUnloaded;
+        [self zeroingModelID:model];
     } else {
         self.loginContext = [TYVLoginContext contextWithModel:self.userModel];
         [self.loginContext execute];
@@ -94,6 +93,14 @@ TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 
 #pragma mark -
 #pragma mark Private Methods
+
+- (void)zeroingModelID:(TYVUserModel *)model {
+    if (model.ID) {
+        model.ID = nil;
+        model.state = TYVModelUnloaded;
+        [[[FBSDKLoginManager alloc] init] logOut];
+    }
+}
 
 - (void)prerareModel {
     self.userModel.ID = [FBSDKAccessToken currentAccessToken].userID;
@@ -111,7 +118,7 @@ TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 #pragma mark -
 #pragma mark Observer Model
 
-- (void)modelDidLoad:(TYVUserModel *)model {
+- (void)userIDDidLoad:(TYVUserModel *)model {
     if (model.ID) {
         [self pushFriendsViewControllerWithModel:model];
     }

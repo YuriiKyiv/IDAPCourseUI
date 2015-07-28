@@ -63,7 +63,7 @@ static NSString * const kTYVUserFriends = @"user_friends";
 
 - (void)parseWithResult:(id)result error:(NSError *)error {
     ((TYVUserModel *)self.model).ID = [FBSDKAccessToken currentAccessToken].userID;
-    ((TYVUserModel *)self.model).state = TYVModelLoaded;
+    ((TYVUserModel *)self.model).state = TYVUserModelIDLoaded;
 }
 
 #pragma mark -
