@@ -15,6 +15,7 @@
 #import "TYVFriendsView.h"
 #import "TYVDispatch.h"
 #import "TYVFriendCell.h"
+#import "TYVFriendDetailViewController.h"
 
 #import "UITableView+TYVExtentions.h"
 
@@ -45,7 +46,6 @@ TYVViewControllerProperty(TYVFriendsViewController, friendsView, TYVFriendsView)
         [_model addObserver:self];
         
         self.context = [TYVUsersContext contextWithModel:_model];
-        [self.context execute];
     }
 }
 
@@ -80,6 +80,15 @@ TYVViewControllerProperty(TYVFriendsViewController, friendsView, TYVFriendsView)
     cell.model = self.model.friends[indexPath.row];
     
     return cell;
+}
+
+#pragma mark -
+#pragma mark UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    TYVFriendDetailViewController *controller = [TYVFriendDetailViewController new];
+    controller.model = self.model.friends[indexPath.row];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end

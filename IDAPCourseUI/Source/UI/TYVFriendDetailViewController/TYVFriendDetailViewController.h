@@ -10,5 +10,6 @@
 #import "TYVAbstractViewController.h"
 
 @interface TYVFriendDetailViewController : TYVAbstractViewController
+@property (nonatomic, strong) TYVUserModel  *model;
 
 @end
