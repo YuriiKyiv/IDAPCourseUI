@@ -54,7 +54,7 @@ static NSString * const kTYVUserFriends = @"user_friends";
 #pragma mark Public Methods
 
 - (void)request {
-    if (![FBSDKAccessToken currentAccessToken]) {
+    if ([FBSDKAccessToken currentAccessToken]) {
         [self parseWithResult:nil error:nil];
     } else {
         [self makeLogin];
@@ -63,6 +63,7 @@ static NSString * const kTYVUserFriends = @"user_friends";
 
 - (void)parseWithResult:(id)result error:(NSError *)error {
     ((TYVUserModel *)self.model).ID = [FBSDKAccessToken currentAccessToken].userID;
+    ((TYVUserModel *)self.model).state = TYVModelLoaded;
 }
 
 #pragma mark -

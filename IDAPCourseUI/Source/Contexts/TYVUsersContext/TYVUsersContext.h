@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 YURII. All rights reserved.
 //
 
-#import "TYVFacebookContext.h"
+#import "TYVContext.h"
 
 @class TYVUsersModel;
 
-@interface TYVUsersContext : TYVFacebookContext
+@interface TYVUsersContext : TYVContext
 
 @end
