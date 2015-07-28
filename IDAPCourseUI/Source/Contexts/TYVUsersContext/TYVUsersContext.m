@@ -44,7 +44,7 @@ static NSString * const kTYVFriendsGraphPath    = @"me/friends";
     }
     
     userModel.friends = usersModel;
-    userModel.state = TYVUserModelFriendsLoaded;
+    userModel.state = TYVUserFriendsLoaded;
 }
 
 @end

@@ -9,9 +9,9 @@
 #import "TYVAbstractDataModel.h"
 
 typedef NS_ENUM(NSUInteger, TYVUserModelState) {
-    TYVUserModelIDLoaded = TYVModelLoaded,
-    TYVUserModelFriendsLoaded = TYVModelStateCount,
-    TYVUserModelDetailLoaded
+    TYVUserIDLoaded = TYVModelLoaded,
+    TYVUserFriendsLoaded = TYVModelStateCount,
+    TYVUserDetailLoaded
 };
 
 @class TYVImageModel;

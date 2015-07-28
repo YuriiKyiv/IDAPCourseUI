@@ -9,8 +9,6 @@
 #import "TYVUserContext.h"
 #import "TYVUserModel.h"
 
-static CGSize const TYVImageSize =  {100, 100};
-
 @interface TYVUserContext ()
 
 @end
@@ -18,28 +16,22 @@ static CGSize const TYVImageSize =  {100, 100};
 @implementation TYVUserContext
 
 #pragma mark -
+#pragma mark Accessors
+
+- (NSString *)graphPath {
+    return [((TYVUserModel *)self.model).ID stringByAppendingString:@"?fields=id,first_name,last_name,picture"];
+}
+
+#pragma mark -
 #pragma mark Public Methods
 
-//- (void)fillModel:(TYVUserModel *)model {
-//    model.state = TYVModelWillLoad;
-//    FBSDKProfile *profile = [FBSDKProfile currentProfile];
-//    model.ID = profile.userID;
-//    model.firstName = profile.firstName;
-//    model.lastName = profile.lastName;
-//    model.imagePath = [profile imagePathForPictureMode:FBSDKProfilePictureModeSquare
-//                                                  size:TYVImageSize];
-//    
-//    FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
-//                                  initWithGraphPath:@"/me/friendlists"
-//                                  parameters:nil
-//                                  HTTPMethod:@"GET"];
-//    [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection,
-//                                          id result,
-//                                          NSError *error) {
-//        NSLog(@"Done");
-//    }];
-//    
-//    model.state = TYVModelLoaded;
-//}
+- (void)parseWithResult:(id)result error:(NSError *)error {
+    TYVUserModel *model = (TYVUserModel *)self.model;
+    model.firstName = result[@"first_name"];
+    model.firstName = result[@"last_name"];
+    model.imagePath = result[@"picture"][@"data"][@"url"];
+    
+    model.state = TYVUserDetailLoaded;
+}
 
 @end

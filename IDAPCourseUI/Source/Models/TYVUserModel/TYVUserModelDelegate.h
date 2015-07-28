@@ -15,12 +15,6 @@
 
 - (void)userFriendsDidLoad:(id)model;
 
-//- (void)modelWillLoad:(id)model;
-//
-//- (void)modelDidLoad:(id)model;
-//
-//- (void)modelDidFailedLoading:(id)model;
-//
-//- (void)model:(id)model didChangeWithObject:(id)object;
+- (void)userDetailsDidLoad:(id)model;
 
 @end

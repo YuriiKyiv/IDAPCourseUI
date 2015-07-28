@@ -30,6 +30,19 @@
 
 - (void)fillWithModel:(TYVUserModel *)model {
     self.nameLabel.text = model.firstName;
+    self.imageView.imageModel = model.imageModel;
 }
+
+#pragma mark -
+#pragma mark Observer
+
+- (void)userDetailsDidLoad:(id)model {
+    TYVWeakify(self);
+    TYVDispatchAsyncOnMainQueueWithBlock(^{
+        TYVStrongifyAndReturnIfNil(self);
+        [self fillWithModel:model];
+    });
+}
+
 
 @end

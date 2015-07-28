@@ -26,21 +26,15 @@
 
 - (SEL)selectorForState:(NSUInteger)state {
     switch (state) {
-        case TYVUserModelIDLoaded:
+        case TYVUserIDLoaded:
             return @selector(userIDDidLoad:);
             
-        case TYVUserModelFriendsLoaded:
+        case TYVUserFriendsLoaded:
             return @selector(userFriendsDidLoad:);
+
+        case TYVUserDetailLoaded:
+            return @selector(userDetailsDidLoad:);
 //
-//        case TYVModelFailedLoading:
-//            return @selector(modelDidFailedLoading:);
-//            
-//        case TYVModelUnloaded:
-//            return @selector(modelDidUnload:);
-//            
-//        case TYVModelDidChange:
-//            return @selector(model:didChangeWithObject:);
-            
         default:
             return [super selectorForState:state];
     }
