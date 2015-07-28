@@ -13,7 +13,8 @@ typedef NS_ENUM(NSUInteger, TYVAbstractDataModelState) {
     TYVModelWillLoad,
     TYVModelLoaded,
     TYVModelFailedLoading,
-    TYVModelDidChange
+    TYVModelDidChange,
+    TYVModelStateCount
 };
 
 @interface TYVAbstractDataModel : TYVProtocolObservableObject

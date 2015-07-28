@@ -8,16 +8,22 @@
 
 #import "TYVAbstractDataModel.h"
 
+typedef NS_ENUM(NSUInteger, TYVUserModelState) {
+    TYVUserModelIDLoaded = TYVModelLoaded,
+    TYVUserModelFriendsLoaded = TYVModelStateCount,
+    TYVUserModelDetailLoaded
+};
+
 @class TYVImageModel;
 @class TYVUsersModel;
 
 @interface TYVUserModel : TYVAbstractDataModel
-@property (nonatomic, strong) NSString      *ID;
-@property (nonatomic, strong) NSString      *firstName;
-@property (nonatomic, strong) NSString      *lastName;
-@property (nonatomic, strong) TYVUsersModel *friends;
+@property (nonatomic, copy) NSString        *ID;
+@property (nonatomic, copy) NSString        *firstName;
+@property (nonatomic, copy) NSString        *lastName;
+@property (nonatomic, copy) TYVUsersModel   *friends;
 
-@property (nonatomic, strong)   NSString        *imagePath;
+@property (nonatomic, copy)     NSString        *imagePath;
 @property (nonatomic, readonly) TYVImageModel   *imageModel;
 
 @end
