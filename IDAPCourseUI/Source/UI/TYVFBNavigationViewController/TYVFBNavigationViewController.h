@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 YURII. All rights reserved.
 //
 
-#import "TYVAbstractNavigationViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface TYVFBNavigationViewController : TYVAbstractNavigationViewController
+@interface TYVFBNavigationViewController : UINavigationController
 
 @end

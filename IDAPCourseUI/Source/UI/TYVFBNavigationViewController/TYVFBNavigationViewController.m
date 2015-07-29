@@ -7,9 +7,6 @@
 //
 
 #import "TYVFBNavigationViewController.h"
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import "TYVFriendsViewController.h"
 
 @implementation TYVFBNavigationViewController
 

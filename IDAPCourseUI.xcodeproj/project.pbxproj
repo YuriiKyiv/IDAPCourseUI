@@ -26,7 +26,6 @@
 		5A4CC0AD1B6770A300A79584 /* UITableView+TYVExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CC0301B6770A300A79584 /* UITableView+TYVExtentions.m */; };
 		5A4CC0AE1B6770A300A79584 /* UIWindow+TYVExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CC0331B6770A300A79584 /* UIWindow+TYVExtentions.m */; };
 		5A4CC0AF1B6770A300A79584 /* TYVAbstractDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CC0371B6770A300A79584 /* TYVAbstractDataModel.m */; };
-		5A4CC0B01B6770A300A79584 /* TYVAbstractNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CC03B1B6770A300A79584 /* TYVAbstractNavigationViewController.m */; };
 		5A4CC0B11B6770A300A79584 /* TYVAbstractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CC03E1B6770A300A79584 /* TYVAbstractViewController.m */; };
 		5A4CC0B21B6770A300A79584 /* TYVDataArrayModelInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CC0411B6770A300A79584 /* TYVDataArrayModelInfo.m */; };
 		5A4CC0B31B6770A300A79584 /* TYVImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CC0441B6770A300A79584 /* TYVImageCache.m */; };
@@ -126,8 +125,6 @@
 		5A4CC0361B6770A300A79584 /* TYVAbstractDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVAbstractDataModel.h; sourceTree = "<group>"; };
 		5A4CC0371B6770A300A79584 /* TYVAbstractDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVAbstractDataModel.m; sourceTree = "<group>"; };
 		5A4CC0381B6770A300A79584 /* TYVAbstractDataModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVAbstractDataModelProtocol.h; sourceTree = "<group>"; };
-		5A4CC03A1B6770A300A79584 /* TYVAbstractNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVAbstractNavigationViewController.h; sourceTree = "<group>"; };
-		5A4CC03B1B6770A300A79584 /* TYVAbstractNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVAbstractNavigationViewController.m; sourceTree = "<group>"; };
 		5A4CC03D1B6770A300A79584 /* TYVAbstractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVAbstractViewController.h; sourceTree = "<group>"; };
 		5A4CC03E1B6770A300A79584 /* TYVAbstractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVAbstractViewController.m; sourceTree = "<group>"; };
 		5A4CC0401B6770A300A79584 /* TYVDataArrayModelInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVDataArrayModelInfo.h; sourceTree = "<group>"; };
@@ -481,7 +478,6 @@
 			isa = PBXGroup;
 			children = (
 				5A4CC0351B6770A300A79584 /* TYVAbstractDataModel */,
-				5A4CC0391B6770A300A79584 /* TYVAbstractNavigationViewController */,
 				5A4CC03C1B6770A300A79584 /* TYVAbstractViewController */,
 				5A4CC03F1B6770A300A79584 /* TYVDataArrayModelInfo */,
 				5A4CC0421B6770A300A79584 /* TYVImageCache */,
@@ -500,15 +496,6 @@
 				5A4CC0381B6770A300A79584 /* TYVAbstractDataModelProtocol.h */,
 			);
 			path = TYVAbstractDataModel;
-			sourceTree = "<group>";
-		};
-		5A4CC0391B6770A300A79584 /* TYVAbstractNavigationViewController */ = {
-			isa = PBXGroup;
-			children = (
-				5A4CC03A1B6770A300A79584 /* TYVAbstractNavigationViewController.h */,
-				5A4CC03B1B6770A300A79584 /* TYVAbstractNavigationViewController.m */,
-			);
-			path = TYVAbstractNavigationViewController;
 			sourceTree = "<group>";
 		};
 		5A4CC03C1B6770A300A79584 /* TYVAbstractViewController */ = {
@@ -1020,7 +1007,6 @@
 				5A4CC0CA1B6770A300A79584 /* TYVLoginViewController.m in Sources */,
 				5A4CC0C71B6770A300A79584 /* TYVFriendCell.m in Sources */,
 				5A4CC0A41B6770A300A79584 /* TYVUserContext.m in Sources */,
-				5A4CC0B01B6770A300A79584 /* TYVAbstractNavigationViewController.m in Sources */,
 				5A4CC0D81B6770A300A79584 /* TYVLoadingViewHolder.m in Sources */,
 				5A4CC0BE1B6770A300A79584 /* TYVAppDelegate.m in Sources */,
 				5A4CC0BD1B6770A300A79584 /* TYVUsersModel.m in Sources */,

@@ -51,6 +51,11 @@
 #pragma mark Public Methods
 
 - (void)request {
+    TYVUserModel *model = self.model;
+    if (model.state == TYVUserIDLoaded) {
+        return;
+    }
+    
     if ([FBSDKAccessToken currentAccessToken]) {
         [self parseWithResult:nil error:nil];
     } else {
