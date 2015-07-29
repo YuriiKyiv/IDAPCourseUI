@@ -7,7 +7,7 @@
 //
 
 #import "TYVUsersContext.h"
-#import "TYVUsersModel.h"
+#import "TYVModelArray.h"
 #import "TYVUserModel.h"
 #import "TYVFacebookConstants.h"
 
@@ -30,7 +30,7 @@
 - (void)parseWithResult:(id)result error:(NSError *)error {
     NSArray *data = result[kTYVDataKey];
     TYVUserModel *userModel = self.model;
-    TYVUsersModel *usersModel = [TYVUsersModel dataWithModelsCount:[data count]];
+    TYVModelArray *usersModel = [TYVModelArray dataWithModelsCount:[data count]];
     
     for (id friend in data) {
         TYVUserModel *tempUser = [TYVUserModel new];

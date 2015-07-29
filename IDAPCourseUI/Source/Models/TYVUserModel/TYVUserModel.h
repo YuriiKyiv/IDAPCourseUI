@@ -15,14 +15,14 @@ typedef NS_ENUM(NSUInteger, TYVUserModelState) {
 };
 
 @class TYVImageModel;
-@class TYVUsersModel;
+@class TYVModelArray;
 
 @interface TYVUserModel : TYVAbstractDataModel
 @property (nonatomic, copy) NSString        *ID;
 @property (nonatomic, copy) NSString        *firstName;
 @property (nonatomic, copy) NSString        *lastName;
 
-@property (nonatomic, strong) TYVUsersModel   *friends;
+@property (nonatomic, strong) TYVModelArray *friends;
 
 @property (nonatomic, copy)     NSURL           *imagePath;
 @property (nonatomic, readonly) TYVImageModel   *imageModel;

@@ -8,7 +8,7 @@
 
 #import "TYVContext.h"
 
-@class TYVUsersModel;
+@class TYVModelArray;
 
 @interface TYVUsersContext : TYVContext
 

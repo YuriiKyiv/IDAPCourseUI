@@ -10,7 +10,7 @@
 #import "TYVUserContext.h"
 #import "TYVUsersContext.h"
 #import "TYVUserModel.h"
-#import "TYVUsersModel.h"
+#import "TYVModelArray.h"
 #import "TYVMacro.h"
 #import "TYVFriendsView.h"
 #import "TYVDispatch.h"
