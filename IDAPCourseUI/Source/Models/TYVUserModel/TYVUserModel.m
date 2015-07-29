@@ -18,7 +18,7 @@
 #pragma mark Accesors
 
 - (TYVImageModel *)imageModel {
-    return [TYVImageModel imageWithURL:[NSURL URLWithString:self.imagePath]];
+    return [TYVImageModel imageWithURL:self.imagePath];
 }
 
 #pragma mark -

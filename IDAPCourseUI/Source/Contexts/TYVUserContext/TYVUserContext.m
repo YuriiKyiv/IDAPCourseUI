@@ -31,7 +31,7 @@
     TYVUserModel *model = self.model;
     model.firstName = result[kTYVFirstName];
     model.firstName = result[kTYVLastName];
-    model.imagePath = result[kTYVPicture][kTYVDataKey][kTYVUrl];
+    model.imagePath = [NSURL URLWithString:result[kTYVPicture][kTYVDataKey][kTYVUrl]];
     
     model.state = TYVUserDetailLoaded;
 }
