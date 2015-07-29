@@ -12,6 +12,6 @@
 @class TYVUserModel;
 
 @interface TYVFriendsViewController : TYVAbstractViewController <UITableViewDataSource, UITableViewDelegate>
-@property (nonatomic, strong)   TYVUserModel   *model;
+//@property (nonatomic, strong)   TYVUserModel   *model;
 
 @end

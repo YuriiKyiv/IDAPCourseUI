@@ -12,8 +12,9 @@
 @class TYVContext;
 
 @interface TYVAbstractViewController : UIViewController
-@property (nonatomic, strong) Class         contextClassName;
-@property (nonatomic, strong) TYVUserModel  *model;
-@property (nonatomic, strong) TYVContext    *context;
+// You should override this property
+@property (nonatomic, readonly) Class         contextClassName;
+@property (nonatomic, strong)   TYVUserModel  *model;
+@property (nonatomic, strong)   TYVContext    *context;
 
 @end

@@ -30,7 +30,7 @@
 #pragma mark Accessors
 
 - (Class )contextClassName {
-    return NSClassFromString([NSStringFromClass([self class]) stringByAppendingString:@"Context"]);
+    return nil;
 }
 
 - (void)setModel:(TYVUserModel *)model {

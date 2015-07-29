@@ -21,42 +21,14 @@
 
 TYVViewControllerProperty(TYVFriendsViewController, friendsView, TYVFriendsView)
 
-@interface TYVFriendsViewController ()
-@property (nonatomic, strong)   TYVUsersContext *context;
-@end
-
 @implementation TYVFriendsViewController
-//
-//#pragma mark -
-//#pragma mark Initialization and Deallocation
-//
-//- (void)dealloc {
-//    self.model = nil;
-//    self.context = nil;
-//}
-//
-//#pragma mark -
-//#pragma mark Accessors
-//
-//- (void)setModel:(TYVUserModel *)model {
-//    if (_model != model) {
-//        [_model removeObserver:self];
-//        
-//        _model = model;
-//        [_model addObserver:self];
-//        
-//        self.context = [TYVUsersContext contextWithModel:_model];
-//    }
-//}
-//
-//- (void)setContext:(TYVUsersContext *)context {
-//    if (_context != context) {
-//        [_context cancel];
-//        
-//        _context = context;
-//        [_context execute];
-//    }
-//}
+
+#pragma mark -
+#pragma mark Accessors
+
+- (Class)contextClassName {
+    return [TYVUsersContext class];
+}
 
 #pragma mark -
 #pragma mark View Lifecycle

@@ -14,11 +14,14 @@
 
 TYVViewControllerProperty(TYVFriendDetailViewController, friendDetailView, TYVFriendDetailView)
 
-@interface TYVFriendDetailViewController ()
-
-@end
-
 @implementation TYVFriendDetailViewController
+
+#pragma mark -
+#pragma mark Accessors
+
+- (Class)contextClassName {
+    return [TYVUserContext class];
+}
 
 #pragma mark -
 #pragma mark View Lifecycle
