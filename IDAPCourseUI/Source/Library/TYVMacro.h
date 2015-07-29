@@ -46,3 +46,11 @@
     if  (!objectName) {  \
         return; \
     }
+
+#define TYVContextSetter(propertyName) \
+    if (_##propertyName != propertyName) { \
+        [_##propertyName cancel]; \
+ \
+        _##propertyName = propertyName; \
+        [_##propertyName execute]; \
+    }

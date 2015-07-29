@@ -70,6 +70,7 @@
 		5A4CC0DD1B679FD400A79584 /* TYVFriendDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4CC0DC1B679FD400A79584 /* TYVFriendDetailView.m */; };
 		5A9820B51B32E9F3009B9CF3 /* image.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5A9820B31B32E9F3009B9CF3 /* image.jpeg */; };
 		5A9820B61B32E9F3009B9CF3 /* Orion_Nebula.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5A9820B41B32E9F3009B9CF3 /* Orion_Nebula.jpg */; };
+		5AB4EB7A1B68C8BE00F16344 /* TYVLoadingLoginContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB4EB791B68C8BE00F16344 /* TYVLoadingLoginContext.m */; };
 		6331696513B748192E956D52 /* libPods-IDAPCourseUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B92650CB89E7C229EF2529 /* libPods-IDAPCourseUITests.a */; };
 		80E9027A2ABB246E5F9AC024 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDC0467829F53D11C6545E79 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -203,6 +204,8 @@
 		5A4CC0DC1B679FD400A79584 /* TYVFriendDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVFriendDetailView.m; sourceTree = "<group>"; };
 		5A9820B31B32E9F3009B9CF3 /* image.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpeg; sourceTree = "<group>"; };
 		5A9820B41B32E9F3009B9CF3 /* Orion_Nebula.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Orion_Nebula.jpg; sourceTree = "<group>"; };
+		5AB4EB781B68C8BE00F16344 /* TYVLoadingLoginContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVLoadingLoginContext.h; path = TYVLoadingLoginContext/TYVLoadingLoginContext.h; sourceTree = "<group>"; };
+		5AB4EB791B68C8BE00F16344 /* TYVLoadingLoginContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYVLoadingLoginContext.m; path = TYVLoadingLoginContext/TYVLoadingLoginContext.m; sourceTree = "<group>"; };
 		5FC4DCCC758417DA7DC968CF /* Pods-IDAPCourseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IDAPCourseUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IDAPCourseUITests/Pods-IDAPCourseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		61AAF3A10BE74D86D7CEF37A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CDC0467829F53D11C6545E79 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -320,6 +323,7 @@
 				5A4CC00E1B6770A300A79584 /* TYVLoginContext */,
 				5A4CC0111B6770A300A79584 /* TYVUserContext */,
 				5A4CC0141B6770A300A79584 /* TYVUsersContext */,
+				5AB4EB7B1B68C8C200F16344 /* TYVLoadingLoginContext */,
 			);
 			path = Contexts;
 			sourceTree = "<group>";
@@ -804,6 +808,15 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		5AB4EB7B1B68C8C200F16344 /* TYVLoadingLoginContext */ = {
+			isa = PBXGroup;
+			children = (
+				5AB4EB781B68C8BE00F16344 /* TYVLoadingLoginContext.h */,
+				5AB4EB791B68C8BE00F16344 /* TYVLoadingLoginContext.m */,
+			);
+			name = TYVLoadingLoginContext;
+			sourceTree = "<group>";
+		};
 		7D0029DA753A63C117B432FB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1027,6 +1040,7 @@
 				5A4CC0A71B6770A300A79584 /* NSBundle+TYVExtensions.m in Sources */,
 				5A4CC0B91B6770A300A79584 /* TYVDataModel.m in Sources */,
 				5A4CC0BB1B6770A300A79584 /* TYVSquare.m in Sources */,
+				5AB4EB7A1B68C8BE00F16344 /* TYVLoadingLoginContext.m in Sources */,
 				5A22FDB11B2E935B0005AFDC /* main.m in Sources */,
 				5A4CC0A51B6770A300A79584 /* TYVUsersContext.m in Sources */,
 				5A4CC0B71B6770A300A79584 /* TYVMacro.m in Sources */,

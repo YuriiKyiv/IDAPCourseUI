@@ -14,15 +14,14 @@
 #import "TYVUserModel.h"
 #import "TYVLoginContext.h"
 #import "TYVDispatch.h"
+#import "TYVLoadingLoginContext.h"
 
 TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 
 @interface TYVLoginViewController ()
-@property (nonatomic, strong)   TYVUserModel    *userModel;
 @property (nonatomic, strong)   TYVLoginContext *loginContext;
 
 - (void)pushFriendsViewControllerWithModel:(TYVUserModel *)model;
-- (void)prerareModel;
 - (void)zeroingModelID:(TYVUserModel *)model;
 
 @end
@@ -32,14 +31,10 @@ TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 #pragma mark -
 #pragma mark Initialization and Dealocation
 
-- (void)dealloc {
-    self.userModel = nil;
-}
-
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.userModel = [TYVUserModel new];
+        self.model = [TYVUserModel new];
     }
     
     return self;
@@ -48,15 +43,12 @@ TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setUserModel:(TYVUserModel *)userModel {
-    if (_userModel != userModel) {
-        [_userModel removeObserver:self];
-        
-        _userModel = userModel;
-        [_userModel addObserver:self];
-        
-        [self prerareModel];
-    }
+- (Class)contextClassName {
+    return [TYVLoadingLoginContext class];
+}
+
+- (void)setLoginContext:(TYVLoginContext *)loginContext {
+    TYVContextSetter(loginContext)
 }
 
 #pragma mark -
@@ -65,29 +57,26 @@ TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (self.userModel.ID) {
-        [self pushFriendsViewControllerWithModel:self.userModel];
+    if (self.model.ID) {
+        [self pushFriendsViewControllerWithModel:self.model];
     }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    TYVDispatchAsyncOnMainQueueWithBlock(^{
-        self.loginView.model = self.userModel;
-    });
+    self.loginView.model = self.model;
 }
 
 #pragma mark -
 #pragma mark Interface Handling
 
 - (IBAction)onLoginButton:(id)sender {
-    TYVUserModel *model = self.userModel;
+    TYVUserModel *model = self.model;
     if (model.ID) {
         [self zeroingModelID:model];
     } else {
-        self.loginContext = [TYVLoginContext contextWithModel:self.userModel];
-        [self.loginContext execute];
+        self.loginContext = [TYVLoginContext contextWithModel:self.model];
     }
 }
 
@@ -100,11 +89,6 @@ TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
         model.state = TYVModelUnloaded;
         [[[FBSDKLoginManager alloc] init] logOut];
     }
-}
-
-- (void)prerareModel {
-    self.userModel.ID = [FBSDKAccessToken currentAccessToken].userID;
-    self.userModel.state = TYVModelLoaded;
 }
 
 - (void)pushFriendsViewControllerWithModel:(TYVUserModel *)model {
