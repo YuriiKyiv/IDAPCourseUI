@@ -11,10 +11,7 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "TYVUserModel.h"
 #import "TYVDispatch.h"
-
-static NSString * const kTYVPublicProfile = @"public_profile";
-static NSString * const kTYVEmail = @"email";
-static NSString * const kTYVUserFriends = @"user_friends";
+#import "TYVFacebookConstants.h"
 
 @interface TYVLoginContext ()
 @property (nonatomic, strong)   NSArray             *permissions;
@@ -62,8 +59,9 @@ static NSString * const kTYVUserFriends = @"user_friends";
 }
 
 - (void)parseWithResult:(id)result error:(NSError *)error {
-    ((TYVUserModel *)self.model).ID = [FBSDKAccessToken currentAccessToken].userID;
-    ((TYVUserModel *)self.model).state = TYVUserIDLoaded;
+    TYVUserModel *model = self.model;
+    model.ID = [FBSDKAccessToken currentAccessToken].userID;
+    model.state = TYVUserIDLoaded;
 }
 
 #pragma mark -

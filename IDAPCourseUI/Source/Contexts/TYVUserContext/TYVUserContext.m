@@ -8,6 +8,7 @@
 
 #import "TYVUserContext.h"
 #import "TYVUserModel.h"
+#import "TYVFacebookConstants.h"
 
 @interface TYVUserContext ()
 
@@ -19,17 +20,18 @@
 #pragma mark Accessors
 
 - (NSString *)graphPath {
-    return [((TYVUserModel *)self.model).ID stringByAppendingString:@"?fields=id,first_name,last_name,picture"];
+    TYVUserModel *model = self.model;
+    return [model.ID stringByAppendingString:kTYVUserRequest];
 }
 
 #pragma mark -
 #pragma mark Public Methods
 
 - (void)parseWithResult:(id)result error:(NSError *)error {
-    TYVUserModel *model = (TYVUserModel *)self.model;
-    model.firstName = result[@"first_name"];
-    model.firstName = result[@"last_name"];
-    model.imagePath = result[@"picture"][@"data"][@"url"];
+    TYVUserModel *model = self.model;
+    model.firstName = result[kTYVFirstName];
+    model.firstName = result[kTYVLastName];
+    model.imagePath = result[kTYVPicture][kTYVDataKey][kTYVUrl];
     
     model.state = TYVUserDetailLoaded;
 }

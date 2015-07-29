@@ -9,11 +9,7 @@
 #import "TYVUsersContext.h"
 #import "TYVUsersModel.h"
 #import "TYVUserModel.h"
-
-static NSString * const kTYVDataKey             = @"data";
-static NSString * const kTYVNameKey             = @"name";
-static NSString * const kTYVIDKey               = @"id";
-static NSString * const kTYVFriendsGraphPath    = @"me/friends";
+#import "TYVFacebookConstants.h"
 
 @interface TYVUsersContext ()
 
