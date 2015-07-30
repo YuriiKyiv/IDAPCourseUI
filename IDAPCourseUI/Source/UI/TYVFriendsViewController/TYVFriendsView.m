@@ -15,43 +15,10 @@
 #pragma mark -
 #pragma mark Initialization and Deallocation
 
-- (void)dealloc {
-    self.model = nil;
-}
-
 - (void)awakeFromNib {
     [super awakeFromNib];
     
     [self showLoadingView];
-}
-
-#pragma mark -
-#pragma mark Accessors
-
-- (void)setModel:(TYVUserModel *)model {
-    if (model != _model) {
-        [_model removeObserver:self];
-        _model = model;
-        [_model addObserver:self];
-        [_model notify];
-    }
-}
-
-#pragma mark -
-#pragma mark Model observer
-
-- (void)userFriendsDidLoad:(TYVUserModel *)model {
-    TYVDispatchAsyncOnMainQueueWithBlock(^{
-        [self.tableView reloadData];
-        [self hideLoadingView];
-    });
-    
-}
-
-- (void)modelWillLoad:(id)model {
-    TYVDispatchAsyncOnMainQueueWithBlock(^{
-        [self showLoadingView];
-    });
 }
 
 @end

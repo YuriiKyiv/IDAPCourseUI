@@ -64,4 +64,21 @@ TYVViewControllerProperty(TYVFriendsViewController, friendsView, TYVFriendsView)
     [self.navigationController pushViewController:controller animated:YES];
 }
 
+#pragma mark -
+#pragma mark Model observer
+
+- (void)userFriendsDidLoad:(TYVUserModel *)model {
+    TYVDispatchAsyncOnMainQueueWithBlock(^{
+        [self.friendsView.tableView reloadData];
+        [self.friendsView hideLoadingView];
+    });
+    
+}
+
+- (void)modelWillLoad:(id)model {
+    TYVDispatchAsyncOnMainQueueWithBlock(^{
+        [self.friendsView showLoadingView];
+    });
+}
+
 @end
