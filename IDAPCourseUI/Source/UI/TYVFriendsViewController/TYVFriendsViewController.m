@@ -18,6 +18,7 @@
 #import "TYVFriendDetailViewController.h"
 
 #import "UITableView+TYVExtentions.h"
+#import "UIViewController+TYVExtentions.h"
 
 TYVViewControllerProperty(TYVFriendsViewController, friendsView, TYVFriendsView)
 
@@ -58,7 +59,7 @@ TYVViewControllerProperty(TYVFriendsViewController, friendsView, TYVFriendsView)
 #pragma mark UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    TYVFriendDetailViewController *controller = [TYVFriendDetailViewController new];
+    TYVFriendDetailViewController *controller = [TYVFriendDetailViewController controller];
     controller.model = self.model.friends[indexPath.row];
     [self.navigationController pushViewController:controller animated:YES];
 }

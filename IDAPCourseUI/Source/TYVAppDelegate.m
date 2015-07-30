@@ -18,6 +18,8 @@
 #import "TYVFriendsViewController.h"
 #import "TYVFBNavigationViewController.h"
 
+#import "UIViewController+TYVExtentions.h"
+
 static const NSUInteger kTYVDataArrayModelCount = 10;
 
 @interface TYVAppDelegate ()
@@ -36,7 +38,7 @@ static const NSUInteger kTYVDataArrayModelCount = 10;
     UIWindow *window = [UIWindow window];
     self.window = window;
     
-    TYVLoginViewController *controller = [TYVLoginViewController new];
+    TYVLoginViewController *controller = [TYVLoginViewController controller];
     
     
     TYVFBNavigationViewController *navigationController = [[TYVFBNavigationViewController alloc] initWithRootViewController:controller];

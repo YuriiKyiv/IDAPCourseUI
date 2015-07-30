@@ -16,6 +16,8 @@
 #import "TYVDispatch.h"
 #import "TYVLoadingLoginContext.h"
 
+#import "UIViewController+TYVExtentions.h"
+
 TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 
 @interface TYVLoginViewController ()
@@ -92,7 +94,7 @@ TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 }
 
 - (void)pushFriendsViewControllerWithModel:(TYVUserModel *)model {
-    TYVFriendsViewController *controller = [TYVFriendsViewController new];
+    TYVFriendsViewController *controller = [TYVFriendsViewController controller];
     controller.model = [TYVUserModel new];
     [self.navigationController pushViewController:controller animated:YES];
     
