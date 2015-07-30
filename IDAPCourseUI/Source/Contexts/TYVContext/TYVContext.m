@@ -12,6 +12,7 @@
 #import "TYVMacro.h"
 
 @interface TYVContext ()
+@property (nonatomic, assign, getter=isRunning) BOOL    running;
 
 - (void)request;
 
@@ -60,6 +61,7 @@
     {
         TYVStrongifyAndReturnIfNil(self);
         [self parseWithResult:result error:error];
+        self.running = NO;
     };
 }
 
@@ -71,6 +73,11 @@
 #pragma mark Public Methods
 
 - (void)execute {
+    if ([self isRunning]) {
+        return;
+    }
+    
+    self.running = YES;
     [self request];
 }
 
@@ -80,11 +87,13 @@
 
 - (void)cancel {
     [self.connection cancel];
+    self.running = NO;
 }
 
 - (void)request {
-    FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:self.graphPath parameters:nil];
-    self.connection = [request startWithCompletionHandler:self.handler];
+    self.connection = [[[FBSDKGraphRequest alloc] initWithGraphPath:self.graphPath
+                                                         parameters:nil]
+                       startWithCompletionHandler:self.handler];
 }
 
 @end

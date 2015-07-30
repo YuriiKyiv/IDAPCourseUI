@@ -111,12 +111,7 @@ typedef void(^TYVCompletionBlock)(id, id, id);
 }
 
 - (NSString *)path {
-    NSString *path = self.url.path;
-    if (path) {
-        return [[NSFileManager documentsDirectory] stringByAppendingString:path];
-    }
-    
-    return nil;
+    return [[NSFileManager documentsDirectory] stringByAppendingString:self.url.path];
 }
 
 - (TYVImageCache *)cache {

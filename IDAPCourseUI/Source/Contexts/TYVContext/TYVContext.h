@@ -26,6 +26,8 @@ typedef NS_ENUM(NSUInteger, TYVContextState) {
 @property (nonatomic, readonly)   NSString    *graphPath;
 @property (nonatomic, readonly)   id          handler;
 
+@property (nonatomic, readonly, getter=isRunning)   BOOL    running;
+
 + (instancetype)contextWithModel:(TYVAbstractDataModel *)model;
 - (instancetype)initWithModel:(TYVAbstractDataModel *)model;
 
