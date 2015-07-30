@@ -12,13 +12,4 @@
 
 @implementation TYVFriendsView
 
-#pragma mark -
-#pragma mark Initialization and Deallocation
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    [self showLoadingView];
-}
-
 @end

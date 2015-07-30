@@ -7,14 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TYVView.h"
 
 @class TYVUserModel;
 
-@interface TYVLoginView : UIView
+@interface TYVLoginView : TYVView
 @property (nonatomic, strong)   IBOutlet UIButton   *loginButton;
-
-@property (nonatomic, strong)   TYVUserModel    *model;
-
-- (void)fillWithModel:(TYVUserModel *)model;
 
 @end

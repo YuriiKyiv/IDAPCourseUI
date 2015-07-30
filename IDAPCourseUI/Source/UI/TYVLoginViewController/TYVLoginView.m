@@ -14,31 +14,7 @@
 static NSString * const  kTYVButtonTitleLogIn = @"LogIn";
 static NSString * const  kTYVButtonTitleLogOut = @"LogOut";
 
-@interface TYVLoginView ()
-
-@end
-
 @implementation TYVLoginView
-
-#pragma mark -
-#pragma mark Initialization and Deallocation
-
-- (void)dealloc {
-    self.model = nil;
-}
-
-#pragma mark -
-#pragma mark Accessors
-
-- (void)setModel:(TYVUserModel *)model {
-    if (model != _model) {
-        [_model removeObserver:self];
-        _model = model;
-        [_model addObserver:self];
-        
-        [self fillWithModel:model];
-    }
-}
 
 #pragma mark -
 #pragma mark Public Methods
@@ -54,12 +30,14 @@ static NSString * const  kTYVButtonTitleLogOut = @"LogOut";
 - (void)userIDDidLoad:(TYVUserModel *)model {
     TYVDispatchAsyncOnMainQueueWithBlock(^{
         [self fillWithModel:model];
+        [self hideLoadingView];
     });
     
 }
 
 - (void)modelDidUnload:(id)model {
     TYVDispatchAsyncOnMainQueueWithBlock(^{
+        [self showLoadingView];
         [self fillWithModel:model];
     });
 }

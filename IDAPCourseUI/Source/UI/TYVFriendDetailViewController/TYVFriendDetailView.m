@@ -14,17 +14,6 @@
 
 @implementation TYVFriendDetailView
 
-- (void)setModel:(TYVUserModel *)model {
-    if (_model != model) {
-        [_model removeObserver:self];
-        
-        _model = model;
-        [_model addObserver:self];
-        
-        [self fillWithModel:model];
-    }
-}
-
 #pragma mark -
 #pragma mark Public Methods
 

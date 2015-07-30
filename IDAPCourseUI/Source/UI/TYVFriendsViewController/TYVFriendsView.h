@@ -7,12 +7,11 @@
 //
 
 #import "TYVLoadingViewHolder.h"
+#import "TYVView.h"
 
 @class TYVUserModel;
 
-@interface TYVFriendsView : TYVLoadingViewHolder
+@interface TYVFriendsView : TYVView
 @property (nonatomic, strong)  IBOutlet UITableView     *tableView;
-
-@property (nonatomic, strong)   TYVUserModel  *model;
 
 @end
