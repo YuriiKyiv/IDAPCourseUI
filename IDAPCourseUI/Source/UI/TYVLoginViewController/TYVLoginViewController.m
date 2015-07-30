@@ -24,7 +24,7 @@ TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 @property (nonatomic, strong)   TYVLoginContext *loginContext;
 
 - (void)pushFriendsViewControllerWithModel:(TYVUserModel *)model;
-- (void)zeroingModelID:(TYVUserModel *)model;
+- (void)logOut;
 
 @end
 
@@ -76,21 +76,18 @@ TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 - (IBAction)onLoginButton:(id)sender {
     TYVUserModel *model = self.model;
     if (model.ID) {
-        [self zeroingModelID:model];
+        [self logOut];
     } else {
-        self.loginContext = [TYVLoginContext contextWithModel:self.model];
+        self.loginContext = [TYVLoginContext contextWithModel:model];
     }
 }
 
 #pragma mark -
 #pragma mark Private Methods
 
-- (void)zeroingModelID:(TYVUserModel *)model {
-    if (model.ID) {
-        model.ID = nil;
-        model.state = TYVModelUnloaded;
-        [[[FBSDKLoginManager alloc] init] logOut];
-    }
+- (void)logOut {
+    [self.model zeroModel];
+    [[[FBSDKLoginManager alloc] init] logOut];
 }
 
 - (void)pushFriendsViewControllerWithModel:(TYVUserModel *)model {

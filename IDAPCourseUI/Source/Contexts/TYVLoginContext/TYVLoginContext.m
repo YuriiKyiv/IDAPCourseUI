@@ -12,6 +12,7 @@
 #import "TYVUserModel.h"
 #import "TYVDispatch.h"
 #import "TYVFacebookConstants.h"
+#import "TYVMacro.h"
 
 @interface TYVLoginContext ()
 @property (nonatomic, strong)   NSArray             *permissions;
@@ -34,8 +35,10 @@
 }
 
 - (id)handler {
+    TYVWeakify(self);
    return ^(FBSDKLoginManagerLoginResult *result, NSError *error)
     {
+        TYVStrongifyAndReturnIfNil(self);
         self.error = error;
         if (result.isCancelled) {
             NSLog(@"Cancelled");

@@ -53,10 +53,12 @@
 }
 
 - (id)handler {
+    TYVWeakify(self);
     return ^(FBSDKGraphRequestConnection *connection,
                     id result,
                     NSError *error)
     {
+        TYVStrongifyAndReturnIfNil(self);
         [self parseWithResult:result error:error];
     };
 }
