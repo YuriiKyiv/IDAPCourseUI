@@ -37,21 +37,4 @@
     }
 }
 
-#pragma mark -
-#pragma mark Model observer
-
-- (void)userFriendsDidLoad:(TYVUserModel *)model {
-    TYVDispatchAsyncOnMainQueueWithBlock(^{
-        [self.tableView reloadData];
-        [self hideLoadingView];
-    });
-    
-}
-
-- (void)modelWillLoad:(id)model {
-    TYVDispatchAsyncOnMainQueueWithBlock(^{
-        [self showLoadingView];
-    });
-}
-
 @end

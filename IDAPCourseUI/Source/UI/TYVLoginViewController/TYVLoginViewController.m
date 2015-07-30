@@ -93,8 +93,9 @@ TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 
 - (void)pushFriendsViewControllerWithModel:(TYVUserModel *)model {
     TYVFriendsViewController *controller = [TYVFriendsViewController new];
-#warning change to model
-    controller.model = [TYVUserModel new];
+    TYVDispatchAsyncOnDefaultQueueWithBlock(^{
+        controller.model = model;
+    });
     [self.navigationController pushViewController:controller animated:YES];
     
 }
