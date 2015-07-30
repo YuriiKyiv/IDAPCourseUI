@@ -27,4 +27,6 @@ typedef NS_ENUM(NSUInteger, TYVUserModelState) {
 @property (nonatomic, copy)     NSURL           *imagePath;
 @property (nonatomic, readonly) TYVImageModel   *imageModel;
 
+- (void)zeroModel;
+
 @end

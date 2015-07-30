@@ -18,7 +18,21 @@
 #pragma mark Accesors
 
 - (TYVImageModel *)imageModel {
-    return [TYVImageModel imageWithURL:self.imagePath];
+    NSURL *path = self.imagePath;
+    return path ? [TYVImageModel imageWithURL:path] : nil;
+}
+
+#pragma mark -
+#pragma mark Public Methods
+
+- (void)zeroModel {
+    self.ID = nil;
+    self.firstName = nil;
+    self.lastName = nil;
+    self.friends = nil;
+    self.imagePath = nil;
+    
+    self.state = TYVModelUnloaded;
 }
 
 #pragma mark -
