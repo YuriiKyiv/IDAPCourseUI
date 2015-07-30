@@ -16,19 +16,31 @@
 #import "TYVDispatch.h"
 #import "TYVFriendCell.h"
 #import "TYVFriendDetailViewController.h"
+#import "TYVModelArray.h"
 
 #import "UITableView+TYVExtentions.h"
 #import "UIViewController+TYVExtentions.h"
 
 TYVViewControllerProperty(TYVFriendsViewController, friendsView, TYVFriendsView)
 
+@interface TYVFriendsViewController ()
+@property (nonatomic, readonly) TYVModelArray   *friends;
+
+@end
+
 @implementation TYVFriendsViewController
+
+@dynamic friends;
 
 #pragma mark -
 #pragma mark Accessors
 
 - (Class)contextClassName {
     return [TYVUsersContext class];
+}
+
+- (id)friends {
+    return self.model.friends;
 }
 
 #pragma mark -
@@ -44,13 +56,13 @@ TYVViewControllerProperty(TYVFriendsViewController, friendsView, TYVFriendsView)
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.model.friends count];
+    return [self.friends count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TYVFriendCell *cell = [tableView reusableCellWithClass:[TYVFriendCell class]];
     
-    cell.model = self.model.friends[indexPath.row];
+    cell.model = self.friends[indexPath.row];
     
     return cell;
 }
@@ -60,7 +72,7 @@ TYVViewControllerProperty(TYVFriendsViewController, friendsView, TYVFriendsView)
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     TYVFriendDetailViewController *controller = [TYVFriendDetailViewController controller];
-    controller.model = self.model.friends[indexPath.row];
+    controller.model = self.friends[indexPath.row];
     [self.navigationController pushViewController:controller animated:YES];
 }
 
