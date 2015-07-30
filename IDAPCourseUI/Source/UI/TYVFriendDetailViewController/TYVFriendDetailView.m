@@ -30,6 +30,7 @@
     TYVDispatchAsyncOnMainQueueWithBlock(^{
         TYVStrongifyAndReturnIfNil(self);
         [self fillWithModel:model];
+        [self hideLoadingView];
     });
 }
 
