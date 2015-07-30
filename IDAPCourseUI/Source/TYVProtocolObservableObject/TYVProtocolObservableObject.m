@@ -117,9 +117,12 @@
 
 - (void)notifyWithSelector:(SEL)selector withObject:(id)object {
     NSHashTable *observers = self.observersHashTable;
-    for (id observer in observers) {
-        if ([observer respondsToSelector:selector]) {
-            [observer performSelector:selector withObject:self withObject:object];
+#warning check synchronized
+    @synchronized (observers) {
+        for (id observer in observers) {
+            if ([observer respondsToSelector:selector]) {
+                [observer performSelector:selector withObject:self withObject:object];
+            }
         }
     }
 }
