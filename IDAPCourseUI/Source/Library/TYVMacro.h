@@ -47,10 +47,20 @@
         return; \
     }
 
-#define TYVContextSetter(propertyName) \
+#define TYVContextSetterSynthesize(propertyName) \
     if (_##propertyName != propertyName) { \
         [_##propertyName cancel]; \
- \
         _##propertyName = propertyName; \
         [_##propertyName execute]; \
     }
+
+#define TYVModelSetterSynthesize(propertyName, postExpersion) \
+    if (_##propertyName != propertyName) { \
+        [_##propertyName removeObserver:self]; \
+        _##propertyName = propertyName; \
+        [_##propertyName addObserver:self]; \
+        postExpresion; \
+    }
+
+#define TYVAddContext() \
+    self.context = [self.contextClassName contextWithModel:_model];

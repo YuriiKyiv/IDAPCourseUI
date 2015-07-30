@@ -203,6 +203,7 @@
 		5A919B7F1B6A11FB005D1928 /* UIViewController+TYVExtentions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+TYVExtentions.m"; path = "UIViewController+TYVExtentions/UIViewController+TYVExtentions.m"; sourceTree = "<group>"; };
 		5A919B891B6A359C005D1928 /* TYVView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVView.h; sourceTree = "<group>"; };
 		5A919B8A1B6A359C005D1928 /* TYVView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYVView.m; sourceTree = "<group>"; };
+		5A919B8C1B6A4F6D005D1928 /* TYVContextProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYVContextProtocol.h; sourceTree = "<group>"; };
 		5A9820B31B32E9F3009B9CF3 /* image.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpeg; sourceTree = "<group>"; };
 		5A9820B41B32E9F3009B9CF3 /* Orion_Nebula.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Orion_Nebula.jpg; sourceTree = "<group>"; };
 		5AB4EB781B68C8BE00F16344 /* TYVLoadingLoginContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYVLoadingLoginContext.h; path = TYVLoadingLoginContext/TYVLoadingLoginContext.h; sourceTree = "<group>"; };
@@ -339,6 +340,7 @@
 			children = (
 				5A4CC0091B6770A300A79584 /* TYVContext.h */,
 				5A4CC00A1B6770A300A79584 /* TYVContext.m */,
+				5A919B8C1B6A4F6D005D1928 /* TYVContextProtocol.h */,
 			);
 			path = TYVContext;
 			sourceTree = "<group>";

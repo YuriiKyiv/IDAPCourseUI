@@ -50,7 +50,7 @@ TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 }
 
 - (void)setLoginContext:(TYVLoginContext *)loginContext {
-    TYVContextSetter(loginContext)
+    TYVContextSetterSynthesize(loginContext)
 }
 
 #pragma mark -

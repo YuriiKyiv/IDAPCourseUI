@@ -9,6 +9,8 @@
 #import "TYVAbstractViewController.h"
 #import "TYVUserModel.h"
 #import "TYVContext.h"
+#import "TYVMacro.h"
+#import "TYVContextProtocol.h"
 
 @interface TYVAbstractViewController ()
 
@@ -34,23 +36,11 @@
 }
 
 - (void)setModel:(TYVUserModel *)model {
-    if (_model != model) {
-        [_model removeObserver:self];
-        
-        _model = model;
-        [_model addObserver:self];
-        
-        self.context = [self.contextClassName contextWithModel:_model];
-    }
+    TYVModelSetterSynthesize(model, TYVAddContext);
 }
 
-- (void)setContext:(TYVContext *)context {
-    if (_context != context) {
-        [_context cancel];
-        
-        _context = context;
-        [_context execute];
-    }
+- (void)setContext:(id<TYVContextProtocol>)context {
+    TYVContextSetterSynthesize(context);
 }
 
 @end
