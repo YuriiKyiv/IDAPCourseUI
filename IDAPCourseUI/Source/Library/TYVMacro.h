@@ -54,7 +54,7 @@
         [_##propertyName execute]; \
     }
 
-#define TYVModelSetterSynthesize(propertyName, postExpersion) \
+#define TYVModelSetterSynthesize(propertyName, postExpresion) \
     if (_##propertyName != propertyName) { \
         [_##propertyName removeObserver:self]; \
         _##propertyName = propertyName; \
@@ -62,5 +62,5 @@
         postExpresion; \
     }
 
-#define TYVAddContext() \
+#define TYVAddContext \
     self.context = [self.contextClassName contextWithModel:_model];
