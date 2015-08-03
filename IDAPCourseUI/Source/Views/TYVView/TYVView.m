@@ -27,6 +27,16 @@
 }
 
 #pragma mark -
+#pragma mark View Lifecycle
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    [self showLoadingView];
+}
+
+
+#pragma mark -
 #pragma mark Public Methods
 
 - (void)fillWithModel:(TYVUserModel *)model {
