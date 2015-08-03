@@ -8,6 +8,7 @@
 
 #import "TYVView.h"
 #import "TYVUserModel.h"
+#import "TYVMacro.h"
 
 @implementation TYVView
 
@@ -22,22 +23,7 @@
 #pragma mark Accessors
 
 - (void)setModel:(TYVUserModel *)model {
-    if (model != _model) {
-        [_model removeObserver:self];
-        _model = model;
-        [_model addObserver:self];
-        
-        [self fillWithModel:model];
-    }
-}
-
-#pragma mark -
-#pragma mark View Lifecycle
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    [self showLoadingView];
+    TYVModelSetterSynthesize(model, TYVFillWithModel)
 }
 
 #pragma mark -

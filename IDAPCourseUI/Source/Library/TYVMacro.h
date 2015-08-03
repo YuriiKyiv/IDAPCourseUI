@@ -64,3 +64,6 @@
 
 #define TYVAddContext \
     self.context = [self.contextClassName contextWithModel:_model];
+
+#define TYVFillWithModel \
+    [self fillWithModel:model];
