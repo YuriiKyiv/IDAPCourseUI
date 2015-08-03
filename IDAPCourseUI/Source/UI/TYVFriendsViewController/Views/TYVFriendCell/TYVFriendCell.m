@@ -8,6 +8,7 @@
 
 #import "TYVFriendCell.h"
 #import "TYVUserModel.h"
+#import "TYVImageView.h"
 
 @implementation TYVFriendCell
 
@@ -33,6 +34,7 @@
 
 - (void)fillWithModel:(TYVUserModel *)model {
     self.nameLabel.text = model.firstName;
+    self.imageContentView.imageModel = model.imageModel;
 }
 
 @end

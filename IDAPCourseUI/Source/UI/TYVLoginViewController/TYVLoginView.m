@@ -44,7 +44,6 @@ static NSString * const  kTYVButtonTitleLogOut = @"LogOut";
 
 - (void)modelDidUnload:(id)model {
     TYVDispatchAsyncOnMainQueueWithBlock(^{
-        [self showLoadingView];
         [self fillWithModel:model];
     });
 }

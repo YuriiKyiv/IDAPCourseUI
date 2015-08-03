@@ -66,7 +66,7 @@ TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+
     self.loginView.model = self.model;
 }
 
@@ -91,6 +91,7 @@ TYVViewControllerProperty(TYVLoginViewController, loginView, TYVLoginView)
 }
 
 - (void)pushFriendsViewControllerWithModel:(TYVUserModel *)model {
+    [self.loginView hideLoadingView];
     TYVFriendsViewController *controller = [TYVFriendsViewController controller];
     controller.model = [TYVUserModel new];
     [self.navigationController pushViewController:controller animated:YES];

@@ -35,7 +35,6 @@
     [self showLoadingView];
 }
 
-
 #pragma mark -
 #pragma mark Public Methods
 
