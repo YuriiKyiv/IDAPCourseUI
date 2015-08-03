@@ -21,6 +21,7 @@ static NSString * const  kTYVButtonTitleLogOut = @"LogOut";
 
 - (void)fillWithModel:(TYVUserModel *)model {
     NSString *title = model.ID ? kTYVButtonTitleLogOut : kTYVButtonTitleLogIn;
+    NSLog(@"%@", title);
     [self.loginButton setTitle:title forState:UIControlStateNormal];
 }
 

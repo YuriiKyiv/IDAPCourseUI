@@ -17,7 +17,7 @@
 - (void)request {
     TYVUserModel *model = self.model;
     model.ID = [FBSDKAccessToken currentAccessToken].userID;
-    model.state = TYVUserIDLoaded;
+    model.state = TYVModelLoaded;
 }
 
 @end
